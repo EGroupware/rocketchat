@@ -1,0 +1,39 @@
+<?php
+/**
+ * EGroupware Rocketchat - setup
+ *
+ * @link http://www.egroupware.org
+ * @author Hadi Nategh <hn-At-egroupware.org>
+ * @package rocketchat
+ * @copyright (c) 2019 by Hadi Nategh <hn-At-egroupware.org>
+ * @license http://opensource.org/licenses/gpl-license.php GPL - GNU General Public License
+ */
+
+
+$setup_info['rocketchat']['name']    = 'rocketchat';
+$setup_info['rocketchat']['title']   = 'Rocket.Chat';
+$setup_info['rocketchat']['version'] = '19.1';
+$setup_info['rocketchat']['app_order'] = 7;
+$setup_info['rocketchat']['enable']  = 1;
+$setup_info['rocketchat']['autoinstall'] = true;	// install automatically on update
+$setup_info['rocketchat']['index'] = 'rocketchat.EGroupware\\Rocketchat\\Ui.index';
+
+$setup_info['rocketchat']['author'] = 'Hadi Nategh';
+$setup_info['rocketchat']['maintainer'] = array(
+	'name'  => 'EGroupware GmbH',
+	'url'   => 'http://www.egroupware.org',
+);
+$setup_info['rocketchat']['license']  = 'GPL';
+$setup_info['rocketchat']['description'] = 'Rocket.Chat client';
+
+/* The hooks this app includes, needed for hooks registration */
+$setup_info['rocketchat']['hooks']['settings'] = 'EGroupware\Rocketchat\Hooks::settings';
+$setup_info['rocketchat']['hooks']['admin'] = 'EGroupware\Rocketchat\Hooks::admin_sidebox';
+$setup_info['rocketchat']['hooks']['csp-frame-src'] = 'EGroupware\Rocketchat\Hooks::csp_frame_src';
+$setup_info['rocketchat']['hooks']['notifications_actions'] = 'EGroupware\Rocketchat\Hooks::notifications_actions';
+
+/* Dependencies for this app to work */
+$setup_info['rocketchat']['depends'][] = array(
+	'appname' => 'api',
+	'versions' => array('17.1')
+);

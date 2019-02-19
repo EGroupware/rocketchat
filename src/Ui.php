@@ -43,10 +43,10 @@ class Ui {
 	 *
 	 * @param array $content
 	 */
-	function index($content)
+	function index($content = null)
 	{
 		$tpl = new Api\Etemplate('rocketchat.index');
 		$tpl->setElementAttribute('iframe', 'src', $this->config['server_url']);
-		$tpl->exec('rocketchat.EGroupware\\Rocketchat\\Ui.index', $content, array());
+		$tpl->exec('rocketchat.EGroupware\\Rocketchat\\Ui.index', array(), array());
 	}
 }

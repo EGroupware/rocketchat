@@ -33,14 +33,15 @@ class Hooks {
 	}
 
 	/**
-	 * Admin sidebox
+	 * sidebox
 	 */
-	public static function admin_sidebox($data)
+	public static function sidebox_menu($data)
 	{
 		if ($GLOBALS['egw_info']['user']['apps']['admin'])
 		{
 			$file = Array(
-				'Site Configuration' => Api\Egw::link('/index.php','menuaction=admin.admin_config.index&appname=' . self::APPNAME,'&ajax=true')
+				'Site Configuration' => Api\Egw::link('/index.php','menuaction=admin.admin_config.index&appname=' . self::APPNAME,'&ajax=true'),
+				'Administration Panel' => 'javascript:app.rocketchat.administration();'
 			);
 			if ($data['location'] == 'admin')
 			{
@@ -51,8 +52,11 @@ class Hooks {
 				display_sidebox(self::APPNAME,lang('Admin'),$file);
 			}
 		}
+		$file = array (
+			'My Account' =>  'javascript:app.rocketchat.myaccount();'
+		);
+		display_sidebox(self::APPNAME, 'My Account', $file);
 	}
-
 
 	/**
 	 * Settings for preferences
@@ -64,6 +68,25 @@ class Hooks {
 
 	}
 
+	/**
+	 * Hook called by link-class
+	 *
+	 * @param array/string $location location and other parameters (not used)
+	 * @return array with method-names
+	 */
+	static function search_link($location)
+	{
+		unset($location);	// not used, but required by function signature
+
+		$links = array(
+			'add' => array(
+				'menuaction' => 'rocketchat.\\EGroupware\\Rocketchat\\Ui.chat',
+				'width' => 500,
+				'height' => 450
+ 			)
+		);
+		return $links;
+	}
 
 	/**
 	 * Method to construct notifications actions

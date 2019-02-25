@@ -16,8 +16,7 @@ $setup_info['rocketchat']['version'] = '19.1';
 $setup_info['rocketchat']['app_order'] = 7;
 $setup_info['rocketchat']['enable']  = 1;
 $setup_info['rocketchat']['autoinstall'] = true;	// install automatically on update
-$setup_info['rocketchat']['index'] = 'rocketchat.EGroupware\\Rocketchat\\Ui.index';
-
+$setup_info['rocketchat']['index'] = array('menuaction' => 'rocketchat.EGroupware\\Rocketchat\\Ui.index&ajax=true');
 $setup_info['rocketchat']['author'] = 'Hadi Nategh';
 $setup_info['rocketchat']['maintainer'] = array(
 	'name'  => 'EGroupware GmbH',
@@ -28,9 +27,11 @@ $setup_info['rocketchat']['description'] = 'Rocket.Chat client';
 
 /* The hooks this app includes, needed for hooks registration */
 $setup_info['rocketchat']['hooks']['settings'] = 'EGroupware\Rocketchat\Hooks::settings';
-$setup_info['rocketchat']['hooks']['admin'] = 'EGroupware\Rocketchat\Hooks::admin_sidebox';
+$setup_info['rocketchat']['hooks']['admin'] = 'EGroupware\Rocketchat\Hooks::sidebox_menu';
+$setup_info['rocketchat']['hooks']['sidebox_menu'] = 'EGroupware\Rocketchat\Hooks::sidebox_menu';
 $setup_info['rocketchat']['hooks']['csp-frame-src'] = 'EGroupware\Rocketchat\Hooks::csp_frame_src';
 $setup_info['rocketchat']['hooks']['notifications_actions'] = 'EGroupware\Rocketchat\Hooks::notifications_actions';
+$setup_info['rocketchat']['hooks']['search_link'] = 'EGroupware\Rocketchat\Hooks::search_link';
 
 /* Dependencies for this app to work */
 $setup_info['rocketchat']['depends'][] = array(

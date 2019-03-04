@@ -9,6 +9,9 @@
  * @version $Id$
  */
 
+/*egw:uses
+	/rocketchat/js/init.js;
+ */
 app.classes.rocketchat = AppJS.extend(
 {
 	appname: 'rocketchat',
@@ -108,9 +111,7 @@ app.classes.rocketchat = AppJS.extend(
 		if (!popup || popup.length == 0)
 		{
 			popup = egw.openPopup(egw.link('/index.php',params), params.width, params.height, _id, 'rocketchat', null, true);
-			popup.on('beforeunload', function(){
-				console.log();
-			})
+
 		}
 		return popup;
 	},

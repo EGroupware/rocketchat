@@ -33,6 +33,19 @@ class Hooks {
 	}
 
 	/**
+	 * Runs after framework js are loaded and includes all dependencies
+	 *
+	 * @param array $data
+	 */
+	public static function framework_header ($data)
+	{
+		if(!$data['popup'])
+		{
+			Api\Framework::includeJS('/rocketchat/js/app.js',null,self::APPNAME);
+		}
+	}
+
+	/**
 	 * sidebox
 	 */
 	public static function sidebox_menu($data)
@@ -40,8 +53,7 @@ class Hooks {
 		if ($GLOBALS['egw_info']['user']['apps']['admin'])
 		{
 			$file = Array(
-				'Site Configuration' => Api\Egw::link('/index.php','menuaction=admin.admin_config.index&appname=' . self::APPNAME,'&ajax=true'),
-				'Administration Panel' => 'javascript:app.rocketchat.administration();'
+				'Site Configuration' => Api\Egw::link('/index.php','menuaction=admin.admin_config.index&appname=' . self::APPNAME,'&ajax=true')
 			);
 			if ($data['location'] == 'admin')
 			{
@@ -49,6 +61,7 @@ class Hooks {
 			}
 			else
 			{
+				$file += array('Administration Panel' => 'javascript:app.rocketchat.administration();');
 				display_sidebox(self::APPNAME,lang('Admin'),$file);
 			}
 		}

@@ -111,4 +111,17 @@ class Hooks {
 	{
 
 	}
+
+	/**
+	 * Get status
+	 *
+	 * @return array return an array consist of online rocket chat users + their status
+	 *
+	 * @todo implementation
+	 */
+	public static function getStatus ()
+	{
+		return [];
+	}
+
 }

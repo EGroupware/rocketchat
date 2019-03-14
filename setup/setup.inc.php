@@ -33,6 +33,7 @@ $setup_info['rocketchat']['hooks']['framework_header'] = 'EGroupware\Rocketchat\
 $setup_info['rocketchat']['hooks']['csp-frame-src'] = 'EGroupware\Rocketchat\Hooks::csp_frame_src';
 $setup_info['rocketchat']['hooks']['notifications_actions'] = 'EGroupware\Rocketchat\Hooks::notifications_actions';
 $setup_info['rocketchat']['hooks']['search_link'] = 'EGroupware\Rocketchat\Hooks::search_link';
+$setup_info['rocketchat']['hooks']['status-getStatus'] = 'EGroupware\Rocketchat\Hooks::getStatus';
 
 /* Dependencies for this app to work */
 $setup_info['rocketchat']['depends'][] = array(

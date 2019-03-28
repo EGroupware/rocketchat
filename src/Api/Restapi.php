@@ -37,6 +37,11 @@ class Restapi {
 	const DEBUG = false;
 
 	/**
+	 * auth session key
+	 */
+	const AUTH_SESSION = 'auth';
+	
+	/**
 	 * Api data
 	 * @var array
 	 */
@@ -63,9 +68,21 @@ class Restapi {
 		$config = Config::read('rocketchat');
 		$this->data = array_merge([
 			'api_path' => $config['server_url'] ? $config['server_url'].self::API_URL : self::DEFAULT_SERVER_URL.self::API_URL,
-			'user' => $GLOBALS['egw_info']['user']['account']['email']
+			'user' => $GLOBALS['egw_info']['user']['account_email']
 		], $_data);
-		$this->login($this->data['user'], $this->data['password']);
+		if (($auth = Cache::getSession(\EGroupware\Rocketchat\Hooks::APPNAME, self::AUTH_SESSION)))
+		{
+			$this->userId = $auth['userId'];
+			$this->authToken = $auth['authToken'];
+			if ($this->me())
+			{
+				return true;
+			}
+			else
+			{
+				throw new Exception\LoginFailure('Rocketchat session is expired');
+			}
+		}
 	}
 
 	/**
@@ -124,28 +141,15 @@ class Restapi {
 	 * @return boolean
 	 * @throws Exception\LoginFailure
 	 */
-	private function login ($_user, $_pass)
+	public function login ($_user, $_pass)
 	{
-		if (!$_user && !$_pass && ($auth = Cache::getSession('rocketchat', 'auth')))
-		{
-			$this->userId = $auth['userId'];
-			$this->authToken = $auth['authToken'];
-			if ($this->me())
-			{
-				return true;
-			}
-			else
-			{
-				throw new Exception\LoginFailure('Rocketchat session is expired');
-			}
-		}
-		$response = self::_responseHandler($this->api_call('login', 'POST', ['user' => $_user, 'password' => $_pass]));
-		if (!$response['success']) {
+		$response = self::_responseHandler($this->api_call('login', 'POST', ['user' => $_user, 'password' => $_pass]), 'status');
+		if (!$response['success'] || !$response) {
 			if (self::DEBUG) error_log(__METHOD__. 'Command login failed because of'.$response['message']);
 			throw new Exception\LoginFailure($response['message']);
 		}
-		$this->userId = $response['data']['userId'];
-		$this->authToken = $response['data']['authToken'];
+		$this->userId = $response['response']['data']['userId'];
+		$this->authToken = $response['response']['data']['authToken'];
 		if ($this->userId && $this->authToken)
 		{
 			Cache::setSession('rocketchat', 'auth', ['userId'=>$this->userId, 'authToken' => $this->authToken]);
@@ -158,7 +162,7 @@ class Restapi {
 	 *
 	 * @return array
 	 */
-	private function me ()
+	public function me ()
 	{
 		$response = self::_responseHandler($this->api_call('me', 'GET', ['userId' => $this->userId]));
 		if (!$response['success'])
@@ -180,7 +184,7 @@ class Restapi {
 	 *
 	 * @return array return user's info
 	 */
-	private function usersinfo ($_args=[])
+	public function usersinfo ($_args=[])
 	{
 		if (empty($_args['userId']) && empty($_args['username'])) $_args['userId'] = $this->userId;
 		$response = self::_responseHandler($this->api_call('users.info', 'GET', $_args));
@@ -207,7 +211,7 @@ class Restapi {
 	 *
 	 * @return array returns list of users
 	 */
-	private function userslist ($_args=[])
+	public function userslist ($_args=[])
 	{
 		$args = array_map('json_encode', $_args);
 		$response = self::_responseHandler($this->api_call('users.list', 'GET', $args));
@@ -229,23 +233,19 @@ class Restapi {
 	{
 		if (is_array($response))
 		{
-			$status = $response['status'] ? $response['status'] : $response['success'];
 			$result = [
 				'response' => $response,
 				'message' => $response['message'],
 				'success' => true
 			];
-			switch ($status)
+			if ($response['error'])
 			{
-				case 'error':
-					$result['success'] = false;
-					break;
-				case 'success':
-				case true:
-					$result['success'] = true;
-					break;
-				default:
-					$result['success'] = false;
+				$result['success'] = false;
+			}
+			elseif (isset($response['success']) && $response['success'] == true
+					|| isset ($response['status']) && $response['status'] == 'success')
+			{
+				$result['success'] = true;
 			}
 		}
 		return $result;

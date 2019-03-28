@@ -12,6 +12,7 @@
 namespace EGroupware\Rocketchat;
 
 use EGroupware\Api;
+use EGroupware\Api\Etemplate;
 
 /**
  * Description of Ui
@@ -46,14 +47,14 @@ class Ui {
 	 */
 	function index($content = null)
 	{
-		$tpl = new Api\Etemplate('rocketchat.index');
+		$tpl = new Etemplate('rocketchat.index');
 		$tpl->setElementAttribute('iframe', 'src', $this->config['server_url']);
-		$tpl->exec('rocketchat.EGroupware\\Rocketchat\\Ui.index', array(), array());
+		$tpl->exec('rocketchat.EGroupware\\Rocketchat\\Ui.index', ['relogin' => $_GET['relogin'] ? true: false ], array());
 	}
 
 	function chat($content = null)
 	{
-		$tpl = new Api\Etemplate('rocketchat.chat');
+		$tpl = new Etemplate('rocketchat.chat');
 		$path = $_GET['path'];
 		$tpl->setElementAttribute('chatbox', 'src', $this->config['server_url'].$path);
 		$tpl->exec('rocketchat.EGroupware\\Rocketchat\\Ui.chat', array(), array());

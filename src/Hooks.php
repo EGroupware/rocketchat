@@ -12,6 +12,9 @@
 namespace EGroupware\Rocketchat;
 
 use EGroupware\Api;
+use EGroupware\Rocketchat\Exception;
+use EGroupware\Rocketchat\Api\Restapi;
+
 class Hooks {
 
 	const APPNAME = 'rocketchat';
@@ -42,6 +45,17 @@ class Hooks {
 		if(!$data['popup'])
 		{
 			Api\Framework::includeJS('/rocketchat/js/app.js',null,self::APPNAME);
+		}
+	}
+
+	public static function session_created($location)
+	{
+		try {
+			$api = new Restapi();
+			$api->login($GLOBALS['egw_info']['user']['account_email'], $_POST['passwd']);
+		}
+		catch (Exception\LoginFailure $ex) {
+			Api\Framework::message($ex->getMessage());
 		}
 	}
 
@@ -114,13 +128,39 @@ class Hooks {
 
 	/**
 	 * Get status
+	 * @param array $data info regarding the running hook
 	 *
 	 * @return array return an array consist of online rocket chat users + their status
 	 *
 	 * @todo implementation
 	 */
-	public static function getStatus ()
+	public static function getStatus ($data)
 	{
+		if ($data['app'] != self::APPNAME) return [];
+		$stat = [];
+		try{
+			$api = new Restapi();
+			$onlineusers = $api->userslist(['query' => [
+				'active'=>true,
+				'type' => 'user',
+				'status' => 'online'
+			]]);
+			foreach ($onlineusers as $user)
+			{
+				$stat[$user['username']] = [
+					'id' => $user['username'],
+					'stat' => [
+						'rocketchat' => [
+							'active' => $user['active'],
+							'bg' => 'rocketchat/templates/default/images/navbar.svg'
+						]
+					]
+				];
+			}
+			return $stat;
+		} catch (Exception\LoginFailure $ex) {
+			Api\Framework::message($ex->getMessage());
+		}
 		return [];
 	}
 

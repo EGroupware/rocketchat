@@ -131,6 +131,70 @@ app.classes.rocketchat = AppJS.extend(
 			return true;
 		}
 		egw.debug('No rocketchat frame found!');
+	},
+
+	/**
+	 * Handle executed action on selected row
+	 *
+	 * @param {type} _action
+	 * @param {type} _selected
+	 * @TODO Implementing the response and error
+	 */
+	handle_actions: function (_action, _selected)
+	{
+		var user_id = _selected[0]['id'];
+		var self = this;
+		switch (_action.id)
+		{
+			case 'message':
+				et2_createWidget("dialog",{
+					callback: function (_button_id, _value) {
+						if (_button_id === 'send' && _value && _value.text != '')
+						{
+							self.restapi_call('chat_postMessage', {channel:'@'+user_id, text:_value.text}).then(function(){}, function(){});
+							return true;
+						}
+					},
+					title: 'Direct message',
+					buttons: [
+						{id: 'send', text: egw.lang('send'), default:true, image:"check"},
+						{id: 'cancel', text: egw.lang('cancel'), default:false, image:"cancel"}
+					],
+					type: et2_dialog.PLAIN_MESSAGE,
+					template: egw.webserverUrl+'/rocketchat/templates/default/dialog_message.xet',
+					value: {content: {}}
+				});
+				break;
+
+		}
+
+	},
+
+	/**
+	 * Rest Api call handler
+	 *
+	 * @param {string} _cmd
+	 * @param {object} _data
+	 * @returns {Promise|Boolean}
+	 */
+	restapi_call: function (_cmd, _data)
+	{
+		var data = _data || {};
+		var cmd = _cmd;
+		if (!_cmd) {
+			egw.debug('You forgot the command!');
+			return false;
+		}
+		return new Promise (function(_resolve, _reject){
+			egw.json(
+				"EGroupware\\Rocketchat\\Ui::ajax_restapi_call", [cmd, data],
+				function(_response){
+					if (typeof _resolve == 'function') _resolve(_response);
+				}).sendRequest(true,'POST', function(_err){
+					if (_err && _err.message) egw.message(_err.message);
+					if (typeof _reject == 'function') _reject();
+			});
+		});
 	}
 
 });

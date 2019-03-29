@@ -40,7 +40,7 @@ class Restapi {
 	 * auth session key
 	 */
 	const AUTH_SESSION = 'auth';
-	
+
 	/**
 	 * Api data
 	 * @var array
@@ -222,6 +222,25 @@ class Restapi {
 		}
 		return $response['response']['users'];
 	}
+
+	/**
+	 * Chat postMessage
+	 *
+	 * @param type $_args
+	 * @return array|boolean
+	 */
+	public function chat_PostMessage ($_args=[])
+	{
+		$args = array_map('json_encode', $_args);
+		$response = self::_responseHandler($this->api_call('chat.postMessage', 'POST', $args));
+		if (!$response['success'])
+		{
+			if (self::DEBUG) error_log(__METHOD__.'Command chat.postMessage failed because of'.$response['message']);
+			return false;
+		}
+		return $response['response'];
+	}
+
 
 	/**
 	 * Response error handler

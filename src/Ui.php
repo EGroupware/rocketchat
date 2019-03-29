@@ -13,6 +13,7 @@ namespace EGroupware\Rocketchat;
 
 use EGroupware\Api;
 use EGroupware\Api\Etemplate;
+use EGroupware\Rocketchat\Api\Restapi;
 
 /**
  * Description of Ui
@@ -49,7 +50,7 @@ class Ui {
 	{
 		$tpl = new Etemplate('rocketchat.index');
 		$tpl->setElementAttribute('iframe', 'src', $this->config['server_url']);
-		$tpl->exec('rocketchat.EGroupware\\Rocketchat\\Ui.index', ['relogin' => $_GET['relogin'] ? true: false ], array());
+		$tpl->exec('rocketchat.EGroupware\\Rocketchat\\Ui.index', [], []);
 	}
 
 	function chat($content = null)
@@ -58,5 +59,31 @@ class Ui {
 		$path = $_GET['path'];
 		$tpl->setElementAttribute('chatbox', 'src', $this->config['server_url'].$path);
 		$tpl->exec('rocketchat.EGroupware\\Rocketchat\\Ui.chat', array(), array());
+	}
+
+	/**
+	 * restapi call handler
+	 *
+	 * @param type $_cmd
+	 * @param type $_data
+	 */
+	public static function ajax_restapi_call ($_cmd, $_data)
+	{
+		$response = Api\Json\Response::get();
+		try {
+			$restapi = new Restapi();
+			$resp = call_user_func_array(array($restapi, $_cmd), [$_data]);
+			if ($resp)
+			{
+				$response->data($resp);
+			}
+			else
+			{
+				$response->data(['error' => lang("Rocketchat operation failed!")]);
+			}
+		}
+		catch(Exception $ex) {
+			$response->data(['error' => $ex->getMessage()]);
+		}
 	}
 }

@@ -14,6 +14,9 @@ namespace EGroupware\Rocketchat\Api;
 use EGroupware\Api\Config;
 use EGroupware\Api\Cache;
 use EGroupware\Rocketchat\Exception;
+use EGroupware\Rocketchat;
+use EGroupware\OpenID\Token;
+
 /**
  * Description of Connection
  *
@@ -42,6 +45,11 @@ class Restapi {
 	const AUTH_SESSION = 'auth';
 
 	/**
+	 * OAuth scopes used for the access-token
+	 */
+	const OAUTH_SCOPES = 'openid profile email';
+
+	/**
 	 * Api data
 	 * @var array
 	 */
@@ -64,13 +72,18 @@ class Restapi {
 	 * @param array $_data
 	 * @throws Exception\LoginFailure
 	 */
-	public function __construct($_data = []) {
+	public function __construct($_data = [])
+	{
 		$config = Config::read('rocketchat');
 		$this->data = array_merge([
 			'api_path' => $config['server_url'] ? $config['server_url'].self::API_URL : self::DEFAULT_SERVER_URL.self::API_URL,
-			'user' => $GLOBALS['egw_info']['user']['account_email']
+			'user' => $GLOBALS['egw_info']['user']['account_email'],
+			'authentication' => $config['authentication'],
+			'oauth_client_id' => $config['oauth_client_id'],
+			'oauth_service_name' => $config['oauth_service_name'],
 		], $_data);
-		if (($auth = Cache::getSession(\EGroupware\Rocketchat\Hooks::APPNAME, self::AUTH_SESSION)))
+
+		if (($auth = Cache::getSession(Rocketchat\Hooks::APPNAME, self::AUTH_SESSION)))
 		{
 			$this->userId = $auth['userId'];
 			$this->authToken = $auth['authToken'];
@@ -103,6 +116,9 @@ class Restapi {
 			"X-User-Id: ".($_params['X-User-Id'] ? $_params['X-User-Id'] : $this->userId),
 			"Content-Type: application/json"
 		];
+		// remove X-Auth-Token, if empty (eg. login via accessToken)
+		if ($header[0] === "X-Auth-Token: ") unset($header[0]);
+
 		// authToken and useId can be passed through params to setup the header
 		// but do not include them in curl URL.
 		unset($_params['X-User-Id'], $_params['X-Auth-Token']);
@@ -112,7 +128,7 @@ class Restapi {
 			CURLOPT_CUSTOMREQUEST => $_method,
 			CURLOPT_RETURNTRANSFER => 1,
 			CURLOPT_FOLLOWLOCATION => 1,
-			CURLOPT_VERBOSE => 1,
+			//CURLOPT_VERBOSE => 1,
 			CURLOPT_URL => $full_path,
 		];
 		if ($_method == "POST")
@@ -129,6 +145,7 @@ class Restapi {
 			throw new \Exception("Error contacting Api server: $full_path");
 		}
 		curl_close($curl);
+		if (self::DEBUG) error_log(__METHOD__."($_api_path, $_method) curlOpts=".array2string($curlOpts)." returned $json");
 		return json_decode($json, true);
 	}
 
@@ -143,7 +160,23 @@ class Restapi {
 	 */
 	public function login ($_user, $_pass)
 	{
-		$response = self::_responseHandler($this->api_call('login', 'POST', ['user' => $_user, 'password' => $_pass]), 'status');
+		switch($this->data['authentication'])
+		{
+			case 'credentials':
+				$response = self::_responseHandler($this->api_call('login', 'POST', ['user' => $_user, 'password' => $_pass]), 'status');
+				break;
+
+			case 'openid':	// own OpenID Connect / OAuth server
+				$tokenFactory = new Token();
+				$token = $tokenFactory->accessToken($this->data['oauth_client_id'], explode(' ', self::OAUTH_SCOPES));
+				$response = self::_responseHandler($this->api_call('login', 'POST', [
+					'serviceName' => $this->data['oauth_service_name'],
+					'X-User-Id' => $this->data['user'],
+					'accessToken' => $token,
+					'expiresIn' => 3600,	// default TTL of access-token
+				]), 'status');
+				break;
+		}
 		if (!$response['success'] || !$response) {
 			if (self::DEBUG) error_log(__METHOD__. 'Command login failed because of'.$response['message']);
 			throw new Exception\LoginFailure($response['message']);

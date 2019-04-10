@@ -15,8 +15,23 @@
 						<description value="example: https://www.egroupware.org/rocketchat/"/>
 					</vbox>
 					<hbox>
-						<url id="newsettings[server_url]" width="300px" validator="/^https\:\/\/.*$/i"/>
+						<url id="newsettings[server_url]" width="300px"/>
 					</hbox>
+				</row>
+				<row>
+					<label value="Authentication" for="newsettings[authentication]"/>
+					<select id="newsettings[authentication]">
+						<option value="openid">EGroupware OpenID Connnect / OAuth server</option>
+						<option value="credentials">Username/password from session</option>
+					</select>
+				</row>
+				<row>
+					<label value="Rocket.Chat's OAuth Client-ID" for="newsettings[oauth_client_id]"/>
+					<textbox id="newsettings[oauth_client_id]" tooltip="Client-ID created for Rocket.Chat in EGroupware eg. 'RocketChat'"/>
+				</row>
+				<row>
+					<label value="Rocketchat's OAuth Service-Name" for="newsettings[oauth_service_name]"/>
+					<textbox id="newsettings[oauth_service_name]" tooltip="Custom OAuth name given in Rocket.Chat for EGroupware eg. 'egroupware'"/>
 				</row>
 			</rows>
 		</grid>

@@ -50,13 +50,7 @@ class Hooks {
 
 	public static function session_created($location)
 	{
-		try {
-			$api = new Restapi();
-			$api->login($GLOBALS['egw_info']['user']['account_email'], $_POST['passwd']);
-		}
-		catch (Exception\LoginFailure $ex) {
-			Api\Framework::message($ex->getMessage());
-		}
+
 	}
 
 	/**
@@ -140,22 +134,35 @@ class Hooks {
 		$stat = [];
 		try{
 			$api = new Restapi();
-			$onlineusers = $api->userslist(['query' => [
+			$logged_in = Api\Cache::getSession(self::APPNAME, 'logged_in', function() use ($api)
+			{
+				try {
+					$api->login($GLOBALS['egw_info']['user']['account_email'], $_POST['passwd']);
+					return true;
+				}
+				catch (\Exception $ex) {
+					Api\Framework::message($ex->getMessage());
+					return false;
+				}
+			});
+			if ($logged_in && ($onlineusers = $api->userslist(['query' => [
 				'active'=>true,
 				'type' => 'user',
 				'status' => 'online'
-			]]);
-			foreach ($onlineusers as $user)
+			]])))
 			{
-				$stat[$user['username']] = [
-					'id' => $user['username'],
-					'stat' => [
-						'rocketchat' => [
-							'active' => $user['active'],
-							'bg' => 'rocketchat/templates/default/images/navbar.svg'
+				foreach ($onlineusers as $user)
+				{
+					$stat[$user['username']] = [
+						'id' => $user['username'],
+						'stat' => [
+							'rocketchat' => [
+								'active' => $user['active'],
+								'bg' => 'rocketchat/templates/default/images/navbar.svg'
+							]
 						]
-					]
-				];
+					];
+				}
 			}
 			return $stat;
 		} catch (Exception\LoginFailure $ex) {

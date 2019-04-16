@@ -87,13 +87,10 @@ class Restapi {
 		{
 			$this->userId = $auth['userId'];
 			$this->authToken = $auth['authToken'];
-			if ($this->me())
+			if (!$this->me())
 			{
-				return true;
-			}
-			else
-			{
-				throw new Exception\LoginFailure('Rocketchat session is expired');
+				// force a new login with next API call
+				Api\Cache::unsetSession(self::APPNAME, 'logged_in');
 			}
 		}
 	}

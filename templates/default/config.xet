@@ -16,6 +16,8 @@
 					</vbox>
 					<hbox>
 						<url id="newsettings[server_url]" width="300px"/>
+						<description id="newsettings[server_status]" label="Status:" disabled="!@newsettings[server_status]" class="@newsettings[server_status_class]"/>
+						<!-- hack to get class propagated: id="newsettings[server_status_class]" -->
 					</hbox>
 				</row>
 				<row>
@@ -30,7 +32,7 @@
 					<textbox id="newsettings[oauth_client_id]" tooltip="Client-ID created for Rocket.Chat in EGroupware eg. 'RocketChat'"/>
 				</row>
 				<row>
-					<label value="Rocketchat's OAuth Service-Name" for="newsettings[oauth_service_name]"/>
+					<label value="Rocket.Chat's OAuth Service-Name" for="newsettings[oauth_service_name]"/>
 					<textbox id="newsettings[oauth_service_name]" tooltip="Custom OAuth name given in Rocket.Chat for EGroupware eg. 'egroupware'"/>
 				</row>
 			</rows>

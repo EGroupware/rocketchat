@@ -35,6 +35,8 @@ $setup_info['rocketchat']['hooks']['notifications_actions'] = 'EGroupware\Rocket
 $setup_info['rocketchat']['hooks']['search_link'] = 'EGroupware\Rocketchat\Hooks::search_link';
 $setup_info['rocketchat']['hooks']['status-getStatus'] = 'EGroupware\Rocketchat\Hooks::getStatus';
 $setup_info['rocketchat']['hooks']['status-get_actions'] = 'EGroupware\Rocketchat\Hooks::get_status_actions';
+$setup_info['rocketchat']['hooks']['config'] = 'EGroupware\Rocketchat\Hooks::config';
+$setup_info['rocketchat']['hooks']['config_validate'] = 'EGroupware\Rocketchat\Hooks::validate';
 
 /* Dependencies for this app to work */
 $setup_info['rocketchat']['depends'][] = array(

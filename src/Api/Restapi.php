@@ -22,7 +22,9 @@ use EGroupware\OpenID\Token;
  *
  * @author hadi
  */
-class Restapi {
+class Restapi
+{
+	const APPNAME = 'rocketchat';
 
 	/**
 	 * Default Server URL (rocketchat server url)
@@ -90,7 +92,7 @@ class Restapi {
 			if (!$this->me())
 			{
 				// force a new login with next API call
-				Api\Cache::unsetSession(self::APPNAME, 'logged_in');
+				Cache::unsetSession(self::APPNAME, 'logged_in');
 			}
 		}
 	}
@@ -271,6 +273,16 @@ class Restapi {
 		return $response['response'];
 	}
 
+	/**
+	 * Get info / version from Rocket.Chat API
+	 *
+	 * @return array eg. json_encode('{"info":{"version":"1.0.0-develop"},"success":true}')
+	 * @throws \Exception on connection error
+	 */
+	public function info()
+	{
+		return $this->api_call('info');
+	}
 
 	/**
 	 * Response error handler

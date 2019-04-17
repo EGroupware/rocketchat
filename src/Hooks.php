@@ -15,8 +15,8 @@ use EGroupware\Api;
 use EGroupware\Rocketchat\Exception;
 use EGroupware\Rocketchat\Api\Restapi;
 
-class Hooks {
-
+class Hooks
+{
 	const APPNAME = 'rocketchat';
 
 	/**
@@ -190,5 +190,73 @@ class Hooks {
 				]
 			]
 		];
+	}
+
+	/**
+	 * Check server url
+	 *
+	 * @param Array $data
+	 */
+	public static function config($data)
+	{
+		try
+		{
+			$api = new Restapi([
+				'api_path' => $data['server_url'].Restapi::API_URL,
+			]);
+			$info = $api->info();
+			if (empty($info) || !$info['success'])
+			{
+				$data['server_status_class'] = 'error';
+				$data['server_status'] = lang('Unable to connect!');
+			}
+			else
+			{
+				$data['server_status_class'] = 'ok';
+				$data['server_status'] = lang('Successful connected, Rocket.Chat version: %1.', $info['info']['version']);
+			}
+		}
+		catch (\Exception $e)
+		{
+			$data['server_status'] = $e->getMessage();
+			$data['server_status_class'] = 'error';
+		}
+		return $data;
+	}
+
+	/**
+	 * Validate the configuration
+	 *
+	 * @param Array $data
+	 */
+	public static function validate($data)
+	{
+		// check if we have a trailing slash
+		if (substr($data['server_url'], -1) !== '/')
+		{
+			$error = lang('URL must end with %1', '/');
+			Api\Etemplate::set_validation_error('server_url', $error, 'newsettings');
+			$GLOBALS['config_error'] = $error;
+			return;
+		}
+
+		try {
+			$api = new Restapi([
+				'api_path' => $data['server_url'].Restapi::API_URL,
+			]);
+			$info = $api->info();
+			if (empty($info) || !$info['success'])
+			{
+				$error = lang('Unable to connect!');
+			}
+		}
+		catch (\Exception $ex) {
+			$error = $ex->getMessage();
+		}
+		if (!empty($error))
+		{
+			Api\Etemplate::set_validation_error('server_url', $error, 'newsettings');
+			$GLOBALS['config_error'] = $error;
+		}
 	}
 }

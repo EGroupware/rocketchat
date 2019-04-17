@@ -30,7 +30,7 @@ class Hooks {
 		$frm_srcs = array();
 		if (!empty($config['server_url']))
 		{
-			$frm_srcs[] = $config['server_url'];
+			$frm_srcs[] = preg_replace('#^(https?://[^/]+)(/.*)?#', '$1', $config['server_url']);
 		}
 		return $frm_srcs;
 	}

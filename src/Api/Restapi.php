@@ -76,13 +76,13 @@ class Restapi
 	 */
 	public function __construct($_data = [])
 	{
-		$config = Config::read('rocketchat');
+		$this->config = Config::read('rocketchat');
 		$this->data = array_merge([
-			'api_path' => $config['server_url'] ? $config['server_url'].self::API_URL : self::DEFAULT_SERVER_URL.self::API_URL,
+			'api_path' => $this->config['server_url'] ? $this->config['server_url'].self::API_URL : self::DEFAULT_SERVER_URL.self::API_URL,
 			'user' => \EGroupware\Status\Hooks::getUserName(),
-			'authentication' => $config['authentication'],
-			'oauth_client_id' => $config['oauth_client_id'],
-			'oauth_service_name' => $config['oauth_service_name'],
+			'authentication' => $this->config['authentication'],
+			'oauth_client_id' => $this->config['oauth_client_id'],
+			'oauth_service_name' => $this->config['oauth_service_name'],
 		], $_data);
 
 		if (($auth = Cache::getSession(Rocketchat\Hooks::APPNAME, self::AUTH_SESSION)))
@@ -108,8 +108,16 @@ class Restapi
 	 */
 	private function api_call ($_api_path, $_method="GET", $_params=[])
 	{
-		$full_path = !empty($this->data['api_path']) ? $this->data['api_path'] : self::DEFAULT_SERVER_URL.self::API_URL;
-		$full_path .= $_api_path;
+		if ($_api_path[0] == '/')
+		{
+			$full_path = substr($this->config['server_url'], -1) == '/' ?
+					substr($this->config['server_url'], 0,-1).$_api_path : $this->config['server_url'].$_api_path;
+		}
+		else
+		{
+			$full_path = !empty($this->data['api_path']) ? $this->data['api_path'] : self::DEFAULT_SERVER_URL.self::API_URL;
+			$full_path .= $_api_path;
+		}
 		$header = [
 			"X-Auth-Token: ".($_params['X-Auth-Token'] ? $_params['X-Auth-Token'] : $this->authToken),
 			"X-User-Id: ".($_params['X-User-Id'] ? $_params['X-User-Id'] : $this->userId),

@@ -137,7 +137,7 @@ class Hooks
 			$logged_in = Api\Cache::getSession(self::APPNAME, 'logged_in', function() use ($api)
 			{
 				try {
-					$api->login($GLOBALS['egw_info']['user']['account_email'], $_POST['passwd']);
+					$api->login($GLOBALS['egw_info']['user']['account_lid'], $_POST['passwd']);
 					return true;
 				}
 				catch (\Exception $ex) {
@@ -151,8 +151,11 @@ class Hooks
 				'status' => 'online'
 			]])))
 			{
+				$status_app = \EGroupware\Status\Hooks::getStatus(['app'=>'status']);
 				foreach ($onlineusers as $user)
 				{
+					// Only report egw users not all rocketchat users
+					if (!$status_app[$user['username']]) continue;
 					$stat[$user['username']] = [
 						'id' => $user['username'],
 						'stat' => [

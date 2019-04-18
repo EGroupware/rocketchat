@@ -79,7 +79,7 @@ class Restapi
 		$config = Config::read('rocketchat');
 		$this->data = array_merge([
 			'api_path' => $config['server_url'] ? $config['server_url'].self::API_URL : self::DEFAULT_SERVER_URL.self::API_URL,
-			'user' => $GLOBALS['egw_info']['user']['account_email'],
+			'user' => \EGroupware\Status\Hooks::getUserName(),
 			'authentication' => $config['authentication'],
 			'oauth_client_id' => $config['oauth_client_id'],
 			'oauth_service_name' => $config['oauth_service_name'],

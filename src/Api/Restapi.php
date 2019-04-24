@@ -271,8 +271,7 @@ class Restapi
 	 */
 	public function chat_PostMessage ($_args=[])
 	{
-		$args = array_map('json_encode', $_args);
-		$response = self::_responseHandler($this->api_call('chat.postMessage', 'POST', $args));
+		$response = self::_responseHandler($this->api_call('chat.postMessage', 'POST', $_args));
 		if (!$response['success'])
 		{
 			if (self::DEBUG) error_log(__METHOD__.'Command chat.postMessage failed because of'.$response['message']);

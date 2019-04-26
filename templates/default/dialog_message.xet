@@ -13,7 +13,7 @@
 					<appicon src="rocketchat" width="24" height="24"/>
 				</row>
 				<row>
-					<textbox id="text" width="100%" rows="4"/>
+					<textbox id="text" width="100%" rows="4" index="1"/>
 				</row>
 			</rows>
 		</grid>

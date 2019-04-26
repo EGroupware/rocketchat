@@ -80,14 +80,10 @@ app.classes.rocketchat = AppJS.extend(
 
 					break;
 				case 'notification':
-					this.chatPopupLookup(e.data.data.notification.payload.sender._id, {path: 'direct/'+e.data.data.notification.payload.sender.username+'?layout=embedded'});
+
 					break;
 				case 'new-message':
-					if (typeof e.data.data.room !='undefined' && typeof e.data.data.room.name !='undefined')
-					{
-						this.chatPopupLookup(e.data.data._id, {path: 'group/'+e.data.data.room.name+'?layout=embedded'});
-					}
-
+					
 					break;
 				default:
 					console.log(e)
@@ -147,25 +143,8 @@ app.classes.rocketchat = AppJS.extend(
 		switch (_action.id)
 		{
 			case 'message':
-				et2_createWidget("dialog",{
-					callback: function (_button_id, _value) {
-						if (_button_id === 'send' && _value && _value.text != '')
-						{
-							self.restapi_call('chat_postMessage', {channel:'@'+user_id, text:_value.text}).then(function(){}, function(){});
-							return true;
-						}
-					},
-					title: 'Direct message',
-					buttons: [
-						{id: 'send', text: egw.lang('send'), default:true, image:"check"},
-						{id: 'cancel', text: egw.lang('cancel'), default:false, image:"cancel"}
-					],
-					type: et2_dialog.PLAIN_MESSAGE,
-					template: egw.webserverUrl+'/rocketchat/templates/default/dialog_message.xet',
-					value: {content: {}}
-				});
+				this.chatPopupLookup(user_id, {path:'direct/'+user_id+'?layout=embedded'});
 				break;
-
 		}
 
 	},

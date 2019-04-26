@@ -181,16 +181,11 @@ class Hooks
 	public static function get_status_actions()
 	{
 		return [
-			'rocketchat' => [
-				'caption' => 'Rocketchat',
+			'message' => [
+				'caption' => 'Message',
+				'default' => true,
 				'allowOnMultiple' => false,
-				'children' => [
-					'message' => [
-						'caption' => 'Message',
-						'allowOnMultiple' => false,
-						'onExecute' => 'javaScript:app.rocketchat.handle_actions',
-					]
-				]
+				'onExecute' => 'javaScript:app.rocketchat.handle_actions',
 			]
 		];
 	}

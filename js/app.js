@@ -11,11 +11,13 @@
 
 /*egw:uses
 	/rocketchat/js/init.js;
+	/rocketchat/js/realtimeapi.js;
  */
 app.classes.rocketchat = AppJS.extend(
 {
 	appname: 'rocketchat',
 
+	updateInterval: 2000,
 	rocketchat: {},
 
 	mainframe: {},
@@ -83,7 +85,7 @@ app.classes.rocketchat = AppJS.extend(
 
 					break;
 				case 'new-message':
-					
+
 					break;
 				default:
 					console.log(e)
@@ -174,6 +176,49 @@ app.classes.rocketchat = AppJS.extend(
 					if (typeof _reject == 'function') _reject();
 			});
 		});
+	},
+
+	/**
+	 * Get latest updates regarding the subscribed channels/users
+	 * and will set unread indications accordingly.
+	 */
+	getUpdates: function ()
+	{
+		var self = this;
+		egw.json("EGroupware\\Rocketchat\\Hooks::ajax_getServerUrl", [], function (response){
+			if (response && response.server_url != '')
+			{
+				var url = response.server_url.replace(/^(https?:\/\/)?/, 'ws://')+'websocket';
+				var api = new rocketchat_realtime_api(url);
+				var latest = [];
+				window.setInterval(function(){
+					api.getSubscriptions().then(function(_data){
+						if (_data && _data.msg === 'result' && _data.result.length > 0)
+						{
+							var data = [];
+							for (var i in _data.result)
+							{
+								var updateIt = true;
+								for (var j in latest)
+								{
+									if (latest[j] && latest[j]['name'] ==_data.result[i]['name'] && latest[j]['_updatedAt'].$date == _data.result[i]['_updatedAt'].$date)
+									{
+										updateIt = false;
+									}
+								}
+								if (updateIt) data.push({id: _data.result[i]['name'], stat2:_data.result[i]['unread']});
+							}
+							if (data.length > 0)
+							{
+								latest = _data.result;
+								app.status.mergeContent(data);
+							}
+
+						}
+					}, function(_error){console.log(_error)});
+				}, self.updateInterval);
+			}
+		}).sendRequest();
 	}
 
 });

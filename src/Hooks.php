@@ -30,8 +30,10 @@ class Hooks
 		$frm_srcs = array();
 		if (!empty($config['server_url']))
 		{
+			$frm_srcs[] = preg_replace('#^(https?://)?#', 'ws://', $config['server_url']). 'websocket';
 			$frm_srcs[] = preg_replace('#^(https?://[^/]+)(/.*)?#', '$1', $config['server_url']);
 		}
+		Api\Header\ContentSecurityPolicy::add_connect_src($frm_srcs);
 		return $frm_srcs;
 	}
 
@@ -110,14 +112,23 @@ class Hooks
 	}
 
 	/**
-	 * Method to construct notifications actions
-	 *
-	 * @param type $params
-	 * @return type
+	 * get authToken
 	 */
-	public static function notifications_actions ($params)
+	public static function ajax_getAuthToken ()
 	{
+		$response = Api\Json\Response::get();
+		$auth = Api\Cache::getSession(self::APPNAME, Restapi::AUTH_SESSION);
+		$response->data(['token' => $auth['authToken']]);
+	}
 
+	/**
+	 * Get server url
+	 */
+	public static function ajax_getServerUrl ()
+	{
+		$response = Api\Json\Response::get();
+		$config = Api\Config::read('rocketchat');
+		$response->data(['server_url' => $config['server_url']]);
 	}
 
 	/**

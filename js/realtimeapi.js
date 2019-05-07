@@ -1,18 +1,18 @@
 /**
- * EGroupware Rocketchat RealApi
+ * EGroupware Rocketchat RealtimeApi
  *
  * @package Rocketchat
  * @author Hadi Nategh <hn-At-egroupware.org>
  * @copyright 2018 by Hadi Nategh <hn-At-egroupware.org>
- * @description Real Api
+ * @description Realtime Api
  */
 
 /**
- * Real Api constructor
+ * Realtime Api constructor
  *
  * @param {type} _url websocket url
  */
-function rocketchat_real_api (_url)
+function rocketchat_realtime_api (_url)
 {
 	this.url = _url || '';
 	this.id = egw.user('account_lid');
@@ -34,7 +34,7 @@ function rocketchat_real_api (_url)
 /**
  * Make a sockect connection and authenticate with authToken
  */
-rocketchat_real_api.prototype._connect = function () {
+rocketchat_realtime_api.prototype._connect = function () {
 	var connectRequest = {
 				"msg": "connect",
 				"version": "1",
@@ -59,7 +59,7 @@ rocketchat_real_api.prototype._connect = function () {
  * send request to the socket
  * @param {object} _request
  */
-rocketchat_real_api.prototype._send = function (_request) {
+rocketchat_realtime_api.prototype._send = function (_request) {
 	this.socket.send(JSON.stringify(_request));
 };
 
@@ -67,7 +67,7 @@ rocketchat_real_api.prototype._send = function (_request) {
  * socket onopen event
  * @param {object} _response
  */
-rocketchat_real_api.prototype._onopen = function (_response) {
+rocketchat_realtime_api.prototype._onopen = function (_response) {
 	if (this.socket.readyState && _response.type == 'open')
 	{
 		this._connect();
@@ -78,7 +78,7 @@ rocketchat_real_api.prototype._onopen = function (_response) {
  * socket on message event
  * @param {object} _response
  */
-rocketchat_real_api.prototype._onmessage = function (_response) {
+rocketchat_realtime_api.prototype._onmessage = function (_response) {
 	if (this._resolveResponse(_response).msg == 'ping')
 	{
 		this._send({
@@ -94,7 +94,7 @@ rocketchat_real_api.prototype._onmessage = function (_response) {
  * Get subscribed channels
  * @returns {Promise}
  */
-rocketchat_real_api.prototype.getSubscriptions = function () {
+rocketchat_realtime_api.prototype.getSubscriptions = function () {
 	var self = this;
 	return new Promise (function(_resolve, _reject){
 		self.onmessage_callback = function (_result) {

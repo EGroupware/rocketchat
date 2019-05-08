@@ -60,7 +60,14 @@ rocketchat_realtime_api.prototype._connect = function () {
  * @param {object} _request
  */
 rocketchat_realtime_api.prototype._send = function (_request) {
-	this.socket.send(JSON.stringify(_request));
+	if (this.socket.readyState == 1)
+	{
+		this.socket.send(JSON.stringify(_request));
+	}
+	else
+	{
+		console.log("Socket connection is not ready or it's closed already");
+	}
 };
 
 /**

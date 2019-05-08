@@ -30,7 +30,7 @@ class Hooks
 		$frm_srcs = array();
 		if (!empty($config['server_url']))
 		{
-			$frm_srcs[] = preg_replace('#^(https?://)?#', 'ws://', $config['server_url']). 'websocket';
+			$frm_srcs[] = preg_replace('#^(https?://)?#', (substr($config['server_url'], 0, 5) == 'https' ? 'wss://' : 'ws://'), $config['server_url']). 'websocket';
 			$frm_srcs[] = preg_replace('#^(https?://[^/]+)(/.*)?#', '$1', $config['server_url']);
 		}
 		Api\Header\ContentSecurityPolicy::add_connect_src($frm_srcs);

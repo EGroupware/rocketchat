@@ -158,8 +158,7 @@ class Hooks
 			});
 			if ($logged_in && ($onlineusers = $api->userslist(['query' => [
 				'active'=>true,
-				'type' => 'user',
-				'status' => 'online'
+				'type' => 'user'
 			]])))
 			{
 				$status_app = \EGroupware\Status\Hooks::getStatus(['app'=>'status']);
@@ -172,7 +171,7 @@ class Hooks
 						'stat' => [
 							'rocketchat' => [
 								'active' => $user['active'],
-								'bg' => 'rocketchat/templates/default/images/navbar.svg'
+								'class' => $user['status']
 							]
 						]
 					];

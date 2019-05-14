@@ -199,6 +199,7 @@ app.classes.rocketchat = AppJS.extend(
 							for (var i in _data.result)
 							{
 								var updateIt = true;
+								var entry = {id: _data.result[i]['name'], stat1:_data.result[i]['unread']};
 								for (var j in latest)
 								{
 									if (latest[j] && latest[j]['name'] ==_data.result[i]['name'] && latest[j]['_updatedAt'].$date == _data.result[i]['_updatedAt'].$date)
@@ -206,7 +207,10 @@ app.classes.rocketchat = AppJS.extend(
 										updateIt = false;
 									}
 								}
-								if (updateIt) data.push({id: _data.result[i]['name'], stat2:_data.result[i]['unread']});
+								if (updateIt)
+								{
+									data.push(entry);
+								}
 							}
 							if (data.length > 0)
 							{

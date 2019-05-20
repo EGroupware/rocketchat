@@ -171,7 +171,7 @@ class Hooks
 						'stat' => [
 							'rocketchat' => [
 								'active' => $user['active'],
-								'class' => $user['status']
+								'class' => $user['status'] ? $user['status'] : 'offline'
 							]
 						]
 					];

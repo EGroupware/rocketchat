@@ -47,6 +47,7 @@ app.classes.rocketchat = AppJS.extend(
 				this.chatbox = this.et2.getWidgetById('chatbox').getDOMNode();
 
 		}
+		window.addEventListener('message', jQuery.proxy(this.messageHandler, this));
 	},
 
 	/**
@@ -86,6 +87,14 @@ app.classes.rocketchat = AppJS.extend(
 					break;
 				case 'new-message':
 
+					break;
+				case 'click-action-link':
+					if (Object.keys(app.rocketchat.chatbox).length > 0
+							&& typeof e['data']['data']['message']['t'] != 'undefined'
+							&& e.data.data.message.t == 'jitsi_call_started')
+					{
+						this.egw.message('Sorry at the moment you can not join video calls from chat popup, please try to join this call either from Rocket.Chat main app or your desktop client.', 'warning');
+					}
 					break;
 				default:
 					console.log(e)

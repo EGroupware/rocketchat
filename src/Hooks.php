@@ -88,7 +88,20 @@ class Hooks
 	 */
 	static function settings()
 	{
+		$settings = [
+			'audio' => array(
+				'type'   => 'select',
+				'label'  => 'Enable audio effects',
+				'name'   => 'audio effects',
+				'values' => [1 => lang('enabled'), 0 => lang('disabled')],
+				'help'   => 'Enable/disable audio effects such as message notifications',
+				'xmlrpc' => True,
+				'admin'  => False,
+				'default'=> 1,
+			)
+		];
 
+		return $settings;
 	}
 
 	/**

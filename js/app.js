@@ -218,6 +218,16 @@ app.classes.rocketchat = AppJS.extend(
 								}
 								if (updateIt)
 								{
+									if (entry.stat1 > 0 && egw.preference('audio', 'rocketchat'))
+									{
+										var $audio = jQuery(document.createElement('audio'))
+												.attr({id:"rocketchat_audio"})
+												.appendTo('body');
+										jQuery(document.createElement('source')).attr({
+											src: egw.webserverUrl+"/rocketchat/assets/sounds/chime.mp3"
+										}).appendTo($audio);
+										$audio[0].play();
+									}
 									data.push(entry);
 								}
 							}

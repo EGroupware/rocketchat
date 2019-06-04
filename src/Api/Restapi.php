@@ -175,7 +175,10 @@ class Restapi
 
 			case 'openid':	// own OpenID Connect / OAuth server
 				$tokenFactory = new Token();
-				$token = $tokenFactory->accessToken($this->data['oauth_client_id'], explode(' ', self::OAUTH_SCOPES));
+				if (!($token = $tokenFactory->accessToken($this->data['oauth_client_id'], explode(' ', self::OAUTH_SCOPES), 'PT12H')))
+				{
+					throw new Exception\LoginFailure('No token / user consent yet!', 999);
+				}
 				$response = self::_responseHandler($this->api_call('login', 'POST', [
 					'serviceName' => $this->data['oauth_service_name'],
 					'X-User-Id' => $this->data['user'],

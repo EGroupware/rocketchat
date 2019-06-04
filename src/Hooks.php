@@ -98,7 +98,17 @@ class Hooks
 				'xmlrpc' => True,
 				'admin'  => False,
 				'default'=> 1,
-			)
+			),
+			'notification' => array(
+				'type'   => 'select',
+				'label'  => 'Enable browser notification',
+				'name'   => 'notification',
+				'values' => [1 => lang('enabled'), 0 => lang('disabled')],
+				'help'   => 'Enable/disable browser notification for unread messages',
+				'xmlrpc' => True,
+				'admin'  => False,
+				'default'=> 1,
+			),
 		];
 
 		return $settings;

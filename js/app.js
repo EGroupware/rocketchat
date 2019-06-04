@@ -208,7 +208,7 @@ app.classes.rocketchat = AppJS.extend(
 							for (var i in _data.result)
 							{
 								var updateIt = true;
-								var entry = {id: _data.result[i]['name'], stat1:_data.result[i]['unread']};
+								var entry = {id: _data.result[i]['name'], stat1:_data.result[i]['unread'], fname:_data.result[i]['fname']};
 								for (var j in latest)
 								{
 									if (latest[j] && latest[j]['name'] ==_data.result[i]['name'] && latest[j]['_updatedAt'].$date == _data.result[i]['_updatedAt'].$date)
@@ -218,15 +218,9 @@ app.classes.rocketchat = AppJS.extend(
 								}
 								if (updateIt)
 								{
-									if (entry.stat1 > 0 && egw.preference('audio', 'rocketchat'))
+									if (entry.stat1 > 0)
 									{
-										var $audio = jQuery(document.createElement('audio'))
-												.attr({id:"rocketchat_audio"})
-												.appendTo('body');
-										jQuery(document.createElement('source')).attr({
-											src: egw.webserverUrl+"/rocketchat/assets/sounds/chime.mp3"
-										}).appendTo($audio);
-										$audio[0].play();
+										self.notifyMe(entry);
 									}
 									data.push(entry);
 								}
@@ -242,6 +236,35 @@ app.classes.rocketchat = AppJS.extend(
 				}, self.updateInterval);
 			}
 		}).sendRequest();
-	}
+	},
 
+	/**
+	 * Notify user about new incomming messages (sound and browser notifications)
+	 *
+	 * @param {object} _data
+	 */
+	notifyMe: function (_data)
+	{
+		var self = this;
+		if (egw.preference('audio', this.appname))
+		{
+			var $audio = jQuery(document.createElement('audio'))
+					.attr({id:"rocketchat_audio"})
+					.appendTo('body');
+			jQuery(document.createElement('source')).attr({
+				src: egw.webserverUrl+"/rocketchat/assets/sounds/chime.mp3"
+			}).appendTo($audio);
+			$audio[0].play();
+		}
+		if (egw.preference('notification', this.appname))
+		{
+			egw.notification(this.egw.lang('Rocket.Chat'), {
+					body: this.egw.lang('You have %1 unread messages from %2', _data.stat1, _data.fname),
+					icon: egw.image('navbar', this.appname) ,
+					onclick: function () {
+						self.handle_actions({id:'message'}, [{id:_data.id}])
+					}
+			});
+		}
+	}
 });

@@ -290,4 +290,23 @@ class Hooks
 			$GLOBALS['config_error'] = $error;
 		}
 	}
+
+	/**
+	 * get authenticated user info and set avatar stat
+	 * @return array
+	 */
+	public static function avatar_stat()
+	{
+		try {
+			$api = new Restapi();
+			$response = $api->me();
+			return [
+				'class' => 'stat1 '.$response['status'],
+				'body' => ''
+			];
+		} catch (\Exception $ex) {
+			error_log(__METHOD__.'()'.$ex->getMessage());
+		}
+		return [];
+	}
 }

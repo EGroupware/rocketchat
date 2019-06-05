@@ -301,7 +301,7 @@ class Hooks
 			$api = new Restapi();
 			$response = $api->me();
 			return [
-				'class' => 'stat1 '.$response['status'],
+				'class' => $response['status'] != 'error' ? 'stat1 '.$response['status']: '',
 				'body' => ''
 			];
 		} catch (\Exception $ex) {

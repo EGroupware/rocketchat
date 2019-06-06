@@ -234,11 +234,43 @@ app.classes.rocketchat = AppJS.extend(
 						}
 					}, function(_error){console.log(_error)});
 					api.subscribeToNotifyLogged('user-status').then(function(_data){
-						console.log(_data)
+						if (_data)
+						{
+							for (var i in _data.fields.args)
+							{
+								if (_data.fields.args[i][2] == egw.user('account_lid'))
+								{
+									jQuery('#topmenu_info_user_avatar', 'span.stat1').addClass(self._userStatusNum2String(_data.fields.args[i][3]));
+									continue;
+								}
+								jQuery('tr#'+_data.fields.args[i][2]+'span.stat1', '#egw_fw_sidebar_r').addClass(self._userStatusNum2String(_data.fields.args[i][3]));
+
+							}
+						}
 					}, function(_error){console.log(_error)});
 				}, self.updateInterval);
 			}
 		}).sendRequest();
+	},
+
+	/**
+	 * Conver numerical user-status code to string
+	 * @param {int} _stat
+	 * @returns {String}
+	 */
+	_userStatusNum2String: function (_stat)
+	{
+		switch (_stat)
+		{
+			case 0:
+				return "offline";
+			case 1:
+				return "online";
+			case 2:
+				return "away";
+			case 3:
+				return "busy";
+		}
 	},
 
 	/**

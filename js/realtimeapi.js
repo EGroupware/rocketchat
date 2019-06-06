@@ -15,6 +15,7 @@
 function rocketchat_realtime_api (_url)
 {
 	this.url = _url || '';
+	this.onmessage_callback = {};
 	this.id = egw.user('account_lid');
 	this._resolveResponse = function (_response) {
 		return JSON.parse (_response.data ? _response.data : '{}');
@@ -103,7 +104,10 @@ rocketchat_realtime_api.prototype._onmessage = function (_response) {
 			}
 			break;
 		case 'result':
-			this.onmessage_callback.getSubscriptios.call(this, response);
+			 if (this.onmessage_callback && typeof this.onmessage_callback.getSubscriptions == 'function')
+			 {
+				 this.onmessage_callback.getSubscriptios.call(this, response);
+			 }
 			break;
 	}
 };
@@ -115,7 +119,7 @@ rocketchat_realtime_api.prototype._onmessage = function (_response) {
 rocketchat_realtime_api.prototype.getSubscriptions = function () {
 	var self = this;
 	return new Promise (function(_resolve, _reject){
-		self.onmessage_callback = {getSubscriptios: function (_result) {
+		self.onmessage_callback.getSubscriptios = function (_result) {
 			if (_result.error)
 			{
 				_reject(_result.error);
@@ -124,7 +128,7 @@ rocketchat_realtime_api.prototype.getSubscriptions = function () {
 			{
 				_resolve(_result);
 			}
-		}};
+		};
 		self._send({
 			msg: "method",
 			method: "subscriptions/get",
@@ -150,7 +154,7 @@ rocketchat_realtime_api.prototype.getSubscriptions = function () {
 rocketchat_realtime_api.prototype.subscribeToNotifyLogged = function (_event) {
 	var self = this;
 	return new Promise (function(_resolve, _reject){
-		self.onmessage_callback = {_event: function (_result) {
+		self.onmessage_callback[_event] = function (_result) {
 			if (_result.error)
 			{
 				_reject(_result.error);
@@ -159,7 +163,7 @@ rocketchat_realtime_api.prototype.subscribeToNotifyLogged = function (_event) {
 			{
 				_resolve(_result);
 			}
-		}};
+		};
 
 		self._send({
 			"msg": "sub",
@@ -186,7 +190,7 @@ rocketchat_realtime_api.prototype.setUserPresence = function (_stat) {
 	var self = this;
 	var stat = _stat;
 	return new Promise (function(_resolve, _reject){
-		self.onmessage_callback = function (_result) {
+		self.onmessage_callback.setUserPresence = function (_result) {
 			if (_result.error)
 			{
 				_reject(_result.error);

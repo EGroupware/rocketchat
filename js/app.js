@@ -238,12 +238,12 @@ app.classes.rocketchat = AppJS.extend(
 						{
 							for (var i in _data.fields.args)
 							{
-								if (_data.fields.args[i][2] == egw.user('account_lid'))
+								if (_data.fields.args[i][1] == egw.user('account_lid'))
 								{
-									jQuery('#topmenu_info_user_avatar', 'span.stat1').addClass(self._userStatusNum2String(_data.fields.args[i][3]));
+									jQuery('#topmenu_info_user_avatar', 'span.stat1').addClass(self._userStatusNum2String(_data.fields.args[i][2]));
 									continue;
 								}
-								jQuery('tr#'+_data.fields.args[i][2]+'span.stat1', '#egw_fw_sidebar_r').addClass(self._userStatusNum2String(_data.fields.args[i][3]));
+								jQuery('tr#'+_data.fields.args[i][1]+'span.stat1', '#egw_fw_sidebar_r').addClass(self._userStatusNum2String(_data.fields.args[i][2]));
 
 							}
 						}

@@ -234,6 +234,11 @@ app.classes.rocketchat = AppJS.extend(
 						}
 					}, function(_error){console.log(_error)});
 				}, self.updateInterval);
+				setTimeout(function(){
+					api.subscribeToNotifyLogged('user-status').then(function(_data){
+						console.log(_data)
+					}, function(_error){console.log(_error)});
+				}, 500);
 			}
 		}).sendRequest();
 	},

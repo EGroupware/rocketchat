@@ -86,14 +86,25 @@ rocketchat_realtime_api.prototype._onopen = function (_response) {
  * @param {object} _response
  */
 rocketchat_realtime_api.prototype._onmessage = function (_response) {
-	if (this._resolveResponse(_response).msg == 'ping')
+	var response = this._resolveResponse(_response);
+
+	if (response.msg == 'ping')
 	{
 		this._send({
 			msg: 'pong'
 		});
 	}
-	if (typeof this.onmessage_callback == 'function' && this._resolveResponse(_response).msg == 'result') {
-		this.onmessage_callback.call(this, this._resolveResponse(_response));
+	switch (response.msg)
+	{
+		case 'changed':
+			if (this.onmessage_callback && response.collection == 'stream-notify-logged' && response.fields.eventName)
+			{
+				this.onmessage_callback[response.fields.eventName].call(this, response);
+			}
+			break;
+		case 'result':
+			this.onmessage_callback.getSubscriptios.call(this, response);
+			break;
 	}
 };
 
@@ -103,6 +114,77 @@ rocketchat_realtime_api.prototype._onmessage = function (_response) {
  */
 rocketchat_realtime_api.prototype.getSubscriptions = function () {
 	var self = this;
+	return new Promise (function(_resolve, _reject){
+		self.onmessage_callback = {getSubscriptios: function (_result) {
+			if (_result.error)
+			{
+				_reject(_result.error);
+			}
+			else
+			{
+				_resolve(_result);
+			}
+		}};
+		self._send({
+			msg: "method",
+			method: "subscriptions/get",
+			id: self.id
+		});
+	});
+};
+
+/**
+ * subscribe to Notify logged users
+ *
+ * @param {string} _event
+ *		Users:NameChanged
+ *		Users:Deleted
+ *		updateAvatar
+ *		updateEmojiCustom
+ *		deleteEmojiCustom
+ *		roles-change
+ *		user-status
+ *
+ * @returns {Promise}
+ */
+rocketchat_realtime_api.prototype.subscribeToNotifyLogged = function (_event) {
+	var self = this;
+	return new Promise (function(_resolve, _reject){
+		self.onmessage_callback = {_event: function (_result) {
+			if (_result.error)
+			{
+				_reject(_result.error);
+			}
+			else
+			{
+				_resolve(_result);
+			}
+		}};
+
+		self._send({
+			"msg": "sub",
+			"id": self.id,
+			"name": "stream-notify-logged",
+			"params":[_event, true]
+		});
+	});
+};
+
+
+
+/**
+ * Set user presence
+ * @param {string} _stat
+ *		online
+ *		offline
+ *		away
+ *		busy
+ *
+ * @returns {Promise}
+ */
+rocketchat_realtime_api.prototype.setUserPresence = function (_stat) {
+	var self = this;
+	var stat = _stat;
 	return new Promise (function(_resolve, _reject){
 		self.onmessage_callback = function (_result) {
 			if (_result.error)
@@ -116,8 +198,10 @@ rocketchat_realtime_api.prototype.getSubscriptions = function () {
 		};
 		self._send({
 			msg: "method",
-			method: "subscriptions/get",
-			id: self.id
+			method: "UserPresence:setDefaultStatus",
+			id: self.id,
+			params: [stat]
 		});
 	});
 };
+

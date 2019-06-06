@@ -18,5 +18,6 @@
 
 		//instatiate rocketchat app
 		app.rocketchat = new app.classes.rocketchat;
+		app.rocketchat.getUpdates();
 	});
 })(window);

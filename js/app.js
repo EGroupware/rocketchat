@@ -17,6 +17,8 @@ app.classes.rocketchat = AppJS.extend(
 {
 	appname: 'rocketchat',
 
+	api: {},
+	
 	updateInterval: 2000,
 	rocketchat: {},
 
@@ -198,10 +200,10 @@ app.classes.rocketchat = AppJS.extend(
 			if (response && response.server_url != '')
 			{
 				var url = response.server_url.replace(/^(https?:\/\/)?/, (response.server_url.substr(0,5) == 'https' ? 'wss://' : 'ws://'))+'websocket';
-				var api = new rocketchat_realtime_api(url);
+				self.api = new rocketchat_realtime_api(url);
 				var latest = [];
 				window.setInterval(function(){
-					api.getSubscriptions().then(function(_data){
+					self.api.getSubscriptions().then(function(_data){
 						if (_data && _data.msg === 'result' && _data.result.length > 0)
 						{
 							var data = [];
@@ -233,7 +235,7 @@ app.classes.rocketchat = AppJS.extend(
 
 						}
 					}, function(_error){console.log(_error)});
-					api.subscribeToNotifyLogged('user-status').then(function(_data){
+					self.api.subscribeToNotifyLogged('user-status').then(function(_data){
 						if (_data)
 						{
 							for (var i in _data.fields.args)

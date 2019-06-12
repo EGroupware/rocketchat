@@ -106,7 +106,7 @@ rocketchat_realtime_api.prototype._onmessage = function (_response) {
 		case 'result':
 			 if (this.onmessage_callback && typeof this.onmessage_callback.getSubscriptions == 'function')
 			 {
-				 this.onmessage_callback.getSubscriptios.call(this, response);
+				 this.onmessage_callback.getSubscriptions.call(this, response);
 			 }
 			break;
 	}

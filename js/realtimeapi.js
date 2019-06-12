@@ -119,7 +119,7 @@ rocketchat_realtime_api.prototype._onmessage = function (_response) {
 rocketchat_realtime_api.prototype.getSubscriptions = function () {
 	var self = this;
 	return new Promise (function(_resolve, _reject){
-		self.onmessage_callback.getSubscriptios = function (_result) {
+		self.onmessage_callback.getSubscriptions = function (_result) {
 			if (_result.error)
 			{
 				_reject(_result.error);

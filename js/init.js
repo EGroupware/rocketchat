@@ -18,6 +18,10 @@
 
 		//instatiate rocketchat app
 		app.rocketchat = new app.classes.rocketchat;
+		if (egw(window).is_popup())
+		{
+			return;
+		}
 		app.rocketchat.getUpdates();
 		var $menu = jQuery('#egw_fw_topmenu_items');
 

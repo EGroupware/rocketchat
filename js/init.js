@@ -30,6 +30,13 @@
 		jQuery("<option></option>", {value: "busy", text: "Busy"}).appendTo($select);
 		jQuery("<option></option>", {value: "offline", text: "Offline"}).appendTo($select);
 
+		jQuery('#topmenu_info_user_avatar').mouseover(function(){
+			$select.chosen({
+				disable_search: true,
+				display_selected_options: false
+			});
+		});
+
 		app.rocketchat.api.subscribeToNotifyLogged('user-status').then(function(_data){
 			if (_data)
 			{

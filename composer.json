@@ -1,0 +1,24 @@
+{
+	"name": "egroupware/rocketchat",
+	"description": "EGroupware Rocket.Chat app allowing to access Rocket.Chat from within EGroupware",
+	"type": "egroupware-app",
+	"homepage": "https://www.egroupware.org/",
+	"license": "GPL-2.0-or-later",
+	"authors": [
+        {
+            "name": "Ralf Becker",
+            "email": "rb@egroupware.org"
+        },
+        {
+            "name": "Hadi Nategh",
+            "email": "hn@egroupware.org"
+        },
+        {
+            "name": "Nathan Gray",
+            "email": "ng@egroupware.org"
+        }
+    ],
+	"require": {
+		"egroupware/egroupware": "self.version"
+	}
+}

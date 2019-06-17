@@ -18,7 +18,7 @@ app.classes.rocketchat = AppJS.extend(
 	appname: 'rocketchat',
 
 	api: {},
-	
+
 	updateInterval: 2000,
 	rocketchat: {},
 
@@ -220,7 +220,7 @@ app.classes.rocketchat = AppJS.extend(
 								}
 								if (updateIt)
 								{
-									if (entry.stat1 > 0)
+									if (entry.stat1 > 0 && _data.result[i]['t'] =='d')
 									{
 										self.notifyMe(entry);
 									}

@@ -1,1 +1,5 @@
+enable audio effects	rocketchat	en	Audio effects
+enable/disable audio effects such as message notifications	rocketchat	en	Enable/disable audio effects such as message notifications
+enable browser notification	rocketchat	en	Enable browser notification
+enable/disable browser notification for unred messages	rocketchat	en	Enable/disable browser notification for unread messages
 rocketchat	common	en	Rocket.Chat

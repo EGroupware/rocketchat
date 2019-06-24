@@ -135,6 +135,7 @@ class Restapi
 			CURLOPT_CUSTOMREQUEST => $_method,
 			CURLOPT_RETURNTRANSFER => 1,
 			CURLOPT_FOLLOWLOCATION => 1,
+			CURLOPT_TIMEOUT => 1,
 			//CURLOPT_VERBOSE => 1,
 			CURLOPT_URL => $full_path,
 		];

@@ -80,10 +80,10 @@ class Ui
 				Api\Cache::unsetInstance(Api\Config::class, 'configs');
 				Api\Config::init_static();
 				$this->config = Api\Config::read('rocketchat');
-				return;
+				return true;
 			}
 			// admin and no app or hosting
-			if (empty($this->config['server_url']))
+			if (false && empty($this->config['server_url']))
 			{
 				$msg = lang('Sorry, Rocket.Chat app needs to be configured first!');
 				$reponse = Api\Json\Response::get();
@@ -98,7 +98,9 @@ class Ui
 			}
 			$tpl = new Api\Etemplate('rocketchat.install');
 			$tpl->exec(self::APPNAME.'.'.self::class.'.index', []);
+			return false;
 		}
+		return true;
 	}
 
 	/**
@@ -108,7 +110,7 @@ class Ui
 	 */
 	function index($content = null)
 	{
-		$this->check_configured(false);
+		if (!$this->check_configured(false)) return;
 
 		$tpl = new Etemplate('rocketchat.index');
 		$tpl->setElementAttribute('iframe', 'src', $this->config['server_url']);
@@ -117,7 +119,7 @@ class Ui
 
 	function chat($content = null)
 	{
-		$this->check_configured(true);
+		if (!$this->check_configured(true)) return;
 
 		$tpl = new Etemplate('rocketchat.chat');
 		$path = $_GET['path'];

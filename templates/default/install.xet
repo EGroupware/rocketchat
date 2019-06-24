@@ -13,10 +13,10 @@
 					<description value="Do you want to install"/>
 				</row>
 				<row>
-					<button value="Install now" onclick="app.rocketchat.install"/>
+					<button label="Install now" onclick="app.rocketchat.install" background_image="check" background="1"/>
 				</row>
-				<row height="100%" disabled="true">
-					<iframe id="install" width="100%" height="100%"/>
+				<row height="100%">
+					<iframe id="install" width="100%" height="100%" disabled="true"/>
 				</row>
 			</rows>
 		</grid>

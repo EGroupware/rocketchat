@@ -322,6 +322,10 @@ app.classes.rocketchat = AppJS.extend(
 	{
 		var iframe = this.et2.getWidgetById('install');
 		iframe.set_disabled(false);
+		var w = window;
+		jQuery(iframe.getDOMNode()).on('load', function(){
+			w.location.href = w.location.href+'&clear-cache=true';
+		});
 		iframe.set_src('/rocketchat/');
 	}
 });

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE overlay PUBLIC "-//EGroupware GmbH//eTemplate 2//EN" "http://www.egroupware.org/etemplate2.dtd">
+<!-- $Id$ -->
+<overlay>
+	<template id="rocketchat.install" template="" lang="" group="0" version="19.1">
+		<grid height="100%" width="100%">
+			<columns>
+				<column/>
+				<column/>
+			</columns>
+			<rows>
+				<row>
+					<description value="Do you want to install"/>
+				</row>
+				<row>
+					<button value="Install now" onclick="app.rocketchat.install"/>
+				</row>
+				<row height="100%" disabled="true">
+					<iframe id="install" width="100%" height="100%"/>
+				</row>
+			</rows>
+		</grid>
+	</template>
+</overlay>

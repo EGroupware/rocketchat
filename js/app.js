@@ -298,9 +298,30 @@ app.classes.rocketchat = AppJS.extend(
 					body: this.egw.lang('You have %1 unread messages from %2', _data.stat1, _data.fname),
 					icon: egw.image('navbar', this.appname) ,
 					onclick: function () {
-						self.handle_actions({id:'message'}, [{id:_data.id}])
+						self.handle_actions({id:'message'}, [{id:_data.id}]);
 					}
 			});
 		}
+	},
+
+	/**
+	 * Close app tab, for unconfigured Rocket.Chat
+	 *
+	 * @param {string} _msg error-message
+	 */
+	close_app: function(_msg)
+	{
+		jQuery(framework.activeApp.tab.closeButton).trigger('click');
+		et2_dialog.alert(_msg, 'Rocket.Chat', et2_dialog.ERROR_MESSAGE);
+	},
+
+	/**
+	 * Trigger Rocket.Chat installation
+	 */
+	install: function()
+	{
+		var iframe = this.et2.getWidgetById('install');
+		iframe.set_disabled(false);
+		iframe.set_src('/rocketchat/');
 	}
 });

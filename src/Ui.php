@@ -20,7 +20,9 @@ use EGroupware\Rocketchat\Api\Restapi;
  *
  * @author hadi
  */
-class Ui {
+class Ui
+{
+	const APPNAME = 'rocketchat';
 
 	/**
 	 * Public functions
@@ -37,8 +39,66 @@ class Ui {
 	 */
 	var $config = array();
 
-	function __construct() {
+	function __construct()
+	{
 		$this->config = Api\Config::read('rocketchat');
+	}
+
+	/**
+	 * Check if Rocket.Chat app is configured:
+	 * 1. non-admin: tell admin needs to configure it first
+	 * 2. admin:
+	 * a) regular install without rocket.chat
+	 * --> redirect admin to Rocket.Chat siteconfig
+	 * b) hosting or egroupware_rocketchat container
+	 * -->
+	 *
+	 * @param type $popup
+	 */
+	protected function check_configured($popup = false)
+	{
+		// Rocket.Chat not set up yet
+		if (empty($this->config['server_url']) || $this->config['server_url'] === '/rocketchat/')
+		{
+			// regular user without admin rights
+			if (empty($GLOBALS['egw_info']['user']['apps']['admin']))
+			{
+				$msg = lang('Sorry, Rocket.Chat app needs to be configured by an EGroupware administrator!');
+				if (!$popup)
+				{
+					$reponse = Api\Json\Response::get();
+					$reponse->call('app.rocketchat.close_app', $msg);
+					exit;
+				}
+				else
+				{
+					Api\Framework::window_close($msg);
+				}
+			}
+			if (!empty($_GET['clear-cache']))
+			{
+				Api\Cache::unsetInstance(Api\Config::class, 'configs');
+				Api\Config::init_static();
+				$this->config = Api\Config::read('rocketchat');
+				return;
+			}
+			// admin and no app or hosting
+			if (empty($this->config['server_url']))
+			{
+				$msg = lang('Sorry, Rocket.Chat app needs to be configured first!');
+				$reponse = Api\Json\Response::get();
+				$reponse->call('app.rocketchat.close_app', $msg);
+				Api\Framework::redirect_link('/index.php', 'menuaction=admin.admin_config.index&appname=' . self::APPNAME.'&ajax=true', 'admin');
+			}
+			// admin and hosting or package
+			if ($popup)
+			{
+				Api\Framework::index(self::APPNAME);
+				Api\Framework::window_close(lang('Sorry, Rocket.Chat app needs to be configured first!'));
+			}
+			$tpl = new Api\Etemplate('rocketchat.install');
+			$tpl->exec(self::APPNAME.'.'.self::class.'.index', []);
+		}
 	}
 
 	/**
@@ -48,6 +108,8 @@ class Ui {
 	 */
 	function index($content = null)
 	{
+		$this->check_configured(false);
+
 		$tpl = new Etemplate('rocketchat.index');
 		$tpl->setElementAttribute('iframe', 'src', $this->config['server_url']);
 		$tpl->exec('rocketchat.EGroupware\\Rocketchat\\Ui.index', [], []);
@@ -55,6 +117,8 @@ class Ui {
 
 	function chat($content = null)
 	{
+		$this->check_configured(true);
+
 		$tpl = new Etemplate('rocketchat.chat');
 		$path = $_GET['path'];
 		$tpl->setElementAttribute('chatbox', 'src', $this->config['server_url'].$path);

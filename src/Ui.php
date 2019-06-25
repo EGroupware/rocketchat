@@ -75,7 +75,7 @@ class Ui
 					Api\Framework::window_close($msg);
 				}
 			}
-			if (!empty($_GET['clear-cache']))
+			if (isset($_GET['clear-cache']))
 			{
 				Api\Cache::unsetInstance(Api\Config::class, 'configs');
 				Api\Config::init_static();
@@ -83,7 +83,7 @@ class Ui
 				return true;
 			}
 			// admin and no app or hosting
-			if (false && empty($this->config['server_url']))
+			if (empty($this->config['server_url']))
 			{
 				$msg = lang('Sorry, Rocket.Chat app needs to be configured first!');
 				$reponse = Api\Json\Response::get();

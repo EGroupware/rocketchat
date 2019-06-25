@@ -324,7 +324,7 @@ app.classes.rocketchat = AppJS.extend(
 		iframe.set_disabled(false);
 		var w = window;
 		jQuery(iframe.getDOMNode()).on('load', function(){
-			w.location.href = w.location.href+'&clear-cache=true';
+			w.location.href = egw.link('/index.php', { menuaction: "rocketchat.EGroupware\\rocketchat\\Ui.index", "clear-cache": true});
 		});
 		iframe.set_src('/rocketchat/');
 	}

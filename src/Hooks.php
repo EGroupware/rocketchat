@@ -297,11 +297,22 @@ class Hooks
 	 */
 	public static function avatar_stat()
 	{
-		try {
+		try{
 			$api = new Restapi();
-			$response = $api->me();
+			$logged_in = Api\Cache::getSession(self::APPNAME, 'logged_in', function() use ($api)
+			{
+				try {
+					$api->login($GLOBALS['egw_info']['user']['account_lid'], $_POST['passwd']);
+					return true;
+				}
+				catch (\Exception $ex) {
+					Api\Framework::message($ex->getMessage());
+					return false;
+				}
+			});
+			if ($logged_in)	$response = $api->me();
 			return [
-				'class' => $response['status'] != 'error' ? 'stat1 '.$response['status']: '',
+				'class' => $response['statusDefault'] != 'error' ? 'stat1 '.$response['statusDefault']: '',
 				'body' => ''
 			];
 		} catch (\Exception $ex) {

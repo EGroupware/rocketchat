@@ -324,7 +324,7 @@ app.classes.rocketchat = AppJS.extend(
 		egw.loading_prompt('install-rocketchat', true, egw.lang('Please wait while your Rocket.Chat server is installed ...'));
 		jQuery.ajax({
 			url: '/rocketchat/',
-			sucess: function(_data){
+			success: function(_data){
 				egw.loading_prompt('install-rocketchat', false);
 				if (_data.response.stat == 200 || _data.response.stat == 302)
 				{

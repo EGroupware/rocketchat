@@ -15,9 +15,6 @@
 				<row>
 					<button label="Install now" onclick="app.rocketchat.install" background_image="check" background="1"/>
 				</row>
-				<row height="100%">
-					<iframe id="install" width="100%" height="100%" disabled="true"/>
-				</row>
 			</rows>
 		</grid>
 	</template>

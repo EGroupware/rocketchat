@@ -320,14 +320,20 @@ app.classes.rocketchat = AppJS.extend(
 	 */
 	install: function()
 	{
-		var iframe = this.et2.getWidgetById('install');
-		iframe.set_disabled(false);
 		var w = window;
-		egw.loading_prompt(iframe.id, true, egw.lang('Please wait while your Rocket.Chat server is installed ...'));
-		jQuery(iframe.getDOMNode()).on('load', function(){
-			egw.loading_prompt(iframe.id, false);
-			w.location.href = egw.link('/index.php', { menuaction: "rocketchat.EGroupware\\rocketchat\\Ui.index", "clear-cache": true});
+		egw.loading_prompt('install-rocketchat', true, egw.lang('Please wait while your Rocket.Chat server is installed ...'));
+		jQuery.ajax({
+			url: '/rocketchat/',
+			sucess: function(_data){
+				egw.loading_prompt('install-rocketchat', false);
+				if (_data.response.stat == 200 || _data.response.stat == 302)
+				{
+					w.location.href = egw.link('/index.php', { menuaction: "rocketchat.EGroupware\\rocketchat\\Ui.index", "clear-cache": true});
+				}
+			},
+			error: function(){
+				egw.loading_prompt('install-rocketchat', false);
+			}
 		});
-		iframe.set_src('/rocketchat/');
 	}
 });

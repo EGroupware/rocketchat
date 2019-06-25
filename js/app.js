@@ -324,15 +324,16 @@ app.classes.rocketchat = AppJS.extend(
 		egw.loading_prompt('install-rocketchat', true, egw.lang('Please wait while your Rocket.Chat server is installed ...'));
 		jQuery.ajax({
 			url: '/rocketchat/',
-			success: function(_data){
+			success: function(_data, _text, _xheader){
 				egw.loading_prompt('install-rocketchat', false);
-				if (_data.response.stat == 200 || _data.response.stat == 302)
+				if (_xheader.status == 200 || _xheader.stat == 302)
 				{
 					w.location.href = egw.link('/index.php', { menuaction: "rocketchat.EGroupware\\rocketchat\\Ui.index", "clear-cache": true});
 				}
 			},
-			error: function(){
+			error: function(_xheader){
 				egw.loading_prompt('install-rocketchat', false);
+				egw.message(_xheader.responseText, 'error');
 			}
 		});
 	}

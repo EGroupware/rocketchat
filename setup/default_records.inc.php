@@ -9,9 +9,11 @@
  * @package rocketchat
  */
 
+// uncomment for hosting or RC package to trigger installation
 //use EGroupware\Api;
+//Api\Config::save_value('server_url', '/rocketchat/', 'rocketchat');
 
-// give Default and Admins group rights for policy
+// give Default and Admins group rights for Rocket.Chat
 foreach(array('Default' => 'Default','Admins' => 'Admin') as $account_lid => $name)
 {
 	$account_id = $GLOBALS['egw_setup']->add_account($account_lid, $name, 'Group', False, False);

@@ -310,7 +310,11 @@ class Hooks
 					return false;
 				}
 			});
-			if ($logged_in)	$response = $api->me();
+			if ($logged_in)
+			{
+				$response = $api->me();
+				$response['statusDefault'] = $response['statusDefault'] ?  $response['statusDefault'] : $response['status'];
+			}
 			return [
 				'class' => $response['statusDefault'] != 'error' ? 'stat1 '.$response['statusDefault']: '',
 				'body' => ''

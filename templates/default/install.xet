@@ -17,22 +17,22 @@
 					<description value="The following tabs are showing the steps of the configuration process in detail." />
 				</row>
 				<row valign="top" height="30">
-					<description value="After Installation is finished, you may want to look into some Administration details e.g. to configure additional OAuth Server or to switch of Video-Conference for GDPR reasons."/>
+					<description value="After installation is finished, you may want to look into some administration details e.g. to configure non-EGroupware accounts or to switch video-chat (Jitsi) off for GDPR reasons."/>
 				</row>
 				<row valign="top">
 					<description value="Step 1: Admin Info" />
 					<description value="Username" />
-					<description value="Please insert a valid EGroupware username (recommended your user) to configure the first Administrator of Rocket.Chat. That Admin can add additional EGroupware Admins as Administrators." />
+					<description value="Please insert a valid EGroupware username (recommended your user) to configure the first administrator of Rocket.Chat. That administrator can add additional EGroupware users as Rocket.Chat admins." />
 				</row>
 				<row valign="top">
 					<description value="Step 1: Admin Info" />
 					<description value="Organisatation email" />
-					<description value="Please insert a valid email-adress which is used for the registration prozess of Rocket.Chat." />
+					<description value="Please insert a valid email-address which is used for the registration process of Rocket.Chat." />
 				</row >
 				<row valign="top">
 					<description value="Step 3: Server Info" />
 					<description value="Site name" />
-					<description value="The site name is displayed in external Rocket.Chat clients. Especially when using more than one Rocket.Chat, it make sense to choose a meaningful name to identify the CHAT!" />
+					<description value="The site name is displayed in external Rocket.Chat clients. Specially when using more than one Rocket.Chat. It make sense to choose a meaningful name to identify this chat!" />
 				</row>
 				<row valign="top">
 					<description value="Step 3: Server Info" />
@@ -42,15 +42,15 @@
 				<row valign="top">
 					<description value="Step 4: Register Server" />
 					<description value="Register or keep standalone" />
-					<description value="You need to decide if you like to register your Rocket.Chat to enable Push-notifications for Smartphones. EGroupware does not yet has a push-service for notifications, but you can use Rocket.Chat cloud services. Please take GDPR into account for your decision." />
+					<description value="EGroupware does not yet has a push-service for notifications on smart-phones, but you can use Rocket.Chat cloud services. Please take GDPR into account for your decision." />
 				</row>
 				<row valign="top" height="50">
 					<description value="GDPR Decision" />
 					<description value="Video-Conference" />
-					<description value="You need to decide if you allow Video-Conference and Screensharing for GDPR reasons. EGroupware does not yet has an own Jitsi-server for Video-Conferences, so we use and enable a public jitsi-server from the open source project Jitsi Meet." />
+					<description value="You need to decide if you allow video-chats and screensharing for GDPR reasons. EGroupware does not yet has an own Jitsi-server for video-chats, so we use and enable a public jitsi-server from the open source project Jitsi Meet." />
 				</row>
 				<row>
-					<description value="Rocket.Chat provides lots of user and administration guides and videos. Please have a look on there website."/>
+					<description value="Rocket.Chat provides lots of user and administration guides and videos. Please have a look on their website."/>
 				</row>
 			</rows>
 		</grid>
@@ -62,10 +62,10 @@
 			</columns>
 			<rows>
 				<row>
-					<description value="Please insert a valid EGroupware username (recommended your user) to configure the first Administrator of Rocket.Chat. That Admin can add additional EGroupware Admins as Administrators." />
+					<description value="Please insert a valid EGroupware username (recommended your user) to configure the first administrator of Rocket.Chat. That administrator can add additional EGroupware users as Rocket.Chat admins." />
 				</row>
 				<row>
-					<description value="Additionally you should insert a valid email-adress, which is used for the registration prozess of Rocket.Chat." />
+					<description value="Additionally you should insert a valid email-address, which is used for the registration process of Rocket.Chat." />
 				</row>
 				<row valign="top">
 					<image src="https://www.egroupware.org/wp-content/uploads/2019/06/Admin-Info.png" />
@@ -95,7 +95,7 @@
 			</columns>
 			<rows>
 				<row>
-					<description value="The site name is displayed in external Rocket.Chat clients. Especially when using more than one Rocket.Chat, it make sense to choose a meaningful name to identify the CHAT!" />
+					<description value="The site name is displayed in external Rocket.Chat clients. Specially when using more than one Rocket.Chat. It make sense to choose a meaningful name to identify this chat!" />
 				</row>
 				<row>
 					<description value="Please choose a language which is common for the majority of your users. The language can be changed on MyAccount for each user." />
@@ -113,13 +113,13 @@
 			</columns>
 			<rows>
 				<row>
-					<description value="You need to decide, if you like to register your Rocket.Chat to get Push-Notifications for Smartphones. In that case all inserted information of the configuration gets sent to Rocket.Chat!"/>
+					<description value="You need to decide, if you like to register your Rocket.Chat to get push-notifications for smart-phones. In that case all inserted information of the configuration gets sent to Rocket.Chat!"/>
 				</row>
 				<row>
-					<description value="EGroupware does not yet has a push-service for notifications on Smartphones, but you can use Rocket.Chat cloud services. Please take GDPR into account for your decision." />
+					<description value="EGroupware does not yet has a push-service for notifications on smart-phones, but you can use Rocket.Chat cloud services. Please take GDPR into account for your decision." />
 				</row>
 				<row>
-					<description value="If you don't need Push-Notifications, you can skip registration and click on keep standalone ... Rocket.Chat in EGroupware will still work."/>
+					<description value="If you don't need push-notifications, you can skip registration and click on keep standalone ... Rocket.Chat in EGroupware will still work."/>
 				</row>
 				<row valign="top">
 					<image src="https://www.egroupware.org/wp-content/uploads/2019/06/Register-Server-Push.png" />
@@ -134,7 +134,7 @@
 			</columns>
 			<rows>
 				<row>
-					<description value="Rocket.Chat is succesfully installed, you can now configure additional parameters e.g. switch Video-Conference off or add non-Egroupware user."/>
+					<description value="Rocket.Chat is succesfully installed, you can now configure additional parameters e.g. switch video-chat off or add non-Egroupware user."/>
 				</row>
 				<row valign="top">
 					<image src="https://www.egroupware.org/wp-content/uploads/2019/06/Setup-Done.png" />
@@ -149,7 +149,7 @@
 			</columns>
 			<rows>
 				<row>
-					<description value="You need to decide if you allow Video-Conference and Screensharing for GDPR reasons. EGroupware does not yet has an own Jitsi-server for Video-Conferences, so we use and enable a public jitsi-server from the open source project Jitsi Meet. Please take GDPR into account for your decision, we haven't found neither any declaration of data protection on there website nor where the servers are located." />
+					<description value="You need to decide if you allow video-chats and screen-sharing for GDPR reasons. EGroupware does not yet has an own Jitsi-server for video-chats, so we use and enable a public jitsi-server from the open source project Jitsi Meet. Please take GDPR into account for your decision, we haven't found neither any declaration of data protection on their website nor where the servers are located." />
 				</row>
 
 				<row valign="top">
@@ -165,19 +165,19 @@
 			</columns>
 			<rows>
 				<row>
-					<description value="IF you like to allow non-EGroupware users to take part in your Rocket.Chat you can enable in Account Settings to show Default Login Form."/>
+					<description value="IF you like to allow non-EGroupware users to take part in your Rocket.Chat you can enable in Account Settings to show the Default Login Form."/>
 				</row>
 				<row>
-					<description value="By default we show only: EGroupware users click here and not username and password fields for Externals! EGroupware users should always use the provided click here link!"/>
+					<description value="By default we show only: EGroupware users click here and not username and password fields for external users! EGroupware users should always use the provided click here link!"/>
 				</row>
 				<row valign="top">
 					<image src="https://www.egroupware.org/wp-content/uploads/2019/06/Account-Settings.png" />
 				</row>
 				<row>
-					<description value="2. Step is to create the non-users manually in Adminitration Users. You need to specify username and password. Depending on the settings to allow password change or not, please allow or deny that the user can change the password. By default its switched of, because the password change in Rocket.Chat will not change the user passord of EGroupware!"/>
+					<description value="2. Step is to create the non-users manually in Adminitration Users. You need to specify username and password. Depending on the settings to allow password change or not, please allow or deny that the user can change the password. By default its switched of, because the password change in Rocket.Chat will not change the user password of EGroupware!"/>
 				</row>
 				<row>
-					<description value="The system will sent an email to the given Emailadress including the login details for Rocket.Chat." />
+					<description value="The system will sent an email to the given email-address including the login details for Rocket.Chat." />
 				</row>
 				<row valign="top">
 					<image src="https://www.egroupware.org/wp-content/uploads/2019/06/Create-account.png" />
@@ -201,7 +201,7 @@
 							<tab id="rocketchat.install.server" label="Server Info"/>
 							<tab id="rocketchat.install.register" label="Register Server"/>
 							<tab id="rocketchat.install.done" label="Installation finished"/>
-							<tab id="rocketchat.install.video" label="Video-Conference"/>
+							<tab id="rocketchat.install.video" label="Video-Chat"/>
 							<tab id="rocketchat.install.non-user" label="Add Non-EGroupware user"/>
 						</tabs>
 						<tabpanels>

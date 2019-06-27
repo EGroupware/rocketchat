@@ -30,7 +30,8 @@ class Ui
 	 */
 	public $public_functions = array (
 		'index' => true,
-		'chat' => true
+		'chat' => true,
+		'install' => true,
 	);
 
 	/**
@@ -101,6 +102,15 @@ class Ui
 			return false;
 		}
 		return true;
+	}
+
+	/**
+	 * Display install instructions without ability to install
+	 */
+	function install()
+	{
+		$tpl = new Api\Etemplate('rocketchat.install');
+		$tpl->exec(self::APPNAME.'.'.self::class.'.install', ['no_install' => true]);
 	}
 
 	/**

@@ -60,6 +60,20 @@ class Hooks
 	 */
 	public static function sidebox_menu($data)
 	{
+		$file = array (
+			'My Account' =>  'javascript:app.rocketchat.myaccount();'
+		);
+		display_sidebox(self::APPNAME, 'My Account', $file);
+
+		display_sidebox(self::APPNAME, 'Help',  [
+			[
+				'text'   => 'Documentation',
+				'link'   => 'https://rocket.chat/docs/user-guides/',
+				'target' => '_blank',
+			],
+			'Install information' =>  Api\Egw::link('/index.php','menuaction=rocketchat.EGroupware\\Rocketchat\\Ui.install&ajax=true'),
+		]);
+
 		if ($GLOBALS['egw_info']['user']['apps']['admin'])
 		{
 			$file = Array(
@@ -75,10 +89,6 @@ class Hooks
 				display_sidebox(self::APPNAME,lang('Admin'),$file);
 			}
 		}
-		$file = array (
-			'My Account' =>  'javascript:app.rocketchat.myaccount();'
-		);
-		display_sidebox(self::APPNAME, 'My Account', $file);
 	}
 
 	/**

@@ -245,7 +245,7 @@ app.classes.rocketchat = AppJS.extend(
 									jQuery('span.fw_avatar_stat', '#topmenu_info_user_avatar').attr('class', 'fw_avatar_stat stat1 '+self._userStatusNum2String(_data.fields.args[i][2]));
 									continue;
 								}
-								jQuery('tr#'+_data.fields.args[i][1]+'span.stat1', '#egw_fw_sidebar_r').attr('class', 'et2_label stat1 '+self._userStatusNum2String(_data.fields.args[i][2]));
+								jQuery('tr#'+_data.fields.args[i][1]+' span.stat1', '#egw_fw_sidebar_r').attr('class', 'et2_label stat1 '+self._userStatusNum2String(_data.fields.args[i][2]));
 							}
 						}
 					}, function(_error){console.log(_error)});

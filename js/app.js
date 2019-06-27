@@ -197,7 +197,7 @@ app.classes.rocketchat = AppJS.extend(
 	{
 		var self = this;
 		egw.json("EGroupware\\Rocketchat\\Hooks::ajax_getServerUrl", [], function (response){
-			if (response && response.server_url != '')
+			if (response && response.server_url)
 			{
 				var url = response.server_url.replace(/^(https?:\/\/)?/, (response.server_url.substr(0,5) == 'https' ? 'wss://' : 'ws://'))+'websocket';
 				self.api = new rocketchat_realtime_api(url);

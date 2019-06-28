@@ -1,9 +1,8 @@
-2. step is to create the non-users manually in adminitration users. you need to specify username and password. depending on the settings to allow password change or not, please allow or deny that the user can change the password. by default its switched of, because the password change in rocket.chat will not change the user password of egroupware!	rocketchat	de	Im 2. Schritt werden Nicht-EGroupware Benutzer manuell in Administration Benutzer erstellt. Geben Sie Benutzername und Passwort ein. Abhängig von den Einstellungen, die eine Passwortänderung erlauben oder nicht, erlauben oder verweigern Sie bitte, dass der Benutzer das Passwort ändern kann. Standardmäßig ist Passwortänderung ausgeschaltet, da die Passwortänderung in Rocket.Chat das Benutzerpasswort von EGroupware nicht ändert!
-
-Übersetzt mit www.DeepL.com/Translator
+2. step is to create the non-users manually in administration users. you need to specify username and password. depending on the settings to allow password change or not, please allow or deny that the user can change the password. by default its switched of, because the password change in rocket.chat will not change the user password of egroupware!	rocketchat	de	Im 2. Schritt werden Nicht-EGroupware Benutzer manuell in Administration Benutzer erstellt. Geben Sie Benutzername und Passwort ein. Abhängig von den Einstellungen, die eine Passwortänderung erlauben oder nicht, erlauben oder verweigern Sie bitte, dass der Benutzer das Passwort ändern kann. Standardmäßig ist Passwortänderung ausgeschaltet, da die Passwortänderung in Rocket.Chat das Benutzerpasswort von EGroupware nicht ändert!
 add non-egroupware user	rocketchat	de	Nicht-EGroupware Benutzer hinzufügen
 additionally you should insert a valid email-address, which is used for the registration process of rocket.chat.	rocketchat	de	Bitte geben Sie zusätzlich eine gültige E-Mail-Adresse ein, die für den Registrierungsprozess von Rocket.Chat verwendet wird.
 admin info	rocketchat	de	Admin Information
+administration panel	rocketchat	de	Rocket.Chat Administration
 after installation is finished, you may want to look into some administration details e.g. to configure non-egroupware accounts or to switch video-chat (jitsi) off for gdpr reasons.	rocketchat	de	Nach Abschluss der Installation können Sie sich einige Konfigurationsoptionen ansehen, z.B. um Nicht-EGroupware Benutzer anzulegen oder den Video-Chat (Jitsi) aus DSGVO-Gründen auszuschalten.
 authentication	rocketchat	de	Authentifizierung
 by default we show only: egroupware users click here and not username and password fields for external users! egroupware users should always use the provided click here link!	rocketchat	de	Standardmäßig zeigen wir nur an: EGroupware-Benutzer hier klicken und nicht die Felder Benutzername und Passwort für externe Benutzer! EGroupware-Benutzer sollten immer den bereitgestellten Link (hier klicken) verwenden!
@@ -17,9 +16,11 @@ example: https://www.egroupware.org/rocketchat/	rocketchat	de	Beispiel: https://
 gdpr decision	rocketchat	de	DSGVO Entscheidung
 if you don't need push-notifications, you can skip registration and click on keep standalone ... rocket.chat in egroupware will still work.	rocketchat	de	Wenn Sie keine Push-Benachrichtigungen benötigen, können Sie die Registrierung überspringen und auf Keep Standalone klicken..... Rocket.Chat in EGroupware wird weiterhin funktionieren.
 if you like to allow non-egroupware users to take part in your rocket.chat you can enable in account settings to show the default login form.	rocketchat	de	Wenn Sie Nicht-EGroupware-Benutzern die Teilnahme an Ihrem Rocket.Chat erlauben möchten, können Sie in den Konten Einstellungen der Administration aktivieren, dass das Standard-Anmeldeformular mit Eingabe von Benutzername und Passwort angezeigt wird.
+install information	rocketchat	de	Information zur Installation
 install now	rocketchat	de	Installation starten
 installation	rocketchat	de	Installation
 installation finished	rocketchat	de	Installation beendet
+my account	rocketchat	de	Mein Konto
 organisatation email	rocketchat	de	Organisations-E-Mail
 organisation info	rocketchat	de	Organisationsinformationen
 organisation information ist just some text which gets reported to rocket.chat via registration. but its not used in egroupware rocket.chat itself.	rocketchat	de	Organisationsinformationen sind reine Textfelder, die bei der Registrierung an Rocket.Chat gemeldet werden. EGroupware selbst verwendet diese nicht im Rocket.Chat.

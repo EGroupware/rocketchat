@@ -12,6 +12,7 @@
 namespace EGroupware\Rocketchat;
 
 use EGroupware\Api;
+use EGroupware\Status;
 use EGroupware\Rocketchat\Exception;
 use EGroupware\Rocketchat\Api\Restapi;
 
@@ -160,8 +161,17 @@ class Hooks
 	public static function ajax_getServerUrl ()
 	{
 		$response = Api\Json\Response::get();
+		$response->data(['server_url' => self::getSiteUrl()]);
+	}
+
+	/**
+	 * get server_url from configs
+	 * @return type
+	 */
+	public static function getSiteUrl ()
+	{
 		$config = Api\Config::read('rocketchat');
-		$response->data(['server_url' => $config['server_url']]);
+		return $config['server_url'];
 	}
 
 	/**
@@ -198,16 +208,34 @@ class Hooks
 				foreach ($onlineusers as $user)
 				{
 					// Only report egw users not all rocketchat users
-					if (!$status_app[$user['username']]) continue;
-					$stat[$user['username']] = [
-						'id' => $user['username'],
-						'stat' => [
-							'rocketchat' => [
-								'active' => $user['active'],
-								'class' => $user['status'] ? $user['status'] : 'offline'
+					if (!$status_app[$user['username']])
+					{
+						if ($user['username'] == $GLOBALS['egw_info']['user']['account_lid']) continue;
+						$stat[$user['username']] = [
+							'account_id' => self::APPNAME.Status\Ui::ID_DELIMITER.$user['username'],
+							'id' => $user['username'],
+							'stat' => [
+								'rocketchat' => [
+									'active' => $user['active'],
+									'class' => $user['status'] ? $user['status'] : 'offline'
+								]
+							],
+							'hint' => $user['name'],
+							'icon' => self::getSiteUrl().'api/v1/users.getAvatar?userId='.$user['_id']
+						];
+					}
+					else
+					{
+						$stat[$user['username']] = [
+							'id' => $user['username'],
+							'stat' => [
+								'rocketchat' => [
+									'active' => $user['active'],
+									'class' => $user['status'] ? $user['status'] : 'offline'
+								]
 							]
-						]
-					];
+						];
+					}
 				}
 			}
 			return $stat;
@@ -334,4 +362,50 @@ class Hooks
 		}
 		return [];
 	}
+
+	/**
+	 * Get none EGW rocketchat users
+	 *
+	 * @param type $data
+	 * @return array
+	 */
+	public static function getSearchParticipants($data)
+	{
+		if ($data['app'] != self::APPNAME) return [];
+		$api = new Restapi();
+		$result = [];
+		$logged_in = Api\Cache::getSession(self::APPNAME, 'logged_in', function() use ($api)
+		{
+			try {
+				$api->login($GLOBALS['egw_info']['user']['account_lid'], '');
+				return true;
+			}
+			catch (\Exception $ex) {
+				Api\Framework::message($ex->getMessage());
+				return false;
+			}
+		});
+		if ($logged_in)
+		{
+			$users = $api->userslist(['query' => [
+				'active'=>true,
+				'type' => 'user'
+			]]);
+			$status_users = array_column(Status\Hooks::getUsers(), 'account_lid');
+
+			foreach($users as $user)
+			{
+				if (!in_array($user['username'], $status_users))
+				{
+					$result[] = [
+						'id' => self::APPNAME.Status\Ui::ID_DELIMITER.$user['username'],
+						'label' => $user['name'],
+						'icon' => self::getSiteUrl().'api/v1/users.getAvatar?userId='.$user['_id']
+					];
+				}
+			}
+		}
+		return $result;
+	}
+
 }

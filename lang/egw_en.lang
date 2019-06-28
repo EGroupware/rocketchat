@@ -1,5 +1,58 @@
+2. step is to create the non-users manually in adminitration users. you need to specify username and password. depending on the settings to allow password change or not, please allow or deny that the user can change the password. by default its switched of, because the password change in rocket.chat will not change the user password of egroupware!	rocketchat	en	2. Step is to create the non-users manually in Adminitration Users. You need to specify username and password. Depending on the settings to allow password change or not, please allow or deny that the user can change the password. By default its switched of, because the password change in Rocket.Chat will not change the user password of EGroupware!
+add non-egroupware user	rocketchat	en	Add Non-EGroupware user
+additionally you should insert a valid email-address, which is used for the registration process of rocket.chat.	rocketchat	en	Additionally you should insert a valid email-address, which is used for the registration process of Rocket.Chat.
+admin info	rocketchat	en	Admin Info
+after installation is finished, you may want to look into some administration details e.g. to configure non-egroupware accounts or to switch video-chat (jitsi) off for gdpr reasons.	rocketchat	en	After installation is finished, you may want to look into some administration details e.g. to configure non-EGroupware accounts or to switch video-chat (Jitsi) off for GDPR reasons.
+authentication	rocketchat	en	Authentication
+by default we show only: egroupware users click here and not username and password fields for external users! egroupware users should always use the provided click here link!	rocketchat	en	By default we show only: EGroupware users click here and not username and password fields for external users! EGroupware users should always use the provided click here link!
+do you want to install	rocketchat	en	Do you want to install
+egroupware does not yet has a push-service for notifications on smart-phones, but you can use rocket.chat cloud services. please take gdpr into account for your decision.	rocketchat	en	EGroupware does not yet has a push-service for notifications on smart-phones, but you can use Rocket.Chat cloud services. Please take GDPR into account for your decision.
 enable audio effects	rocketchat	en	Audio effects
-enable/disable audio effects such as message notifications	rocketchat	en	Enable/disable audio effects such as message notifications
 enable browser notification	rocketchat	en	Enable browser notification
+enable/disable audio effects such as message notifications	rocketchat	en	Enable/disable audio effects such as message notifications
 enable/disable browser notification for unred messages	rocketchat	en	Enable/disable browser notification for unread messages
+example: https://www.egroupware.org/rocketchat/	rocketchat	en	example: https://www.egroupware.org/rocketchat/
+gdpr decision	rocketchat	en	GDPR Decision
+if you don't need push-notifications, you can skip registration and click on keep standalone ... rocket.chat in egroupware will still work.	rocketchat	en	If you don't need push-notifications, you can skip registration and click on keep standalone ... Rocket.Chat in EGroupware will still work.
+if you like to allow non-egroupware users to take part in your rocket.chat you can enable in account settings to show the default login form.	rocketchat	en	IF you like to allow non-EGroupware users to take part in your Rocket.Chat you can enable in Account Settings to show the Default Login Form.
+install now	rocketchat	en	Install now
+installation	rocketchat	en	Installation
+installation finished	rocketchat	en	Installation finished
+organisatation email	rocketchat	en	Organisatation email
+organisation info	rocketchat	en	Organisation Info
+organisation information ist just some text which gets reported to rocket.chat via registration. but its not used in egroupware rocket.chat itself.	rocketchat	en	Organisation Information ist just some text which gets reported to Rocket.Chat via registration. But its not used in EGroupware Rocket.Chat itself.
+please choose a language which is common for the majority of your users. the language can be changed on myaccount for each user.	rocketchat	en	Please choose a language which is common for the majority of your users. The language can be changed on MyAccount for each user.
+please insert a valid egroupware username (recommended your user) to configure the first administrator of rocket.chat. that administrator can add additional egroupware users as rocket.chat admins.	rocketchat	en	Please insert a valid EGroupware username (recommended your user) to configure the first administrator of Rocket.Chat. That administrator can add additional EGroupware users as Rocket.Chat admins.
+please insert a valid email-address which is used for the registration process of rocket.chat.	rocketchat	en	Please insert a valid email-address which is used for the registration process of Rocket.Chat.
+please wait while your rocket.chat server is installed ...	rocketchat	en	Please wait while your Rocket.Chat server is installed ...
+register or keep standalone	rocketchat	en	Register or keep standalone
+register server	rocketchat	en	Register Server
+rocket.chat	rocketchat	en	Rocket.Chat
+rocket.chat is succesfully installed, you can now configure additional parameters e.g. switch video-chat off or add non-egroupware user.	rocketchat	en	Rocket.Chat is succesfully installed, you can now configure additional parameters e.g. switch video-chat off or add non-Egroupware user.
+rocket.chat needs to be configured and installed.	rocketchat	en	Rocket.Chat needs to be configured and installed.
+rocket.chat provides lots of user and administration guides and videos. please have a look on their website.	rocketchat	en	Rocket.Chat provides lots of user and administration guides and videos. Please have a look on their website.
+rocket.chat's oauth client-id	rocketchat	en	Rocket.Chat's OAuth Client-ID
+rocket.chat's oauth service-name	rocketchat	en	Rocket.Chat's OAuth Service-Name
 rocketchat	common	en	Rocket.Chat
+rocketchat operation failed!	rocketchat	en	Rocketchat operation failed!
+server info	rocketchat	en	Server Info
+server url	rocketchat	en	Server URL
+site name	rocketchat	en	Site name
+sorry, rocket.chat app needs to be configured by an egroupware administrator!	rocketchat	en	Sorry, Rocket.Chat app needs to be configured by an EGroupware administrator!
+sorry, rocket.chat app needs to be configured first!	rocketchat	en	Sorry, Rocket.Chat app needs to be configured first!
+status:	rocketchat	en	Status:
+step 1: admin info	rocketchat	en	Step 1: Admin Info
+step 3: server info	rocketchat	en	Step 3: Server Info
+step 4: register server	rocketchat	en	Step 4: Register Server
+successful connected, rocket.chat version: %1.	rocketchat	en	Successful connected, Rocket.Chat version: %1.
+the following tabs are showing the steps of the configuration process in detail.	rocketchat	en	The following tabs are showing the steps of the configuration process in detail.
+the site name is displayed in external rocket.chat clients. specially when using more than one rocket.chat. it make sense to choose a meaningful name to identify this chat!	rocketchat	en	The site name is displayed in external Rocket.Chat clients. Specially when using more than one Rocket.Chat. It make sense to choose a meaningful name to identify this chat!
+the system will sent an email to the given email-address including the login details for rocket.chat.	rocketchat	en	The system will sent an email to the given email-address including the login details for Rocket.Chat.
+unable to connect!	rocketchat	en	Unable to connect!
+url must end with %1	rocketchat	en	URL must end with %1
+video-chat	rocketchat	en	Video-Chat
+video-conference	rocketchat	en	Video-Conference
+you have %1 unread messages from %2	rocketchat	en	You have %1 unread messages from %2
+you need to decide if you allow video-chats and screen-sharing for gdpr reasons. egroupware does not yet has an own jitsi-server for video-chats, so we use and enable a public jitsi-server from the open source project jitsi meet. please take gdpr into account for your decision, we haven't found neither any declaration of data protection on their website nor where the servers are located.	rocketchat	en	You need to decide if you allow video-chats and screen-sharing for GDPR reasons. EGroupware does not yet has an own Jitsi-server for video-chats, so we use and enable a public jitsi-server from the open source project Jitsi Meet. Please take GDPR into account for your decision, we haven't found neither any declaration of data protection on their website nor where the servers are located.
+you need to decide if you allow video-chats and screensharing for gdpr reasons. egroupware does not yet has an own jitsi-server for video-chats, so we use and enable a public jitsi-server from the open source project jitsi meet.	rocketchat	en	You need to decide if you allow video-chats and screensharing for GDPR reasons. EGroupware does not yet has an own Jitsi-server for video-chats, so we use and enable a public jitsi-server from the open source project Jitsi Meet.
+you need to decide, if you like to register your rocket.chat to get push-notifications for smart-phones. in that case all inserted information of the configuration gets sent to rocket.chat!	rocketchat	en	You need to decide, if you like to register your Rocket.Chat to get push-notifications for smart-phones. In that case all inserted information of the configuration gets sent to Rocket.Chat!

@@ -1,4 +1,59 @@
+2. step is to create the non-users manually in adminitration users. you need to specify username and password. depending on the settings to allow password change or not, please allow or deny that the user can change the password. by default its switched of, because the password change in rocket.chat will not change the user password of egroupware!	rocketchat	de	Im 2. Schritt werden Nicht-EGroupware Benutzer manuell in Administration Benutzer erstellt. Geben Sie Benutzername und Passwort ein. Abhängig von den Einstellungen, die eine Passwortänderung erlauben oder nicht, erlauben oder verweigern Sie bitte, dass der Benutzer das Passwort ändern kann. Standardmäßig ist Passwortänderung ausgeschaltet, da die Passwortänderung in Rocket.Chat das Benutzerpasswort von EGroupware nicht ändert!
+
+Übersetzt mit www.DeepL.com/Translator
+add non-egroupware user	rocketchat	de	Nicht-EGroupware Benutzer hinzufügen
+additionally you should insert a valid email-address, which is used for the registration process of rocket.chat.	rocketchat	de	Bitte geben Sie zusätzlich eine gültige E-Mail-Adresse ein, die für den Registrierungsprozess von Rocket.Chat verwendet wird.
+admin info	rocketchat	de	Admin Information
+after installation is finished, you may want to look into some administration details e.g. to configure non-egroupware accounts or to switch video-chat (jitsi) off for gdpr reasons.	rocketchat	de	Nach Abschluss der Installation können Sie sich einige Konfigurationsoptionen ansehen, z.B. um Nicht-EGroupware Benutzer anzulegen oder den Video-Chat (Jitsi) aus DSGVO-Gründen auszuschalten.
+authentication	rocketchat	de	Authentifizierung
+by default we show only: egroupware users click here and not username and password fields for external users! egroupware users should always use the provided click here link!	rocketchat	de	Standardmäßig zeigen wir nur an: EGroupware-Benutzer hier klicken und nicht die Felder Benutzername und Passwort für externe Benutzer! EGroupware-Benutzer sollten immer den bereitgestellten Link (hier klicken) verwenden!
+do you want to install	rocketchat	de	Wollen Sie den Installationsprozess beginnen
+egroupware does not yet has a push-service for notifications on smart-phones, but you can use rocket.chat cloud services. please take gdpr into account for your decision.	rocketchat	de	EGroupware hat noch keinen Push-Service für Benachrichtigungen auf Smartphones, aber Sie können die Cloud-Services von Rocket.Chat nutzen. Bitte berücksichtigen Sie DSGVO bei Ihrer Entscheidung.
 enable audio effects	rocketchat	de	Audio-Effekt
 enable browser notification	rocketchat	de	Browser-Benachrichtigung aktivieren
 enable/disable audio effects such as message notifications	rocketchat	de	Aktivieren/Deaktivieren von AudioEffekten wie z. B. Nachrichten-Eingang
+enable/disable browser notification for unred messages	rocketchat	de	Aktivieren/Deaktivieren der Browser-Benachrichtigung für ungelesene Nachrichten
+example: https://www.egroupware.org/rocketchat/	rocketchat	de	Beispiel: https://www.egroupware.org/rocketchat/
+gdpr decision	rocketchat	de	DSGVO Entscheidung
+if you don't need push-notifications, you can skip registration and click on keep standalone ... rocket.chat in egroupware will still work.	rocketchat	de	Wenn Sie keine Push-Benachrichtigungen benötigen, können Sie die Registrierung überspringen und auf Keep Standalone klicken..... Rocket.Chat in EGroupware wird weiterhin funktionieren.
+if you like to allow non-egroupware users to take part in your rocket.chat you can enable in account settings to show the default login form.	rocketchat	de	Wenn Sie Nicht-EGroupware-Benutzern die Teilnahme an Ihrem Rocket.Chat erlauben möchten, können Sie in den Konten Einstellungen der Administration aktivieren, dass das Standard-Anmeldeformular mit Eingabe von Benutzername und Passwort angezeigt wird.
+install now	rocketchat	de	Installation starten
+installation	rocketchat	de	Installation
+installation finished	rocketchat	de	Installation beendet
+organisatation email	rocketchat	de	Organisations-E-Mail
+organisation info	rocketchat	de	Organisationsinformationen
+organisation information ist just some text which gets reported to rocket.chat via registration. but its not used in egroupware rocket.chat itself.	rocketchat	de	Organisationsinformationen sind reine Textfelder, die bei der Registrierung an Rocket.Chat gemeldet werden. EGroupware selbst verwendet diese nicht im Rocket.Chat.
+please choose a language which is common for the majority of your users. the language can be changed on myaccount for each user.	rocketchat	de	Bitte wählen Sie eine Sprache, die für die Mehrheit Ihrer Benutzer passt. Die Sprache kann über MeinKonto für jeden Benutzer geändert werden.
+please insert a valid egroupware username (recommended your user) to configure the first administrator of rocket.chat. that administrator can add additional egroupware users as rocket.chat admins.	rocketchat	de	Bitte geben Sie einen gültigen EGroupware-Benutzernamen (empfohlen der eigene Benutzer) ein, um den ersten Administrator von Rocket.Chat zu konfigurieren. Dieser Administrator kann zusätzliche EGroupware-Benutzer als Rocket.Chat-Administratoren hinzufügen.
+please insert a valid email-address which is used for the registration process of rocket.chat.	rocketchat	de	Geben Sie bitte eine gültige E-Mail-Adresse ein, die für den Registrierungsprozess von Rocket.Chat verwendet wird.
+please wait while your rocket.chat server is installed ...	rocketchat	de	Bitte warten Sie, während Ihr Rocket.Chat-Server installiert wird ...
+register or keep standalone	rocketchat	de	Registrierung aktivieren oder nicht
+register server	rocketchat	de	Server Registrieren
+rocket.chat is succesfully installed, you can now configure additional parameters e.g. switch video-chat off or add non-egroupware user.	rocketchat	de	Rocket.Chat ist erfolgreich installiert, Sie können nun zusätzliche Parameter konfigurieren, z.B. Video-Chat ausschalten oder Nicht-EGroupware Benutzer hinzufügen.
+rocket.chat needs to be configured and installed.	rocketchat	de	Rocket.Chat muss konfiguriert und installiert werden.
+rocket.chat provides lots of user and administration guides and videos. please have a look on their website.	rocketchat	de	Rocket.Chat bietet viele Benutzer- und Administrationsanleitungen und Videos. Bitte schauen Sie sich die Website an.
+rocket.chat's oauth client-id	rocketchat	de	Rocket.Chat's OAuth Client-ID
+rocket.chat's oauth service-name	rocketchat	de	Rocket.Chat's OAuth Service-Name
 rocketchat	common	de	Rocket.Chat
+rocketchat operation failed!	rocketchat	de	Ein Fehler ist aufgetreten im Rocket.Chat!
+server info	rocketchat	de	Server Information
+server url	rocketchat	de	Server URL
+site name	rocketchat	de	Instanz Name
+sorry, rocket.chat app needs to be configured by an egroupware administrator!	rocketchat	de	Entschuldigen Sie bitte, Rocket.Chat App muss erst von einem EGroupware Administrator konfiguriert werden!
+sorry, rocket.chat app needs to be configured first!	rocketchat	de	Entschuldigen Sie bitte, Rocket.Chat App muss erst von einem EGroupware Administrator konfiguriert werden!
+status:	rocketchat	de	Status
+step 1: admin info	rocketchat	de	Schritt 1: Admin Info
+step 3: server info	rocketchat	de	Schritt 3: Server Info
+step 4: register server	rocketchat	de	Schritt 4: Server Registrierung
+successful connected, rocket.chat version: %1.	rocketchat	de	Erfolgreich verbunden, Rocket.Chat Version: %1.
+the following tabs are showing the steps of the configuration process in detail.	rocketchat	de	Die folgenden Abschnitte zeigen die Schritte des Konfigurationsprozesses im Detail.
+the site name is displayed in external rocket.chat clients. specially when using more than one rocket.chat. it make sense to choose a meaningful name to identify this chat!	rocketchat	de	Der Instanz Name wird in externen Rocket.Chat-Clients angezeigt. Insbesondere bei der Verwendung von mehr als einem Rocket.Chat, ist es sinnvoll, einen eindeutigen Namen zu wählen, um diesen Chat zu identifizieren!
+the system will sent an email to the given email-address including the login details for rocket.chat.	rocketchat	de	Das System sendet eine E-Mail an die angegebene E-Mail-Adresse mit den Zugangsdaten für Rocket.Chat.
+unable to connect!	rocketchat	de	Verbindung kann nicht hergestellt werden!
+url must end with %1	rocketchat	de	URl muss mit %1 enden
+video-chat	rocketchat	de	Video-Chat
+video-conference	rocketchat	de	Video-Konferenz
+you have %1 unread messages from %2	rocketchat	de	Sie haben %1 neue nachrichten von %2
+you need to decide if you allow video-chats and screen-sharing for gdpr reasons. egroupware does not yet has an own jitsi-server for video-chats, so we use and enable a public jitsi-server from the open source project jitsi meet. please take gdpr into account for your decision, we haven't found neither any declaration of data protection on their website nor where the servers are located.	rocketchat	de	Sie müssen entscheiden, ob Sie Video-Chats und Screen-Sharing aus Datenschutzgründen erlauben. EGroupware hat noch keinen eigenen Jitsi-Server für Video-Chats, daher verwenden und aktivieren wir einen öffentlichen Jitsi-Server aus dem Open-Source-Projekt Jitsi Meet. Bitte berücksichtigen Sie bei Ihrer Entscheidung die DSGVO, wir haben auf der Website weder einen Standort der Server noch eine Datenschutzerklärung gefunden.
+you need to decide if you allow video-chats and screensharing for gdpr reasons. egroupware does not yet has an own jitsi-server for video-chats, so we use and enable a public jitsi-server from the open source project jitsi meet.	rocketchat	de	Sie müssen entscheiden, ob Sie Video-Chats und Screen-Sharing aus Datenschutzgründen erlauben. EGroupware hat noch keinen eigenen Jitsi-Server für Video-Chats, daher verwenden und aktivieren wir einen öffentlichen Jitsi-Server aus dem Open-Source-Projekt Jitsi Meet.
+you need to decide, if you like to register your rocket.chat to get push-notifications for smart-phones. in that case all inserted information of the configuration gets sent to rocket.chat!	rocketchat	de	Sie müssen entscheiden, ob Sie Ihre Rocket.Chat Instanz registrieren möchten, um Push-Benachrichtigungen für Smartphones zu erhalten. In diesem Fall werden alle eingegebenen Informationen der Konfiguration an Rocket.Chat gesendet!

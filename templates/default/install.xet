@@ -26,7 +26,7 @@
 				</row>
 				<row valign="top">
 					<description value="Step 1: Admin Info" />
-					<description value="Organisatation email" />
+					<description value="Organisation email" />
 					<description value="Please insert a valid email-address which is used for the registration process of Rocket.Chat." />
 				</row >
 				<row valign="top">
@@ -174,7 +174,7 @@
 					<image src="https://www.egroupware.org/wp-content/uploads/2019/06/Account-Settings.png" />
 				</row>
 				<row>
-					<description value="2. Step is to create the non-users manually in Adminitration Users. You need to specify username and password. Depending on the settings to allow password change or not, please allow or deny that the user can change the password. By default its switched of, because the password change in Rocket.Chat will not change the user password of EGroupware!"/>
+					<description value="2. Step is to create the non-users manually in Administration Users. You need to specify username and password. Depending on the settings to allow password change or not, please allow or deny that the user can change the password. By default its switched of, because the password change in Rocket.Chat will not change the user password of EGroupware!"/>
 				</row>
 				<row>
 					<description value="The system will sent an email to the given email-address including the login details for Rocket.Chat." />

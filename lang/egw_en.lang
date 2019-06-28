@@ -1,4 +1,4 @@
-2. step is to create the non-users manually in adminitration users. you need to specify username and password. depending on the settings to allow password change or not, please allow or deny that the user can change the password. by default its switched of, because the password change in rocket.chat will not change the user password of egroupware!	rocketchat	en	2. Step is to create the non-users manually in Adminitration Users. You need to specify username and password. Depending on the settings to allow password change or not, please allow or deny that the user can change the password. By default its switched of, because the password change in Rocket.Chat will not change the user password of EGroupware!
+2. step is to create the non-users manually in adminitration users. you need to specify username and password. depending on the settings to allow password change or not, please allow or deny that the user can change the password. by default its switched of, because the password change in rocket.chat will not change the user password of egroupware!	rocketchat	en	2. Step is to create the non-users manually in Administration Users. You need to specify username and password. Depending on the settings to allow password change or not, please allow or deny that the user can change the password. By default its switched of, because the password change in Rocket.Chat will not change the user password of EGroupware!
 add non-egroupware user	rocketchat	en	Add Non-EGroupware user
 additionally you should insert a valid email-address, which is used for the registration process of rocket.chat.	rocketchat	en	Additionally you should insert a valid email-address, which is used for the registration process of Rocket.Chat.
 admin info	rocketchat	en	Admin Info
@@ -18,7 +18,7 @@ if you like to allow non-egroupware users to take part in your rocket.chat you c
 install now	rocketchat	en	Install now
 installation	rocketchat	en	Installation
 installation finished	rocketchat	en	Installation finished
-organisatation email	rocketchat	en	Organisatation email
+organisatation email	rocketchat	en	Organisation email
 organisation info	rocketchat	en	Organisation Info
 organisation information ist just some text which gets reported to rocket.chat via registration. but its not used in egroupware rocket.chat itself.	rocketchat	en	Organisation Information ist just some text which gets reported to Rocket.Chat via registration. But its not used in EGroupware Rocket.Chat itself.
 please choose a language which is common for the majority of your users. the language can be changed on myaccount for each user.	rocketchat	en	Please choose a language which is common for the majority of your users. The language can be changed on MyAccount for each user.

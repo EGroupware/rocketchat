@@ -77,6 +77,11 @@ app.classes.rocketchat = AppJS.extend(
 	 */
 	messageHandler: function (e)
 	{
+		var self = this;
+		jQuery('.rc-button.rc-button--primary.js-finish','.setup-wizard').on('click', function(){
+			self.postMessage('logout');
+			et2_dialog.alert("You're Rocket.Chat is installed, please once relogin to EGroupware.","Rocket.Chat");
+		});
 		if (e && e.type == 'message' && e.data && e.data.eventName)
 		{
 			switch(e.data.eventName)

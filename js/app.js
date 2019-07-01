@@ -81,9 +81,10 @@ app.classes.rocketchat = AppJS.extend(
 	 */
 	messageHandler: function (e)
 	{
+		var self = this;
 		if (jQuery('.setup-wizard', this.mainframe.contentWindow.document))
 		{
-			jQuery(this.mainframe.contentWindow.document.body).on('click', function(e){
+			jQuery(this.mainframe.contentWindow.document.body).off().on('click', function(e){
 				if (e.target.nodeName =="BUTTON" && e.target.className == "rc-button rc-button--primary js-finish")
 				{
 					self.postMessage('logout');

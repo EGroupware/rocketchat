@@ -42,7 +42,11 @@ app.classes.rocketchat = AppJS.extend(
 		switch (name)
 		{
 			case 'rocketchat.index':
+				egw.loading_prompt('rocketchat-loading', true, egw.lang('Loading Rocket.Chat ...'));
 				this.mainframe = this.et2.getWidgetById('iframe').getDOMNode();
+				jQuery(this.mainframe).on('load', function(){
+					egw.loading_prompt('rocketchat-loading', false);
+				});
 				window.addEventListener('message', jQuery.proxy(this.messageHandler, this));
 				break;
 			case 'rocketchat.chat':

@@ -168,11 +168,68 @@ app.classes.rocketchat = AppJS.extend(
 	handle_actions: function (_action, _selected)
 	{
 		var user_id = _selected[0]['id'];
+		var account_id = _selected[0]['data']['account_id'];
+		var data = _selected[0]['data'];
 		var self = this;
 		switch (_action.id)
 		{
 			case 'message':
 				this.chatPopupLookup(user_id, {path:'direct/'+user_id+'?layout=embedded'});
+				break;
+			case 'linkto':
+				et2_createWidget("dialog",{
+					callback: function(button, value){
+						if (button == et2_dialog.BUTTONS_YES_NO && value)
+						{
+							egw.json("EGroupware\\Api\\Etemplate\\Widget\\Link::ajax_link",
+								['rocketchat', account_id, [{
+									app: 'addressbook',
+									id: value.link[0]
+								}]],
+								function(_result){
+									if (_result)
+									{
+										app.status.mergeContent([{
+											id: user_id,
+											class: data.class.replace('unlinked', 'linked'),
+											"link_to": {
+												app: 'addressbook',
+												id: value.link[0]
+											}
+										}]);
+									}
+								},
+								self,
+								true,
+								self
+							).sendRequest();
+						}
+						return true;
+					},
+					title: 'link to contact',
+					buttons: et2_dialog.BUTTONS_YES_NO,
+					type: et2_dialog.PLAIN_MESSAGE,
+					template: egw.webserverUrl+'/rocketchat/templates/default/link_to_contact.xet',
+					value: {content: ''}
+				});
+				break;
+			case 'unlinkto':
+				egw.json("EGroupware\\Api\\Etemplate\\Widget\\Link::ajax_delete",
+					[data.link_to.link_id],
+					function(_result){
+						if (_result)
+						{
+							app.status.mergeContent([{
+								id: user_id,
+								class: data.class.replace('linked', 'unlinked'),
+								"link_to": null
+							}]);
+						}
+					},
+					self,
+					true,
+					self
+				).sendRequest();
 				break;
 		}
 

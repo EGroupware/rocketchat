@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE overlay PUBLIC "-//EGroupware GmbH//eTemplate 2//EN" "http://www.egroupware.org/etemplate2.dtd">
+<!-- $Id$ -->
+<overlay>
+	<template id="rocketchat.link_to_contact" template="" lang="" group="0" version="19.1">
+		<grid height="100%" width="100%">
+			<columns>
+				<column/>
+			</columns>
+			<rows>
+				<row height="100%">
+					<taglist id="link" allowFreeEntries="false" multiple="false" width="250"/>
+				</row>
+			</rows>
+		</grid>
+	</template>
+</overlay>

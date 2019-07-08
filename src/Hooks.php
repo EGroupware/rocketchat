@@ -211,17 +211,20 @@ class Hooks
 					if (!$status_app[$user['username']])
 					{
 						if ($user['username'] == $GLOBALS['egw_info']['user']['account_lid']) continue;
+						$link = array_values(Api\Link::get_links(self::APPNAME,self::APPNAME.Status\Ui::ID_DELIMITER.$user['username']));
 						$stat[$user['username']] = [
 							'account_id' => self::APPNAME.Status\Ui::ID_DELIMITER.$user['username'],
 							'id' => $user['username'],
 							'stat' => [
 								'rocketchat' => [
 									'active' => $user['active'],
-									'class' => $user['status'] ? $user['status'] : 'offline'
+									'class' => ($user['status'] ? $user['status'] : 'offline')
 								]
 							],
 							'hint' => $user['name'],
-							'icon' => self::getSiteUrl().'api/v1/users.getAvatar?userId='.$user['_id']
+							'icon' => self::getSiteUrl().'api/v1/users.getAvatar?userId='.$user['_id'],
+							'link_to' => $link[0],
+							'class' => ($link[0]? ' linked' : ' unlinked')
 						];
 					}
 					else
@@ -256,6 +259,22 @@ class Hooks
 				'caption' => 'Message',
 				'default' => true,
 				'allowOnMultiple' => false,
+				'onExecute' => 'javaScript:app.rocketchat.handle_actions',
+			],
+			'linkto' => [
+				'caption' => 'Link to contact',
+				'default' => true,
+				'allowOnMultiple' => false,
+				'enableClass' => 'unlinked',
+				'hideOnDisabled' => true,
+				'onExecute' => 'javaScript:app.rocketchat.handle_actions',
+			],
+			'unlinkto' => [
+				'caption' => 'Unlink from contact',
+				'default' => true,
+				'allowOnMultiple' => false,
+				'hideOnDisabled' => true,
+				'enableClass' => 'linked',
 				'onExecute' => 'javaScript:app.rocketchat.handle_actions',
 			]
 		];

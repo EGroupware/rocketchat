@@ -303,7 +303,7 @@ app.classes.rocketchat = AppJS.extend(
 							if (data.length > 0)
 							{
 								latest = _data.result;
-								app.status.mergeContent(data);
+								if (app.status)	app.status.mergeContent(data);
 							}
 
 						}

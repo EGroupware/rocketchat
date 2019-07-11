@@ -44,6 +44,16 @@
 					<description value="Register or keep standalone" />
 					<description value="EGroupware does not yet has a push-service for notifications on smart-phones, but you can use Rocket.Chat cloud services. Please take GDPR into account for your decision." />
 				</row>
+				<row valign="top">
+					<description value="Create OpenID client" />
+					<description value="Only necessary for on-premis installations" />
+					<description value="You need to create a Client-Identifier and -Secret via Admin >> OpenID / OAuth2 server >> Clients" />
+				</row>
+				<row valign="top">
+					<description value="Add custum OAuth" />
+					<description value="Only necessary for on-premis installations" />
+					<description value="For on-premis installations, you need to configure the custom OAuth server. In the EGroupware cloud its already pre-configured!" />
+				</row>
 				<row valign="top" height="50">
 					<description value="GDPR Decision" />
 					<description value="Video-Conference" />
@@ -142,6 +152,70 @@
 			</rows>
 		</grid>
 	</template>
+	<template id="rocketchat.install.openid" template="" lang="" group="0" version="1.5.001">
+		<grid width="100%" spacing="10" overflow="auto">
+			<columns>
+				<column/>
+			</columns>
+			<rows>
+				<row>
+					<description value="You need to create a Client-Identifier and -Secret via Admin >> OpenID / OAuth2 server >> Clients"/>
+				</row>
+				<row>
+					<description value="Please insert a name for your Client-Identifier e.g. EGroupware Rocket.Chat and an Identifier - recommended Rocket.Chat"/>
+				</row>
+				<row>
+					<description value="This Client-Identifier needs to be inserted in the next step where you add the custum Oauth server EGroupware." />
+				</row>
+				<row>
+					<description value="The secret should be a random string (recommended minimum 12 chars), which is used and inserted in the custom Oauth server configuration together with the Client-Identifier in the next step!" />
+				</row>
+				<row>
+					<description value="The Redirect URI needs to match your servername e.g. testbox.egroupware.org in my case. We recommend to use https, but only if secure connection is correctly configured!" />
+				</row>
+				<row valign="top" height="30">
+					<description value="For Allowed grants you need to choose: Authorization Code, Refresh Token and Implicit. " />
+				</row>
+				<row valign="top">
+					<image src="https://www.egroupware.org/wp-content/uploads/2019/07/OpenID.png" />
+				</row>
+			</rows>
+		</grid>
+	</template>
+	<template id="rocketchat.install.oauth" template="" lang="" group="0" version="1.5.001">
+		<grid width="100%" spacing="10" overflow="auto">
+			<columns>
+				<column/>
+			</columns>
+			<rows>
+				<row height="30">
+					<description value="Please go back to Rocket.Chat into Administration >> OAuth and click [Add custom oauth]. Give it a name eg. EGroupware." />
+				</row>
+				<row valign="top">
+					<image src="https://www.egroupware.org/wp-content/uploads/2019/07/OAuth.png" />
+				</row>
+				<row height="60">
+					<description value="At the top of the page the custom Oauth server EGroupware is added and you need to insert several values. Please check all rows where the image shows at the right site a red box to mark changes. We'are just listing a few important values, but all need to be inserted correctly!"/>
+				</row>
+				<row>
+					<description value="URL: http(s)://servername/egroupware/openid/endpoint.php Servername needs to match your servername or IP-address. You should use https, but only if secure connection is correctly configured on your server! " />
+				</row>
+
+				<row valign="top">
+					<image src="https://www.egroupware.org/wp-content/uploads/2019/07/OAuth2.png" />
+				</row>
+				<row height="60">
+					<description value="Id needs to be the Client-Identifier you previously configured for the OpenID Client! Similar is valid for the secret, If you can't remember the secret you choosed previously, you may re-generate and save the secret in the EGroupware OpenID client. See also previous tab [Create OpenID client]" />
+				</row>
+				<row valign="top">
+					<image src="https://www.egroupware.org/wp-content/uploads/2019/07/OAuth3.png" />
+				</row>
+				<row valign="top" height="30">
+					<description value="Please check also our technical documentation page on Github: https://github.com/EGroupware/openid" />
+				</row>
+			</rows>
+		</grid>
+	</template>
 	<template id="rocketchat.install.video" template="" lang="" group="0" version="1.5.001">
 		<grid width="100%" spacing="10" overflow="auto">
 			<columns>
@@ -201,6 +275,8 @@
 							<tab id="rocketchat.install.server" label="Server Info"/>
 							<tab id="rocketchat.install.register" label="Register Server"/>
 							<tab id="rocketchat.install.done" label="Installation finished"/>
+							<tab id="rocketchat.install.openid" label="Create OpenID client"/>
+							<tab id="rocketchat.install.oauth" label="Add custum OAuth"/>
 							<tab id="rocketchat.install.video" label="Video-Chat"/>
 							<tab id="rocketchat.install.non-user" label="Add Non-EGroupware user"/>
 						</tabs>
@@ -211,6 +287,8 @@
 							<template id="rocketchat.install.server" />
 							<template id="rocketchat.install.register"/>
 							<template id="rocketchat.install.done"/>
+							<template id="rocketchat.install.openid"/>
+							<template id="rocketchat.install.oauth"/>
 							<template id="rocketchat.install.video"/>
 							<template id="rocketchat.install.non-user"/>
 						</tabpanels>

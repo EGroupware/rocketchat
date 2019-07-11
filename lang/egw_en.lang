@@ -14,7 +14,7 @@ egroupware does not yet has a push-service for notifications on smart-phones, bu
 enable audio effects	rocketchat	en	Audio effects
 enable browser notification	rocketchat	en	Enable browser notification
 enable/disable audio effects such as message notifications	rocketchat	en	Enable/disable audio effects such as message notifications
-enable/disable browser notification for unred messages	rocketchat	en	Enable/disable browser notification for unread messages
+enable/disable browser notification for unread messages	rocketchat	en	Enable/disable browser notification for unread messages
 example: https://www.egroupware.org/rocketchat/	rocketchat	en	example: https://www.egroupware.org/rocketchat/
 for allowed grants you need to choose: authorization code, refresh token and implicit.	rocketchat	en	For Allowed grants you need to choose: Authorization Code, Refresh Token and Implicit.
 for on-premis installations, you need to configure the custom oauth server. in the egroupware cloud its already pre-configured!	rocketchat	en	For on-premis installations, you need to configure the custom OAuth server. In the EGroupware cloud its already pre-configured!

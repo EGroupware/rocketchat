@@ -73,6 +73,12 @@ class Hooks
 				'target' => '_blank',
 			],
 			'Install information' =>  Api\Egw::link('/index.php','menuaction=rocketchat.EGroupware\\Rocketchat\\Ui.install&ajax=true'),
+
+			[
+				'text'   => 'Install Information',
+				'link'   => 'https://github.com/EGroupware/egroupware/wiki/Rocketchat-Integration',
+				'target' => '_blank',
+			],
 		]);
 
 		if ($GLOBALS['egw_info']['user']['apps']['admin'])

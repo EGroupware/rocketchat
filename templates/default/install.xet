@@ -25,8 +25,8 @@
 					<description value="Please insert a valid EGroupware username (recommended your user) to configure the first administrator of Rocket.Chat. That administrator can add additional EGroupware users as Rocket.Chat admins." />
 				</row>
 				<row valign="top">
-					<description value="Step 1: Admin Info" />
-					<description value="Organisation email" />
+					<description value="Step 2: Organization Info" />
+					<description value="Organization email" />
 					<description value="Please insert a valid email-address which is used for the registration process of Rocket.Chat." />
 				</row >
 				<row valign="top">
@@ -294,11 +294,11 @@
 						</tabpanels>
 					</tabbox>
 				</row>
-				<row disabled="@no_install">
-					<description value="Do you want to install" align="center"/>
-				</row>
-				<row disabled="@no_install">
-					<button label="Install now" onclick="app.rocketchat.install" background_image="check" background="1" align="center"/>
+				<row class="installation-msg">
+					<vbox>
+						<description value="Do you want to install?" align="center"/>
+						<button label="Install now" onclick="app.rocketchat.install" background_image="check" background="1" align="center"/>
+					</vbox>
 				</row>
 			</rows>
 		</grid>

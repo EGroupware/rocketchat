@@ -294,7 +294,7 @@
 						</tabpanels>
 					</tabbox>
 				</row>
-				<row class="installation-msg">
+				<row class="installation-msg" disabled="@no_install">
 					<vbox>
 						<description value="Do you want to install?" align="center"/>
 						<button label="Install now" onclick="app.rocketchat.install" background_image="check" background="1" align="center"/>

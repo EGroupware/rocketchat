@@ -303,6 +303,7 @@
 							<template id="rocketchat.install.server" />
 							<template id="rocketchat.install.register"/>
 							<template id="rocketchat.install.done"/>
+							<template id="rocketchat.install.fileUpload"/>
 							<template id="rocketchat.install.openid"/>
 							<template id="rocketchat.install.oauth"/>
 							<template id="rocketchat.install.video"/>

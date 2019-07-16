@@ -152,6 +152,21 @@
 			</rows>
 		</grid>
 	</template>
+	<template id="rocketchat.install.fileUpload" template="" lang="" group="0" version="1.5.001">
+		<grid width="100%" spacing="10" overflow="auto">
+			<columns>
+				<column/>
+			</columns>
+			<rows>
+				<row>
+					<description value="Here we can enable file uploads and configuring max file size, valid media types and more. Storage type should be set to FileSystem."/>
+				</row>
+				<row valign="top">
+					<image src="https://www.egroupware.org/wp-content/uploads/2019/07/File-Upload.png" />
+				</row>
+			</rows>
+		</grid>
+	</template>
 	<template id="rocketchat.install.openid" template="" lang="" group="0" version="1.5.001">
 		<grid width="100%" spacing="10" overflow="auto">
 			<columns>
@@ -275,6 +290,7 @@
 							<tab id="rocketchat.install.server" label="Server Info"/>
 							<tab id="rocketchat.install.register" label="Register Server"/>
 							<tab id="rocketchat.install.done" label="Installation finished"/>
+							<tab id="rocketchat.install.fileUpload" label="File Upload"/>
 							<tab id="rocketchat.install.openid" label="Create OpenID client"/>
 							<tab id="rocketchat.install.oauth" label="Add custum OAuth"/>
 							<tab id="rocketchat.install.video" label="Video-Chat"/>

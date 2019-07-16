@@ -43,5 +43,5 @@ $setup_info['rocketchat']['hooks']['status-getSearchParticipants'] = 'EGroupware
 /* Dependencies for this app to work */
 $setup_info['rocketchat']['depends'][] = array(
 	'appname' => 'api',
-	'versions' => array('17.1')
+	'versions' => array('19.1')
 );

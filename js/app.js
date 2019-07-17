@@ -401,30 +401,33 @@ app.classes.rocketchat = AppJS.extend(
 	install: function()
 	{
 		var w = window;
-		egw.loading_prompt('install-rocketchat', true, egw.lang('Please wait while your Rocket.Chat server is installed ...'));
-		this.install_info();
-		jQuery.ajax({
-			url: '/rocketchat/',
-			success: function(_data, _text, _xheader){
-				egw.loading_prompt('install-rocketchat', false);
-				if (_xheader.status == 200 || _xheader.stat == 302)
-				{
-					w.location.href = egw.link('/index.php', { menuaction: "rocketchat.EGroupware\\rocketchat\\Ui.index", "clear-cache": true});
+		this.install_info(function(){
+			egw.loading_prompt('install-rocketchat', true, egw.lang('Please wait while your Rocket.Chat server is installed ...'));
+			jQuery.ajax({
+				url: '/rocketchat/',
+				success: function(_data, _text, _xheader){
+					egw.loading_prompt('install-rocketchat', false);
+					if (_xheader.status == 200 || _xheader.stat == 302)
+					{
+						w.location.href = egw.link('/index.php', { menuaction: "rocketchat.EGroupware\\rocketchat\\Ui.index", "clear-cache": true});
+					}
+				},
+				error: function(_xheader){
+					egw.loading_prompt('install-rocketchat', false);
+					egw.message(_xheader.responseText, 'error');
 				}
-			},
-			error: function(_xheader){
-				egw.loading_prompt('install-rocketchat', false);
-				egw.message(_xheader.responseText, 'error');
-			}
+			});
 		});
 	},
 
-	install_info: function () {
+	install_info: function (_callback) {
+		var callback = _callback;
 		et2_dialog.show_dialog(function(_button){
 			if (_button == et2_dialog.YES_BUTTON)
 			{
 				egw.openPopup(egw.link('/index.php', { menuaction: "rocketchat.EGroupware\\rocketchat\\Ui.install"}))
 			}
+			if (typeof callback == 'function') callback.call();
 			return true;
 		},"Would you like to see installation instructions?", "Instructions", function(){});
 	}

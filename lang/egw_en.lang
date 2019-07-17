@@ -52,6 +52,7 @@ rocket.chat container or egroupware-rocketchat package needs to be installed to 
 rocket.chat is succesfully installed, you can now configure additional parameters e.g. switch video-chat off or add non-egroupware user.	rocketchat	en	Rocket.Chat is succesfully installed, you can now configure additional parameters e.g. switch video-chat off or add non-Egroupware user.
 rocket.chat needs to be configured and installed.	rocketchat	en	Rocket.Chat needs to be configured and installed.
 rocket.chat provides lots of user and administration guides and videos. please have a look on their website.	rocketchat	en	Rocket.Chat provides lots of user and administration guides and videos. Please have a look on their website.
+rocket.chat server is not yet installed.	rocketchat	en	Rocket.Chat server is not yet installed.
 rocket.chat's oauth client-id	rocketchat	en	Rocket.Chat's OAuth Client-ID
 rocket.chat's oauth service-name	rocketchat	en	Rocket.Chat's OAuth Service-Name
 rocketchat	common	en	Rocket.Chat
@@ -78,6 +79,8 @@ url must end with %1	rocketchat	en	URL must end with %1
 url: http(s)://servername/egroupware/openid/endpoint.php servername needs to match your servername or ip-address. you should use https, but only if secure connection is correctly configured on your server!	rocketchat	en	URL: http(s)://servername/egroupware/openid/endpoint.php Servername needs to match your servername or IP-address. You should use https, but only if secure connection is correctly configured on your server!
 video-chat	rocketchat	en	Video-Chat
 video-conference	rocketchat	en	Video-Conference
+would you like to install it now?	rocketchat	en	Would you like to install it now?
+would you like to see installation instructions?	rocketchat	en	Would you like to see installation instructions?
 you can not use http for rocket.chat with egroupware using https! browser do not load mixed content.	rocketchat	en	You can NOT use http for Rocket.Chat with EGroupware using https! Browser do not load mixed content.
 you have %1 unread messages from %2	rocketchat	en	You have %1 unread messages from %2
 you need to create a client-identifier and -secret via admin >> openid / oauth2 server >> clients	rocketchat	en	You need to create a Client-Identifier and -Secret via Admin >> OpenID / OAuth2 server >> Clients

@@ -11,7 +11,8 @@
 			<rows>
 				<row class="installation-msg">
 					<vbox>
-						<description value="Rocketchat server is not yet installed, would you like to install it?" align="center"/>
+						<description value="Rocket.Chat server is not yet installed." align="center"/>
+						<description value="Would you like to install it now?" align="center"/>
 						<button label="Install now" onclick="app.rocketchat.install" background_image="check" background="1" align="center"/>
 					</vbox>
 				</row>

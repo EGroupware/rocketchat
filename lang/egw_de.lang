@@ -51,6 +51,7 @@ rocket.chat container or egroupware-rocketchat package needs to be installed to 
 rocket.chat is succesfully installed, you can now configure additional parameters e.g. switch video-chat off or add non-egroupware user.	rocketchat	de	Rocket.Chat ist erfolgreich installiert, Sie können nun zusätzliche Parameter konfigurieren, z.B. Video-Chat ausschalten oder Nicht-EGroupware Benutzer hinzufügen.
 rocket.chat needs to be configured and installed.	rocketchat	de	Rocket.Chat muss konfiguriert und installiert werden.
 rocket.chat provides lots of user and administration guides and videos. please have a look on their website.	rocketchat	de	Rocket.Chat bietet viele Benutzer- und Administrationsanleitungen und Videos. Bitte schauen Sie sich die Website an.
+rocket.chat server is not yet installed.	rocketchat	de	Der Rocket.Chat Server ist noch nicht installiert.
 rocket.chat's oauth client-id	rocketchat	de	Rocket.Chat's OAuth Client-ID
 rocket.chat's oauth service-name	rocketchat	de	Rocket.Chat's OAuth Service-Name
 rocketchat	common	de	Rocket.Chat
@@ -77,6 +78,8 @@ url must end with %1	rocketchat	de	URl muss mit %1 enden
 url: http(s)://servername/egroupware/openid/endpoint.php servername needs to match your servername or ip-address. you should use https, but only if secure connection is correctly configured on your server!	rocketchat	de	URL: http(s)://servername/egroupware/openid/endpoint.php, wobei servername Ihrem Servernamen oder Ihrer IP-Adresse entsprechen. In unserem Beispiel wäre es https://testbox.egroupware.org/egroupware/openid/endpoint.php. Wir empfehlen https zu verwenden, wenn eine sichere Verbindung auf dem Server korrekt konfiguriert ist!
 video-chat	rocketchat	de	Video-Chat
 video-conference	rocketchat	de	Video-Konferenz
+would you like to install it now?	rocketchat	de	Wollen Sie ihn jetzt installieren?
+would you like to see installation instructions?	rocketchat	de	Sollen wir die Installationsanleitung anzeigen?
 you can not use http for rocket.chat with egroupware using https! browser do not load mixed content.	rocketchat	de	Sie können nicht http für Rocket.Chat verwenden, wenn EGroupware https benutzt! Internet Browser laden keine gemischten Inhalte.
 you have %1 unread messages from %2	rocketchat	de	Sie haben %1 neue nachrichten von %2
 you need to create a client-identifier and -secret via admin >> openid / oauth2 server >> clients	rocketchat	de	Sie müssen einen Client-Identifier und -Secret über Admin >> OpenID / OAuth2 Server >> Clients erstellen.

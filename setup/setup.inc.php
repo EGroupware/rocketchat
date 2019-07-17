@@ -16,7 +16,7 @@ $setup_info['rocketchat']['version'] = '19.1';
 $setup_info['rocketchat']['app_order'] = 7;
 $setup_info['rocketchat']['enable']  = 1;
 $setup_info['rocketchat']['autoinstall'] = true;	// install automatically on update
-$setup_info['rocketchat']['index'] = array('menuaction' => 'rocketchat.EGroupware\\Rocketchat\\Ui.index&ajax=true');
+$setup_info['rocketchat']['index'] = 'rocketchat.EGroupware\\Rocketchat\\Ui.index&ajax=true';
 $setup_info['rocketchat']['author'] = 'Hadi Nategh';
 $setup_info['rocketchat']['maintainer'] = array(
 	'name'  => 'EGroupware GmbH',
@@ -37,6 +37,7 @@ $setup_info['rocketchat']['hooks']['status-getStatus'] = 'EGroupware\Rocketchat\
 $setup_info['rocketchat']['hooks']['status-get_actions'] = 'EGroupware\Rocketchat\Hooks::get_status_actions';
 $setup_info['rocketchat']['hooks']['config'] = 'EGroupware\Rocketchat\Hooks::config';
 $setup_info['rocketchat']['hooks']['config_validate'] = 'EGroupware\Rocketchat\Hooks::validate';
+$setup_info['rocketchat']['hooks']['config_after_save'] = 'EGroupware\Rocketchat\Hooks::config_after_save';
 $setup_info['rocketchat']['hooks']['framework_avatar_stat'] = 'EGroupware\Rocketchat\Hooks::avatar_stat';
 $setup_info['rocketchat']['hooks']['status-getSearchParticipants'] = 'EGroupware\Rocketchat\Hooks::getSearchParticipants';
 

@@ -51,11 +51,6 @@ class Hooks
 		}
 	}
 
-	public static function session_created($location)
-	{
-
-	}
-
 	/**
 	 * sidebox
 	 */
@@ -73,7 +68,7 @@ class Hooks
 				'target' => '_blank',
 			],
 			[
-				'text'   => 'Install Information',
+				'text'   => 'EGroupware Wiki',
 				'link'   => 'https://github.com/EGroupware/egroupware/wiki/Rocketchat-Integration',
 				'target' => '_blank',
 			],
@@ -82,7 +77,8 @@ class Hooks
 		if ($GLOBALS['egw_info']['user']['apps']['admin'])
 		{
 			$file = Array(
-				'Site Configuration' => Api\Egw::link('/index.php','menuaction=admin.admin_config.index&appname=' . self::APPNAME.'&ajax=true')
+				'Site Configuration' => Api\Egw::link('/index.php','menuaction=admin.admin_config.index&appname=' . self::APPNAME.'&ajax=true'),
+				'Install Information' => Api\Egw::link('/index.php', ['menuaction' => self::APPNAME.'.'.Ui::class.'.install', 'ajax' => 'true']),
 			);
 			if ($data['location'] == 'admin')
 			{
@@ -288,9 +284,22 @@ class Hooks
 	 * Check server url
 	 *
 	 * @param Array $data
+	 * @return array with (changed) data
 	 */
 	public static function config($data)
 	{
+		// do we have an unconfigured Rocket.Chat --> try default url
+		if (($unconfigured = empty($data['server_url'])))
+		{
+			// allow user to store empty url to unconfigure Rocket.Chat
+			if ($data['initial-call'] === false)
+			{
+				Api\Framework::message(lang('Rocket.Chat container or egroupware-rocketchat package needs to be installed to use Rocket.Chat!'), 'info');
+				return $data;
+			}
+			$data['server_url'] = Api\Framework::getUrl('/rocketchat/');
+		}
+
 		try
 		{
 			$api = new Restapi([
@@ -301,6 +310,12 @@ class Hooks
 			{
 				$data['server_status_class'] = 'error';
 				$data['server_status'] = lang('Unable to connect!');
+			}
+			elseif ((!empty($_SERVER['HTTPS']) || $_SERVER['HTTP_X_FORWARDED_PROTOCOL'] === 'https') &&
+				substr($data['server_url'], 0, 7) === 'http://')
+			{
+				$data['server_status_class'] = 'error';
+				$data['server_status'] = lang('You can NOT use http for Rocket.Chat with EGroupware using https! Browser do not load mixed content.');
 			}
 			else
 			{
@@ -313,6 +328,17 @@ class Hooks
 			$data['server_status'] = $e->getMessage();
 			$data['server_status_class'] = 'error';
 		}
+		if ($unconfigured)
+		{
+			if ($data['server_status_class'] === 'error')
+			{
+				Api\Framework::message(lang('Rocket.Chat container or egroupware-rocketchat package needs to be installed to use Rocket.Chat!'), 'info');
+			}
+			else
+			{
+				Api\Framework::message(lang('Connection with default URL succeeded. You need to complete AND store the configuration now.'), 'info');
+			}
+		}
 		return $data;
 	}
 
@@ -320,9 +346,12 @@ class Hooks
 	 * Validate the configuration
 	 *
 	 * @param Array $data
+	 * @return string|null string with error or null on success
 	 */
 	public static function validate($data)
 	{
+		if (empty($data['server_url'])) return null;
+
 		// check if we have a trailing slash
 		if (substr($data['server_url'], -1) !== '/')
 		{
@@ -341,14 +370,34 @@ class Hooks
 			{
 				$error = lang('Unable to connect!');
 			}
+			elseif ((!empty($_SERVER['HTTPS']) || $_SERVER['HTTP_X_FORWARDED_PROTOCOL'] === 'https') &&
+				substr($data['server_url'], 0, 7) === 'http://')
+			{
+				$error = lang('You can NOT use http for Rocket.Chat with EGroupware using https! Browser do not load mixed content.');
+			}
 		}
 		catch (\Exception $ex) {
 			$error = $ex->getMessage();
 		}
 		if (!empty($error))
 		{
-			Api\Etemplate::set_validation_error('server_url', $error, 'newsettings');
-			$GLOBALS['config_error'] = $error;
+			return $GLOBALS['config_error'] = $error;
+		}
+	}
+
+	/**
+	 * Hook called after successful save of site-config --> redirect to rocketchat app
+	 *
+	 * @param array $_content
+	 */
+	public function config_after_save(array $_content)
+	{
+		// if url has been successful saved --> redirect to rocketchat app
+		// we force a full redirect on client-side to fix evtl. necessary CSP
+		if (!empty($_content['newsettings']['server_url']))
+		{
+			Api\Json\Response::get()->redirect(Api\Framework::link('/index.php',
+				'menuaction='.$GLOBALS['egw_info']['apps']['rocketchat']['index'], 'rocketchat'), true);
 		}
 	}
 

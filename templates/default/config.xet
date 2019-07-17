@@ -16,7 +16,7 @@
 					</vbox>
 					<hbox>
 						<url id="newsettings[server_url]" width="300px"/>
-						<description id="newsettings[server_status]" label="Status:" disabled="!@newsettings[server_status]" class="@newsettings[server_status_class]"/>
+						<description id="newsettings[server_status]" trailing_slash="true" label="Status:" disabled="!@newsettings[server_status]" class="@newsettings[server_status_class]"/>
 						<!-- hack to get class propagated: id="newsettings[server_status_class]" -->
 					</hbox>
 				</row>

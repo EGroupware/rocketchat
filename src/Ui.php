@@ -109,8 +109,8 @@ class Ui
 	 */
 	function install()
 	{
-		$tpl = new Api\Etemplate('rocketchat.install');
-		$tpl->exec(self::APPNAME.'.'.self::class.'.install', ['no_install' => true]);
+		$tpl = new Api\Etemplate('rocketchat.install_info');
+		$tpl->exec(self::APPNAME.'.'.self::class.'.install',[]);
 	}
 
 	/**

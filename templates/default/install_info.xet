@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE overlay PUBLIC "-//EGroupware GmbH//eTemplate 2//EN" "http://www.egroupware.org/etemplate2.dtd">
+<!-- $Id$ -->
+<overlay>
+	<template id="rocketchat.install_info.general" template="" lang="" group="0" version="1.5.001">
+		<grid width="100%" spacing="10" overflow="auto">
+			<columns>
+				<column width="150"/>
+				<column width="150"/>
+				<column/>
+			</columns>
+			<rows>
+				<row>
+					<description value="Rocket.Chat needs to be configured and installed."/>
+				</row>
+				<row>
+					<description value="The following tabs are showing the steps of the configuration process in detail." />
+				</row>
+				<row valign="top" height="30">
+					<description value="After installation is finished, you may want to look into some administration details e.g. to configure non-EGroupware accounts or to switch video-chat (Jitsi) off for GDPR reasons."/>
+				</row>
+				<row valign="top">
+					<description value="Step 1: Admin Info" />
+					<description value="Username" />
+					<description value="Please insert a valid EGroupware username (recommended your user) to configure the first administrator of Rocket.Chat. That administrator can add additional EGroupware users as Rocket.Chat admins." />
+				</row>
+				<row valign="top">
+					<description value="Step 2: Organization Info" />
+					<description value="Organization email" />
+					<description value="Please insert a valid email-address which is used for the registration process of Rocket.Chat." />
+				</row >
+				<row valign="top">
+					<description value="Step 3: Server Info" />
+					<description value="Site name" />
+					<description value="The site name is displayed in external Rocket.Chat clients. Specially when using more than one Rocket.Chat. It make sense to choose a meaningful name to identify this chat!" />
+				</row>
+				<row valign="top">
+					<description value="Step 3: Server Info" />
+					<description value="Language" />
+					<description value="Please choose a language which is common for the majority of your users. The language can be changed on MyAccount for each user." />
+				</row>
+				<row valign="top">
+					<description value="Step 4: Register Server" />
+					<description value="Register or keep standalone" />
+					<description value="EGroupware does not yet has a push-service for notifications on smart-phones, but you can use Rocket.Chat cloud services. Please take GDPR into account for your decision." />
+				</row>
+				<row valign="top">
+					<description value="Create OpenID client" />
+					<description value="Only necessary for on-premis installations" />
+					<description value="You need to create a Client-Identifier and -Secret via Admin >> OpenID / OAuth2 server >> Clients" />
+				</row>
+				<row valign="top">
+					<description value="Add custum OAuth" />
+					<description value="Only necessary for on-premis installations" />
+					<description value="For on-premis installations, you need to configure the custom OAuth server. In the EGroupware cloud its already pre-configured!" />
+				</row>
+				<row valign="top" height="50">
+					<description value="GDPR Decision" />
+					<description value="Video-Conference" />
+					<description value="You need to decide if you allow video-chats and screensharing for GDPR reasons. EGroupware does not yet has an own Jitsi-server for video-chats, so we use and enable a public jitsi-server from the open source project Jitsi Meet." />
+				</row>
+				<row>
+					<description value="Rocket.Chat provides lots of user and administration guides and videos. Please have a look on their website."/>
+				</row>
+			</rows>
+		</grid>
+	</template>
+	<template id="rocketchat.install_info.admin" template="" lang="" group="0" version="1.5.001">
+		<grid width="100%" spacing="10" overflow="auto">
+			<columns>
+				<column/>
+			</columns>
+			<rows>
+				<row>
+					<description value="Please insert a valid EGroupware username (recommended your user) to configure the first administrator of Rocket.Chat. That administrator can add additional EGroupware users as Rocket.Chat admins." />
+				</row>
+				<row>
+					<description value="Additionally you should insert a valid email-address, which is used for the registration process of Rocket.Chat." />
+				</row>
+				<row valign="top">
+					<image src="https://www.egroupware.org/wp-content/uploads/2019/06/Admin-Info.png" />
+				</row>
+			</rows>
+		</grid>
+	</template>
+	<template id="rocketchat.install_info.organisation" template="" lang="" group="0" version="1.5.001">
+		<grid width="100%" spacing="10" overflow="auto">
+			<columns>
+				<column/>
+			</columns>
+			<rows>
+				<row>
+					<description value="Organisation Information ist just some text which gets reported to Rocket.Chat via registration. But its not used in EGroupware Rocket.Chat itself."/>
+				</row>
+				<row valign="top">
+					<image src="https://www.egroupware.org/wp-content/uploads/2019/06/Organisation-Info.png" />
+				</row>
+			</rows>
+		</grid>
+	</template>
+	<template id="rocketchat.install_info.server" template="" lang="" group="0" version="1.5.001">
+		<grid width="100%" spacing="10" overflow="auto">
+			<columns>
+				<column/>
+			</columns>
+			<rows>
+				<row>
+					<description value="The site name is displayed in external Rocket.Chat clients. Specially when using more than one Rocket.Chat. It make sense to choose a meaningful name to identify this chat!" />
+				</row>
+				<row>
+					<description value="Please choose a language which is common for the majority of your users. The language can be changed on MyAccount for each user." />
+				</row>
+				<row valign="top">
+					<image src="https://www.egroupware.org/wp-content/uploads/2019/06/Server-Info.png" />
+				</row>
+			</rows>
+		</grid>
+	</template>
+	<template id="rocketchat.install_info.register" template="" lang="" group="0" version="1.5.001">
+		<grid width="100%" spacing="10" overflow="auto">
+			<columns>
+				<column/>
+			</columns>
+			<rows>
+				<row>
+					<description value="You need to decide, if you like to register your Rocket.Chat to get push-notifications for smart-phones. In that case all inserted information of the configuration gets sent to Rocket.Chat!"/>
+				</row>
+				<row>
+					<description value="EGroupware does not yet has a push-service for notifications on smart-phones, but you can use Rocket.Chat cloud services. Please take GDPR into account for your decision." />
+				</row>
+				<row>
+					<description value="If you don't need push-notifications, you can skip registration and click on keep standalone ... Rocket.Chat in EGroupware will still work."/>
+				</row>
+				<row valign="top">
+					<image src="https://www.egroupware.org/wp-content/uploads/2019/06/Register-Server-Push.png" />
+				</row>
+			</rows>
+		</grid>
+	</template>
+	<template id="rocketchat.install_info.done" template="" lang="" group="0" version="1.5.001">
+		<grid width="100%" spacing="10" overflow="auto">
+			<columns>
+				<column/>
+			</columns>
+			<rows>
+				<row>
+					<description value="Rocket.Chat is succesfully installed, you can now configure additional parameters e.g. switch video-chat off or add non-Egroupware user."/>
+				</row>
+				<row valign="top">
+					<image src="https://www.egroupware.org/wp-content/uploads/2019/06/Setup-Done.png" />
+				</row>
+			</rows>
+		</grid>
+	</template>
+	<template id="rocketchat.install_info.fileUpload" template="" lang="" group="0" version="1.5.001">
+		<grid width="100%" spacing="10" overflow="auto">
+			<columns>
+				<column/>
+			</columns>
+			<rows>
+				<row>
+					<description value="Here we can enable file uploads and configuring max file size, valid media types and more. Storage type should be set to FileSystem."/>
+				</row>
+				<row valign="top">
+					<image src="https://www.egroupware.org/wp-content/uploads/2019/07/File-Upload.png" />
+				</row>
+			</rows>
+		</grid>
+	</template>
+	<template id="rocketchat.install_info.openid" template="" lang="" group="0" version="1.5.001">
+		<grid width="100%" spacing="10" overflow="auto">
+			<columns>
+				<column/>
+			</columns>
+			<rows>
+				<row>
+					<description value="You need to create a Client-Identifier and -Secret via Admin >> OpenID / OAuth2 server >> Clients"/>
+				</row>
+				<row>
+					<description value="Please insert a name for your Client-Identifier e.g. EGroupware Rocket.Chat and an Identifier - recommended Rocket.Chat"/>
+				</row>
+				<row>
+					<description value="This Client-Identifier needs to be inserted in the next step where you add the custum Oauth server EGroupware." />
+				</row>
+				<row>
+					<description value="The secret should be a random string (recommended minimum 12 chars), which is used and inserted in the custom Oauth server configuration together with the Client-Identifier in the next step!" />
+				</row>
+				<row>
+					<description value="The Redirect URI needs to match your servername e.g. testbox.egroupware.org in my case. We recommend to use https, but only if secure connection is correctly configured!" />
+				</row>
+				<row valign="top" height="30">
+					<description value="For Allowed grants you need to choose: Authorization Code, Refresh Token and Implicit. " />
+				</row>
+				<row valign="top">
+					<image src="https://www.egroupware.org/wp-content/uploads/2019/07/OpenID.png" />
+				</row>
+			</rows>
+		</grid>
+	</template>
+	<template id="rocketchat.install_info.oauth" template="" lang="" group="0" version="1.5.001">
+		<grid width="100%" spacing="10" overflow="auto">
+			<columns>
+				<column/>
+			</columns>
+			<rows>
+				<row height="30">
+					<description value="Please go back to Rocket.Chat into Administration >> OAuth and click [Add custom oauth]. Give it a name eg. EGroupware." />
+				</row>
+				<row valign="top">
+					<image src="https://www.egroupware.org/wp-content/uploads/2019/07/OAuth.png" />
+				</row>
+				<row height="60">
+					<description value="At the top of the page the custom Oauth server EGroupware is added and you need to insert several values. Please check all rows where the image shows at the right site a red box to mark changes. We'are just listing a few important values, but all need to be inserted correctly!"/>
+				</row>
+				<row>
+					<description value="URL: http(s)://servername/egroupware/openid/endpoint.php Servername needs to match your servername or IP-address. You should use https, but only if secure connection is correctly configured on your server! " />
+				</row>
+
+				<row valign="top">
+					<image src="https://www.egroupware.org/wp-content/uploads/2019/07/OAuth2.png" />
+				</row>
+				<row height="60">
+					<description value="Id needs to be the Client-Identifier you previously configured for the OpenID Client! Similar is valid for the secret, If you can't remember the secret you choosed previously, you may re-generate and save the secret in the EGroupware OpenID client. See also previous tab [Create OpenID client]" />
+				</row>
+				<row valign="top">
+					<image src="https://www.egroupware.org/wp-content/uploads/2019/07/OAuth3.png" />
+				</row>
+				<row valign="top" height="30">
+					<description value="Please check also our technical documentation page on Github: https://github.com/EGroupware/openid" />
+				</row>
+			</rows>
+		</grid>
+	</template>
+	<template id="rocketchat.install_info.video" template="" lang="" group="0" version="1.5.001">
+		<grid width="100%" spacing="10" overflow="auto">
+			<columns>
+				<column/>
+			</columns>
+			<rows>
+				<row>
+					<description value="You need to decide if you allow video-chats and screen-sharing for GDPR reasons. EGroupware does not yet has an own Jitsi-server for video-chats, so we use and enable a public jitsi-server from the open source project Jitsi Meet. Please take GDPR into account for your decision, we haven't found neither any declaration of data protection on their website nor where the servers are located." />
+				</row>
+
+				<row valign="top">
+					<image src="https://www.egroupware.org/wp-content/uploads/2019/06/Video-Konferenz.png" />
+				</row>
+			</rows>
+		</grid>
+	</template>
+	<template id="rocketchat.install_info.non-user" template="" lang="" group="0" version="1.5.001">
+		<grid width="100%" spacing="10" overflow="auto">
+			<columns>
+				<column/>
+			</columns>
+			<rows>
+				<row>
+					<description value="IF you like to allow non-EGroupware users to take part in your Rocket.Chat you can enable in Account Settings to show the Default Login Form."/>
+				</row>
+				<row>
+					<description value="By default we show only: EGroupware users click here and not username and password fields for external users! EGroupware users should always use the provided click here link!"/>
+				</row>
+				<row valign="top">
+					<image src="https://www.egroupware.org/wp-content/uploads/2019/06/Account-Settings.png" />
+				</row>
+				<row>
+					<description value="2. step is to create the non-users manually in administration users. you need to specify username and password. depending on the settings to allow password change or not, please allow or deny that the user can change the password. by default its switched of, because the password change in rocket.chat will not change the user password of egroupware!"/>
+				</row>
+				<row>
+					<description value="The system will sent an email to the given email-address including the login details for Rocket.Chat." />
+				</row>
+				<row valign="top">
+					<image src="https://www.egroupware.org/wp-content/uploads/2019/06/Create-account.png" />
+				</row>
+			</rows>
+		</grid>
+	</template>
+	<template id="rocketchat.install_info" template="" lang="" group="0" version="19.1">
+		<grid height="100%" width="100%">
+			<columns>
+				<column/>
+				<column/>
+			</columns>
+			<rows>
+				<row class="dialogTabs">
+					<tabbox id="tabs" align_tabs="v" span="all">
+						<tabs>
+							<tab id="rocketchat.install_info.general" label="Installation"/>
+							<tab id="rocketchat.install_info.admin" label="Admin Info"/>
+							<tab id="rocketchat.install_info.organisation" label="Organisation Info"/>
+							<tab id="rocketchat.install_info.server" label="Server Info"/>
+							<tab id="rocketchat.install_info.register" label="Register Server"/>
+							<tab id="rocketchat.install_info.done" label="Installation finished"/>
+							<tab id="rocketchat.install_info.fileUpload" label="File Upload"/>
+							<tab id="rocketchat.install_info.openid" label="Create OpenID client"/>
+							<tab id="rocketchat.install_info.oauth" label="Add custum OAuth"/>
+							<tab id="rocketchat.install_info.video" label="Video-Chat"/>
+							<tab id="rocketchat.install_info.non-user" label="Add Non-EGroupware user"/>
+						</tabs>
+						<tabpanels>
+							<template id="rocketchat.install_info.general"/>
+							<template id="rocketchat.install_info.admin"/>
+							<template id="rocketchat.install_info.organisation"/>
+							<template id="rocketchat.install_info.server" />
+							<template id="rocketchat.install_info.register"/>
+							<template id="rocketchat.install_info.done"/>
+							<template id="rocketchat.install_info.fileUpload"/>
+							<template id="rocketchat.install_info.openid"/>
+							<template id="rocketchat.install_info.oauth"/>
+							<template id="rocketchat.install_info.video"/>
+							<template id="rocketchat.install_info.non-user"/>
+						</tabpanels>
+					</tabbox>
+				</row>
+			</rows>
+		</grid>
+	</template>
+</overlay>

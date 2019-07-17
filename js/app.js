@@ -44,8 +44,15 @@ app.classes.rocketchat = AppJS.extend(
 			case 'rocketchat.index':
 				egw.loading_prompt('rocketchat-loading', true, egw.lang('Loading Rocket.Chat ...'));
 				this.mainframe = this.et2.getWidgetById('iframe').getDOMNode();
+				var self = this;
 				jQuery(this.mainframe).on('load', function(){
 					egw.loading_prompt('rocketchat-loading', false);
+					window.setTimeout(function(){
+						if (jQuery('.setup-wizard', self.mainframe.contentWindow.document))
+						{
+							self.install_info();
+						}
+					}, 500);
 				});
 				window.addEventListener('message', jQuery.proxy(this.messageHandler, this));
 				break;
@@ -395,6 +402,7 @@ app.classes.rocketchat = AppJS.extend(
 	{
 		var w = window;
 		egw.loading_prompt('install-rocketchat', true, egw.lang('Please wait while your Rocket.Chat server is installed ...'));
+		this.install_info();
 		jQuery.ajax({
 			url: '/rocketchat/',
 			success: function(_data, _text, _xheader){
@@ -409,5 +417,15 @@ app.classes.rocketchat = AppJS.extend(
 				egw.message(_xheader.responseText, 'error');
 			}
 		});
+	},
+
+	install_info: function () {
+		et2_dialog.show_dialog(function(_button){
+			if (_button == et2_dialog.YES_BUTTON)
+			{
+				egw.openPopup(egw.link('/index.php', { menuaction: "rocketchat.EGroupware\\rocketchat\\Ui.install"}))
+			}
+			return true;
+		},"Would you like to see installation instructions?", "Instructions", function(){});
 	}
 });

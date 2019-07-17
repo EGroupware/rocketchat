@@ -42,7 +42,7 @@ app.classes.rocketchat = AppJS.extend(
 		switch (name)
 		{
 			case 'rocketchat.index':
-				egw.loading_prompt('rocketchat-loading', true, egw.lang('Loading Rocket.Chat ...'));
+				egw.loading_prompt('rocketchat-loading', true, this.egw.lang('Loading Rocket.Chat ...'));
 				this.mainframe = this.et2.getWidgetById('iframe').getDOMNode();
 				var self = this;
 				jQuery(this.mainframe).on('load', function(){
@@ -401,8 +401,9 @@ app.classes.rocketchat = AppJS.extend(
 	install: function()
 	{
 		var w = window;
+		var self = this;
 		this.install_info(function(){
-			egw.loading_prompt('install-rocketchat', true, egw.lang('Please wait while your Rocket.Chat server is installed ...'));
+			egw.loading_prompt('install-rocketchat', true, self.egw.lang('Please wait while your Rocket.Chat server is installed ...'));
 			jQuery.ajax({
 				url: '/rocketchat/',
 				success: function(_data, _text, _xheader){
@@ -429,6 +430,6 @@ app.classes.rocketchat = AppJS.extend(
 			}
 			if (typeof callback == 'function') callback.call();
 			return true;
-		},"Would you like to see installation instructions?", "Instructions", function(){});
+		},"Would you like to see installation instructions?", "Instructions");
 	}
 });

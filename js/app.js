@@ -48,7 +48,7 @@ app.classes.rocketchat = AppJS.extend(
 				jQuery(this.mainframe).on('load', function(){
 					egw.loading_prompt('rocketchat-loading', false);
 					window.setTimeout(function(){
-						if (jQuery('.setup-wizard', self.mainframe.contentWindow.document))
+						if (jQuery('.setup-wizard', self.mainframe.contentWindow.document).length > 0)
 						{
 							self.install_info();
 						}

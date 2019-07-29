@@ -136,7 +136,7 @@ class Hooks
 		unset($location);	// not used, but required by function signature
 
 		$links = array(
-			'add' => array(
+			'view' => array(
 				'menuaction' => 'rocketchat.\\EGroupware\\Rocketchat\\Ui.chat',
 				'width' => 500,
 				'height' => 450

@@ -137,7 +137,7 @@ app.classes.rocketchat = AppJS.extend(
 	 */
 	chatPopupLookup: function(_id, _data)
 	{
-		var params = jQuery.extend({}, egw.link_get_registry('rocketchat', 'add'));
+		var params = jQuery.extend({}, egw.link_get_registry('rocketchat', 'view'));
 		params.path = _data.path;
 		var popup = window.framework.popups_get(this.appname, {name:"^"+_id+"$"});
 		if (!popup || popup.length == 0)

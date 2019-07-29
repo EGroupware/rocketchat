@@ -39,15 +39,16 @@ organisation info	rocketchat	de	Organisationsinformationen
 organisation information ist just some text which gets reported to rocket.chat via registration. but its not used in egroupware rocket.chat itself.	rocketchat	de	Organisationsinformationen sind reine Textfelder, die bei der Registrierung an Rocket.Chat gemeldet werden. EGroupware selbst verwendet diese nicht im Rocket.Chat.
 organization email	rocketchat	de	Organisations-E-Mail
 please check also our technical documentation page on github: https://github.com/egroupware/openid	rocketchat	de	Bitte beachten Sie auch unsere technische Dokumentation auf Github: https://github.com/EGroupware/openid
-please choose a language which is common for the majority of your users. the language can be changed on myaccount for each user.	rocketchat	de	Bitte wählen Sie eine Sprache, die für die Mehrheit Ihrer Benutzer passt. Die Sprache kann über MeinKonto für jeden Benutzer geändert werden.
+please choose a language which is common for the majority of your users. the language can be changed on myaccount for each user.	rocketchat	de	Bitte wählen Sie eine Sprache, die für die Mehrheit Ihrer Benutzer passt. Die Sprache kann über Mein Konto für jeden Benutzer geändert werden.
 please go back to rocket.chat into administration >> oauth and click [add custom oauth]. give it a name eg. egroupware.	rocketchat	de	Bitte gehen Sie zurück zur Rocket.Chat Administration >> OAuth und klicken Sie auf [Benutzerdefiniertes OAuth-Konto hinzufügen]. Geben Sie einen Namen ein, z.B. EGroupware.
 please insert a name for your client-identifier e.g. egroupware rocket.chat and an identifier - recommended rocket.chat	rocketchat	de	Bitte geben Sie einen Namen für Ihren Client-Identifier ein, z.B. EGroupware Rocket.Chat und einen Identifier - empfohlen Rocket.Chat.
 please insert a valid egroupware username (recommended your user) to configure the first administrator of rocket.chat. that administrator can add additional egroupware users as rocket.chat admins.	rocketchat	de	Bitte geben Sie einen gültigen EGroupware-Benutzernamen (empfohlen der eigene Benutzer) ein, um den ersten Administrator von Rocket.Chat zu konfigurieren. Dieser Administrator kann zusätzliche EGroupware-Benutzer als Rocket.Chat-Administratoren hinzufügen.
 please insert a valid email-address which is used for the registration process of rocket.chat.	rocketchat	de	Geben Sie bitte eine gültige E-Mail-Adresse ein, die für den Registrierungsprozess von Rocket.Chat verwendet wird.
 please wait while your rocket.chat server is installed ...	rocketchat	de	Bitte warten Sie, während Ihr Rocket.Chat-Server installiert wird ...
-register or keep standalone	rocketchat	de	Registrierung aktivieren oder nicht
+register or keep standalone	rocketchat	de	Registrieren oder als eigenständig betreiben
 register server	rocketchat	de	Server Registrieren
-rocket.chat container or egroupware-rocketchat package needs to be installed to use rocket.chat!	rocketchat	de	Rocket.Chat Container oder egroupware-rocketchat Paket muss installiert sein um Rocket.Chat benutzen zu könnten!
+rocket.chat	rocketchat	de	Rocket.Chat
+rocket.chat container or egroupware-rocketchat package needs to be installed to use rocket.chat!	rocketchat	de	Der Rocket.Chat-Container oder das egroupware-rocketchat-Paket muss installiert sein, um Rocket.Chat benutzen zu können!
 rocket.chat is succesfully installed, you can now configure additional parameters e.g. switch video-chat off or add non-egroupware user.	rocketchat	de	Rocket.Chat ist erfolgreich installiert, Sie können nun zusätzliche Parameter konfigurieren, z.B. Video-Chat ausschalten oder Nicht-EGroupware Benutzer hinzufügen.
 rocket.chat needs to be configured and installed.	rocketchat	de	Rocket.Chat muss konfiguriert und installiert werden.
 rocket.chat provides lots of user and administration guides and videos. please have a look on their website.	rocketchat	de	Rocket.Chat bietet viele Benutzer- und Administrationsanleitungen und Videos. Bitte schauen Sie sich die Website an.
@@ -59,7 +60,7 @@ rocketchat operation failed!	rocketchat	de	Ein Fehler ist aufgetreten im Rocket.
 server info	rocketchat	de	Server Information
 server url	rocketchat	de	Server URL
 site name	rocketchat	de	Instanz Name
-sorry, rocket.chat app needs to be configured by an egroupware administrator!	rocketchat	de	Entschuldigen Sie bitte, Rocket.Chat App muss erst von einem EGroupware Administrator konfiguriert werden!
+sorry, rocket.chat app needs to be configured by an egroupware administrator!	rocketchat	de	Entschuldigen Sie bitte, die Rocket.Chat-App muss erst von einem EGroupware Administrator konfiguriert werden!
 sorry, rocket.chat app needs to be configured first!	rocketchat	de	Entschuldigen Sie bitte, Rocket.Chat App muss erst von einem EGroupware Administrator konfiguriert werden!
 status:	rocketchat	de	Status
 step 1: admin info	rocketchat	de	Schritt 1: Admin Informationen

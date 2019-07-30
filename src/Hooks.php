@@ -426,7 +426,8 @@ class Hooks
 				$response['statusDefault'] = $response['statusDefault'] ?  $response['statusDefault'] : $response['status'];
 			}
 			return [
-				'class' => $response['statusDefault'] != 'error' ? 'stat1 '.$response['statusDefault']: '',
+				'class' => $response['statusDefault'] != 'error' ? 'stat1 '.
+					($response['statusDefault'] ? $response['statusDefault'] : 'noconnection') : 'noconnection',
 				'body' => ''
 			];
 		} catch (\Exception $ex) {

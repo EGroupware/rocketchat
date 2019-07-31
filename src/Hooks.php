@@ -425,9 +425,19 @@ class Hooks
 				$response = $api->me();
 				$response['statusDefault'] = $response['statusDefault'] ?  $response['statusDefault'] : $response['status'];
 			}
+			$status = $response['statusDefault'] ? $response['statusDefault'] : 'noconnection';
+			switch ($status)
+			{
+				case 'error':
+				case 'noconnection':
+					$title = lang("Connection error to Rocket.Chat server!");
+					break;
+				default:
+					$title = lang($status);
+			}
 			return [
-				'class' => $response['statusDefault'] != 'error' ? 'stat1 '.
-					($response['statusDefault'] ? $response['statusDefault'] : 'noconnection') : 'noconnection',
+				'class' => $response['statusDefault'] != 'error' ? 'stat1 '.$status : 'noconnection',
+				'title' =>  lang($title),
 				'body' => ''
 			];
 		} catch (\Exception $ex) {

@@ -433,7 +433,7 @@ class Hooks
 					$title = lang("Connection error to Rocket.Chat server!");
 					break;
 				default:
-					$title = lang($status);
+					$title = $response['statusText'] != "" ? $response['statusText'] : lang($status);
 			}
 			return [
 				'class' => $response['statusDefault'] != 'error' ? 'stat1 '.$status : 'noconnection',

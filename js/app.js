@@ -46,13 +46,12 @@ app.classes.rocketchat = AppJS.extend(
 				this.mainframe = this.et2.getWidgetById('iframe').getDOMNode();
 				var self = this;
 				jQuery(this.mainframe).on('load', function(){
-					egw.loading_prompt('rocketchat-loading', false);
-					window.setTimeout(function(){
-						if (jQuery('.setup-wizard', self.mainframe.contentWindow.document).length > 0)
-						{
-							self.install_info();
-						}
-					}, 500);
+					self._isRocketchatLoaded().then(function(){
+						egw.loading_prompt('rocketchat-loading', false);
+					},
+					function(){
+						self.mainframe.src = self.mainframe.src;
+					});
 				});
 				window.addEventListener('message', jQuery.proxy(this.messageHandler, this));
 				break;
@@ -61,6 +60,30 @@ app.classes.rocketchat = AppJS.extend(
 
 		}
 		window.addEventListener('message', jQuery.proxy(this.messageHandler, this));
+	},
+
+	_isRocketchatLoaded: function()
+	{
+		var self = this;
+		return new Promise (function(_resolve, _reject){
+			window.setTimeout(function(){
+				try {
+					if (jQuery('.setup-wizard', self.mainframe.contentWindow.document).length > 0)
+					{
+						self.install_info();
+						_resolve();
+					}
+					else if (jQuery('#rocket-chat', self.mainframe.contentWindow.document).length > 0)
+					{
+						_resolve();
+					}
+				}
+				catch(e){
+					_resolve();
+				}
+				_reject();
+			}, 1000);
+		});
 	},
 
 	/**

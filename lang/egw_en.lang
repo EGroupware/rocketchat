@@ -8,6 +8,7 @@ after installation is finished, you may want to look into some administration de
 at the top of the page the custom oauth server egroupware is added and you need to insert several values. please check all rows where the image shows at the right site a red box to mark changes. we'are just listing a few important values, but all need to be inserted correctly!	rocketchat	en	At the top of the page the custom Oauth server EGroupware is added and you need to insert several values. Please check all rows where the image shows at the right site a red box to mark changes. We'are just listing a few important values, but all need to be inserted correctly!
 authentication	rocketchat	en	Authentication
 by default we show only: egroupware users click here and not username and password fields for external users! egroupware users should always use the provided click here link!	rocketchat	en	By default we show only: EGroupware users click here and not username and password fields for external users! EGroupware users should always use the provided click here link!
+connection error to rocket.chat server!	rocketchat	en	Connection error to Rocket.Chat server!
 connection with default url succeeded. you need to complete and store the configuration now.	rocketchat	en	Connection with default URL succeeded. You need to complete AND store the configuration now.
 create openid client	rocketchat	en	Create OpenID client
 do you want to install	rocketchat	en	Do you want to install

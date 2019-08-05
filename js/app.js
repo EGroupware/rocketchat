@@ -73,7 +73,7 @@ app.classes.rocketchat = AppJS.extend(
 						self.install_info();
 						_resolve();
 					}
-					else if (jQuery('#rocket-chat', self.mainframe.contentWindow.document).length > 0)
+					else if (jQuery('body', self.mainframe.contentWindow.document).length > 0)
 					{
 						_resolve();
 					}

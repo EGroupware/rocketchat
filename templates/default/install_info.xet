@@ -50,7 +50,7 @@
 					<description value="You need to create a Client-Identifier and -Secret via Admin >> OpenID / OAuth2 server >> Clients" />
 				</row>
 				<row valign="top">
-					<description value="Add custum OAuth" />
+					<description value="Add custom OAuth" />
 					<description value="Only necessary for on-premis installations" />
 					<description value="For on-premis installations, you need to configure the custom OAuth server. In the EGroupware cloud its already pre-configured!" />
 				</row>
@@ -180,7 +180,7 @@
 					<description value="Please insert a name for your Client-Identifier e.g. EGroupware Rocket.Chat and an Identifier - recommended Rocket.Chat"/>
 				</row>
 				<row>
-					<description value="This Client-Identifier needs to be inserted in the next step where you add the custum Oauth server EGroupware." />
+					<description value="This Client-Identifier needs to be inserted in the next step where you add the custom Oauth server EGroupware." />
 				</row>
 				<row>
 					<description value="The secret should be a random string (recommended minimum 12 chars), which is used and inserted in the custom Oauth server configuration together with the Client-Identifier in the next step!" />
@@ -292,7 +292,7 @@
 							<tab id="rocketchat.install_info.done" label="Installation finished"/>
 							<tab id="rocketchat.install_info.fileUpload" label="File Upload"/>
 							<tab id="rocketchat.install_info.openid" label="Create OpenID client"/>
-							<tab id="rocketchat.install_info.oauth" label="Add custum OAuth"/>
+							<tab id="rocketchat.install_info.oauth" label="Add custom OAuth"/>
 							<tab id="rocketchat.install_info.video" label="Video-Chat"/>
 							<tab id="rocketchat.install_info.non-user" label="Add Non-EGroupware user"/>
 						</tabs>

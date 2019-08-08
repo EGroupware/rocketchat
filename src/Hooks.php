@@ -191,7 +191,7 @@ class Hooks
 			$logged_in = Api\Cache::getSession(self::APPNAME, 'logged_in', function() use ($api)
 			{
 				try {
-					$api->login($GLOBALS['egw_info']['user']['account_lid'], $_POST['passwd']);
+					$api->login($GLOBALS['egw_info']['user']['account_lid'], base64_decode(Api\Cache::getSession('phpgwapi', 'password')));
 					return true;
 				}
 				catch (\Exception $ex) {
@@ -412,7 +412,7 @@ class Hooks
 			$logged_in = Api\Cache::getSession(self::APPNAME, 'logged_in', function() use ($api)
 			{
 				try {
-					$api->login($GLOBALS['egw_info']['user']['account_lid'], $_POST['passwd']);
+					$api->login($GLOBALS['egw_info']['user']['account_lid'], base64_decode(Api\Cache::getSession('phpgwapi', 'password')));
 					return true;
 				}
 				catch (\Exception $ex) {

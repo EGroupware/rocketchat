@@ -408,6 +408,7 @@ class Hooks
 	public static function avatar_stat()
 	{
 		try{
+			if (empty(self::getSiteUrl())) throw new \Exception('Rocketchat is not configured!');
 			$api = new Restapi();
 			$logged_in = Api\Cache::getSession(self::APPNAME, 'logged_in', function() use ($api)
 			{

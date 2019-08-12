@@ -26,6 +26,7 @@ function rocketchat_realtime_api (_url)
 		{
 			this.socket.onopen = jQuery.proxy(this._onopen, this);
 			this.socket.onmessage = jQuery.proxy(this._onmessage, this);
+			this.socket.onclose = jQuery.proxy(this._onclose, this);
 		}
 	} catch (e) {
 		console.log(e);
@@ -65,10 +66,20 @@ rocketchat_realtime_api.prototype._send = function (_request) {
 	{
 		this.socket.send(JSON.stringify(_request));
 	}
-	else
+	else if (this.socket.readyState == 3)
 	{
 		console.log("Socket connection is not ready or it's closed already");
+		rocketchat_realtime_api.call(this, this.url);
 	}
+};
+
+
+/**
+ * On close event, happens when the connection is getting closed from server
+ */
+rocketchat_realtime_api.prototype._close = function (_request) {
+	console.log("Socket connection is not ready or it's closed already");
+	rocketchat_realtime_api.call(this, this.url);
 };
 
 /**

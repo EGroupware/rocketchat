@@ -287,12 +287,13 @@ class Restapi
 	/**
 	 * Get info / version from Rocket.Chat API
 	 *
-	 * @return array eg. json_encode('{"info":{"version":"1.0.0-develop"},"success":true}')
+	 * @return array eg. {"info":{"version":"1.0.0-develop"},"success":true} or
+	 *	if Rocket.Chat is powered off: {"version":"n\/a","powered":"off","success":true}
 	 * @throws \Exception on connection error
 	 */
 	public function info()
 	{
-		return $this->api_call('info');
+		return $this->api_call('/api/info');
 	}
 
 	/**

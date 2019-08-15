@@ -17,7 +17,7 @@ app.classes.rocketchat = AppJS.extend(
 {
 	appname: 'rocketchat',
 
-	api: {},
+	api: undefined,
 
 	updateInterval: 2000,
 	rocketchat: {},
@@ -145,7 +145,7 @@ app.classes.rocketchat = AppJS.extend(
 					}
 					break;
 				default:
-					console.log(e)
+					console.log(e);
 					break;
 			}
 		}
@@ -302,10 +302,21 @@ app.classes.rocketchat = AppJS.extend(
 		egw.json("EGroupware\\Rocketchat\\Hooks::ajax_getServerUrl", [], function (response){
 			if (response && response.server_url)
 			{
-				var url = response.server_url.replace(/^(https?:\/\/)?/, (response.server_url.substr(0,5) == 'https' ? 'wss://' : 'ws://'))+'websocket';
-				self.api = new rocketchat_realtime_api(url);
+				var url = response.server_url;
 				var latest = [];
 				window.setInterval(function(){
+					// check if we already have a connection
+					if (!self.api) {
+						// query Rocket.Chat /api/info first
+						jQuery.ajax(url+'api/info').done(function(_response) {
+							// only open websocket, if Rocket.Chat is not powered off
+							if (!_response.powered || _response.powered !== 'off') {
+								self.api = new rocketchat_realtime_api(
+									url.replace(/^(https?:\/\/)?/, (url.substr(0,5) == 'https' ? 'wss://' : 'ws://'))+'websocket');
+							}
+						});
+						return;	// check again in next interval
+					}
 					self.api.getSubscriptions().then(function(_data){
 						if (_data && _data.msg === 'result' && _data.result.length > 0)
 						{
@@ -337,7 +348,7 @@ app.classes.rocketchat = AppJS.extend(
 							}
 
 						}
-					}, function(_error){console.log(_error)});
+					}, function(_error){console.log(_error);});
 					self.api.subscribeToNotifyLogged('user-status').then(function(_data){
 						if (_data)
 						{
@@ -359,7 +370,7 @@ app.classes.rocketchat = AppJS.extend(
 								});
 							}
 						}
-					}, function(_error){console.log(_error)});
+					}, function(_error){console.log(_error);});
 				}, self.updateInterval);
 			}
 		}).sendRequest();
@@ -457,7 +468,7 @@ app.classes.rocketchat = AppJS.extend(
 		et2_dialog.show_dialog(function(_button){
 			if (_button == et2_dialog.YES_BUTTON)
 			{
-				egw.openPopup(egw.link('/index.php', { menuaction: "rocketchat.EGroupware\\rocketchat\\Ui.install"}))
+				egw.openPopup(egw.link('/index.php', { menuaction: "rocketchat.EGroupware\\rocketchat\\Ui.install"}));
 			}
 			if (typeof callback == 'function') callback.call();
 			return true;

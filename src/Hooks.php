@@ -188,6 +188,12 @@ class Hooks
 		$stat = [];
 		try{
 			$api = new Restapi();
+			// check if Rocket.Chat instance is running / not powered off
+			$info = $api->info();
+			if (!empty($info['powered']) && $info['powered'] === 'off')
+			{
+				return [];	// if powered off --> noone is online, no need to power on now
+			}
 			$logged_in = Api\Cache::getSession(self::APPNAME, 'logged_in', function() use ($api)
 			{
 				try {
@@ -410,6 +416,17 @@ class Hooks
 		try{
 			if (empty(self::getSiteUrl())) throw new \Exception('Rocketchat is not configured!');
 			$api = new Restapi();
+			// check if Rocket.Chat instance is running / not powered off
+			$info = $api->info();
+			if (!empty($info['powered']) && $info['powered'] === 'off')
+			{
+				// if powered off --> noone is online, no need to power on now
+				return [
+					'class' => 'stat1 offline',
+					'title' => lang('Offline'),
+					'body'  => '',
+				];
+			}
 			$logged_in = Api\Cache::getSession(self::APPNAME, 'logged_in', function() use ($api)
 			{
 				try {

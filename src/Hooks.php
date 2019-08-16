@@ -171,7 +171,8 @@ class Hooks
 	public static function getSiteUrl ()
 	{
 		$config = Api\Config::read('rocketchat');
-		return $config['server_url'];
+		// deal with just /rocketchat/ --> http(s)://domain.com/rocketchat/
+		return Api\Framework::getUrl($config['server_url']);
 	}
 
 	/**
@@ -188,15 +189,15 @@ class Hooks
 		$stat = [];
 		try{
 			$api = new Restapi();
-			// check if Rocket.Chat instance is running / not powered off
-			$info = $api->info();
-			if (!empty($info['powered']) && $info['powered'] === 'off')
-			{
-				return [];	// if powered off --> noone is online, no need to power on now
-			}
 			$logged_in = Api\Cache::getSession(self::APPNAME, 'logged_in', function() use ($api)
 			{
 				try {
+					// check if Rocket.Chat instance is running / not powered off
+					$info = $api->info();
+					if (!empty($info['powered']) && $info['powered'] === 'off')
+					{
+						return false;	// if powered off --> noone is online, no need to power on now
+					}
 					$api->login($GLOBALS['egw_info']['user']['account_lid'], base64_decode(Api\Cache::getSession('phpgwapi', 'password')));
 					return true;
 				}

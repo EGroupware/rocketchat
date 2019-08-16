@@ -11,6 +11,7 @@
 
 namespace EGroupware\Rocketchat\Api;
 
+use EGroupware\Api;
 use EGroupware\Api\Config;
 use EGroupware\Api\Cache;
 use EGroupware\Rocketchat\Exception;
@@ -78,7 +79,9 @@ class Restapi
 	{
 		$this->config = Config::read('rocketchat');
 		$this->data = array_merge([
-			'api_path' => $this->config['server_url'] ? $this->config['server_url'].self::API_URL : self::DEFAULT_SERVER_URL.self::API_URL,
+			'api_path' => $this->config['server_url'] ?
+				Api\Framework::getUrl($this->config['server_url']).self::API_URL :
+				self::DEFAULT_SERVER_URL.self::API_URL,
 			'user' => \EGroupware\Status\Hooks::getUserName(),
 			'authentication' => $this->config['authentication'],
 			'oauth_client_id' => $this->config['oauth_client_id'],
@@ -110,8 +113,8 @@ class Restapi
 	{
 		if ($_api_path[0] == '/')
 		{
-			$full_path = substr($this->config['server_url'], -1) == '/' ?
-					substr($this->config['server_url'], 0,-1).$_api_path : $this->config['server_url'].$_api_path;
+			$full_path = Api\Framework::getUrl(substr($this->config['server_url'], -1) == '/' ?
+				substr($this->config['server_url'], 0,-1) : $this->config['server_url']).$_api_path;
 		}
 		else
 		{

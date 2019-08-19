@@ -7,13 +7,16 @@ administration panel	rocketchat	en	Administration Panel
 after installation is finished, you may want to look into some administration details e.g. to configure non-egroupware accounts or to switch video-chat (jitsi) off for gdpr reasons.	rocketchat	en	After installation is finished, you may want to look into some administration details e.g. to configure non-EGroupware accounts or to switch video-chat (Jitsi) off for GDPR reasons.
 at the top of the page the custom oauth server egroupware is added and you need to insert several values. please check all rows where the image shows at the right site a red box to mark changes. we'are just listing a few important values, but all need to be inserted correctly!	rocketchat	en	At the top of the page the custom Oauth server EGroupware is added and you need to insert several values. Please check all rows where the image shows at the right site a red box to mark changes. We'are just listing a few important values, but all need to be inserted correctly!
 authentication	rocketchat	en	Authentication
+away	common	en	Away
+busy	common	en	Busy
 by default we show only: egroupware users click here and not username and password fields for external users! egroupware users should always use the provided click here link!	rocketchat	en	By default we show only: EGroupware users click here and not username and password fields for external users! EGroupware users should always use the provided click here link!
-connection error to rocket.chat server!	rocketchat	en	Connection error to Rocket.Chat server!
+connection error to rocket.chat server!	common	en	Connection error to Rocket.Chat server!
 connection with default url succeeded. you need to complete and store the configuration now.	rocketchat	en	Connection with default URL succeeded. You need to complete AND store the configuration now.
 create openid client	rocketchat	en	Create OpenID client
 do you want to install	rocketchat	en	Do you want to install
 do you want to install?	rocketchat	en	Do you want to install?
 egroupware does not yet has a push-service for notifications on smart-phones, but you can use rocket.chat cloud services. please take gdpr into account for your decision.	rocketchat	en	EGroupware does not yet has a push-service for notifications on smart-phones, but you can use Rocket.Chat cloud services. Please take GDPR into account for your decision.
+egroupware openid connnect / oauth server	rocketchat	en	EGroupware OpenID Connnect / OAuth server
 enable audio effects	rocketchat	en	Audio effects
 enable browser notification	rocketchat	en	Enable browser notification
 enable/disable audio effects such as message notifications	rocketchat	en	Enable/disable audio effects such as message notifications
@@ -33,6 +36,8 @@ installation	rocketchat	en	Installation
 installation finished	rocketchat	en	Installation finished
 loading rocket.chat ...	rocketchat	en	Loading Rocket.Chat ...
 my account	rocketchat	en	My Account
+offline	common	en	Offline
+online	common	en	Online
 only necessary for on-premis installations	rocketchat	en	Only necessary for on-premis installations
 organisatation email	rocketchat	en	Organisation email
 organisation email	rocketchat	en	Organisation email
@@ -78,6 +83,7 @@ this client-identifier needs to be inserted in the next step where you add the c
 unable to connect!	rocketchat	en	Unable to connect!
 url must end with %1	rocketchat	en	URL must end with %1
 url: http(s)://servername/egroupware/openid/endpoint.php servername needs to match your servername or ip-address. you should use https, but only if secure connection is correctly configured on your server!	rocketchat	en	URL: http(s)://servername/egroupware/openid/endpoint.php Servername needs to match your servername or IP-address. You should use https, but only if secure connection is correctly configured on your server!
+username/password from session	rocketchat	en	Username/password from session
 video-chat	rocketchat	en	Video-Chat
 video-conference	rocketchat	en	Video-Conference
 would you like to install it now?	rocketchat	en	Would you like to install it now?

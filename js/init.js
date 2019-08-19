@@ -29,10 +29,13 @@
 			if (app.rocketchat.api) app.rocketchat.api.setUserPresence(this.value);
 		}).prependTo($menu);
 
-		jQuery("<option></option>", {value: "online", text: "Online"}).appendTo($select);
-		jQuery("<option></option>", {value: "away", text: "Away"}).appendTo($select);
-		jQuery("<option></option>", {value: "busy", text: "Busy"}).appendTo($select);
-		jQuery("<option></option>", {value: "offline", text: "Offline"}).appendTo($select);
+		// delay creation of options to have translations loaded
+		window.setTimeout(function() {
+			jQuery("<option></option>", {value: "online", text: app.rocketchat.egw.lang("Online")}).appendTo($select);
+			jQuery("<option></option>", {value: "away", text: app.rocketchat.egw.lang("Away")}).appendTo($select);
+			jQuery("<option></option>", {value: "busy", text: app.rocketchat.egw.lang("Busy")}).appendTo($select);
+			jQuery("<option></option>", {value: "offline", text: app.rocketchat.egw.lang("Offline")}).appendTo($select);
+		}, 500);
 
 		jQuery('#topmenu_info_user_avatar').mouseover(function(){
 			$select.chosen({

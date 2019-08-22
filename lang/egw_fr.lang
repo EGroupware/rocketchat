@@ -1,2 +1,37 @@
+add non-egroupware user	rocketchat	fr	Ajouter un utilisateur hors-EGroupware
+administration panel	rocketchat	fr	Panneau d'Administration
+connection error to rocket.chat server!	rocketchat	fr	Echec à la connexion au serveur Rocket.Chat !
+do you want to install	rocketchat	fr	Souhaitez-vous installer
+do you want to install?	rocketchat	fr	Souhaitez-vous installer ?
+enable audio effects	rocketchat	fr	Effets audio
+enable browser notification	rocketchat	fr	Autoriser les noficiations du navigateur
+example: https://www.egroupware.org/rocketchat/	rocketchat	fr	exemple: https://www.egroupware.org/rocketchat/
+file upload	rocketchat	fr	Upload de fichier
+install now	rocketchat	fr	Installer maintenant
+installation	rocketchat	fr	Installation
+installation finished	rocketchat	fr	Installation terminée
+loading rocket.chat ...	rocketchat	fr	Chargement de Rocket.Chat ...
+my account	rocketchat	fr	Mon compte
+organisatation email	rocketchat	fr	Email de l'organisation
+organisation email	rocketchat	fr	Email de l'organisation
+organisation info	rocketchat	fr	Informations sur l'organisation
+organization email	rocketchat	fr	Email de l'organisation
+register or keep standalone	rocketchat	fr	Enregister ou bien rester autonome
+register server	rocketchat	fr	Enregister le serveur
 rocket.chat	rocketchat	fr	Rocket.Chat
 rocketchat	common	fr	Rocket.Chat
+server info	rocketchat	fr	Info sur le serveur
+server url	rocketchat	fr	URL du serveur
+site name	rocketchat	fr	Nom du site
+status:	rocketchat	fr	Statut :
+step 1: admin info	rocketchat	fr	Etape 1 : Info Admin
+step 2: organization info	rocketchat	fr	Etape 2 : Info sur l'organisation
+step 3: server info	rocketchat	fr	Etape 3 : Info sur le serveur
+step 4: register server	rocketchat	fr	Etape 3 : Enregistrement du serveur
+unable to connect!	rocketchat	fr	Echec à la connexion !
+url must end with %1	rocketchat	fr	l'URL doit terminer par  %1
+video-chat	rocketchat	fr	Tchat Vidéo
+video-conference	rocketchat	fr	Vidéo-conférence
+would you like to install it now?	rocketchat	fr	Souhaitez-vous l'installer maintenant ?
+would you like to see installation instructions?	rocketchat	fr	Souhaitez-vous voir les instructions d'installation ?
+you have %1 unread messages from %2	rocketchat	fr	Vous avez %1 messsages non lus de %2

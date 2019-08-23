@@ -201,10 +201,23 @@ app.classes.rocketchat = AppJS.extend(
 		var account_id = _selected[0]['data']['account_id'];
 		var data = _selected[0]['data'];
 		var self = this;
+		var base_path = '';
 		switch (_action.id)
 		{
 			case 'message':
-				this.chatPopupLookup(user_id, {path:'direct/'+user_id+'?layout=embedded'});
+				switch (data.data.rocketchat.type)
+				{
+					case 'c':
+						base_path = 'channel';
+						break;
+					case 'p':
+						base_path = 'group';
+						break;
+					default:
+						base_path = 'direct';
+				}
+
+				this.chatPopupLookup(user_id, {path:base_path+'/'+user_id+'?layout=embedded'});
 				break;
 			case 'linkto':
 				et2_createWidget("dialog",{

@@ -217,6 +217,22 @@ class Hooks
 			]])))
 			{
 				$status_app = \EGroupware\Status\Hooks::getStatus(['app'=>'status']);
+				$rooms = $api->roomslist();
+				foreach ($rooms as $r)
+				{
+					if ($r['t'] == 'p' || $r['t'] == 'c')
+					{
+						array_push($onlineusers, [
+							'username' => $r['name'],
+							'name' => $r['name'],
+							'status' => 'room',
+							'active' => true,
+							'type' => $r['t'],
+							'icon' => "avatar/@".$r["name"]
+						]);
+					}
+				}
+
 				foreach ($onlineusers as $user)
 				{
 					// Only report egw users not all rocketchat users
@@ -230,11 +246,12 @@ class Hooks
 							'stat' => [
 								'rocketchat' => [
 									'active' => $user['active'],
-									'class' => ($user['status'] ? $user['status'] : 'offline')
+									'class' => ($user['status'] ? $user['status'] : 'offline'),
+									'type' => $user['type']
 								]
 							],
 							'hint' => $user['name'],
-							'icon' => self::getSiteUrl().'api/v1/users.getAvatar?userId='.$user['_id'],
+							'icon' => self::getSiteUrl().($user['icon'] ? $user['icon'] : 'api/v1/users.getAvatar?userId='.$user['_id']),
 							'link_to' => $link[0],
 							'class' => ($link[0]? ' linked' : ' unlinked')
 						];
@@ -246,7 +263,8 @@ class Hooks
 							'stat' => [
 								'rocketchat' => [
 									'active' => $user['active'],
-									'class' => $user['status'] ? $user['status'] : 'offline'
+									'class' => $user['status'] ? $user['status'] : 'offline',
+									'type' => 'u'
 								]
 							]
 						];

@@ -300,6 +300,28 @@ class Restapi
 	}
 
 	/**
+	 * Rooms list
+	 *
+	 * Gets all of the rooms in the system and their information,
+	 * the result is only limited to what the callee has access to view.
+	 * It supports the Offset, Count, and Sort Query Parameters along with
+	 * Query and Fields Query Parameter.
+	 * https://rocket.chat/docs/developer-guides/rest-api/rooms/list/
+	 *
+	 * @return array returns list of users
+	 */
+	public function roomslist ()
+	{
+		$response = self::_responseHandler($this->api_call('rooms.get', 'GET'));
+		if (!$response['success'])
+		{
+			if (self::DEBUG) error_log(__METHOD__.'Command roomslist failed because of'.$response['message']);
+			return false;
+		}
+		return $response['response']['update'];
+	}
+
+	/**
 	 * Response error handler
 	 *
 	 * @param array $response

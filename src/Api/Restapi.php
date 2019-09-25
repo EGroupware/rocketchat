@@ -28,11 +28,6 @@ class Restapi
 	const APPNAME = 'rocketchat';
 
 	/**
-	 * Default Server URL (rocketchat server url)
-	 */
-	const DEFAULT_SERVER_URL = 'https://rocketchat.egroupware.org/rocketchat/';
-
-	/**
 	 * Api URL
 	 */
 	const API_URL = 'api/v1/';
@@ -79,9 +74,8 @@ class Restapi
 	{
 		$this->config = Config::read('rocketchat');
 		$this->data = array_merge([
-			'api_path' => $this->config['server_url'] ?
-				Api\Framework::getUrl($this->config['server_url']).self::API_URL :
-				self::DEFAULT_SERVER_URL.self::API_URL,
+			'api_path' => !empty($this->config['server_url']) ?
+				Api\Framework::getUrl($this->config['server_url']).self::API_URL : null,
 			'user' => \EGroupware\Status\Hooks::getUserName(),
 			'authentication' => $this->config['authentication'],
 			'oauth_client_id' => $this->config['oauth_client_id'],
@@ -118,8 +112,7 @@ class Restapi
 		}
 		else
 		{
-			$full_path = !empty($this->data['api_path']) ? $this->data['api_path'] : self::DEFAULT_SERVER_URL.self::API_URL;
-			$full_path .= $_api_path;
+			$full_path = $this->data['api_path'].$_api_path;
 		}
 		$header = [
 			"X-Auth-Token: ".($_params['X-Auth-Token'] ? $_params['X-Auth-Token'] : $this->authToken),

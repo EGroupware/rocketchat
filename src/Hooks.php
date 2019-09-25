@@ -172,7 +172,7 @@ class Hooks
 	{
 		$config = Api\Config::read('rocketchat');
 		// deal with just /rocketchat/ --> http(s)://domain.com/rocketchat/
-		return Api\Framework::getUrl($config['server_url']);
+		return !empty($config['server_url']) ? Api\Framework::getUrl($config['server_url']) : null;
 	}
 
 	/**
@@ -192,6 +192,11 @@ class Hooks
 			$logged_in = Api\Cache::getSession(self::APPNAME, 'logged_in', function() use ($api)
 			{
 				try {
+					// Rocket.Chat is not configured --> bail out quitely
+					if (empty($api->config['server_url']))
+					{
+						return false;
+					}
 					// check if Rocket.Chat instance is running / not powered off
 					$info = $api->info();
 					if (!empty($info['powered']) && $info['powered'] === 'off')

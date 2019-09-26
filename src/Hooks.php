@@ -518,6 +518,22 @@ class Hooks
 			]]);
 			$status_users = array_column(Status\Hooks::getUsers(), 'account_lid');
 
+			$rooms = $api->roomslist();
+			foreach ($rooms as $r)
+			{
+				if ($r['t'] == 'p' || $r['t'] == 'c')
+				{
+					array_push($users, [
+						'username' => $r['name'],
+						'name' => $r['name'],
+						'status' => 'room',
+						'active' => true,
+						'type' => $r['t'],
+						'icon' => "avatar/@".$r["name"]
+					]);
+				}
+			}
+
 			foreach($users as $user)
 			{
 				if (!in_array($user['username'], $status_users))

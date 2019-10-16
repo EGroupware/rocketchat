@@ -486,5 +486,11 @@ app.classes.rocketchat = AppJS.extend(
 			if (typeof callback == 'function') callback.call();
 			return true;
 		},"Would you like to see installation instructions?", "Instructions");
+	},
+	/**
+	 * on logout clicked event
+	 */
+	onLogout: function() {
+		sessionStorage.removeItem('Meteor.loginToken:/:/rocketchat');
 	}
 });

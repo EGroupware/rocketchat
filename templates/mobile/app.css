@@ -12,7 +12,44 @@
  * @license http://opensource.org/licenses/gpl-license.php GPL - GNU General Public License
  * @version $Id$
  */
+div#rocketchat-install_info_tabs div.et2_tabtitle {
+  padding: 5px 0px 3px 0;
+  padding-left: 10px;
+  font-weight: bold;
+  font-size: 10pt;
+  background-color: whitesmoke;
+  border: 1px solid silver;
+  border-radius: 7px;
+}
+div#rocketchat-install_info_tabs span.et2_label {
+  padding-left: 12px;
+}
+div#rocketchat-install_info_tabs .et2_tabflag {
+  border-bottom: none !important;
+}
+div#rocketchat-install_info_tabs .et2_tabcntr {
+  padding-top: 5px;
+}
+.installation-msg .et2_label {
+  font-size: 12pt;
+  padding-top: 10px;
+  text-align: center;
+  padding-bottom: 40px;
+}
+.installation-msg .et2_vbox.et2_box_widget {
+  border: 1px solid silver;
+  border-radius: 7px;
+  width: 50%;
+  margin: 0px auto 0;
+}
+.installation-msg .et2_button {
+  margin: 10px auto;
+  padding: 6px;
+}
 #rocketchat-index_iframe {
   width: calc(100% - 60px) !important;
   margin-left: 60px;
+}
+body #egw_fw_basecontainer.sidebar-toggle #egw_fw_top_toolbar div#egw_fw_menu {
+  background-color: #2f343d;
 }

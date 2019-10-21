@@ -493,5 +493,6 @@ app.classes.rocketchat = AppJS.extend(
 	 */
 	onLogout: function() {
 		sessionStorage.removeItem('Meteor.loginToken:/:/rocketchat');
+		localStorage.removeItem('Meteor.loginToken:/:/rocketchat');
 	}
 });

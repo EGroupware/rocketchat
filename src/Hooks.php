@@ -255,6 +255,11 @@ class Hooks
 							'link_to' => $link[0],
 							'class' => ($link[0]? ' linked' : ' unlinked')
 						];
+						//Add status state for groups and channels
+						if (in_array($user['type'], array('c', 'p')))
+						{
+							$stat[$user['username']]['stat']['status']['active'] = $user['active'];
+						}
 					}
 					else
 					{

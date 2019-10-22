@@ -348,6 +348,10 @@ app.classes.rocketchat = AppJS.extend(
 								}
 								if (updateIt)
 								{
+									if ((_data.result[i]['t'] == 'c' || _data.result[i]['t'] == 'p') && _data.result[i]['alert'])
+									{
+										entry.stat1 = _data.result[i]['t'] == 'c' ? "#" : "@";
+									}
 									if (entry.stat1 > 0 && _data.result[i]['t'] =='d')
 									{
 										self.notifyMe(entry);

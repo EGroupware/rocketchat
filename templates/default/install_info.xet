@@ -152,6 +152,24 @@
 			</rows>
 		</grid>
 	</template>
+	<template id="rocketchat.install_info.generalSettings" template="" lang="" group="0" version="1.5.001">
+		<grid width="100%" spacing="10" overflow="auto">
+			<columns>
+				<column/>
+			</columns>
+			<rows>
+				<row>
+					<description value="Rocket.Chat general settings. Some of the settings are neccessary to get all integrated features properly working within EGroupware."/>
+				</row>
+				<row>
+					<description value="Iframe integration settings: both send and receive need to be enable in order to get Iframe integrated features within EGroupware working." />
+				</row>
+				<row valign="top">
+					<image src="https://www.egroupware.org/wp-content/uploads/2019/06/general-iframe.png" />
+				</row>
+			</rows>
+		</grid>
+	</template>
 	<template id="rocketchat.install_info.fileUpload" template="" lang="" group="0" version="1.5.001">
 		<grid width="100%" spacing="10" overflow="auto">
 			<columns>
@@ -290,6 +308,7 @@
 							<tab id="rocketchat.install_info.server" label="Server Info"/>
 							<tab id="rocketchat.install_info.register" label="Register Server"/>
 							<tab id="rocketchat.install_info.done" label="Installation finished"/>
+							<tab id="rocketchat.install_info.generalSettings" label="General Settings"/>
 							<tab id="rocketchat.install_info.fileUpload" label="File Upload"/>
 							<tab id="rocketchat.install_info.openid" label="Create OpenID client"/>
 							<tab id="rocketchat.install_info.oauth" label="Add custom OAuth"/>
@@ -303,6 +322,7 @@
 							<template id="rocketchat.install_info.server" />
 							<template id="rocketchat.install_info.register"/>
 							<template id="rocketchat.install_info.done"/>
+							<template id="rocketchat.install_info.generalSettings"/>
 							<template id="rocketchat.install_info.fileUpload"/>
 							<template id="rocketchat.install_info.openid"/>
 							<template id="rocketchat.install_info.oauth"/>

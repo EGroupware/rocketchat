@@ -159,10 +159,10 @@
 			</columns>
 			<rows>
 				<row>
-					<description value="Rocket.Chat general settings. Some of the settings are neccessary to get all integrated features properly working within EGroupware."/>
+					<description value="Rocket.Chat general settings. Some of the settings are necessary to get all integrated features properly working within EGroupware."/>
 				</row>
 				<row>
-					<description value="Iframe integration settings: both send and receive need to be enable in order to get Iframe integrated features within EGroupware working." />
+					<description value="Iframe integration settings: both send and receive need to be enable in order to get iframe integrated features within EGroupware working." />
 				</row>
 				<row valign="top">
 					<image src="https://www.egroupware.org/wp-content/uploads/2019/06/general-iframe.png" />

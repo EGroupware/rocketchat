@@ -30,6 +30,7 @@ here we can enable file uploads and configuring max file size, valid media types
 id needs to be the client-identifier you previously configured for the openid client! similar is valid for the secret, if you can't remember the secret you choosed previously, you may re-generate and save the secret in the egroupware openid client. see also previous tab [create openid client]	rocketchat	en	Id needs to be the Client-Identifier you previously configured for the OpenID Client! Similar is valid for the secret, If you can't remember the secret you choosed previously, you may re-generate and save the secret in the EGroupware OpenID client. See also previous tab [Create OpenID client]
 if you don't need push-notifications, you can skip registration and click on keep standalone ... rocket.chat in egroupware will still work.	rocketchat	en	If you don't need push-notifications, you can skip registration and click on keep standalone ... Rocket.Chat in EGroupware will still work.
 if you like to allow non-egroupware users to take part in your rocket.chat you can enable in account settings to show the default login form.	rocketchat	en	IF you like to allow non-EGroupware users to take part in your Rocket.Chat you can enable in Account Settings to show the Default Login Form.
+iframe integration settings: both send and receive need to be enable in order to get iframe integrated features within EGroupware working.	rocketchat	en	Iframe integration settings: both send and receive need to be enable in order to get iframe integrated features within EGroupware working.
 install information	rocketchat	en	Install Information
 install now	rocketchat	en	Install now
 installation	rocketchat	en	Installation
@@ -55,6 +56,7 @@ register or keep standalone	rocketchat	en	Register or keep standalone
 register server	rocketchat	en	Register Server
 rocket.chat	rocketchat	en	Rocket.Chat
 rocket.chat container or egroupware-rocketchat package needs to be installed to use rocket.chat!	rocketchat	en	Rocket.Chat container or egroupware-rocketchat package needs to be installed to use Rocket.Chat!
+rocket.chat general settings. Some of the settings are necessary to get all integrated features properly working within EGroupware.	rocketchat	en	Rocket.Chat general settings. Some of the settings are necessary to get all integrated features properly working within EGroupware.
 rocket.chat is succesfully installed, you can now configure additional parameters e.g. switch video-chat off or add non-egroupware user.	rocketchat	en	Rocket.Chat is succesfully installed, you can now configure additional parameters e.g. switch video-chat off or add non-Egroupware user.
 rocket.chat needs to be configured and installed.	rocketchat	en	Rocket.Chat needs to be configured and installed.
 rocket.chat provides lots of user and administration guides and videos. please have a look on their website.	rocketchat	en	Rocket.Chat provides lots of user and administration guides and videos. Please have a look on their website.

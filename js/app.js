@@ -48,10 +48,14 @@ app.classes.rocketchat = AppJS.extend(
 				jQuery(this.mainframe).on('load', function(){
 					self._isRocketchatLoaded().then(function(){
 						egw.loading_prompt('rocketchat-loading', false);
-						self.postMessage('call-custom-oauth-login', {service:'egroupware'});
+						if (!(sessionStorage.getItem('Meteor.loginToken:/:/rocketchat') ||
+								localStorage.getItem('Meteor.loginToken:/:/rocketchat')))
+						{
+							self.postMessage('call-custom-oauth-login', {service:'egroupware'});
+						}
 					},
 					function(){
-						self.mainframe.src = self.mainframe.src;
+						self.mainframe.contentWindow.location.reload();
 					});
 				});
 				window.addEventListener('message', jQuery.proxy(this.messageHandler, this));

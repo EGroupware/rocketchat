@@ -52,6 +52,7 @@ app.classes.rocketchat = AppJS.extend(
 								localStorage.getItem('Meteor.loginToken:/:/rocketchat')))
 						{
 							self.postMessage('call-custom-oauth-login', {service:'egroupware'});
+							egw.loading_prompt('rocketchat-login', true, this.egw.lang('Logging you into Rocket.Chat ...'));
 						}
 					},
 					function(){
@@ -130,6 +131,7 @@ app.classes.rocketchat = AppJS.extend(
 
 		if (e && e.type == 'message' && e.data && e.data.eventName)
 		{
+			egw.loading_prompt('rocketchat-login', false);
 			switch(e.data.eventName)
 			{
 				case 'room-opened':

@@ -42,17 +42,17 @@ app.classes.rocketchat = AppJS.extend(
 		switch (name)
 		{
 			case 'rocketchat.index':
-				egw.loading_prompt('rocketchat-loading', true, this.egw.lang('Loading Rocket.Chat ...'), jQuery('#rocketchat-index'));
+				egw(window).loading_prompt('rocketchat-loading', true, this.egw.lang('Loading Rocket.Chat ...'), jQuery('#rocketchat-index'));
 				this.mainframe = this.et2.getWidgetById('iframe').getDOMNode();
 				var self = this;
 				jQuery(this.mainframe).on('load', function(){
 					self._isRocketchatLoaded().then(function(){
-						egw.loading_prompt('rocketchat-loading', false);
+						egw(window).loading_prompt('rocketchat-loading', false);
 						if (!(sessionStorage.getItem('Meteor.loginToken:/:/rocketchat') ||
 								localStorage.getItem('Meteor.loginToken:/:/rocketchat')))
 						{
 							self.postMessage('call-custom-oauth-login', {service:'egroupware'});
-							egw.loading_prompt('rocketchat-login', true, this.egw.lang('Logging you into Rocket.Chat ...'), jQuery('#rocketchat-index'));
+							egw(window).loading_prompt('rocketchat-login', true, this.egw.lang('Logging you into Rocket.Chat ...'), jQuery('#rocketchat-index'));
 						}
 					},
 					function(){
@@ -131,7 +131,7 @@ app.classes.rocketchat = AppJS.extend(
 
 		if (e && e.type == 'message' && e.data && e.data.eventName)
 		{
-			egw.loading_prompt('rocketchat-login', false);
+			egw(window).loading_prompt('rocketchat-login', false);
 			switch(e.data.eventName)
 			{
 				case 'room-opened':

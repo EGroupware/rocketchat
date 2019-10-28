@@ -42,7 +42,7 @@ app.classes.rocketchat = AppJS.extend(
 		switch (name)
 		{
 			case 'rocketchat.index':
-				egw.loading_prompt('rocketchat-loading', true, this.egw.lang('Loading Rocket.Chat ...'));
+				egw.loading_prompt('rocketchat-loading', true, this.egw.lang('Loading Rocket.Chat ...'), jQuery('#rocketchat-index'));
 				this.mainframe = this.et2.getWidgetById('iframe').getDOMNode();
 				var self = this;
 				jQuery(this.mainframe).on('load', function(){
@@ -52,7 +52,7 @@ app.classes.rocketchat = AppJS.extend(
 								localStorage.getItem('Meteor.loginToken:/:/rocketchat')))
 						{
 							self.postMessage('call-custom-oauth-login', {service:'egroupware'});
-							egw.loading_prompt('rocketchat-login', true, this.egw.lang('Logging you into Rocket.Chat ...'));
+							egw.loading_prompt('rocketchat-login', true, this.egw.lang('Logging you into Rocket.Chat ...'), jQuery('#rocketchat-index'));
 						}
 					},
 					function(){

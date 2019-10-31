@@ -46,9 +46,9 @@ app.classes.rocketchat = AppJS.extend(
 				this.mainframe = this.et2.getWidgetById('iframe').getDOMNode();
 				var self = this;
 				jQuery(this.mainframe).on('load', function(){
-					self._isRocketchatLoaded().then(function(){
+					self._isRocketchatLoaded().then(function(_mode){
 						egw(window).loading_prompt('rocketchat-loading', false);
-						if (!(sessionStorage.getItem('Meteor.loginToken:/:/rocketchat') ||
+						if (_mode !=="setup" && !(sessionStorage.getItem('Meteor.loginToken:/:/rocketchat') ||
 								localStorage.getItem('Meteor.loginToken:/:/rocketchat')))
 						{
 							self.postMessage('call-custom-oauth-login', {service:'egroupware'});
@@ -74,10 +74,11 @@ app.classes.rocketchat = AppJS.extend(
 		return new Promise (function(_resolve, _reject){
 			window.setTimeout(function(){
 				try {
-					if (jQuery('.setup-wizard', self.mainframe.contentWindow.document).length > 0)
+					if (jQuery('.setup-wizard', self.mainframe.contentWindow.document).length > 0
+							|| jQuery('.setupWizard', self.mainframe.contentWindow.document).length > 0)
 					{
 						self.install_info();
-						_resolve();
+						_resolve("setup");
 					}
 					else if (jQuery('body', self.mainframe.contentWindow.document).length > 0)
 					{

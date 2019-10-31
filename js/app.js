@@ -75,7 +75,7 @@ app.classes.rocketchat = AppJS.extend(
 			window.setTimeout(function(){
 				try {
 					if (jQuery('.setup-wizard', self.mainframe.contentWindow.document).length > 0
-							|| jQuery('.setupWizard', self.mainframe.contentWindow.document).length > 0)
+							|| jQuery('.SetupWizard', self.mainframe.contentWindow.document).length > 0)
 					{
 						self.install_info();
 						_resolve("setup");

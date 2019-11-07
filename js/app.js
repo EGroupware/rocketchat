@@ -38,13 +38,12 @@ app.classes.rocketchat = AppJS.extend(
 		// call parent
 		this._super.apply(this, arguments);
 		this.content = this.et2.getArrayMgr('content').data;
-
+		var self = this;
 		switch (name)
 		{
 			case 'rocketchat.index':
 				egw(window).loading_prompt('rocketchat-loading', true, this.egw.lang('Loading Rocket.Chat ...'), jQuery('#rocketchat-index'));
 				this.mainframe = this.et2.getWidgetById('iframe').getDOMNode();
-				var self = this;
 				jQuery(this.mainframe).on('load', function(){
 					self._isRocketchatLoaded().then(function(_mode){
 						egw(window).loading_prompt('rocketchat-loading', false);
@@ -66,7 +65,15 @@ app.classes.rocketchat = AppJS.extend(
 				break;
 			case 'rocketchat.chat':
 				this.chatbox = this.et2.getWidgetById('chatbox').getDOMNode();
-
+				jQuery(this.chatbox).on('load', function(){
+					self._isRocketchatLoaded().then(function(_mode){
+						if (_mode !=="setup" && !(sessionStorage.getItem('Meteor.loginToken:/:/rocketchat') ||
+								localStorage.getItem('Meteor.loginToken:/:/rocketchat')))
+						{
+							self.postMessage('call-custom-oauth-login', {service:'egroupware'});
+						}
+					});
+				});
 		}
 		window.addEventListener('message', jQuery.proxy(this.messageHandler, this));
 	},
@@ -77,13 +84,14 @@ app.classes.rocketchat = AppJS.extend(
 		return new Promise (function(_resolve, _reject){
 			window.setTimeout(function(){
 				try {
-					if (jQuery('.setup-wizard', self.mainframe.contentWindow.document).length > 0
-							|| jQuery('.SetupWizard', self.mainframe.contentWindow.document).length > 0)
+					var frame = egw(window).is_popup() ? self.chatbox : self.mainframe;
+					if (jQuery('.setup-wizard', frame.contentWindow.document).length > 0
+							|| jQuery('.SetupWizard', frame.contentWindow.document).length > 0)
 					{
 						self.install_info();
 						_resolve("setup");
 					}
-					else if (jQuery('body', self.mainframe.contentWindow.document).length > 0)
+					else if (jQuery('body', frame.contentWindow.document).length > 0)
 					{
 						_resolve();
 					}
@@ -122,9 +130,10 @@ app.classes.rocketchat = AppJS.extend(
 	messageHandler: function (e)
 	{
 		var self = this;
-		if (jQuery('.setup-wizard', this.mainframe.contentWindow.document))
+		var frame = egw(window).is_popup() ? self.chatbox : self.mainframe;
+		if (jQuery('.setup-wizard', frame.contentWindow.document))
 		{
-			jQuery(this.mainframe.contentWindow.document.body).off().on('click', function(e){
+			jQuery(frame.contentWindow.document.body).off().on('click', function(e){
 				if (e.target.nodeName =="BUTTON" && e.target.className == "rc-button rc-button--primary js-finish")
 				{
 					self.postMessage('logout');

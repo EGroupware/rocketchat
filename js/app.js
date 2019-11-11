@@ -52,6 +52,9 @@ app.classes.rocketchat = AppJS.extend(
 						{
 							self.postMessage('call-custom-oauth-login', {service:'egroupware'});
 							egw(window).loading_prompt('rocketchat-login', true, this.egw.lang('Logging you into Rocket.Chat ...'), jQuery('#rocketchat-index'));
+							window.setTimeout(function(){
+								egw(window).loading_prompt('rocketchat-login', false);
+							}, 4000); // disable the login prompt automatically after 4s
 						}
 					},
 					function(){

@@ -346,8 +346,7 @@ class Hooks
 				$data['server_status_class'] = 'error';
 				$data['server_status'] = lang('Unable to connect!');
 			}
-			elseif ((!empty($_SERVER['HTTPS']) || $_SERVER['HTTP_X_FORWARDED_PROTOCOL'] === 'https') &&
-				substr($data['server_url'], 0, 7) === 'http://')
+			elseif (Api\Header\Http::schema() === 'https' && substr($data['server_url'], 0, 7) === 'http://')
 			{
 				$data['server_status_class'] = 'error';
 				$data['server_status'] = lang('You can NOT use http for Rocket.Chat with EGroupware using https! Browser do not load mixed content.');
@@ -405,8 +404,7 @@ class Hooks
 			{
 				$error = lang('Unable to connect!');
 			}
-			elseif ((!empty($_SERVER['HTTPS']) || $_SERVER['HTTP_X_FORWARDED_PROTOCOL'] === 'https') &&
-				substr($data['server_url'], 0, 7) === 'http://')
+			elseif (Api\Header\Http::schema() === 'https' && substr($data['server_url'], 0, 7) === 'http://')
 			{
 				$error = lang('You can NOT use http for Rocket.Chat with EGroupware using https! Browser do not load mixed content.');
 			}

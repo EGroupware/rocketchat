@@ -45,7 +45,7 @@ class Hooks
 	 */
 	public static function framework_header ($data)
 	{
-		if(!$data['popup'])
+		if(!$data['popup'] && $GLOBALS['egw_info']['user']['apps']['rocketchat'])
 		{
 			Api\Framework::includeJS('/rocketchat/js/app.js',null,self::APPNAME);
 		}

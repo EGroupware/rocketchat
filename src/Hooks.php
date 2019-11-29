@@ -295,6 +295,7 @@ class Hooks
 				'default' => true,
 				'allowOnMultiple' => false,
 				'onExecute' => 'javaScript:app.rocketchat.handle_actions',
+				'enabled' => 'javaScript:app.rocketchat.isRCActive'
 			],
 			'linkto' => [
 				'caption' => 'Link to contact',

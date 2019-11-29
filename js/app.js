@@ -216,19 +216,26 @@ app.classes.rocketchat = AppJS.extend(
 		switch (_action.id)
 		{
 			case 'message':
-				switch (data.data.rocketchat.type)
+				if (data && typeof data.data.rocketchat != 'undefined')
 				{
-					case 'c':
-						base_path = 'channel';
-						break;
-					case 'p':
-						base_path = 'group';
-						break;
-					default:
-						base_path = 'direct';
-				}
+					switch (data.data.rocketchat.type)
+					{
+						case 'c':
+							base_path = 'channel';
+							break;
+						case 'p':
+							base_path = 'group';
+							break;
+						default:
+							base_path = 'direct';
+					}
 
-				this.chatPopupLookup(user_id, {path:base_path+'/'+user_id+'?layout=embedded'});
+					this.chatPopupLookup(user_id, {path:base_path+'/'+user_id+'?layout=embedded'});
+				}
+				else
+				{
+					egw.message('You are not logged in Rocket.Chat app.', 'warning');
+				}
 				break;
 			case 'linkto':
 				et2_createWidget("dialog",{
@@ -508,5 +515,18 @@ app.classes.rocketchat = AppJS.extend(
 	onLogout: function() {
 		sessionStorage.removeItem('Meteor.loginToken:/:/rocketchat');
 		localStorage.removeItem('Meteor.loginToken:/:/rocketchat');
+	},
+
+	/**
+	 * Check if rocketchat is already active
+	 *
+	 * @param {object} _action egw action object
+	 * @param {array} _selected array of selected rows
+	 *
+	 * @returns {Boolean} return true if the rocketchat is active
+	 */
+	isRCActive: function (_action, _selected) {
+		var data = _selected[0]['data'];
+		return (data && typeof data.data.rocketchat != 'undefined');
 	}
 });

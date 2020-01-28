@@ -21,21 +21,33 @@ class Hooks
 	const APPNAME = 'rocketchat';
 
 	/**
-	 * Allow rocketchat host as frame-src
+	 * Register Rocket.Chat host (websocket) for CSP policies frame-src and connect-src
 	 *
+	 * @param $location "connect-src" | "frame-src"
 	 * @return array
 	 */
-	public static function csp_frame_src()
+	public static function csp_frame_src($location)
 	{
 		$config = Api\Config::read('rocketchat');
-		$frm_srcs = array();
+		$srcs = [];
+		// dont add RC, if not configured
 		if (!empty($config['server_url']))
 		{
-			$frm_srcs[] = preg_replace('#^(https?://)?#', (substr($config['server_url'], 0, 5) == 'https' ? 'wss://' : 'ws://'), $config['server_url']). 'websocket';
-			$frm_srcs[] = preg_replace('#^(https?://[^/]+)(/.*)?#', '$1', $config['server_url']);
+			$srcs[] = preg_replace('#^(https?://[^/]+)(/.*)?#', '$1', $config['server_url']);
+
+			if ($location === 'csp-connect-src')
+			{
+				$srcs[] = preg_replace('#^(https?://)?#',
+					(substr($config['server_url'], 0, 5) == 'https' ? 'wss://' : 'ws://'), $config['server_url']);
+			}
+			// to easy the update: register the connect-src manually, if there is no csp-connect-src hook (yet) registered
+			// todo: remove after 20.1 release
+			elseif (!Api\Hooks::exists('csp-connect-src', self::APPNAME))
+			{
+				Api\Header\ContentSecurityPolicy::add_connect_src(self::csp_frame_src('csp-connect-src'));
+			}
 		}
-		Api\Header\ContentSecurityPolicy::add_connect_src($frm_srcs);
-		return $frm_srcs;
+		return $srcs;
 	}
 
 	/**

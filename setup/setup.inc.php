@@ -31,6 +31,7 @@ $setup_info['rocketchat']['hooks']['admin'] = 'EGroupware\Rocketchat\Hooks::side
 $setup_info['rocketchat']['hooks']['sidebox_menu'] = 'EGroupware\Rocketchat\Hooks::sidebox_menu';
 $setup_info['rocketchat']['hooks']['framework_header'] = 'EGroupware\Rocketchat\Hooks::framework_header';
 $setup_info['rocketchat']['hooks']['csp-frame-src'] = 'EGroupware\Rocketchat\Hooks::csp_frame_src';
+$setup_info['rocketchat']['hooks']['csp-connect-src'] = 'EGroupware\Rocketchat\Hooks::csp_frame_src';
 $setup_info['rocketchat']['hooks']['notifications_actions'] = 'EGroupware\Rocketchat\Hooks::notifications_actions';
 $setup_info['rocketchat']['hooks']['search_link'] = 'EGroupware\Rocketchat\Hooks::search_link';
 $setup_info['rocketchat']['hooks']['status-getStatus'] = 'EGroupware\Rocketchat\Hooks::getStatus';

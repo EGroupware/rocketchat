@@ -131,7 +131,7 @@ app.classes.rocketchat = AppJS.extend(
 	{
 		var self = this;
 		var frame = egw(window).is_popup() ? self.chatbox : self.mainframe;
-		if (jQuery('.setup-wizard', frame.contentWindow.document))
+		if (frame && frame.contentWindow && jQuery('.setup-wizard', frame.contentWindow.document))
 		{
 			jQuery(frame.contentWindow.document.body).off().on('click', function(e){
 				if (e.target.nodeName =="BUTTON" && e.target.className == "rc-button rc-button--primary js-finish")
@@ -200,9 +200,10 @@ app.classes.rocketchat = AppJS.extend(
 	 */
 	postMessage: function (_cmd, _params)
 	{
-		if (this.mainframe)
+		var frame = egw(window).is_popup() ? this.chatbox : this.mainframe;
+		if (frame)
 		{
-			this.mainframe.contentWindow.postMessage(jQuery.extend({externalCommand: _cmd}, _params), '*');
+			frame.contentWindow.postMessage(jQuery.extend({externalCommand: _cmd}, _params), '*');
 			return true;
 		}
 		egw.debug('No rocketchat frame found!');

@@ -15,7 +15,7 @@
 						<description value="example: https://www.egroupware.org/rocketchat/"/>
 					</vbox>
 					<hbox>
-						<url id="newsettings[server_url]" width="300px"/>
+						<url id="newsettings[server_url]" width="300px" trailing_slash="true"/>
 						<description id="newsettings[server_status]" trailing_slash="true" label="Status:" disabled="!@newsettings[server_status]" class="@newsettings[server_status_class]"/>
 						<!-- hack to get class propagated: id="newsettings[server_status_class]" -->
 					</hbox>
@@ -33,7 +33,8 @@
 				</row>
 				<row>
 					<label value="Rocket.Chat's OAuth Service-Name" for="newsettings[oauth_service_name]"/>
-					<textbox id="newsettings[oauth_service_name]" tooltip="Custom OAuth name given in Rocket.Chat for EGroupware eg. 'egroupware'"/>
+					<textbox id="newsettings[oauth_service_name]" statustext="Custom OAuth name given in Rocket.Chat for EGroupware eg. 'egroupware'"
+					    onchange="let val=widget.get_value(); if (val!=val.toLowerCase()) widget.set_value(val.toLowerCase());"/>
 				</row>
 			</rows>
 		</grid>

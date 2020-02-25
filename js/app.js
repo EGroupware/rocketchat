@@ -333,90 +333,114 @@ app.classes.rocketchat = AppJS.extend(
 		});
 	},
 
+	_subscriptionsInterval: function()
+	{
+		var self = this;
+		let latest = [];
+		return window.setInterval(function () {
+			self.api.getSubscriptions().then(function (_data) {
+				if (_data && _data.msg === 'result' && _data.result.length > 0) {
+					let data = [];
+					for (let i in _data.result) {
+						let updateIt = true;
+						let entry = {
+							id: _data.result[i]['name'],
+							stat1: _data.result[i]['unread'],
+							fname: _data.result[i]['fname']
+						};
+						for (let j in latest) {
+							if (latest[j] && latest[j]['name'] == _data.result[i]['name'] && latest[j]['_updatedAt'].$date == _data.result[i]['_updatedAt'].$date) {
+								updateIt = false;
+							}
+						}
+						if (updateIt) {
+							if ((_data.result[i]['t'] == 'c' || _data.result[i]['t'] == 'p') && _data.result[i]['alert']) {
+								entry.stat1 = _data.result[i]['t'] == 'c' ? "#" : "@";
+							}
+							if (entry.stat1 > 0 && _data.result[i]['t'] == 'd') {
+								self.notifyMe(entry);
+							}
+							data.push(entry);
+						}
+					}
+					if (data.length > 0) {
+						latest = _data.result;
+						if (app.status) app.status.mergeContent(data);
+					}
+
+				}
+			});
+			self.api.subscribeToNotifyLogged('user-status').then(function (_data) {
+				if (_data) {
+					var title = "";
+					for (var i in _data.fields.args) {
+						title = _data.fields.args[i][3] != "" ? _data.fields.args[i][3] : self._userStatusNum2String(_data.fields.args[i][2]);
+						if (_data.fields.args[i][1] == egw.user('account_lid')) {
+							jQuery('span.fw_avatar_stat', '#topmenu_info_user_avatar').attr({
+								class: 'fw_avatar_stat stat1 ' + self._userStatusNum2String(_data.fields.args[i][2]),
+								title: title
+							});
+							continue;
+						}
+						jQuery('tr#' + _data.fields.args[i][1] + ' span.stat1', '#egw_fw_sidebar_r').attr({
+							class: 'et2_label stat1 ' + self._userStatusNum2String(_data.fields.args[i][2]),
+							title: title
+						});
+					}
+				}
+			});
+		}, this.updateInterval);
+	},
+
 	/**
 	 * Get latest updates regarding the subscribed channels/users
 	 * and will set unread indications accordingly.
 	 */
 	getUpdates: function ()
 	{
-		var self = this;
+		let self = this;
+		let url_timeout, api_timeout = 1000; // 1s
+		const BACKOFFMAX = 1024000; //1024s max timeout then stops requesting
+		let init = null;
 		egw.json("EGroupware\\Rocketchat\\Hooks::ajax_getServerUrl", [], function (response){
-			if (response && response.server_url)
-			{
-				var url = response.server_url;
-				var latest = [];
-				window.setInterval(function(){
-					// check if we already have a connection
-					if (!self.api) {
+			if (response && response.server_url) {
+				let url = response.server_url;
+				init = function () {
+					if (self.api) return;
+					checkApi().then(function () {
+						self._subscriptionsInterval();
+					}, init);
+				};
+				var checkApi = function (_resolve, _reject) {
+					return new Promise(function (_resolve, _reject) {
 						// query Rocket.Chat /api/info first
-						jQuery.ajax(url+'api/info').done(function(_response) {
+						jQuery.ajax(url + 'api/info').done(function (_response) {
 							// only open websocket, if Rocket.Chat is not powered off
 							if (!_response.powered || _response.powered !== 'off') {
 								self.api = new rocketchat_realtime_api(
-									url.replace(/^(https?:\/\/)?/, (url.substr(0,5) == 'https' ? 'wss://' : 'ws://'))+'websocket');
+									url.replace(/^(https?:\/\/)?/, (url.substr(0, 5) == 'https' ? 'wss://' : 'ws://')) + 'websocket');
+								_resolve();
+							}
+							else if(!self.api)
+							{
+								if (api_timeout <= BACKOFFMAX)
+								{
+									console.log("server is still booting! trying again in " + api_timeout/1000+"s")
+									window.setTimeout(_reject, api_timeout);
+									api_timeout *= 2; // 2s, 4s, 8s, 16s ... 1024s
+								}
+							}
+						}).fail(function(){
+							if (url_timeout <= BACKOFFMAX)
+							{
+								console.log("server is not reachable! trying again in "+url_timeout/1000+"s")
+								window.setTimeout(init, url_timeout);
+								url_timeout *= 4; // 'api/info' not reachable check every 4s, 16s, 64s, ... 1024s
 							}
 						});
-						return;	// check again in next interval
-					}
-					self.api.getSubscriptions().then(function(_data){
-						if (_data && _data.msg === 'result' && _data.result.length > 0)
-						{
-							var data = [];
-							for (var i in _data.result)
-							{
-								var updateIt = true;
-								var entry = {id: _data.result[i]['name'], stat1:_data.result[i]['unread'], fname:_data.result[i]['fname']};
-								for (var j in latest)
-								{
-									if (latest[j] && latest[j]['name'] ==_data.result[i]['name'] && latest[j]['_updatedAt'].$date == _data.result[i]['_updatedAt'].$date)
-									{
-										updateIt = false;
-									}
-								}
-								if (updateIt)
-								{
-									if ((_data.result[i]['t'] == 'c' || _data.result[i]['t'] == 'p') && _data.result[i]['alert'])
-									{
-										entry.stat1 = _data.result[i]['t'] == 'c' ? "#" : "@";
-									}
-									if (entry.stat1 > 0 && _data.result[i]['t'] =='d')
-									{
-										self.notifyMe(entry);
-									}
-									data.push(entry);
-								}
-							}
-							if (data.length > 0)
-							{
-								latest = _data.result;
-								if (app.status)	app.status.mergeContent(data);
-							}
-
-						}
-					}, function(_error){console.log(_error);});
-					self.api.subscribeToNotifyLogged('user-status').then(function(_data){
-						if (_data)
-						{
-							var title = "";
-							for (var i in _data.fields.args)
-							{
-								title = _data.fields.args[i][3] != "" ? _data.fields.args[i][3] : self._userStatusNum2String(_data.fields.args[i][2]);
-								if (_data.fields.args[i][1] == egw.user('account_lid'))
-								{
-									jQuery('span.fw_avatar_stat', '#topmenu_info_user_avatar').attr({
-										class: 'fw_avatar_stat stat1 '+self._userStatusNum2String(_data.fields.args[i][2]),
-										title: title
-									});
-									continue;
-								}
-								jQuery('tr#'+_data.fields.args[i][1]+' span.stat1', '#egw_fw_sidebar_r').attr({
-									class: 'et2_label stat1 '+self._userStatusNum2String(_data.fields.args[i][2]),
-									title: title
-								});
-							}
-						}
-					}, function(_error){console.log(_error);});
-				}, self.updateInterval);
+					});
+				};
+				init();
 			}
 		}).sendRequest();
 	},

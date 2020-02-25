@@ -6,7 +6,7 @@
  * @copyright 2018 by Hadi Nategh <hn-At-egroupware.org>
  * @description Realtime Api
  */
-
+const ROCKETCHAT_REALTIME_API_MAXTRY = 5;
 /**
  * Realtime Api constructor
  *
@@ -20,6 +20,7 @@ function rocketchat_realtime_api (_url)
 	this._resolveResponse = function (_response) {
 		return JSON.parse (_response.data ? _response.data : '{}');
 	};
+
 	try {
 		this.socket = new WebSocket (this.url);
 		if (this.socket)
@@ -69,7 +70,7 @@ rocketchat_realtime_api.prototype._send = function (_request) {
 	else if (this.socket.readyState == 3)
 	{
 		console.log("Socket connection is not ready or it's closed already");
-		rocketchat_realtime_api.call(this, this.url);
+		rocketchat_realtime_api.prototype._reconnect.call(this);
 	}
 };
 
@@ -79,7 +80,31 @@ rocketchat_realtime_api.prototype._send = function (_request) {
  */
 rocketchat_realtime_api.prototype._close = function (_request) {
 	console.log("Socket connection is not ready or it's closed already");
-	rocketchat_realtime_api.call(this, this.url);
+	rocketchat_realtime_api.prototype._reconnect.call(this);
+};
+
+rocketchat_realtime_api.prototype._reconnect = function()
+{
+	// do not try to reconnect if the connection is already there
+	if (this.socket.readyState == 1) return this._failed = 0;
+	let self = this;
+	this._failed = typeof this._failed == 'undefined' ? 1 : this._failed;
+	// try to reconnect x5 with exponetially delay of 5s, 10s, 15s, 20s, 25s between each try
+	if (this._failed <= ROCKETCHAT_REALTIME_API_MAXTRY && !this._tryTimeout)
+	{
+			this._tryTimeout = true;
+			window.setTimeout(function(){
+				if (self.socket.readyState == 1) return this._failed = 0;;
+				rocketchat_realtime_api.call(self, self.url);
+				console.log("Attempt ("+self._failed +") to reconnect to socket server in "+self._failed*5+"s");
+				self._failed++;
+				self._tryTimeout= false;
+			}, 5000*self._failed);
+	}
+	else if(this._failed > ROCKETCHAT_REALTIME_API_MAXTRY)
+	{
+		console.log("Too many attempt to connect to the rocketchat server, the server might be not reachable!");
+	}
 };
 
 /**

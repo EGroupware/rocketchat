@@ -26,15 +26,18 @@
 		var $menu = jQuery('#egw_fw_topmenu_items');
 
 		var $select = jQuery(document.createElement('select')).attr({id:"rc_status_select"}).change(function(){
-			if (app.rocketchat.api) app.rocketchat.api.setUserPresence(this.value);
+			if (app.rocketchat && app.rocketchat.api) app.rocketchat.api.setUserPresence(this.value);
 		}).prependTo($menu);
 
 		// delay creation of options to have translations loaded
 		window.setTimeout(function() {
-			jQuery("<option></option>", {value: "online", text: app.rocketchat.egw.lang("Online")}).appendTo($select);
-			jQuery("<option></option>", {value: "away", text: app.rocketchat.egw.lang("Away")}).appendTo($select);
-			jQuery("<option></option>", {value: "busy", text: app.rocketchat.egw.lang("Busy")}).appendTo($select);
-			jQuery("<option></option>", {value: "offline", text: app.rocketchat.egw.lang("Offline")}).appendTo($select);
+			if (app.rocketchat)
+			{
+				jQuery("<option></option>", {value: "online", text: app.rocketchat.egw.lang("Online")}).appendTo($select);
+				jQuery("<option></option>", {value: "away", text: app.rocketchat.egw.lang("Away")}).appendTo($select);
+				jQuery("<option></option>", {value: "busy", text: app.rocketchat.egw.lang("Busy")}).appendTo($select);
+				jQuery("<option></option>", {value: "offline", text: app.rocketchat.egw.lang("Offline")}).appendTo($select);
+			}
 		}, 500);
 
 		jQuery('#topmenu_info_user_avatar').mouseover(function(){

@@ -372,8 +372,15 @@ app.classes.rocketchat = AppJS.extend(
 			});
 			self.api.subscribeToNotifyLogged('user-status').then(function (_data) {
 				if (_data) {
-					var title = "";
-					for (var i in _data.fields.args) {
+					let title = "";
+					let data = [];
+					let entry = {};
+					for (let i in _data.fields.args) {
+						data.push({
+							id:_data.fields.args[i][1],
+							class1: self._userStatusNum2String(_data.fields.args[i][2]),
+							data:{rocketchat:{class:self._userStatusNum2String(_data.fields.args[i][2])}}
+						});
 						title = _data.fields.args[i][3] != "" ? _data.fields.args[i][3] : self._userStatusNum2String(_data.fields.args[i][2]);
 						if (_data.fields.args[i][1] == egw.user('account_lid')) {
 							jQuery('span.fw_avatar_stat', '#topmenu_info_user_avatar').attr({
@@ -387,6 +394,7 @@ app.classes.rocketchat = AppJS.extend(
 							title: title
 						});
 					}
+					if (app.status) app.status.mergeContent(data);
 				}
 			});
 		}, this.updateInterval);

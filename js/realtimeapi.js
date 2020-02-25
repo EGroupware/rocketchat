@@ -94,7 +94,7 @@ rocketchat_realtime_api.prototype._reconnect = function()
 	{
 			this._tryTimeout = true;
 			window.setTimeout(function(){
-				if (self.socket.readyState == 1) return this._failed = 0;;
+				if (self.socket.readyState == 1) return self._failed = 0;;
 				rocketchat_realtime_api.call(self, self.url);
 				console.log("Attempt ("+self._failed +") to reconnect to socket server in "+self._failed*5+"s");
 				self._failed++;

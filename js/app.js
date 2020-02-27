@@ -481,10 +481,12 @@ app.classes.rocketchat = AppJS.extend(
 	 */
 	notifyMe: function (_data)
 	{
-		var self = this;
-		if (egw.preference('audio', this.appname))
+		let self = this;
+		let notification = egw.preference('notification', this.appname);
+		let audio = egw.preference('audio', this.appname);
+		if (audio && audio != 0)
 		{
-			var $audio = jQuery(document.createElement('audio'))
+			let $audio = jQuery(document.createElement('audio'))
 					.attr({id:"rocketchat_audio"})
 					.appendTo('body');
 			jQuery(document.createElement('source')).attr({
@@ -492,7 +494,7 @@ app.classes.rocketchat = AppJS.extend(
 			}).appendTo($audio);
 			$audio[0].play();
 		}
-		if (egw.preference('notification', this.appname))
+		if (notification && notification != 0)
 		{
 			egw.notification(this.egw.lang('Rocket.Chat'), {
 					body: this.egw.lang('You have %1 unread messages from %2', _data.stat1, _data.fname),

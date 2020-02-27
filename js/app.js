@@ -407,7 +407,8 @@ app.classes.rocketchat = AppJS.extend(
 	getUpdates: function ()
 	{
 		let self = this;
-		let url_timeout, api_timeout = 1000; // 1s
+		let url_timeout = 1000; // 1s
+		let api_timeout = 1000; // 1s
 		const BACKOFFMAX = 1024000; //1024s max timeout then stops requesting
 		let init = null;
 		egw.json("EGroupware\\Rocketchat\\Hooks::ajax_getServerUrl", [], function (response){

@@ -220,7 +220,9 @@ class Hooks
 				}
 				catch (\Exception $ex) {
 					Api\Framework::message($ex->getMessage());
-					return false;
+					// it's important to return nothing here as false will block login attempt even though the server is
+					// back from failure and running normal.
+					return;
 				}
 			});
 			if ($logged_in && ($onlineusers = $api->userslist(['query' => [
@@ -475,7 +477,9 @@ class Hooks
 				}
 				catch (\Exception $ex) {
 					Api\Framework::message($ex->getMessage());
-					return false;
+					// it's important to return nothing here as false will block login attempt even though the server is
+					// back from failure and running normal.
+					return;
 				}
 			});
 			if ($logged_in)
@@ -523,7 +527,9 @@ class Hooks
 			}
 			catch (\Exception $ex) {
 				Api\Framework::message($ex->getMessage());
-				return false;
+				// it's important to return nothing here as false will block login attempt even though the server is
+				// back from failure and running normal.
+				return;
 			}
 		});
 		if ($logged_in)

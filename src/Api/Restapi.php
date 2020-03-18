@@ -80,6 +80,7 @@ class Restapi
 			'authentication' => $this->config['authentication'],
 			'oauth_client_id' => $this->config['oauth_client_id'],
 			'oauth_service_name' => $this->config['oauth_service_name'],
+			'server_url' => $this->config['server_url']
 		], $_data);
 
 		if (($auth = Cache::getSession(Rocketchat\Hooks::APPNAME, self::AUTH_SESSION)))
@@ -107,8 +108,8 @@ class Restapi
 	{
 		if ($_api_path[0] == '/')
 		{
-			$full_path = Api\Framework::getUrl(substr($this->config['server_url'], -1) == '/' ?
-				substr($this->config['server_url'], 0,-1) : $this->config['server_url']).$_api_path;
+			$full_path = Api\Framework::getUrl(substr($this->data['server_url'], -1) == '/' ?
+				substr($this->data['server_url'], 0,-1) : $this->data['server_url']).$_api_path;
 		}
 		else
 		{

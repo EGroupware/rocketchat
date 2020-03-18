@@ -354,6 +354,7 @@ class Hooks
 		{
 			$api = new Restapi([
 				'api_path' => $data['server_url'].Restapi::API_URL,
+				'server_url' => $data['server_url']
 			]);
 			$info = $api->info();
 			if (empty($info) || !$info['success'])
@@ -413,6 +414,7 @@ class Hooks
 		try {
 			$api = new Restapi([
 				'api_path' => $data['server_url'].Restapi::API_URL,
+				'server_url' => $data['server_url']
 			]);
 			$info = $api->info();
 			if (empty($info) || !$info['success'])

@@ -147,11 +147,14 @@ class Restapi
 		curl_setopt_array($curl, $curlOpts);
 		if (!($json = curl_exec($curl)))
 		{
-			throw new \Exception("Error contacting Api server: $full_path");
+			return self::_responseHandler([
+				'error' => true,
+				'message' => lang("Error contacting Api server: $full_path")
+			]);
 		}
 		curl_close($curl);
 		if (self::DEBUG) error_log(__METHOD__."($_api_path, $_method) curlOpts=".array2string($curlOpts)." returned $json");
-		return json_decode($json, true);
+		return self::_responseHandler(json_decode($json, true));
 	}
 
 	/**
@@ -168,7 +171,7 @@ class Restapi
 		switch($this->data['authentication'])
 		{
 			case 'credentials':
-				$response = self::_responseHandler($this->api_call('login', 'POST', ['user' => $_user, 'password' => $_pass]), 'status');
+				$response = $this->api_call('login', 'POST', ['user' => $_user, 'password' => $_pass]);
 				break;
 
 			case 'openid':	// own OpenID Connect / OAuth server
@@ -177,12 +180,12 @@ class Restapi
 				{
 					throw new Exception\LoginFailure('No token / user consent yet!', 999);
 				}
-				$response = self::_responseHandler($this->api_call('login', 'POST', [
+				$response = $this->api_call('login', 'POST', [
 					'serviceName' => $this->data['oauth_service_name'],
 					'X-User-Id' => $this->data['user'],
 					'accessToken' => $token,
 					'expiresIn' => 3600,	// default TTL of access-token
-				]), 'status');
+				]);
 				break;
 		}
 		if (!$response['success'] || !$response) {
@@ -205,7 +208,7 @@ class Restapi
 	 */
 	public function me ()
 	{
-		$response = self::_responseHandler($this->api_call('me', 'GET', ['userId' => $this->userId]));
+		$response = $this->api_call('me', 'GET', ['userId' => $this->userId]);
 		if (!$response['success'])
 		{
 			if (self::DEBUG) error_log(__METHOD__. 'Command me failed because of'.$response['message']);
@@ -228,7 +231,7 @@ class Restapi
 	public function usersinfo ($_args=[])
 	{
 		if (empty($_args['userId']) && empty($_args['username'])) $_args['userId'] = $this->userId;
-		$response = self::_responseHandler($this->api_call('users.info', 'GET', $_args));
+		$response = $this->api_call('users.info', 'GET', $_args);
 		if (!$response['success'])
 		{
 			if (self::DEBUG) error_log(__METHOD__. 'Command usersinfo failed because of'.$response['message']);
@@ -255,7 +258,7 @@ class Restapi
 	public function userslist ($_args=[])
 	{
 		$args = array_map('json_encode', $_args);
-		$response = self::_responseHandler($this->api_call('users.list', 'GET', $args));
+		$response = $this->api_call('users.list', 'GET', $args);
 		if (!$response['success'])
 		{
 			if (self::DEBUG) error_log(__METHOD__.'Command userslist failed because of'.$response['message']);
@@ -272,7 +275,7 @@ class Restapi
 	 */
 	public function chat_PostMessage ($_args=[])
 	{
-		$response = self::_responseHandler($this->api_call('chat.postMessage', 'POST', $_args));
+		$response = $this->api_call('chat.postMessage', 'POST', $_args);
 		if (!$response['success'])
 		{
 			if (self::DEBUG) error_log(__METHOD__.'Command chat.postMessage failed because of'.$response['message']);
@@ -306,7 +309,7 @@ class Restapi
 	 */
 	public function roomslist ()
 	{
-		$response = self::_responseHandler($this->api_call('rooms.get', 'GET'));
+		$response = $this->api_call('rooms.get', 'GET');
 		if (!$response['success'])
 		{
 			if (self::DEBUG) error_log(__METHOD__.'Command roomslist failed because of'.$response['message']);
@@ -323,22 +326,19 @@ class Restapi
 	 */
 	private static function _responseHandler ($response)
 	{
-		if (is_array($response))
+		$result = [
+			'response' => $response,
+			'message' => $response['message'],
+			'success' => false
+		];
+		if ($response['error'])
 		{
-			$result = [
-				'response' => $response,
-				'message' => $response['message'],
-				'success' => true
-			];
-			if ($response['error'])
-			{
-				$result['success'] = false;
-			}
-			elseif (isset($response['success']) && $response['success'] == true
-					|| isset ($response['status']) && $response['status'] == 'success')
-			{
-				$result['success'] = true;
-			}
+			$result['success'] = false;
+		}
+		elseif (isset($response['success']) && $response['success'] == true
+				|| isset ($response['status']) && $response['status'] == 'success')
+		{
+			$result['success'] = true;
 		}
 		return $result;
 	}

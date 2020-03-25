@@ -483,17 +483,6 @@ app.classes.rocketchat = AppJS.extend(
 	{
 		let self = this;
 		let notification = egw.preference('notification', this.appname);
-		let audio = egw.preference('audio', this.appname);
-		if (audio && audio != 0)
-		{
-			let $audio = jQuery(document.createElement('audio'))
-					.attr({id:"rocketchat_audio"})
-					.appendTo('body');
-			jQuery(document.createElement('source')).attr({
-				src: egw.webserverUrl+"/rocketchat/assets/sounds/chime.mp3"
-			}).appendTo($audio);
-			$audio[0].play();
-		}
 		if (notification && notification != 0)
 		{
 			egw.notification(this.egw.lang('Rocket.Chat'), {

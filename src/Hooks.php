@@ -112,16 +112,6 @@ class Hooks
 	static function settings()
 	{
 		$settings = [
-			'audio' => array(
-				'type'   => 'select',
-				'label'  => 'Enable audio effects',
-				'name'   => 'audio effects',
-				'values' => [1 => lang('enabled'), 0 => lang('disabled')],
-				'help'   => 'Enable/disable audio effects such as message notifications',
-				'xmlrpc' => True,
-				'admin'  => False,
-				'default'=> 1,
-			),
 			'notification' => array(
 				'type'   => 'select',
 				'label'  => 'Enable browser notification',
@@ -131,7 +121,7 @@ class Hooks
 				'xmlrpc' => True,
 				'admin'  => False,
 				'default'=> 1,
-			),
+			)
 		];
 
 		return $settings;
@@ -486,10 +476,12 @@ class Hooks
 			});
 			if ($logged_in)
 			{
-				$response = $api->me();
-				$response['statusDefault'] = $response['statusDefault'] ?  $response['statusDefault'] : $response['status'];
+				if(($response = $api->me()) && $response['success']);
+				{
+					$response['statusDefault'] = $response['statusDefault'] ?  $response['statusDefault'] : $response['status'];
+				}
 			}
-			$status = $response['statusDefault'] ? $response['statusDefault'] : 'noconnection';
+			$status = !$response['statusDefault'] ? 'noconnection' :  $response['statusDefault'];
 			switch ($status)
 			{
 				case 'error':

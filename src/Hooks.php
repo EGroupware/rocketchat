@@ -71,9 +71,9 @@ class Hooks
 		$file = array (
 			'My Account' =>  'javascript:app.rocketchat.myaccount();'
 		);
-		display_sidebox(self::APPNAME, 'My Account', $file);
+		display_sidebox(self::APPNAME, lang('My Account'), $file);
 
-		display_sidebox(self::APPNAME, 'Help',  [
+		display_sidebox(self::APPNAME, lang('Help'),  [
 			[
 				'text'   => 'Documentation',
 				'link'   => 'https://rocket.chat/docs/user-guides/',

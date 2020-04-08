@@ -1,2 +1,47 @@
+add non-egroupware user	rocketchat	es-es	Añadir usuario que no sea de EGroupware
+additionally you should insert a valid email-address, which is used for the registration process of rocket.chat.	rocketchat	es-es	Además, debe insertar una dirección de correo-e válida, que se utiliza para el proceso de registro de Rocket.Chat.
+admin info	rocketchat	es-es	Información de administrador
+administration panel	rocketchat	es-es	Panel de Administración
+authentication	rocketchat	es-es	Autenticación
+away	common	es-es	Away
+busy	common	es-es	Ocupado
+connection error to rocket.chat server!	common	es-es	¡Error de conexión al servidor de Rocket.Chat!
+create openid client	rocketchat	es-es	Crear cliente OpenID
+do you want to install	rocketchat	es-es	¿Quieres instalar?
+do you want to install?	rocketchat	es-es	¿Quieres instalar?
+enable audio effects	rocketchat	es-es	Efectos de sonido
+enable browser notification	rocketchat	es-es	Habilitar notificación del navegador
+enable/disable browser notification for unread messages	rocketchat	es-es	Habilitar/deshabilitar la notificación del navegador para mensajes no leídos
+example: https://www.egroupware.org/rocketchat/	rocketchat	es-es	ejemplo: https://www.egroupware.org/rocketchat/
+file upload	rocketchat	es-es	Subir archivo
+general settings	rocketchat	es-es	Configuración general
+install information	rocketchat	es-es	Información de instalación
+install now	rocketchat	es-es	Instalar ahora
+installation	rocketchat	es-es	Instalación
+installation finished	rocketchat	es-es	Instalación terminada
+loading rocket.chat ...	rocketchat	es-es	Cargando Rocket.Chat...
+logging you into rocket.chat ...	rocketchat	es-es	Iniciando sesión en Rocket.Chat...
+my account	rocketchat	es-es	Mi cuenta
+offline	common	es-es	Desconectado
+online	common	es-es	En línea
+organisatation email	rocketchat	es-es	Correo-e de la organización
+organisation email	rocketchat	es-es	Correo-e de la organización
+organisation info	rocketchat	es-es	información de la organización
+organization email	rocketchat	es-es	Correo-e de la organización
+please check also our technical documentation page on github: https://github.com/egroupware/openid	rocketchat	es-es	Consulte también nuestra página de documentación técnica en Github: https://github.com/EGroupware/openid
 rocket.chat	rocketchat	es-es	Rocket.Chat
 rocketchat	common	es-es	Rocket.Chat
+server info	rocketchat	es-es	Información del servidor
+server url	rocketchat	es-es	URL del servidor
+site name	rocketchat	es-es	Nombre del sitio
+status:	rocketchat	es-es	Estado:
+step 1: admin info	rocketchat	es-es	Paso 1: Información de administrador
+step 2: organization info	rocketchat	es-es	Paso 2: Información de la organización
+step 3: server info	rocketchat	es-es	Paso 3: Información del servidor
+unable to connect!	rocketchat	es-es	¡No puede conectarse!
+url must end with %1	rocketchat	es-es	URL debe terminar en %1
+video-chat	rocketchat	es-es	Videochat
+video-conference	rocketchat	es-es	Videoconferencia
+would you like to install it now?	rocketchat	es-es	¿Desea instalarlo ahora?
+would you like to see installation instructions?	rocketchat	es-es	¿Quiere ver las instrucciones de instalación?
+you have %1 unread messages from %2	rocketchat	es-es	Tienes %1 mensajes no leídos de %2

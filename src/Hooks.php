@@ -297,6 +297,7 @@ class Hooks
 			'message' => [
 				'caption' => 'Message',
 				'default' => true,
+				'icon' => 'rocketchat/navbar',
 				'allowOnMultiple' => false,
 				'onExecute' => 'javaScript:app.rocketchat.handle_actions',
 				'enabled' => 'javaScript:app.rocketchat.isRCActive'
@@ -305,6 +306,7 @@ class Hooks
 				'caption' => 'Link to contact',
 				'default' => true,
 				'allowOnMultiple' => false,
+				'icon' => 'link',
 				'enableClass' => 'unlinked',
 				'hideOnDisabled' => true,
 				'onExecute' => 'javaScript:app.rocketchat.handle_actions',

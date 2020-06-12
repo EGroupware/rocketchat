@@ -1,17 +1,22 @@
 add non-egroupware user	rocketchat	fr	Ajouter un utilisateur hors-EGroupware
 administration panel	rocketchat	fr	Panneau d'Administration
-connection error to rocket.chat server!	rocketchat	fr	Echec à la connexion au serveur Rocket.Chat !
+authentication	rocketchat	fr	Authentication
+connection error to rocket.chat server!	common	fr	Echec à la connexion au serveur Rocket.Chat !
 do you want to install	rocketchat	fr	Souhaitez-vous installer
 do you want to install?	rocketchat	fr	Souhaitez-vous installer ?
 enable audio effects	rocketchat	fr	Effets audio
 enable browser notification	rocketchat	fr	Autoriser les noficiations du navigateur
 example: https://www.egroupware.org/rocketchat/	rocketchat	fr	exemple: https://www.egroupware.org/rocketchat/
 file upload	rocketchat	fr	Upload de fichier
+gdpr decision	rocketchat	fr	Décision RGPD
+general settings	rocketchat	fr	Paramètres généraux
 install now	rocketchat	fr	Installer maintenant
 installation	rocketchat	fr	Installation
 installation finished	rocketchat	fr	Installation terminée
 loading rocket.chat ...	rocketchat	fr	Chargement de Rocket.Chat ...
 my account	rocketchat	fr	Mon compte
+offline	common	fr	Hors ligne
+online	common	fr	En ligne
 organisatation email	rocketchat	fr	Email de l'organisation
 organisation email	rocketchat	fr	Email de l'organisation
 organisation info	rocketchat	fr	Informations sur l'organisation

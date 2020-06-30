@@ -73,6 +73,11 @@ class Restapi
 	public function __construct($_data = [])
 	{
 		$this->config = Config::read('rocketchat');
+		// make sure the server url ends up with /
+		if (!empty($this->config['server_url']) &&  substr($this->config['server_url'], -1) != '/')
+		{
+			$this->config['server_url'] .='/';
+		}
 		$this->data = array_merge([
 			'api_path' => !empty($this->config['server_url']) ?
 				Api\Framework::getUrl($this->config['server_url']).self::API_URL : null,

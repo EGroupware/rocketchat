@@ -174,7 +174,9 @@ class Hooks
 	{
 		$config = Api\Config::read('rocketchat');
 		// deal with just /rocketchat/ --> http(s)://domain.com/rocketchat/
-		return !empty($config['server_url']) ? Api\Framework::getUrl($config['server_url']) : null;
+		return !empty($config['server_url']) ?
+			(substr($config['server_url'], -1) == '/' ? Api\Framework::getUrl($config['server_url']) :
+			Api\Framework::getUrl($config['server_url']).'/') : null;
 	}
 
 	/**

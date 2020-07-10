@@ -97,7 +97,7 @@ app.classes.rocketchat = AppJS.extend(
 					}
 				}
 				catch(e){
-					_resolve();
+					_resolve('setup');
 				}
 				_reject();
 			}, 1000);
@@ -131,16 +131,21 @@ app.classes.rocketchat = AppJS.extend(
 	{
 		var self = this;
 		var frame = egw(window).is_popup() ? self.chatbox : self.mainframe;
-		if (frame && frame.contentWindow && jQuery('.setup-wizard', frame.contentWindow.document))
-		{
-			jQuery(frame.contentWindow.document.body).off().on('click', function(e){
-				if (e.target.nodeName =="BUTTON" && e.target.className == "rc-button rc-button--primary js-finish")
-				{
-					self.postMessage('logout');
-					et2_dialog.alert("You're Rocket.Chat is installed, please once relogin to EGroupware.","Rocket.Chat");
-				}
-			});
+		try{
+			if (frame && frame.contentWindow && jQuery('.setup-wizard', frame.contentWindow.document))
+			{
+				jQuery(frame.contentWindow.document.body).off().on('click', function(e){
+					if (e.target.nodeName =="BUTTON" && e.target.className == "rc-button rc-button--primary js-finish")
+					{
+						self.postMessage('logout');
+						et2_dialog.alert("You're Rocket.Chat is installed, please once relogin to EGroupware.","Rocket.Chat");
+					}
+				});
+			}
+		}catch(e){
+			console.log(e);
 		}
+
 
 		if (e && e.type == 'message' && e.data && e.data.eventName)
 		{

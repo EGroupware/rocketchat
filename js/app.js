@@ -370,7 +370,7 @@ app.classes.rocketchat = AppJS.extend(
 					}
 					if (data.length > 0) {
 						latest = _data.result;
-						if (app.status) app.status.mergeContent(data);
+						if (app.status && app.status.et2) app.status.mergeContent(data);
 					}
 
 				}
@@ -399,7 +399,7 @@ app.classes.rocketchat = AppJS.extend(
 							title: title
 						});
 					}
-					if (app.status) app.status.mergeContent(data);
+					if (app.status && app.status.et2) app.status.mergeContent(data);
 				}
 			});
 		}, this.updateInterval);

@@ -181,7 +181,9 @@ class Restapi
 
 			case 'openid':	// own OpenID Connect / OAuth server
 				$tokenFactory = new Token();
-				if (!($token = $tokenFactory->accessToken($this->data['oauth_client_id'], explode(' ', self::OAUTH_SCOPES), 'PT12H')))
+				if (!($token = $tokenFactory->accessToken($this->data['oauth_client_id'],
+					// do NOT require a refresh token / user conset as we regard rocketchat as internal app
+					explode(' ', self::OAUTH_SCOPES), 'PT12H', false)))
 				{
 					throw new Exception\LoginFailure('No token / user consent yet!', 999);
 				}

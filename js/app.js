@@ -392,6 +392,7 @@ app.classes.rocketchat = AppJS.extend(
 								class: 'fw_avatar_stat stat1 ' + self._userStatusNum2String(_data.fields.args[i][2]),
 								title: title
 							});
+							jQuery('#rc_status_select').val(self._userStatusNum2String(_data.fields.args[i][2])).trigger('liszt:updated');
 							continue;
 						}
 						jQuery('tr#' + _data.fields.args[i][1] + ' span.stat1', '#egw_fw_sidebar_r').attr({

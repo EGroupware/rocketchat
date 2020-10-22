@@ -19,7 +19,7 @@ app.classes.rocketchat = AppJS.extend(
 
 	api: undefined,
 
-	updateInterval: 2000,
+	updateInterval: 10000,
 	rocketchat: {},
 
 	mainframe: {},

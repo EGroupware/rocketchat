@@ -346,6 +346,7 @@ app.classes.rocketchat = AppJS.extend(
 			self.api.getSubscriptions().then(function (_data) {
 				if (_data && _data.msg === 'result' && _data.result.length > 0) {
 					let data = [];
+					let counter = 0;
 					for (let i in _data.result) {
 						let updateIt = true;
 						let entry = {
@@ -353,6 +354,7 @@ app.classes.rocketchat = AppJS.extend(
 							stat1: _data.result[i]['unread'],
 							fname: _data.result[i]['fname']
 						};
+						counter = (entry.stat1) ? counter + entry.stat1 : counter;
 						for (let j in latest) {
 							if (latest[j] && latest[j]['name'] == _data.result[i]['name'] && latest[j]['_updatedAt'].$date == _data.result[i]['_updatedAt'].$date) {
 								updateIt = false;
@@ -368,6 +370,7 @@ app.classes.rocketchat = AppJS.extend(
 							data.push(entry);
 						}
 					}
+					framework.notifyAppTab('rocketchat', counter);
 					if (data.length > 0) {
 						latest = _data.result;
 						if (app.status && app.status.et2) app.status.mergeContent(data);

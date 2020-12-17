@@ -370,7 +370,7 @@ app.classes.rocketchat = AppJS.extend(
 							data.push(entry);
 						}
 					}
-					framework.notifyAppTab('rocketchat', counter);
+					if (framework.notifyAppTab) framework.notifyAppTab('rocketchat', counter);
 					if (data.length > 0) {
 						latest = _data.result;
 						if (app.status && app.status.et2) app.status.mergeContent(data);

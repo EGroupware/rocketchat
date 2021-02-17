@@ -356,7 +356,9 @@ app.classes.rocketchat = AppJS.extend(
 						};
 						counter = (entry.stat1) ? counter + entry.stat1 : counter;
 						for (let j in latest) {
-							if (latest[j] && latest[j]['name'] == _data.result[i]['name'] && latest[j]['_updatedAt'].$date == _data.result[i]['_updatedAt'].$date) {
+							if (latest[j] && latest[j]['name'] == _data.result[i]['name']
+								&& latest[j]['_updatedAt'].$date == _data.result[i]['_updatedAt'].$date
+								&& latest[j]['unread'] == _data.result[i]['unread']) {
 								updateIt = false;
 							}
 						}

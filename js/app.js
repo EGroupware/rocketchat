@@ -83,7 +83,7 @@ app.classes.rocketchat = AppJS.extend(
 	 */
 	_shouldCallCustomOAuth:function(_mode)
 	{
-		return _mode !=="setup" && self.content['authentication'] ==='openid'
+		return _mode !=="setup" && this.content['authentication'] ==='openid'
 			&& !(sessionStorage.getItem('Meteor.loginToken:/:/rocketchat') || localStorage.getItem('Meteor.loginToken:/:/rocketchat'))
 			&& !(sessionStorage.getItem('Meteor.loginToken') || localStorage.getItem('Meteor.loginToken'));
 	},

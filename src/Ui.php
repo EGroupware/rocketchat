@@ -123,7 +123,7 @@ class Ui
 		if (!$this->check_configured(false)) return;
 
 		$tpl = new Etemplate('rocketchat.index');
-		$tpl->setElementAttribute('iframe', 'src', Hooks::getSiteUrl());
+		$tpl->setElementAttribute('iframe', 'src', Hooks::getSiteUrl().'home');
 		$content['authentication'] = $this->config['authentication'];
 		$tpl->exec('rocketchat.EGroupware\\Rocketchat\\Ui.index', $content, []);
 	}
@@ -133,7 +133,7 @@ class Ui
 		if (!$this->check_configured(true)) return;
 
 		$tpl = new Etemplate('rocketchat.chat');
-		$path = $_GET['path'];
+		$path = $_GET['path']??'home';
 		$tpl->setElementAttribute('chatbox', 'src', Hooks::getSiteUrl().$path);
 		$content['authentication'] = $this->config['authentication'];
 		$tpl->exec('rocketchat.EGroupware\\Rocketchat\\Ui.chat', $content, array());

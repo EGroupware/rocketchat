@@ -47,8 +47,7 @@ app.classes.rocketchat = AppJS.extend(
 				jQuery(this.mainframe).on('load', function(){
 					self._isRocketchatLoaded().then(function(_mode){
 						egw(window).loading_prompt('rocketchat-loading', false);
-						if (_mode !=="setup" && self.content['authentication'] ==='openid' && !(sessionStorage.getItem('Meteor.loginToken:/:/rocketchat') ||
-								localStorage.getItem('Meteor.loginToken:/:/rocketchat')))
+						if (self._shouldCallCustomOAuth())
 						{
 							self.postMessage('call-custom-oauth-login', {service:'egroupware'});
 							egw(window).loading_prompt('rocketchat-login', true, this.egw.lang('Logging you into Rocket.Chat ...'), jQuery('#rocketchat-index'));
@@ -67,8 +66,7 @@ app.classes.rocketchat = AppJS.extend(
 				this.chatbox = this.et2.getWidgetById('chatbox').getDOMNode();
 				jQuery(this.chatbox).on('load', function(){
 					self._isRocketchatLoaded().then(function(_mode){
-						if (_mode !=="setup" && self.content['authentication'] ==='openid' && !(sessionStorage.getItem('Meteor.loginToken:/:/rocketchat') ||
-								localStorage.getItem('Meteor.loginToken:/:/rocketchat')))
+						if (self._shouldCallCustomOAuth())
 						{
 							self.postMessage('call-custom-oauth-login', {service:'egroupware'});
 						}
@@ -76,6 +74,18 @@ app.classes.rocketchat = AppJS.extend(
 				});
 		}
 		window.addEventListener('message', jQuery.proxy(this.messageHandler, this));
+	},
+
+	/**
+	 * Chech wheter custom call oauth relogin should be called
+	 * @return {boolean}
+	 * @private
+	 */
+	_shouldCallCustomOAuth:function()
+	{
+		return _mode !=="setup" && self.content['authentication'] ==='openid'
+			&& !(sessionStorage.getItem('Meteor.loginToken:/:/rocketchat') || localStorage.getItem('Meteor.loginToken:/:/rocketchat'))
+			&& !(sessionStorage.getItem('Meteor.loginToken') || localStorage.getItem('Meteor.loginToken'));
 	},
 
 	_isRocketchatLoaded: function()

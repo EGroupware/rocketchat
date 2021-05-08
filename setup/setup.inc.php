@@ -12,7 +12,7 @@
 
 $setup_info['rocketchat']['name']    = 'rocketchat';
 $setup_info['rocketchat']['title']   = 'Rocket.Chat';
-$setup_info['rocketchat']['version'] = '20.1';
+$setup_info['rocketchat']['version'] = '21.1';
 $setup_info['rocketchat']['app_order'] = 7;
 $setup_info['rocketchat']['enable']  = 1;
 $setup_info['rocketchat']['autoinstall'] = true;	// install automatically on update
@@ -45,5 +45,5 @@ $setup_info['rocketchat']['hooks']['status-getSearchParticipants'] = 'EGroupware
 /* Dependencies for this app to work */
 $setup_info['rocketchat']['depends'][] = array(
 	'appname' => 'api',
-	'versions' => array('20.1')
+	'versions' => array('21.1')
 );

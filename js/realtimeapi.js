@@ -6,13 +6,13 @@
  * @copyright 2018 by Hadi Nategh <hn-At-egroupware.org>
  * @description Realtime Api
  */
-const ROCKETCHAT_REALTIME_API_MAXTRY = 5;
+export const ROCKETCHAT_REALTIME_API_MAXTRY = 5;
 /**
  * Realtime Api constructor
  *
  * @param {type} _url websocket url
  */
-function rocketchat_realtime_api (_url)
+export function rocketchat_realtime_api (_url)
 {
 	this.url = _url || '';
 	this.onmessage_callback = {};

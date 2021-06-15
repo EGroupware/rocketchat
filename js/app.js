@@ -9,10 +9,12 @@
  * @version $Id$
  */
 
-/*egw:uses
-	/rocketchat/js/init.js;
-	/rocketchat/js/realtimeapi.js;
- */
+
+import {AppJS} from "../../api/js/jsapi/app_base.js";
+import {et2_dialog} from "../../api/js/etemplate/et2_widget_dialog";
+import {rocketchat_realtime_api} from "./realtimeapi.js";
+import {et2_createWidget} from "../../api/js/etemplate/et2_core_widget";
+
 app.classes.rocketchat = AppJS.extend(
 {
 	appname: 'rocketchat',

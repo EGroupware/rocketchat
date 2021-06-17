@@ -16,7 +16,7 @@
 
 	egw_LAB.wait(function() {
 
-		egw.includeJS('/rocketchat/js/app.js', undefined, undefined, egw.webserverUrl).then(() => {
+		import(egw.webserverUrl+'/rocketchat/js/app.js').then(() => {
 			//instatiate rocketchat app
 			app.rocketchat = new app.classes.rocketchat;
 			if (egw(window).is_popup())

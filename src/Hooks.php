@@ -366,7 +366,7 @@ class Hooks
 			else
 			{
 				$data['server_status_class'] = 'ok';
-				$data['server_status'] = lang('Successful connected, Rocket.Chat version: %1.', $info['info']['version']);
+				$data['server_status'] = lang('Successful connected, Rocket.Chat version: %1.', $info['response']['info']['version']);
 			}
 		}
 		catch (\Exception $e)

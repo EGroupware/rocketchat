@@ -190,7 +190,7 @@ rocketchat_realtime_api.prototype.subscribeToNotifyLogged = function (_event, _c
 
 	this._send({
 		"msg": "sub",
-		"id": self.id,
+		"id": this.id,
 		"name": "stream-notify-logged",
 		"params":[_event, true]
 	});

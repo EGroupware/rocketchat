@@ -184,29 +184,15 @@ rocketchat_realtime_api.prototype.getSubscriptions = function () {
  *		deleteEmojiCustom
  *		roles-change
  *		user-status
- *
- * @returns {Promise}
  */
-rocketchat_realtime_api.prototype.subscribeToNotifyLogged = function (_event) {
-	var self = this;
-	return new Promise (function(_resolve, _reject){
-		self.onmessage_callback[_event] = function (_result) {
-			if (_result.error)
-			{
-				_reject(_result.error);
-			}
-			else
-			{
-				_resolve(_result);
-			}
-		};
+rocketchat_realtime_api.prototype.subscribeToNotifyLogged = function (_event, _callback) {
+	this.onmessage_callback[_event] = _callback;
 
-		self._send({
-			"msg": "sub",
-			"id": self.id,
-			"name": "stream-notify-logged",
-			"params":[_event, true]
-		});
+	this._send({
+		"msg": "sub",
+		"id": self.id,
+		"name": "stream-notify-logged",
+		"params":[_event, true]
 	});
 };
 
@@ -219,29 +205,13 @@ rocketchat_realtime_api.prototype.subscribeToNotifyLogged = function (_event) {
  *		offline
  *		away
  *		busy
- *
- * @returns {Promise}
  */
 rocketchat_realtime_api.prototype.setUserPresence = function (_stat) {
-	var self = this;
-	var stat = _stat;
-	return new Promise (function(_resolve, _reject){
-		self.onmessage_callback.setUserPresence = function (_result) {
-			if (_result.error)
-			{
-				_reject(_result.error);
-			}
-			else
-			{
-				_resolve(_result);
-			}
-		};
-		self._send({
-			msg: "method",
-			method: "UserPresence:setDefaultStatus",
-			id: self.id,
-			params: [stat]
-		});
+	this._send({
+		msg: "method",
+		method: "UserPresence:setDefaultStatus",
+		id: this.id,
+		params: [_stat]
 	});
 };
 

@@ -50,7 +50,7 @@ app.classes.rocketchat = AppJS.extend(
 						if (self._shouldCallCustomOAuth(_mode))
 						{
 							self.postMessage('call-custom-oauth-login', {service:'egroupware'});
-							egw(window).loading_prompt('rocketchat-login', true, this.egw.lang('Logging you into Rocket.Chat ...'), jQuery('#rocketchat-index'));
+							egw(window).loading_prompt('rocketchat-login', true, self.egw.lang('Logging you into Rocket.Chat ...'), jQuery('#rocketchat-index'));
 							window.setTimeout(function(){
 								egw(window).loading_prompt('rocketchat-login', false);
 							}, 4000); // disable the login prompt automatically after 4s
@@ -352,7 +352,7 @@ app.classes.rocketchat = AppJS.extend(
 	{
 		var self = this;
 		let latest = [];
-		return window.setInterval(function () {
+		window.setInterval(function () {
 			self.api.getSubscriptions().then(function (_data) {
 				if (_data && _data.msg === 'result' && _data.result.length > 0) {
 					let data = [];
@@ -390,16 +390,20 @@ app.classes.rocketchat = AppJS.extend(
 
 				}
 			});
-			self.api.subscribeToNotifyLogged('user-status').then(function (_data) {
+		}, this.updateInterval);
+
+		// use getSubscription once to make sure the api is ready to bind the sub
+		this.api.getSubscriptions().then(_=> {
+			self.api.subscribeToNotifyLogged('user-status', function (_data) {
 				if (_data) {
 					let title = "";
 					let data = [];
 					let entry = {};
 					for (let i in _data.fields.args) {
 						data.push({
-							id:_data.fields.args[i][1],
+							id: _data.fields.args[i][1],
 							class1: self._userStatusNum2String(_data.fields.args[i][2]),
-							data:{rocketchat:{class:self._userStatusNum2String(_data.fields.args[i][2])}}
+							data: {rocketchat: {class: self._userStatusNum2String(_data.fields.args[i][2])}}
 						});
 						title = _data.fields.args[i][3] != "" ? _data.fields.args[i][3] : self._userStatusNum2String(_data.fields.args[i][2]);
 						if (_data.fields.args[i][1] == egw.user('account_lid')) {
@@ -418,7 +422,7 @@ app.classes.rocketchat = AppJS.extend(
 					if (app.status && app.status.et2) app.status.mergeContent(data);
 				}
 			});
-		}, this.updateInterval);
+		});
 	},
 
 	/**

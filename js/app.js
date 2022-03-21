@@ -11,9 +11,9 @@
 
 
 import {AppJS} from "../../api/js/jsapi/app_base.js";
-import {et2_dialog} from "../../api/js/etemplate/et2_widget_dialog";
 import {rocketchat_realtime_api} from "./realtimeapi.js";
 import {et2_createWidget} from "../../api/js/etemplate/et2_core_widget";
+import {Et2Dialog} from "../../api/js/etemplate/Et2Dialog/Et2Dialog";
 
 app.classes.rocketchat = AppJS.extend(
 {
@@ -150,7 +150,7 @@ app.classes.rocketchat = AppJS.extend(
 					if (e.target.nodeName =="BUTTON" && e.target.className == "rc-button rc-button--primary js-finish")
 					{
 						self.postMessage('logout');
-						et2_dialog.alert("You're Rocket.Chat is installed, please once relogin to EGroupware.","Rocket.Chat");
+						Et2Dialog.alert("Your Rocket.Chat is installed, please once relogin to EGroupware.", "Rocket.Chat");
 					}
 				});
 			}
@@ -257,7 +257,7 @@ app.classes.rocketchat = AppJS.extend(
 							base_path = 'direct';
 					}
 
-					this.chatPopupLookup(user_id, {path:base_path+'/'+user_id+'?layout=embedded'});
+					this.chatPopupLookup(user_id, {path: base_path + '/' + user_id + '?layout=embedded'});
 				}
 				else
 				{
@@ -265,16 +265,19 @@ app.classes.rocketchat = AppJS.extend(
 				}
 				break;
 			case 'linkto':
-				et2_createWidget("dialog",{
-					callback: function(button, value){
-						if (button == et2_dialog.BUTTONS_YES_NO && value)
+				let dialog = new Et2Dialog(this.egw);
+				dialog.transformAttributes({
+					callback: function (button, value)
+					{
+						if (button == Et2Dialog.BUTTONS_YES_NO && value)
 						{
 							egw.json("EGroupware\\Api\\Etemplate\\Widget\\Link::ajax_link",
 								['rocketchat', account_id, [{
 									app: 'addressbook',
 									id: value.link[0]
 								}]],
-								function(_result){
+								function (_result)
+								{
 									if (_result)
 									{
 										app.status.mergeContent([{
@@ -295,11 +298,12 @@ app.classes.rocketchat = AppJS.extend(
 						return true;
 					},
 					title: 'link to contact',
-					buttons: et2_dialog.BUTTONS_YES_NO,
-					type: et2_dialog.PLAIN_MESSAGE,
-					template: egw.webserverUrl+'/rocketchat/templates/default/link_to_contact.xet',
+					buttons: Et2Dialog.BUTTONS_YES_NO,
+					type: Et2Dialog.PLAIN_MESSAGE,
+					template: egw.webserverUrl + '/rocketchat/templates/default/link_to_contact.xet',
 					value: {content: ''}
 				});
+				document.body.appendChild(dialog);
 				break;
 			case 'unlinkto':
 				egw.json("EGroupware\\Api\\Etemplate\\Widget\\Link::ajax_delete",
@@ -530,7 +534,7 @@ app.classes.rocketchat = AppJS.extend(
 	close_app: function(_msg)
 	{
 		jQuery(framework.activeApp.tab.closeButton).trigger('click');
-		et2_dialog.alert(_msg, 'Rocket.Chat', et2_dialog.ERROR_MESSAGE);
+		Et2Dialog.alert(_msg, 'Rocket.Chat', Et2Dialog.ERROR_MESSAGE);
 	},
 
 	/**
@@ -559,16 +563,21 @@ app.classes.rocketchat = AppJS.extend(
 		});
 	},
 
-	install_info: function (_callback) {
+	install_info: function (_callback)
+	{
 		var callback = _callback;
-		et2_dialog.show_dialog(function(_button){
-			if (_button == et2_dialog.YES_BUTTON)
+		Et2Dialog.show_dialog(function (_button)
+		{
+			if (_button == Et2Dialog.YES_BUTTON)
 			{
-				egw.openPopup(egw.link('/index.php', { menuaction: "rocketchat.EGroupware\\rocketchat\\Ui.install"}));
+				egw.openPopup(egw.link('/index.php', {menuaction: "rocketchat.EGroupware\\rocketchat\\Ui.install"}));
 			}
-			if (typeof callback == 'function') callback.call();
+			if (typeof callback == 'function')
+			{
+				callback.call();
+			}
 			return true;
-		},"Would you like to see installation instructions?", "Instructions");
+		}, "Would you like to see installation instructions?", "Instructions");
 	},
 	/**
 	 * on logout clicked event

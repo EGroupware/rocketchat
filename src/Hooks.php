@@ -217,9 +217,8 @@ class Hooks
 					return;
 				}
 			});
-			if ($logged_in && ($onlineusers = $api->userslist(['query' => [
-				'active'=>true,
-				'type' => 'user'
+			if ($logged_in && ($onlineusers = $api->userslist(["query" => [
+				"active"=>true,
 			]])))
 			{
 				$status_app = \EGroupware\Status\Hooks::getStatus(['app'=>'status']);
@@ -534,9 +533,8 @@ class Hooks
 		});
 		if ($logged_in)
 		{
-			$users = $api->userslist(['query' => [
-				'active'=>true,
-				'type' => 'user'
+			$users = $api->userslist(["query" => [
+				"active"=>true,
 			]]);
 			$status_users = array_column(Status\Hooks::getUsers(), 'account_lid');
 

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE overlay PUBLIC "-//EGroupware GmbH//eTemplate 2//EN" "http://www.egroupware.org/etemplate2.dtd">
-<!-- $Id$ -->
+<!DOCTYPE overlay PUBLIC "-//EGroupware GmbH//eTemplate 2.0//EN" "https://www.egroupware.org/etemplate2.0.dtd">
 <overlay>
 	<template id="rocketchat.config" template="" lang="" group="0" version="19.1">
 		<grid width="100%" class="admin-config egwGridView_grid">
@@ -10,31 +9,30 @@
 			</columns>
 			<rows>
 				<row valign="middle" height="40">
-					<vbox>
-						<description value="Server URL" label="%s:"/>
-						<description value="example: https://www.egroupware.org/rocketchat/"/>
-					</vbox>
-					<hbox>
-						<url id="newsettings[server_url]" width="300px" trailing_slash="true"/>
-						<description id="newsettings[server_status]" label="Status:" disabled="!@newsettings[server_status]" class="@newsettings[server_status_class]"/>
+					<et2-vbox>
+						<et2-description  value="Server URL" label="%s:"></et2-description>
+						<et2-description  value="example: https://www.egroupware.org/rocketchat/"></et2-description>
+					</et2-vbox>
+					<et2-hbox>
+						<et2-url  id="newsettings[server_url]" width="300px" trailingSlash="true"></et2-url>
+						<et2-description  id="newsettings[server_status]" label="Status:" disabled="!@newsettings[server_status]" class="@newsettings[server_status_class]"></et2-description>
 						<!-- hack to get class propagated: id="newsettings[server_status_class]" -->
-					</hbox>
+					</et2-hbox>
 				</row>
 				<row>
-					<label value="Authentication" for="newsettings[authentication]"/>
-					<select id="newsettings[authentication]">
+					<et2-label  value="Authentication" for="newsettings[authentication]"></et2-label>
+					<et2-select  id="newsettings[authentication]">
 						<option value="openid">EGroupware OpenID Connnect / OAuth server</option>
 						<option value="credentials">Username/password from session</option>
-					</select>
+					</et2-select>
 				</row>
 				<row>
-					<label value="Rocket.Chat's OAuth Client-ID" for="newsettings[oauth_client_id]"/>
-					<textbox id="newsettings[oauth_client_id]" tooltip="Client-ID created for Rocket.Chat in EGroupware eg. 'RocketChat'"/>
+					<et2-label  value="Rocket.Chat's OAuth Client-ID" for="newsettings[oauth_client_id]"></et2-label>
+					<et2-textbox  id="newsettings[oauth_client_id]" tooltip="Client-ID created for Rocket.Chat in EGroupware eg. 'RocketChat'"></et2-textbox>
 				</row>
 				<row>
-					<label value="Rocket.Chat's OAuth Service-Name" for="newsettings[oauth_service_name]"/>
-					<textbox id="newsettings[oauth_service_name]" statustext="Custom OAuth name given in Rocket.Chat for EGroupware eg. 'egroupware'"
-					    onchange="let val=widget.get_value(); if (val!=val.toLowerCase()) widget.set_value(val.toLowerCase());"/>
+					<et2-label  value="Rocket.Chat's OAuth Service-Name" for="newsettings[oauth_service_name]"></et2-label>
+					<et2-textbox  id="newsettings[oauth_service_name]" statustext="Custom OAuth name given in Rocket.Chat for EGroupware eg. 'egroupware'" onchange="let val=widget.get_value(); if (val!=val.toLowerCase()) widget.set_value(val.toLowerCase());"></et2-textbox>
 				</row>
 			</rows>
 		</grid>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE overlay PUBLIC "-//EGroupware GmbH//eTemplate 2//EN" "http://www.egroupware.org/etemplate2.dtd">
-<!-- $Id$ -->
+<!DOCTYPE overlay PUBLIC "-//EGroupware GmbH//eTemplate 2.0//EN" "https://www.egroupware.org/etemplate2.0.dtd">
 <overlay>
 	<template id="rocketchat.install_info.general" template="" lang="" group="0" version="1.5.001">
 		<grid width="100%" spacing="10" overflow="auto">
@@ -11,56 +10,56 @@
 			</columns>
 			<rows>
 				<row>
-					<description value="Rocket.Chat needs to be configured and installed."/>
+					<et2-description  value="Rocket.Chat needs to be configured and installed."></et2-description>
 				</row>
 				<row>
-					<description value="The following tabs are showing the steps of the configuration process in detail." />
+					<et2-description  value="The following tabs are showing the steps of the configuration process in detail."></et2-description>
 				</row>
 				<row valign="top" height="30">
-					<description value="After installation is finished, you may want to look into some administration details e.g. to configure non-EGroupware accounts or to switch video-chat (Jitsi) off for GDPR reasons."/>
+					<et2-description  value="After installation is finished, you may want to look into some administration details e.g. to configure non-EGroupware accounts or to switch video-chat (Jitsi) off for GDPR reasons."></et2-description>
 				</row>
 				<row valign="top">
-					<description value="Step 1: Admin Info" />
-					<description value="Username" />
-					<description value="Please insert a valid EGroupware username (recommended your user) to configure the first administrator of Rocket.Chat. That administrator can add additional EGroupware users as Rocket.Chat admins." />
+					<et2-description  value="Step 1: Admin Info"></et2-description>
+					<et2-description  value="Username"></et2-description>
+					<et2-description  value="Please insert a valid EGroupware username (recommended your user) to configure the first administrator of Rocket.Chat. That administrator can add additional EGroupware users as Rocket.Chat admins."></et2-description>
 				</row>
 				<row valign="top">
-					<description value="Step 2: Organization Info" />
-					<description value="Organization email" />
-					<description value="Please insert a valid email-address which is used for the registration process of Rocket.Chat." />
+					<et2-description  value="Step 2: Organization Info"></et2-description>
+					<et2-description  value="Organization email"></et2-description>
+					<et2-description  value="Please insert a valid email-address which is used for the registration process of Rocket.Chat."></et2-description>
 				</row >
 				<row valign="top">
-					<description value="Step 3: Server Info" />
-					<description value="Site name" />
-					<description value="The site name is displayed in external Rocket.Chat clients. Specially when using more than one Rocket.Chat. It make sense to choose a meaningful name to identify this chat!" />
+					<et2-description  value="Step 3: Server Info"></et2-description>
+					<et2-description  value="Site name"></et2-description>
+					<et2-description  value="The site name is displayed in external Rocket.Chat clients. Specially when using more than one Rocket.Chat. It make sense to choose a meaningful name to identify this chat!"></et2-description>
 				</row>
 				<row valign="top">
-					<description value="Step 3: Server Info" />
-					<description value="Language" />
-					<description value="Please choose a language which is common for the majority of your users. The language can be changed on MyAccount for each user." />
+					<et2-description  value="Step 3: Server Info"></et2-description>
+					<et2-description  value="Language"></et2-description>
+					<et2-description  value="Please choose a language which is common for the majority of your users. The language can be changed on MyAccount for each user."></et2-description>
 				</row>
 				<row valign="top">
-					<description value="Step 4: Register Server" />
-					<description value="Register or keep standalone" />
-					<description value="EGroupware does not yet has a push-service for notifications on smart-phones, but you can use Rocket.Chat cloud services. Please take GDPR into account for your decision." />
+					<et2-description  value="Step 4: Register Server"></et2-description>
+					<et2-description  value="Register or keep standalone"></et2-description>
+					<et2-description  value="EGroupware does not yet has a push-service for notifications on smart-phones, but you can use Rocket.Chat cloud services. Please take GDPR into account for your decision."></et2-description>
 				</row>
 				<row valign="top">
-					<description value="Create OpenID client" />
-					<description value="Only necessary for on-premis installations" />
-					<description value="You need to create a Client-Identifier and -Secret via Admin >> OpenID / OAuth2 server >> Clients" />
+					<et2-description  value="Create OpenID client"></et2-description>
+					<et2-description  value="Only necessary for on-premis installations"></et2-description>
+					<et2-description  value="You need to create a Client-Identifier and -Secret via Admin >> OpenID / OAuth2 server >> Clients"></et2-description>
 				</row>
 				<row valign="top">
-					<description value="Add custom OAuth" />
-					<description value="Only necessary for on-premis installations" />
-					<description value="For on-premis installations, you need to configure the custom OAuth server. In the EGroupware cloud its already pre-configured!" />
+					<et2-description  value="Add custom OAuth"></et2-description>
+					<et2-description  value="Only necessary for on-premis installations"></et2-description>
+					<et2-description  value="For on-premis installations, you need to configure the custom OAuth server. In the EGroupware cloud its already pre-configured!"></et2-description>
 				</row>
 				<row valign="top" height="50">
-					<description value="GDPR Decision" />
-					<description value="Video-Conference" />
-					<description value="You need to decide if you allow video-chats and screensharing for GDPR reasons. EGroupware does not yet has an own Jitsi-server for video-chats, so we use and enable a public jitsi-server from the open source project Jitsi Meet." />
+					<et2-description  value="GDPR Decision"></et2-description>
+					<et2-description  value="Video-Conference"></et2-description>
+					<et2-description  value="You need to decide if you allow video-chats and screensharing for GDPR reasons. EGroupware does not yet has an own Jitsi-server for video-chats, so we use and enable a public jitsi-server from the open source project Jitsi Meet."></et2-description>
 				</row>
 				<row>
-					<description value="Rocket.Chat provides lots of user and administration guides and videos. Please have a look on their website."/>
+					<et2-description  value="Rocket.Chat provides lots of user and administration guides and videos. Please have a look on their website."></et2-description>
 				</row>
 			</rows>
 		</grid>
@@ -72,13 +71,13 @@
 			</columns>
 			<rows>
 				<row>
-					<description value="Please insert a valid EGroupware username (recommended your user) to configure the first administrator of Rocket.Chat. That administrator can add additional EGroupware users as Rocket.Chat admins." />
+					<et2-description  value="Please insert a valid EGroupware username (recommended your user) to configure the first administrator of Rocket.Chat. That administrator can add additional EGroupware users as Rocket.Chat admins."></et2-description>
 				</row>
 				<row>
-					<description value="Additionally you should insert a valid email-address, which is used for the registration process of Rocket.Chat." />
+					<et2-description  value="Additionally you should insert a valid email-address, which is used for the registration process of Rocket.Chat."></et2-description>
 				</row>
 				<row valign="top">
-					<image src="https://www.egroupware.org/wp-content/uploads/2019/06/Admin-Info.png" />
+					<et2-image  src="https://www.egroupware.org/wp-content/uploads/2019/06/Admin-Info.png" ></et2-image>
 				</row>
 			</rows>
 		</grid>
@@ -90,10 +89,10 @@
 			</columns>
 			<rows>
 				<row>
-					<description value="Organisation Information ist just some text which gets reported to Rocket.Chat via registration. But its not used in EGroupware Rocket.Chat itself."/>
+					<et2-description  value="Organisation Information ist just some text which gets reported to Rocket.Chat via registration. But its not used in EGroupware Rocket.Chat itself."></et2-description>
 				</row>
 				<row valign="top">
-					<image src="https://www.egroupware.org/wp-content/uploads/2019/06/Organisation-Info.png" />
+					<et2-image  src="https://www.egroupware.org/wp-content/uploads/2019/06/Organisation-Info.png" ></et2-image>
 				</row>
 			</rows>
 		</grid>
@@ -105,13 +104,13 @@
 			</columns>
 			<rows>
 				<row>
-					<description value="The site name is displayed in external Rocket.Chat clients. Specially when using more than one Rocket.Chat. It make sense to choose a meaningful name to identify this chat!" />
+					<et2-description  value="The site name is displayed in external Rocket.Chat clients. Specially when using more than one Rocket.Chat. It make sense to choose a meaningful name to identify this chat!"></et2-description>
 				</row>
 				<row>
-					<description value="Please choose a language which is common for the majority of your users. The language can be changed on MyAccount for each user." />
+					<et2-description  value="Please choose a language which is common for the majority of your users. The language can be changed on MyAccount for each user."></et2-description>
 				</row>
 				<row valign="top">
-					<image src="https://www.egroupware.org/wp-content/uploads/2019/06/Server-Info.png" />
+					<et2-image  src="https://www.egroupware.org/wp-content/uploads/2019/06/Server-Info.png" ></et2-image>
 				</row>
 			</rows>
 		</grid>
@@ -123,16 +122,16 @@
 			</columns>
 			<rows>
 				<row>
-					<description value="You need to decide, if you like to register your Rocket.Chat to get push-notifications for smart-phones. In that case all inserted information of the configuration gets sent to Rocket.Chat!"/>
+					<et2-description  value="You need to decide, if you like to register your Rocket.Chat to get push-notifications for smart-phones. In that case all inserted information of the configuration gets sent to Rocket.Chat!"></et2-description>
 				</row>
 				<row>
-					<description value="EGroupware does not yet has a push-service for notifications on smart-phones, but you can use Rocket.Chat cloud services. Please take GDPR into account for your decision." />
+					<et2-description  value="EGroupware does not yet has a push-service for notifications on smart-phones, but you can use Rocket.Chat cloud services. Please take GDPR into account for your decision."></et2-description>
 				</row>
 				<row>
-					<description value="If you don't need push-notifications, you can skip registration and click on keep standalone ... Rocket.Chat in EGroupware will still work."/>
+					<et2-description  value="If you don't need push-notifications, you can skip registration and click on keep standalone ... Rocket.Chat in EGroupware will still work."></et2-description>
 				</row>
 				<row valign="top">
-					<image src="https://www.egroupware.org/wp-content/uploads/2019/06/Register-Server-Push.png" />
+					<et2-image  src="https://www.egroupware.org/wp-content/uploads/2019/06/Register-Server-Push.png" ></et2-image>
 				</row>
 			</rows>
 		</grid>
@@ -144,10 +143,10 @@
 			</columns>
 			<rows>
 				<row>
-					<description value="Rocket.Chat is succesfully installed, you can now configure additional parameters e.g. switch video-chat off or add non-Egroupware user."/>
+					<et2-description  value="Rocket.Chat is succesfully installed, you can now configure additional parameters e.g. switch video-chat off or add non-Egroupware user."></et2-description>
 				</row>
 				<row valign="top">
-					<image src="https://www.egroupware.org/wp-content/uploads/2019/06/Setup-Done.png" />
+					<et2-image  src="https://www.egroupware.org/wp-content/uploads/2019/06/Setup-Done.png" ></et2-image>
 				</row>
 			</rows>
 		</grid>
@@ -159,13 +158,13 @@
 			</columns>
 			<rows>
 				<row>
-					<description value="Rocket.Chat general settings. Some of the settings are necessary to get all integrated features properly working within EGroupware."/>
+					<et2-description  value="Rocket.Chat general settings. Some of the settings are necessary to get all integrated features properly working within EGroupware."></et2-description>
 				</row>
 				<row>
-					<description value="Iframe integration settings: both send and receive need to be enable in order to get iframe integrated features within EGroupware working." />
+					<et2-description  value="Iframe integration settings: both send and receive need to be enable in order to get iframe integrated features within EGroupware working."></et2-description>
 				</row>
 				<row valign="top">
-					<image src="https://www.egroupware.org/wp-content/uploads/2019/06/general-iframe.png" />
+					<et2-image  src="https://www.egroupware.org/wp-content/uploads/2019/06/general-iframe.png" ></et2-image>
 				</row>
 			</rows>
 		</grid>
@@ -177,10 +176,10 @@
 			</columns>
 			<rows>
 				<row>
-					<description value="Here we can enable file uploads and configuring max file size, valid media types and more. Storage type should be set to FileSystem."/>
+					<et2-description  value="Here we can enable file uploads and configuring max file size, valid media types and more. Storage type should be set to FileSystem."></et2-description>
 				</row>
 				<row valign="top">
-					<image src="https://www.egroupware.org/wp-content/uploads/2019/07/File-Upload.png" />
+					<et2-image  src="https://www.egroupware.org/wp-content/uploads/2019/07/File-Upload.png" ></et2-image>
 				</row>
 			</rows>
 		</grid>
@@ -192,25 +191,25 @@
 			</columns>
 			<rows>
 				<row>
-					<description value="You need to create a Client-Identifier and -Secret via Admin >> OpenID / OAuth2 server >> Clients"/>
+					<et2-description  value="You need to create a Client-Identifier and -Secret via Admin >> OpenID / OAuth2 server >> Clients"></et2-description>
 				</row>
 				<row>
-					<description value="Please insert a name for your Client-Identifier e.g. EGroupware Rocket.Chat and an Identifier - recommended Rocket.Chat"/>
+					<et2-description  value="Please insert a name for your Client-Identifier e.g. EGroupware Rocket.Chat and an Identifier - recommended Rocket.Chat"></et2-description>
 				</row>
 				<row>
-					<description value="This Client-Identifier needs to be inserted in the next step where you add the custom Oauth server EGroupware." />
+					<et2-description  value="This Client-Identifier needs to be inserted in the next step where you add the custom Oauth server EGroupware."></et2-description>
 				</row>
 				<row>
-					<description value="The secret should be a random string (recommended minimum 12 chars), which is used and inserted in the custom Oauth server configuration together with the Client-Identifier in the next step!" />
+					<et2-description  value="The secret should be a random string (recommended minimum 12 chars), which is used and inserted in the custom Oauth server configuration together with the Client-Identifier in the next step!"></et2-description>
 				</row>
 				<row>
-					<description value="The Redirect URI needs to match your servername e.g. testbox.egroupware.org in my case. We recommend to use https, but only if secure connection is correctly configured!" />
+					<et2-description  value="The Redirect URI needs to match your servername e.g. testbox.egroupware.org in my case. We recommend to use https, but only if secure connection is correctly configured!"></et2-description>
 				</row>
 				<row valign="top" height="30">
-					<description value="For Allowed grants you need to choose: Authorization Code, Refresh Token and Implicit. " />
+					<et2-description  value="For Allowed grants you need to choose: Authorization Code, Refresh Token and Implicit. "></et2-description>
 				</row>
 				<row valign="top">
-					<image src="https://www.egroupware.org/wp-content/uploads/2019/07/OpenID.png" />
+					<et2-image  src="https://www.egroupware.org/wp-content/uploads/2019/07/OpenID.png" ></et2-image>
 				</row>
 			</rows>
 		</grid>
@@ -222,29 +221,29 @@
 			</columns>
 			<rows>
 				<row height="30">
-					<description value="Please go back to Rocket.Chat into Administration >> OAuth and click [Add custom oauth]. Give it a name eg. EGroupware." />
+					<et2-description  value="Please go back to Rocket.Chat into Administration >> OAuth and click [Add custom oauth]. Give it a name eg. EGroupware."></et2-description>
 				</row>
 				<row valign="top">
-					<image src="https://www.egroupware.org/wp-content/uploads/2019/07/OAuth.png" />
+					<et2-image  src="https://www.egroupware.org/wp-content/uploads/2019/07/OAuth.png" ></et2-image>
 				</row>
 				<row height="60">
-					<description value="At the top of the page the custom Oauth server EGroupware is added and you need to insert several values. Please check all rows where the image shows at the right site a red box to mark changes. We'are just listing a few important values, but all need to be inserted correctly!"/>
+					<et2-description  value="At the top of the page the custom Oauth server EGroupware is added and you need to insert several values. Please check all rows where the image shows at the right site a red box to mark changes. We'are just listing a few important values, but all need to be inserted correctly!"></et2-description>
 				</row>
 				<row>
-					<description value="URL: http(s)://servername/egroupware/openid/endpoint.php Servername needs to match your servername or IP-address. You should use https, but only if secure connection is correctly configured on your server! " />
+					<et2-description  value="URL: http(s)://servername/egroupware/openid/endpoint.php Servername needs to match your servername or IP-address. You should use https, but only if secure connection is correctly configured on your server! "></et2-description>
 				</row>
 
 				<row valign="top">
-					<image src="https://www.egroupware.org/wp-content/uploads/2019/07/OAuth2.png" />
+					<et2-image  src="https://www.egroupware.org/wp-content/uploads/2019/07/OAuth2.png" ></et2-image>
 				</row>
 				<row height="60">
-					<description value="Id needs to be the Client-Identifier you previously configured for the OpenID Client! Similar is valid for the secret, If you can't remember the secret you choosed previously, you may re-generate and save the secret in the EGroupware OpenID client. See also previous tab [Create OpenID client]" />
+					<et2-description  value="Id needs to be the Client-Identifier you previously configured for the OpenID Client! Similar is valid for the secret, If you can't remember the secret you choosed previously, you may re-generate and save the secret in the EGroupware OpenID client. See also previous tab [Create OpenID client]"></et2-description>
 				</row>
 				<row valign="top">
-					<image src="https://www.egroupware.org/wp-content/uploads/2019/07/OAuth3.png" />
+					<et2-image  src="https://www.egroupware.org/wp-content/uploads/2019/07/OAuth3.png" ></et2-image>
 				</row>
 				<row valign="top" height="30">
-					<description value="Please check also our technical documentation page on Github: https://github.com/EGroupware/openid" />
+					<et2-description  value="Please check also our technical documentation page on Github: https://github.com/EGroupware/openid"></et2-description>
 				</row>
 			</rows>
 		</grid>
@@ -256,11 +255,11 @@
 			</columns>
 			<rows>
 				<row>
-					<description value="You need to decide if you allow video-chats and screen-sharing for GDPR reasons. EGroupware does not yet has an own Jitsi-server for video-chats, so we use and enable a public jitsi-server from the open source project Jitsi Meet. Please take GDPR into account for your decision, we haven't found neither any declaration of data protection on their website nor where the servers are located." />
+					<et2-description  value="You need to decide if you allow video-chats and screen-sharing for GDPR reasons. EGroupware does not yet has an own Jitsi-server for video-chats, so we use and enable a public jitsi-server from the open source project Jitsi Meet. Please take GDPR into account for your decision, we haven't found neither any declaration of data protection on their website nor where the servers are located."></et2-description>
 				</row>
 
 				<row valign="top">
-					<image src="https://www.egroupware.org/wp-content/uploads/2019/06/Video-Konferenz.png" />
+					<et2-image  src="https://www.egroupware.org/wp-content/uploads/2019/06/Video-Konferenz.png" ></et2-image>
 				</row>
 			</rows>
 		</grid>
@@ -272,22 +271,22 @@
 			</columns>
 			<rows>
 				<row>
-					<description value="IF you like to allow non-EGroupware users to take part in your Rocket.Chat you can enable in Account Settings to show the Default Login Form."/>
+					<et2-description  value="IF you like to allow non-EGroupware users to take part in your Rocket.Chat you can enable in Account Settings to show the Default Login Form."></et2-description>
 				</row>
 				<row>
-					<description value="By default we show only: EGroupware users click here and not username and password fields for external users! EGroupware users should always use the provided click here link!"/>
+					<et2-description  value="By default we show only: EGroupware users click here and not username and password fields for external users! EGroupware users should always use the provided click here link!"></et2-description>
 				</row>
 				<row valign="top">
-					<image src="https://www.egroupware.org/wp-content/uploads/2019/06/Account-Settings.png" />
+					<et2-image  src="https://www.egroupware.org/wp-content/uploads/2019/06/Account-Settings.png" ></et2-image>
 				</row>
 				<row>
-					<description value="2. step is to create the non-users manually in administration users. you need to specify username and password. depending on the settings to allow password change or not, please allow or deny that the user can change the password. by default its switched of, because the password change in rocket.chat will not change the user password of egroupware!"/>
+					<et2-description  value="2. step is to create the non-users manually in administration users. you need to specify username and password. depending on the settings to allow password change or not, please allow or deny that the user can change the password. by default its switched of, because the password change in rocket.chat will not change the user password of egroupware!"></et2-description>
 				</row>
 				<row>
-					<description value="The system will sent an email to the given email-address including the login details for Rocket.Chat." />
+					<et2-description  value="The system will sent an email to the given email-address including the login details for Rocket.Chat."></et2-description>
 				</row>
 				<row valign="top">
-					<image src="https://www.egroupware.org/wp-content/uploads/2019/06/Create-account.png" />
+					<et2-image  src="https://www.egroupware.org/wp-content/uploads/2019/06/Create-account.png" ></et2-image>
 				</row>
 			</rows>
 		</grid>
@@ -300,7 +299,7 @@
 			</columns>
 			<rows>
 				<row class="dialogTabs">
-					<tabbox id="tabs" align_tabs="v" span="all">
+					<et2-tabbox  id="tabs" span="all" alignTabs="v">
 						<tabs>
 							<tab id="rocketchat.install_info.general" label="Installation"/>
 							<tab id="rocketchat.install_info.admin" label="Admin Info"/>
@@ -329,7 +328,7 @@
 							<template id="rocketchat.install_info.video"/>
 							<template id="rocketchat.install_info.non-user"/>
 						</tabpanels>
-					</tabbox>
+					</et2-tabbox>
 				</row>
 			</rows>
 		</grid>

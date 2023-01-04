@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE overlay PUBLIC "-//EGroupware GmbH//eTemplate 2//EN" "http://www.egroupware.org/etemplate2.dtd">
-<!-- $Id$ -->
+<!DOCTYPE overlay PUBLIC "-//EGroupware GmbH//eTemplate 2.0//EN" "https://www.egroupware.org/etemplate2.0.dtd">
 <overlay>
 	<template id="rocketchat.install" template="" lang="" group="0" version="19.1">
 		<grid height="100%" width="100%">
@@ -10,11 +9,11 @@
 			</columns>
 			<rows>
 				<row class="installation-msg">
-					<vbox>
-						<description value="Rocket.Chat server is not yet installed." align="center"/>
-						<description value="Would you like to install it now?" align="center"/>
-						<button label="Install now" onclick="app.rocketchat.install" background_image="check" background="1" align="center"/>
-					</vbox>
+					<et2-vbox>
+						<et2-description  value="Rocket.Chat server is not yet installed." align="center"></et2-description>
+						<et2-description  value="Would you like to install it now?" align="center"></et2-description>
+						<et2-button  label="Install now" onclick="app.rocketchat.install" background="1" align="center"></et2-button>
+					</et2-vbox>
 				</row>
 			</rows>
 		</grid>

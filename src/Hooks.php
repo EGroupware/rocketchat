@@ -35,7 +35,7 @@ class Hooks
 		{
 			$srcs[] = preg_replace('#^(https?://[^/]+)(/.*)?#', '$1', $config['server_url']);
 
-			if ($location === 'csp-connect-src')
+			if ($location === 'csp-connect-src' || (is_array($location) && in_array('csp-connect-src', $location)))
 			{
 				$srcs[] = preg_replace('#^(https?://)?#',
 					(substr($config['server_url'], 0, 5) == 'https' ? 'wss://' : 'ws://'), $config['server_url']);

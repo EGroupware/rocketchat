@@ -38,8 +38,10 @@ status:	rocketchat	es-es	Estado:
 step 1: admin info	rocketchat	es-es	Paso 1: Información de administrador
 step 2: organization info	rocketchat	es-es	Paso 2: Información de la organización
 step 3: server info	rocketchat	es-es	Paso 3: Información del servidor
+step 4: register server	rocketchat	es-es	Paso 4: Servidor de registro
 unable to connect!	rocketchat	es-es	¡No puede conectarse!
 url must end with %1	rocketchat	es-es	URL debe terminar en %1
+username/password from session	rocketchat	es-es	Nombre de usuario/contraseña de la sesión
 video-chat	rocketchat	es-es	Videochat
 video-conference	rocketchat	es-es	Videoconferencia
 would you like to install it now?	rocketchat	es-es	¿Desea instalarlo ahora?

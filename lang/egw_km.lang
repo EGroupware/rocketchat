@@ -1,0 +1,100 @@
+2. step is to create the non-users manually in administration users. you need to specify username and password. depending on the settings to allow password change or not, please allow or deny that the user can change the password. by default its switched of, because the password change in rocket.chat will not change the user password of egroupware!	rocketchat	km	2. ជំហាន​គឺ​ត្រូវ​បង្កើត​អ្នក​មិនទាន់មានគណនីនៅ​ក្នុង​បញ្ជីអ្នកគ្រប់គ្រង ។ អ្នកត្រូវបញ្ជាក់ឈ្មោះអ្នកប្រើប្រាស់ និងពាក្យសម្ងាត់។ អាស្រ័យ​លើ​ការ​កំណត់​ដើម្បី​អនុញ្ញាត​ឱ្យ​មាន​ការ​ផ្លាស់​ប្តូ​រ​ពាក្យ​សម្ងាត់​ឬ​មិន​សូម​អនុញ្ញាត​ឬ​បដិសេធ​ថា​អ្នក​ប្រើ​អាច​ផ្លាស់​ប្តូ​រ​ពាក្យ​សម្ងាត់​។ តាមលំនាំដើម វាបានប្តូរទៅ ពីព្រោះការផ្លាស់ប្តូរពាក្យសម្ងាត់នៅក្នុង Rocket.Chat នឹងមិនផ្លាស់ប្តូរពាក្យសម្ងាត់អ្នកប្រើប្រាស់របស់ EGroupware ទេ!
+add custom oauth	rocketchat	km	បន្ថែម OAuth ផ្ទាល់ខ្លួន
+add non-egroupware user	rocketchat	km	បន្ថែមអ្នកប្រើប្រាស់ដែលមិនមែនជា EGroupware
+additionally you should insert a valid email-address, which is used for the registration process of rocket.chat.	rocketchat	km	លើសពីនេះទៀត អ្នកគួរតែបញ្ចូលអាសយដ្ឋានអ៊ីមែលដែលមានសុពលភាព ដែលត្រូវបានប្រើសម្រាប់ដំណើរការចុះឈ្មោះរបស់ Rocket.Chat។
+admin info	rocketchat	km	ព័ត៌មានអ្នកគ្រប់គ្រង
+administration panel	rocketchat	km	បន្ទះរដ្ឋបាល
+after installation is finished, you may want to look into some administration details e.g. to configure non-egroupware accounts or to switch video-chat (jitsi) off for gdpr reasons.	rocketchat	km	បន្ទាប់ពីការដំឡើងត្រូវបានបញ្ចប់ អ្នកប្រហែលជាចង់ពិនិត្យមើលព័ត៌មានលម្អិតផ្នែករដ្ឋបាលមួយចំនួន ឧទាហរណ៍ ដើម្បីកំណត់រចនាសម្ព័ន្ធគណនីដែលមិនមែនជា EGroupware ឬដើម្បីបិទការជជែកជាវីដេអូ (Jitsi) សម្រាប់ហេតុផល GDPR ។
+at the top of the page the custom oauth server egroupware is added and you need to insert several values. please check all rows where the image shows at the right site a red box to mark changes. we'are just listing a few important values, but all need to be inserted correctly!	rocketchat	km	នៅផ្នែកខាងលើនៃទំព័រម៉ាស៊ីនមេ Oauth ផ្ទាល់ខ្លួន EGroupware ត្រូវបានបន្ថែម ហើយអ្នកត្រូវបញ្ចូលតម្លៃជាច្រើន។ សូម​ពិនិត្យ​ជួរ​ដេក​ទាំងអស់​ដែល​រូបភាព​បង្ហាញ​នៅ​គេហទំព័រ​ខាង​ស្ដាំ​ប្រអប់​ក្រហម​ដើម្បី​សម្គាល់​ការ​ផ្លាស់ប្ដូរ។ យើងគ្រាន់តែរាយតម្លៃសំខាន់ៗមួយចំនួនប៉ុណ្ណោះ ប៉ុន្តែត្រូវបញ្ចូលឲ្យបានត្រឹមត្រូវ!
+authentication	rocketchat	km	ការផ្ទៀងផ្ទាត់ភាពត្រឹមត្រូវ
+away	common	km	ឆ្ងាយ
+busy	common	km	រវល់
+by default we show only: egroupware users click here and not username and password fields for external users! egroupware users should always use the provided click here link!	rocketchat	km	តាមលំនាំដើម យើងបង្ហាញតែ៖ អ្នកប្រើប្រាស់ EGroupware ចុចទីនេះ មិនមែនឈ្មោះអ្នកប្រើប្រាស់ និងលេខសម្ងាត់សម្រាប់អ្នកប្រើប្រាស់ខាងក្រៅទេ! អ្នកប្រើប្រាស់ EGroupware គួរតែប្រើតំណភ្ជាប់ដែលបានផ្តល់ដោយចុចនៅទីនេះជានិច្ច!
+connection error to rocket.chat server!	common	km	កំហុសក្នុងការតភ្ជាប់ទៅម៉ាស៊ីនមេ Rocket.Chat!
+connection with default url succeeded. you need to complete and store the configuration now.	rocketchat	km	ការភ្ជាប់ជាមួយ URL លំនាំដើមបានជោគជ័យ។ អ្នកត្រូវបំពេញ និងរក្សាទុកការកំណត់រចនាសម្ព័ន្ធឥឡូវនេះ។
+create openid client	rocketchat	km	បង្កើតកម្មវិធី OpenID
+do you want to install	rocketchat	km	តើ​អ្នក​ចង់​ដំឡើង
+do you want to install?	rocketchat	km	តើអ្នកចង់ដំឡើងទេ?
+egroupware does not yet has a push-service for notifications on smart-phones, but you can use rocket.chat cloud services. please take gdpr into account for your decision.	rocketchat	km	EGroupware មិន​ទាន់​មាន​សេវា​ជំរុញ​សម្រាប់​ការ​ជូន​ដំណឹង​នៅ​លើ​ទូរសព្ទ​ទំនើប​ទេ ប៉ុន្តែ​អ្នក​អាច​ប្រើ​សេវា​ពពក Rocket.Chat។ សូមយក GDPR ទៅក្នុងគណនីសម្រាប់ការសម្រេចចិត្តរបស់អ្នក។
+egroupware openid connnect / oauth server	rocketchat	km	EGroupware OpenID Connect / OAuth server
+enable audio effects	rocketchat	km	ផលប៉ះពាល់អូឌីយ៉ូ
+enable browser notification	rocketchat	km	បើកការជូនដំណឹងកម្មវិធីរុករក
+enable/disable audio effects such as message notifications	rocketchat	km	បើក/បិទបែបផែនសំឡេង ដូចជាការជូនដំណឹងសារជាដើម។
+enable/disable browser notification for unread messages	rocketchat	km	បើក/បិទការជូនដំណឹងកម្មវិធីរុករកតាមអ៊ីនធឺណិតសម្រាប់សារមិនទាន់អាន
+example: https://www.egroupware.org/rocketchat/	rocketchat	km	ឧទាហរណ៍៖ https://www.egroupware.org/rocketchat/
+file upload	rocketchat	km	ផ្ទុកឡើងឯកសារ
+for allowed grants you need to choose: authorization code, refresh token and implicit.	rocketchat	km	សម្រាប់ជំនួយដែលបានអនុញ្ញាត អ្នកត្រូវជ្រើសរើស៖ លេខកូដអនុញ្ញាត ធ្វើឱ្យថូខឹនស្រស់ និងបង្កប់ន័យ។
+for on-premis installations, you need to configure the custom oauth server. in the egroupware cloud its already pre-configured!	rocketchat	km	សម្រាប់ការដំឡើងនៅនឹងកន្លែង អ្នកត្រូវកំណត់រចនាសម្ព័ន្ធម៉ាស៊ីនមេ OAuth ផ្ទាល់ខ្លួន។ នៅក្នុង EGroupware cloud វាបានកំណត់រចនាសម្ព័ន្ធជាមុនរួចហើយ!
+gdpr decision	rocketchat	km	ការសម្រេចចិត្ត GDPR
+general settings	rocketchat	km	ការកំណត់​ទូទៅ
+here we can enable file uploads and configuring max file size, valid media types and more. storage type should be set to filesystem.	rocketchat	km	នៅទីនេះយើងអាចបើកការបង្ហោះឯកសារ និងកំណត់រចនាសម្ព័ន្ធទំហំឯកសារអតិបរមា ប្រភេទមេឌៀត្រឹមត្រូវ និងច្រើនទៀត។ ប្រភេទកន្លែងផ្ទុកគួរតែត្រូវបានកំណត់ទៅជា FileSystem ។
+id needs to be the client-identifier you previously configured for the openid client! similar is valid for the secret, if you can't remember the secret you choosed previously, you may re-generate and save the secret in the egroupware openid client. see also previous tab [create openid client]	rocketchat	km	Id ត្រូវតែជា Client-Identifier ដែលអ្នកបានកំណត់រចនាសម្ព័ន្ធពីមុនសម្រាប់ OpenID Client! ស្រដៀងគ្នានេះមានសុពលភាពសម្រាប់អាថ៌កំបាំង ប្រសិនបើអ្នកមិនអាចចងចាំអាថ៌កំបាំងដែលអ្នកបានជ្រើសរើសពីមុនទេ អ្នកអាចបង្កើតឡើងវិញ និងរក្សាទុកសម្ងាត់នៅក្នុងម៉ាស៊ីនភ្ញៀវ EGroupware OpenID ។ សូមមើលផ្ទាំងមុនផងដែរ [បង្កើតកម្មវិធី OpenID]
+if you don't need push-notifications, you can skip registration and click on keep standalone ... rocket.chat in egroupware will still work.	rocketchat	km	ប្រសិនបើអ្នកមិនត្រូវការការជូនដំណឹងរុញទេ អ្នកអាចរំលងការចុះឈ្មោះ ហើយចុចលើ រក្សាភាពឯកោ ... Rocket.Chat នៅក្នុង EGroupware នឹងនៅតែដំណើរការ។
+if you like to allow non-egroupware users to take part in your rocket.chat you can enable in account settings to show the default login form.	rocketchat	km	ប្រសិនបើអ្នកចូលចិត្តអនុញ្ញាតឱ្យអ្នកប្រើប្រាស់ដែលមិនមែនជា EGroupware ចូលរួមក្នុង Rocket.Chat របស់អ្នក អ្នកអាចបើកនៅក្នុងការកំណត់គណនីដើម្បីបង្ហាញទម្រង់ចូលលំនាំដើម។
+iframe integration settings: both send and receive need to be enable in order to get iframe integrated features within egroupware working.	rocketchat	km	ការកំណត់ការរួមបញ្ចូល iframe៖ ទាំងការផ្ញើ និងទទួលត្រូវតែបើក ដើម្បីទទួលបានមុខងាររួមបញ្ចូល iframe នៅក្នុង EGroupware ដំណើរការ។
+install information	rocketchat	km	ដំឡើងព័ត៌មាន
+install now	rocketchat	km	ដំឡើងឥឡូវនេះ
+installation	rocketchat	km	ការដំឡើង
+installation finished	rocketchat	km	ការដំឡើងបានបញ្ចប់
+loading rocket.chat ...	rocketchat	km	កំពុងផ្ទុក Rocket.Chat...
+logging you into rocket.chat ...	rocketchat	km	ចូលទៅ Rocket.Chat...
+my account	rocketchat	km	គណនី​របស់ខ្ញុំ
+offline	common	km	ក្រៅបណ្តាញ
+online	common	km	អនឡាញ
+only necessary for on-premis installations	rocketchat	km	ចាំបាច់សម្រាប់តែការដំឡើងនៅនឹងកន្លែងប៉ុណ្ណោះ។
+organisatation email	rocketchat	km	អ៊ីមែលអង្គការ
+organisation email	rocketchat	km	អ៊ីមែលអង្គការ
+organisation info	rocketchat	km	ព័ត៌មានអង្គការ
+organisation information ist just some text which gets reported to rocket.chat via registration. but its not used in egroupware rocket.chat itself.	rocketchat	km	ព័ត៌មានរបស់អង្គការគ្រាន់តែជាអត្ថបទមួយចំនួនដែលត្រូវបានរាយការណ៍ទៅ Rocket.Chat តាមរយៈការចុះឈ្មោះ។ ប៉ុន្តែវាមិនត្រូវបានប្រើនៅក្នុង EGroupware Rocket.Chat ខ្លួនវាទេ។
+organization email	rocketchat	km	អ៊ីមែលអង្គការ
+please check also our technical documentation page on github: https://github.com/egroupware/openid	rocketchat	km	សូមពិនិត្យមើលផងដែរនូវទំព័រឯកសារបច្ចេកទេសរបស់យើងនៅលើ Github៖ https://github.com/EGroupware/openid
+please choose a language which is common for the majority of your users. the language can be changed on myaccount for each user.	rocketchat	km	សូមជ្រើសរើសភាសាដែលជារឿងធម្មតាសម្រាប់អ្នកប្រើប្រាស់ភាគច្រើនរបស់អ្នក។ ភាសាអាចត្រូវបានផ្លាស់ប្តូរនៅលើគណនី MyAccount សម្រាប់អ្នកប្រើប្រាស់ម្នាក់ៗ។
+please go back to rocket.chat into administration >> oauth and click [add custom oauth]. give it a name eg. egroupware.	rocketchat	km	សូមត្រលប់ទៅ Rocket.Chat ចូលទៅក្នុងរដ្ឋបាល >> OAuth ហើយចុច [បន្ថែម oauth ផ្ទាល់ខ្លួន] ។ ដាក់ឈ្មោះវា ឧ. EGroupware ។
+please insert a name for your client-identifier e.g. egroupware rocket.chat and an identifier - recommended rocket.chat	rocketchat	km	សូមបញ្ចូលឈ្មោះសម្រាប់ Client-Identifier របស់អ្នក ឧទាហរណ៍ EGroupware Rocket.Chat និង Identifier - បានណែនាំ Rocket.Chat
+please insert a valid egroupware username (recommended your user) to configure the first administrator of rocket.chat. that administrator can add additional egroupware users as rocket.chat admins.	rocketchat	km	សូមបញ្ចូលឈ្មោះអ្នកប្រើប្រាស់ EGroupware ដែលមានសុពលភាព (បានណែនាំអ្នកប្រើប្រាស់របស់អ្នក) ដើម្បីកំណត់រចនាសម្ព័ន្ធអ្នកគ្រប់គ្រងដំបូងនៃ Rocket.Chat ។ អ្នកគ្រប់គ្រងនោះអាចបន្ថែមអ្នកប្រើប្រាស់ EGroupware បន្ថែមជាអ្នកគ្រប់គ្រង Rocket.Chat ។
+please insert a valid email-address which is used for the registration process of rocket.chat.	rocketchat	km	សូមបញ្ចូលអាសយដ្ឋានអ៊ីមែលដែលមានសុពលភាពដែលត្រូវបានប្រើសម្រាប់ដំណើរការចុះឈ្មោះរបស់ Rocket.Chat ។
+please wait while your rocket.chat server is installed ...	rocketchat	km	សូមរង់ចាំខណៈពេលដែលម៉ាស៊ីនមេ Rocket.Chat របស់អ្នកត្រូវបានដំឡើង...
+register or keep standalone	rocketchat	km	ចុះឈ្មោះ ឬរក្សាទុកតែម្នាក់ឯង
+register server	rocketchat	km	ចុះឈ្មោះម៉ាស៊ីនមេ
+rocket.chat	rocketchat	km	Rocket.Chat
+rocket.chat container or egroupware-rocketchat package needs to be installed to use rocket.chat!	rocketchat	km	កុងតឺន័រ Rocket.Chat ឬកញ្ចប់ egroupware-rocketchat ចាំបាច់ត្រូវដំឡើង ដើម្បីប្រើ Rocket.Chat!
+rocket.chat general settings. some of the settings are necessary to get all integrated features properly working within egroupware.	rocketchat	km	Rocket.Chat ការកំណត់ទូទៅ។ ការកំណត់មួយចំនួនគឺចាំបាច់ដើម្បីទទួលបានមុខងាររួមបញ្ចូលគ្នាទាំងអស់ដែលដំណើរការបានត្រឹមត្រូវនៅក្នុង EGroupware ។
+rocket.chat is succesfully installed, you can now configure additional parameters e.g. switch video-chat off or add non-egroupware user.	rocketchat	km	Rocket.Chat ត្រូវបានដំឡើងដោយជោគជ័យ ឥឡូវនេះអ្នកអាចកំណត់រចនាសម្ព័ន្ធប៉ារ៉ាម៉ែត្របន្ថែម ឧទាហរណ៍បិទការជជែកជាវីដេអូ ឬបន្ថែមអ្នកប្រើប្រាស់ដែលមិនមែនជា Egroupware ។
+rocket.chat needs to be configured and installed.	rocketchat	km	Rocket.Chat ត្រូវតែកំណត់រចនាសម្ព័ន្ធ និងដំឡើង។
+rocket.chat provides lots of user and administration guides and videos. please have a look on their website.	rocketchat	km	Rocket.Chat ផ្តល់នូវការណែនាំ និងវីដេអូជាច្រើនសម្រាប់អ្នកប្រើប្រាស់ និងរដ្ឋបាល។ សូមចូលមើលគេហទំព័ររបស់ពួកគេ។
+rocket.chat server is not yet installed.	rocketchat	km	ម៉ាស៊ីនមេ Rocket.Chat មិនទាន់ត្រូវបានដំឡើងនៅឡើយទេ។
+rocket.chat's oauth client-id	rocketchat	km	លេខសម្គាល់អតិថិជន OAuth របស់ Rocket.Chat
+rocket.chat's oauth service-name	rocketchat	km	ឈ្មោះសេវា OAuth របស់ Rocket.Chat
+rocketchat	common	km	Rocket.Chat
+rocketchat operation failed!	rocketchat	km	ប្រតិបត្តិការ Rocketchat បានបរាជ័យ!
+server info	rocketchat	km	ព័ត៌មានម៉ាស៊ីនមេ
+server url	rocketchat	km	URL ម៉ាស៊ីនមេ
+site name	rocketchat	km	ឈ្មោះ​វេ​ប​សាយ
+sorry, rocket.chat app needs to be configured by an egroupware administrator!	rocketchat	km	សូមអភ័យទោស កម្មវិធី Rocket.Chat ត្រូវតែកំណត់រចនាសម្ព័ន្ធដោយអ្នកគ្រប់គ្រង EGroupware!
+sorry, rocket.chat app needs to be configured first!	rocketchat	km	សូមអភ័យទោស កម្មវិធី Rocket.Chat ត្រូវតែកំណត់រចនាសម្ព័ន្ធជាមុនសិន!
+status:	rocketchat	km	ស្ថានភាព៖
+step 1: admin info	rocketchat	km	ជំហានទី 1: ព័ត៌មានអ្នកគ្រប់គ្រង
+step 2: organization info	rocketchat	km	ជំហានទី 2៖ ព័ត៌មានអង្គការ
+step 3: server info	rocketchat	km	ជំហានទី 3៖ ព័ត៌មានម៉ាស៊ីនមេ
+step 4: register server	rocketchat	km	ជំហានទី 4: ចុះឈ្មោះម៉ាស៊ីនមេ
+successful connected, rocket.chat version: %1.	rocketchat	km	បានភ្ជាប់ដោយជោគជ័យ កំណែ Rocket.Chat៖ %1។
+the following tabs are showing the steps of the configuration process in detail.	rocketchat	km	ផ្ទាំងខាងក្រោមកំពុងបង្ហាញជំហាននៃដំណើរការកំណត់រចនាសម្ព័ន្ធយ៉ាងលម្អិត។
+the redirect uri needs to match your servername e.g. testbox.egroupware.org in my case. we recommend to use https, but only if secure connection is correctly configured!	rocketchat	km	URI ប្តូរទិសត្រូវផ្គូផ្គងឈ្មោះម៉ាស៊ីនមេរបស់អ្នក ឧទាហរណ៍ testbox.egroupware.org ក្នុងករណីរបស់ខ្ញុំ។ យើងណែនាំឱ្យប្រើ https ប៉ុន្តែប្រសិនបើការតភ្ជាប់សុវត្ថិភាពត្រូវបានកំណត់ត្រឹមត្រូវ!
+the secret should be a random string (recommended minimum 12 chars), which is used and inserted in the custom oauth server configuration together with the client-identifier in the next step!	rocketchat	km	អាថ៌កំបាំងគួរតែជាខ្សែអក្សរចៃដន្យ (យ៉ាងហោចណាស់ 12 តួអក្សរដែលបានណែនាំ) ដែលត្រូវបានប្រើ និងបញ្ចូលក្នុងការកំណត់រចនាសម្ព័ន្ធម៉ាស៊ីនមេ Oauth ផ្ទាល់ខ្លួន រួមជាមួយនឹង Client-Identifier នៅជំហានបន្ទាប់!
+the site name is displayed in external rocket.chat clients. specially when using more than one rocket.chat. it make sense to choose a meaningful name to identify this chat!	rocketchat	km	ឈ្មោះគេហទំព័រត្រូវបានបង្ហាញនៅក្នុងម៉ាស៊ីនភ្ញៀវ Rocket.Chat ខាងក្រៅ។ ជាពិសេសនៅពេលប្រើ Rocket.Chat ច្រើនជាងមួយ។ វាសមហេតុផលក្នុងការជ្រើសរើសឈ្មោះដែលមានអត្ថន័យដើម្បីកំណត់ការជជែកនេះ!
+the system will sent an email to the given email-address including the login details for rocket.chat.	rocketchat	km	ប្រព័ន្ធនឹងផ្ញើអ៊ីមែលទៅអាសយដ្ឋានអ៊ីមែលដែលបានផ្ដល់ឱ្យ រួមទាំងព័ត៌មានលម្អិតនៃការចូលសម្រាប់ Rocket.Chat ។
+this client-identifier needs to be inserted in the next step where you add the custom oauth server egroupware.	rocketchat	km	លេខសម្គាល់អតិថិជននេះត្រូវបញ្ចូលក្នុងជំហានបន្ទាប់ ដែលអ្នកបន្ថែមម៉ាស៊ីនមេ Oauth ផ្ទាល់ខ្លួន EGroupware ។
+unable to connect!	rocketchat	km	មិនអាច​ភ្ជាប់​បាន!
+url must end with %1	rocketchat	km	URL ត្រូវតែបញ្ចប់ដោយ% 1
+url: http(s)://servername/egroupware/openid/endpoint.php servername needs to match your servername or ip-address. you should use https, but only if secure connection is correctly configured on your server!	rocketchat	km	URL៖ http(s)://servername/egroupware/openid/endpoint.php ឈ្មោះម៉ាស៊ីនមេត្រូវផ្គូផ្គងឈ្មោះម៉ាស៊ីនមេ ឬអាសយដ្ឋាន IP របស់អ្នក។ អ្នកគួរប្រើ https ប៉ុន្តែលុះត្រាតែការតភ្ជាប់សុវត្ថិភាពត្រូវបានកំណត់ត្រឹមត្រូវនៅលើម៉ាស៊ីនមេរបស់អ្នក!
+username/password from session	rocketchat	km	ឈ្មោះអ្នកប្រើ / ពាក្យសម្ងាត់ពីសម័យ
+video-chat	rocketchat	km	វីដេអូ-ជជែក
+video-conference	rocketchat	km	ស​ន្និ​សិ​ទ​វីដេអូ
+would you like to install it now?	rocketchat	km	តើអ្នកចង់ដំឡើងវាឥឡូវនេះទេ?
+would you like to see installation instructions?	rocketchat	km	តើអ្នកចង់ឃើញការណែនាំអំពីការដំឡើងទេ?
+you can not use http for rocket.chat with egroupware using https! browser do not load mixed content.	rocketchat	km	អ្នកមិនអាចប្រើ http សម្រាប់ Rocket.Chat ជាមួយ EGroupware ដោយប្រើ https! កម្មវិធីរុករកមិនផ្ទុកមាតិកាចម្រុះទេ។
+you have %1 unread messages from %2	rocketchat	km	អ្នកមាន % 1 សារមិនទាន់អានពី % 2
+you need to create a client-identifier and -secret via admin >> openid / oauth2 server >> clients	rocketchat	km	អ្នកត្រូវបង្កើត Client-Identifier និង -Secret តាមរយៈ Admin >> OpenID / OAuth2 server >> Clients
+you need to decide if you allow video-chats and screen-sharing for gdpr reasons. egroupware does not yet has an own jitsi-server for video-chats, so we use and enable a public jitsi-server from the open source project jitsi meet. please take gdpr into account for your decision, we haven't found neither any declaration of data protection on their website nor where the servers are located.	rocketchat	km	អ្នកត្រូវសម្រេចចិត្តថាតើអ្នកអនុញ្ញាតការជជែកជាវីដេអូ និងការចែករំលែកអេក្រង់សម្រាប់ហេតុផល GDPR ដែរឬទេ។ EGroupware មិនទាន់មានម៉ាស៊ីនមេ Jitsi ផ្ទាល់ខ្លួនសម្រាប់ការជជែកជាវីដេអូទេ ដូច្នេះហើយយើងប្រើ និងបើកដំណើរការ jitsi-server សាធារណៈពីគម្រោងប្រភពបើកចំហ Jitsi Meet ។ សូមយក GDPR ទៅក្នុងគណនីសម្រាប់ការសម្រេចចិត្តរបស់អ្នក យើងមិនបានរកឃើញទាំងការប្រកាសអំពីការការពារទិន្នន័យនៅលើគេហទំព័ររបស់ពួកគេ ឬកន្លែងដែលម៉ាស៊ីនមេស្ថិតនៅ។
+you need to decide if you allow video-chats and screensharing for gdpr reasons. egroupware does not yet has an own jitsi-server for video-chats, so we use and enable a public jitsi-server from the open source project jitsi meet.	rocketchat	km	អ្នកត្រូវសម្រេចចិត្តថាតើអ្នកអនុញ្ញាតការជជែកជាវីដេអូ និងការចែករំលែកអេក្រង់សម្រាប់ហេតុផល GDPR ដែរឬទេ។ EGroupware មិនទាន់មានម៉ាស៊ីនមេ Jitsi ផ្ទាល់ខ្លួនសម្រាប់ការជជែកជាវីដេអូទេ ដូច្នេះហើយយើងប្រើ និងបើកដំណើរការ jitsi-server សាធារណៈពីគម្រោងប្រភពបើកចំហ Jitsi Meet ។
+you need to decide, if you like to register your rocket.chat to get push-notifications for smart-phones. in that case all inserted information of the configuration gets sent to rocket.chat!	rocketchat	km	អ្នកត្រូវសម្រេចចិត្ត ប្រសិនបើអ្នកចង់ចុះឈ្មោះ Rocket.Chat របស់អ្នក ដើម្បីទទួលបានការជូនដំណឹងរុញសម្រាប់ទូរសព្ទឆ្លាតវៃ។ ក្នុងករណីនោះព័ត៌មានដែលបានបញ្ចូលទាំងអស់នៃការកំណត់រចនាសម្ព័ន្ធត្រូវបានបញ្ជូនទៅ Rocket.Chat!

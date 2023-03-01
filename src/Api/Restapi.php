@@ -264,6 +264,9 @@ class Restapi
 	 */
 	public function userslist ($_args=[])
 	{
+		// force to get all records
+		$_args['count'] = 0;
+
 		$args = array_map('json_encode', $_args);
 		$response = $this->api_call('users.list', 'GET', $args);
 		if (!$response['success'])

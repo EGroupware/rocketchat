@@ -11,8 +11,8 @@
 
 
 import {AppJS} from "../../api/js/jsapi/app_base.js";
+import "./init.js";
 import {rocketchat_realtime_api} from "./realtimeapi.js";
-import {et2_createWidget} from "../../api/js/etemplate/et2_core_widget";
 import {Et2Dialog} from "../../api/js/etemplate/Et2Dialog/Et2Dialog";
 
 app.classes.rocketchat = AppJS.extend(

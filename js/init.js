@@ -15,38 +15,35 @@
 	"use strict";
 
 	egw_LAB.wait(function() {
+		//instatiate rocketchat app
+		app.rocketchat = new app.classes.rocketchat;
+		if (egw(window).is_popup())
+		{
+			return;
+		}
+		app.rocketchat.getUpdates();
+		let menu = document.getElementById('egw_fw_topmenu_items');
 
-		import(egw.webserverUrl+'/rocketchat/js/app.js').then(() => {
-			//instatiate rocketchat app
-			app.rocketchat = new app.classes.rocketchat;
-			if (egw(window).is_popup())
-			{
-				return;
-			}
-			app.rocketchat.getUpdates();
-			var $menu = jQuery('#egw_fw_topmenu_items');
-
-			var $select = jQuery(document.createElement('select')).attr({id:"rc_status_select"}).change(function(){
-				if (app.rocketchat && app.rocketchat.api) app.rocketchat.api.setUserPresence(this.value);
-			}).prependTo($menu);
-
-			// delay creation of options to have translations loaded
-			window.setTimeout(function() {
-				if (app.rocketchat)
-				{
-					jQuery("<option></option>", {value: "online", text: app.rocketchat.egw.lang("Online")}).appendTo($select);
-					jQuery("<option></option>", {value: "away", text: app.rocketchat.egw.lang("Away")}).appendTo($select);
-					jQuery("<option></option>", {value: "busy", text: app.rocketchat.egw.lang("Busy")}).appendTo($select);
-					jQuery("<option></option>", {value: "offline", text: app.rocketchat.egw.lang("Offline")}).appendTo($select);
-				}
-			}, 500);
-
-			jQuery('#topmenu_info_user_avatar').mouseover(function(){
-				$select.chosen({
-					disable_search: true,
-					display_selected_options: false
-				});
-			});
+		let select = document.createElement('et2-select');
+		select.setAttribute('id', 'rc_status_select');
+		select.addEventListener('change', function(){
+			if (app.rocketchat && app.rocketchat.api) app.rocketchat.api.setUserPresence(this.value);
 		});
+		menu.prepend(select);
+
+		// delay creation of options to have translations loaded
+		window.setTimeout(function() {
+			if (app.rocketchat)
+			{
+				let options = [
+					{value: "online", label: app.rocketchat.egw.lang("Online"), icon:},
+					{value: "away", label: app.rocketchat.egw.lang("Away")},
+					{value: "busy", label: app.rocketchat.egw.lang("Busy")},
+					{value: "offline", label: app.rocketchat.egw.lang("Offline")}
+				];
+				select.select_options = options;
+			}
+		}, 500);
 	});
+
 })(window);

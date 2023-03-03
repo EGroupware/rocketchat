@@ -36,7 +36,7 @@
 			if (app.rocketchat)
 			{
 				let options = [
-					{value: "online", label: app.rocketchat.egw.lang("Online"), icon:},
+					{value: "online", label: app.rocketchat.egw.lang("Online")},
 					{value: "away", label: app.rocketchat.egw.lang("Away")},
 					{value: "busy", label: app.rocketchat.egw.lang("Busy")},
 					{value: "offline", label: app.rocketchat.egw.lang("Offline")}

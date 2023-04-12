@@ -1,9 +1,12 @@
+2. step is to create the non-users manually in administration users. you need to specify username and password. depending on the settings to allow password change or not, please allow or deny that the user can change the password. by default its switched of, because the password change in rocket.chat will not change the user password of egroupware!	rocketchat	es-es	2. El paso es crear los no usuarios manualmente en usuarios de administración. Es necesario especificar el nombre de usuario y la contraseña. Dependiendo de la configuración para permitir o no el cambio de contraseña, permita o deniegue que el usuario pueda cambiar la contraseña. Por defecto está desactivado, porque el cambio de contraseña en Rocket.Chat no cambiará la contraseña de usuario de EGroupware.
+add custom oauth	rocketchat	es-es	Añadir OAuth personalizado
 add non-egroupware user	rocketchat	es-es	Añadir usuario que no sea de EGroupware
 additionally you should insert a valid email-address, which is used for the registration process of rocket.chat.	rocketchat	es-es	Además, debe insertar una dirección de correo-e válida, que se utiliza para el proceso de registro de Rocket.Chat.
 admin info	rocketchat	es-es	Información de administrador
 administration panel	rocketchat	es-es	Panel de Administración
+after installation is finished, you may want to look into some administration details e.g. to configure non-egroupware accounts or to switch video-chat (jitsi) off for gdpr reasons.	rocketchat	es-es	Una vez finalizada la instalación, es posible que desee ver algunos detalles de administración, e.g. para configurar cuentas que no sean de EGroupware o para desactivar el chat de video (Jitsi) por motivos del GDPR.
 authentication	rocketchat	es-es	Autenticación
-away	common	es-es	Away
+away	common	es-es	Lejos
 busy	common	es-es	Ocupado
 connection error to rocket.chat server!	common	es-es	¡Error de conexión al servidor de Rocket.Chat!
 create openid client	rocketchat	es-es	Crear cliente OpenID
@@ -26,19 +29,25 @@ offline	common	es-es	Desconectado
 online	common	es-es	En línea
 organisatation email	rocketchat	es-es	Correo-e de la organización
 organisation email	rocketchat	es-es	Correo-e de la organización
-organisation info	rocketchat	es-es	información de la organización
+organisation info	rocketchat	es-es	Información de la organización
 organization email	rocketchat	es-es	Correo-e de la organización
 please check also our technical documentation page on github: https://github.com/egroupware/openid	rocketchat	es-es	Consulte también nuestra página de documentación técnica en Github: https://github.com/EGroupware/openid
 rocket.chat	rocketchat	es-es	Rocket.Chat
+rocket.chat needs to be configured and installed.	rocketchat	es-es	Rocket.Chat debe configurarse e instalarse.
+rocket.chat server is not yet installed.	rocketchat	es-es	El servidor Rocket.Chat aún no está instalado.
 rocketchat	common	es-es	Rocket.Chat
+rocketchat operation failed!	rocketchat	es-es	¡La operación Rocket.Chat falló!
 server info	rocketchat	es-es	Información del servidor
 server url	rocketchat	es-es	URL del servidor
 site name	rocketchat	es-es	Nombre del sitio
+sorry, rocket.chat app needs to be configured by an egroupware administrator!	rocketchat	es-es	¡Lo sentimos, la aplicación Rocket.Chat debe ser configurada por un administrador de EGroupware!
+sorry, rocket.chat app needs to be configured first!	rocketchat	es-es	Lo sentimos, ¡la aplicación Rocket.Chat debe configurarse primero!
 status:	rocketchat	es-es	Estado:
 step 1: admin info	rocketchat	es-es	Paso 1: Información de administrador
 step 2: organization info	rocketchat	es-es	Paso 2: Información de la organización
 step 3: server info	rocketchat	es-es	Paso 3: Información del servidor
 step 4: register server	rocketchat	es-es	Paso 4: Servidor de registro
+successful connected, rocket.chat version: %1.	rocketchat	es-es	Conexión exitosa, versión de Rocket.Chat: %1.
 unable to connect!	rocketchat	es-es	¡No puede conectarse!
 url must end with %1	rocketchat	es-es	URL debe terminar en %1
 username/password from session	rocketchat	es-es	Nombre de usuario/contraseña de la sesión

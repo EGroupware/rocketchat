@@ -47,6 +47,7 @@ app.classes.rocketchat = AppJS.extend(
 				egw(window).loading_prompt('rocketchat-loading', true, this.egw.lang('Loading Rocket.Chat ...'), jQuery('#rocketchat-index'));
 				this.mainframe = this.et2.getWidgetById('iframe').getDOMNode();
 				jQuery(this.mainframe).on('load', function(){
+					self.getUpdates();
 					self._isRocketchatLoaded().then(function(_mode){
 						egw(window).loading_prompt('rocketchat-loading', false);
 						if (self._shouldCallCustomOAuth(_mode))

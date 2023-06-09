@@ -240,6 +240,12 @@ class Hooks
 
 				foreach ($onlineusers as $user)
 				{
+					$pref_rcgroups = $GLOBALS['egw_info']['user']['preferences']['status']['rcgroups'];
+					$rcgroups =  $pref_rcgroups ? explode(',', $pref_rcgroups) : [];
+					if (!empty($rcgroups))
+					{
+						if ($user['type'] === 'c' && !in_array($user['username'], $rcgroups)) continue;
+					}
 					// Only report egw users not all rocketchat users
 					if (!$status_app[$user['username']])
 					{

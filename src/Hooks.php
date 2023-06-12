@@ -242,7 +242,7 @@ class Hooks
 				{
 					$pref_rcgroups = $GLOBALS['egw_info']['user']['preferences']['status']['rcgroups'];
 					$rcgroups =  $pref_rcgroups ? explode(',', $pref_rcgroups) : [];
-					if (!empty($rcgroups))
+					if (!empty($rcgroups) && empty($data['allgroups']))
 					{
 						if ($user['type'] === 'c' && !in_array($user['username'], $rcgroups)) continue;
 					}

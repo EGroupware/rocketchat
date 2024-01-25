@@ -21,7 +21,7 @@ enable audio effects	rocketchat	de	Audio-Effekt
 enable browser notification	rocketchat	de	Browser-Benachrichtigung aktivieren
 enable/disable audio effects such as message notifications	rocketchat	de	Aktivieren/Deaktivieren von AudioEffekten wie z. B. Nachrichten-Eingang
 enable/disable browser notification for unread messages	rocketchat	de	Aktivieren/Deaktivieren der Browser-Benachrichtigung für ungelesene Nachrichten
-example: https://www.egroupware.org/rocketchat/	rocketchat	de	Beispiel: https://www.egroupware.org/rocketchat/
+example: https://www.egroupware.org/rocketchat/	rocketchat	de	Beispiel: https://egw.egroupware.org/rocketchat/
 file upload	rocketchat	de	Dateiupload
 for allowed grants you need to choose: authorization code, refresh token and implicit.	rocketchat	de	Wählen Sie bei Erlaubte Grants: Autorisierungscode, Refresh Token und Implizit.
 for on-premis installations, you need to configure the custom oauth server. in the egroupware cloud its already pre-configured!	rocketchat	de	Für lokale Installationen müssen Sie ein benutzerdefiniertes OAuth-Konto konfigurieren. In der EGroupware Cloud ist dieses bereits vorkonfiguriert!
@@ -31,7 +31,7 @@ here we can enable file uploads and configuring max file size, valid media types
 id needs to be the client-identifier you previously configured for the openid client! similar is valid for the secret, if you can't remember the secret you choosed previously, you may re-generate and save the secret in the egroupware openid client. see also previous tab [create openid client]	rocketchat	de	Bei ID tragen Sie bitte den Client-Identifier ein, den Sie zuvor für den OpenID Client konfiguriert haben! Analog verhält es sich mit dem Secret. Wenn Sie sich nicht an das Secret erinnern können, können Sie das Secret neu generieren und im EGroupware OpenID Client speichern. Siehe auch vorherige Registerkarte [OpenID-Client erstellen].
 if you don't need push-notifications, you can skip registration and click on keep standalone ... rocket.chat in egroupware will still work.	rocketchat	de	Wenn Sie keine Push-Benachrichtigungen benötigen, können Sie die Registrierung überspringen und auf Keep Standalone klicken..... Rocket.Chat in EGroupware wird weiterhin funktionieren.
 if you like to allow non-egroupware users to take part in your rocket.chat you can enable in account settings to show the default login form.	rocketchat	de	Wenn Sie Nicht-EGroupware-Benutzern die Teilnahme an Ihrem Rocket.Chat erlauben möchten, können Sie in den Konten Einstellungen der Administration aktivieren, dass das Standard-Anmeldeformular mit Eingabe von Benutzername und Passwort angezeigt wird.
-iframe integration settings: both send and receive need to be enable in order to get iframe integrated features within egroupware working.	rocketchat	de	Iframe-Integration: Sowohl Senden zulassen als auch Empfangen zulassen müssen aktiviert sein, damit die im Iframe integrierten Funktionen in EGroupware funktionieren.
+iframe integration settings: both send and receive need to be enable in order to get iframe integrated features within egroupware working.	rocketchat	de	iframe-Integration: Sowohl Senden zulassen als auch Empfangen zulassen müssen aktiviert sein, damit die im Iframe integrierten Funktionen in EGroupware funktionieren.
 install information	rocketchat	de	Information zur Installation
 install now	rocketchat	de	Installation starten
 installation	rocketchat	de	Installation

@@ -1,2 +1,100 @@
+2. step is to create the non-users manually in administration users. you need to specify username and password. depending on the settings to allow password change or not, please allow or deny that the user can change the password. by default its switched of, because the password change in rocket.chat will not change the user password of egroupware!	rocketchat	cs	2. Krokem je ruční vytvoření ne-uživatelů v administraci Uživatelé. Je třeba zadat uživatelské jméno a heslo. V závislosti na nastavení povolení či nepovolení změny hesla povolte nebo zabraňte tomu, aby uživatel mohl heslo změnit. Ve výchozím nastavení je vypnuto, protože změna hesla v Rocket.Chat nezmění heslo uživatele EGroupware!
+add custom oauth	rocketchat	cs	Přidání vlastního OAuth
+add non-egroupware user	rocketchat	cs	Přidání uživatele, který není uživatelem EGroupware
+additionally you should insert a valid email-address, which is used for the registration process of rocket.chat.	rocketchat	cs	Dále byste měli vložit platnou e-mailovou adresu, která se používá pro registrační proces Rocket.Chat.
+admin info	rocketchat	cs	Informace pro správce
+administration panel	rocketchat	cs	Panel administrace
+after installation is finished, you may want to look into some administration details e.g. to configure non-egroupware accounts or to switch video-chat (jitsi) off for gdpr reasons.	rocketchat	cs	Po dokončení instalace se možná budete chtít podívat na některé detaily administrace, např. pro konfiguraci účtů, které nejsou součástí EGroupware, nebo pro vypnutí video-chatu (Jitsi) z důvodů GDPR.
+at the top of the page the custom oauth server egroupware is added and you need to insert several values. please check all rows where the image shows at the right site a red box to mark changes. we'are just listing a few important values, but all need to be inserted correctly!	rocketchat	cs	V horní části stránky je přidán vlastní server Oauth EGroupware a je třeba vložit několik hodnot. Zaškrtněte všechny řádky, kde se na obrázku v pravé části stránky zobrazuje červené pole pro označení změn. Uvádíme jen několik důležitých hodnot, ale všechny musí být vloženy správně!
+authentication	rocketchat	cs	Ověřování
+away	common	cs	Vzdálené
+busy	common	cs	Zaneprázdněn
+by default we show only: egroupware users click here and not username and password fields for external users! egroupware users should always use the provided click here link!	rocketchat	cs	Ve výchozím nastavení zobrazujeme pouze: EGroupware uživatelé klikněte zde a nikoli pole uživatelského jména a hesla pro externí uživatele! Uživatelé EGroupware by měli vždy používat poskytnutý odkaz klikněte zde!
+connection error to rocket.chat server!	common	cs	Chyba připojení k serveru Rocket.Chat!
+connection with default url succeeded. you need to complete and store the configuration now.	rocketchat	cs	Připojení s výchozí adresou URL se podařilo. Nyní je třeba dokončit a uložit konfiguraci.
+create openid client	rocketchat	cs	Vytvořit klienta OpenID
+do you want to install	rocketchat	cs	Chcete nainstalovat
+do you want to install?	rocketchat	cs	Chcete nainstalovat?
+egroupware does not yet has a push-service for notifications on smart-phones, but you can use rocket.chat cloud services. please take gdpr into account for your decision.	rocketchat	cs	EGroupware zatím nemá push-servis pro oznámení na chytrých telefonech, ale můžete využít cloudové služby Rocket.Chat. Při svém rozhodování prosím berte v úvahu GDPR.
+egroupware openid connnect / oauth server	rocketchat	cs	Server EGroupware OpenID Connnect / OAuth
+enable audio effects	rocketchat	cs	Zvukové efekty
+enable browser notification	rocketchat	cs	Povolit oznámení prohlížeče
+enable/disable audio effects such as message notifications	rocketchat	cs	Povolení/zakázání zvukových efektů, jako jsou oznámení zpráv
+enable/disable browser notification for unread messages	rocketchat	cs	Povolení/zakázání upozornění prohlížeče na nepřečtené zprávy
+example: https://www.egroupware.org/rocketchat/	rocketchat	cs	příklad: https://egw.egroupware.org/rocketchat/
+file upload	rocketchat	cs	Odesílání souborů
+for allowed grants you need to choose: authorization code, refresh token and implicit.	rocketchat	cs	U povolených grantů si musíte vybrat: Autorizační kód, Obnovovací token a Implicitní.
+for on-premis installations, you need to configure the custom oauth server. in the egroupware cloud its already pre-configured!	rocketchat	cs	Pro instalace on-premis je třeba nakonfigurovat vlastní server OAuth. V cloudu EGroupware je již předkonfigurován!
+gdpr decision	rocketchat	cs	Rozhodnutí GDPR
+general settings	rocketchat	cs	Obecná nastavení
+here we can enable file uploads and configuring max file size, valid media types and more. storage type should be set to filesystem.	rocketchat	cs	Zde můžeme povolit nahrávání souborů a konfigurovat maximální velikost souboru, platné typy médií a další. Typ úložiště by měl být nastaven na souborový systém.
+id needs to be the client-identifier you previously configured for the openid client! similar is valid for the secret, if you can't remember the secret you choosed previously, you may re-generate and save the secret in the egroupware openid client. see also previous tab [create openid client]	rocketchat	cs	ID musí být Client-Identifier, který jste dříve nakonfigurovali pro OpenID Client! Podobně to platí i pro tajemství, Pokud si nepamatujete dříve zvolené tajemství, můžete si ho znovu vygenerovat a uložit v klientovi EGroupware OpenID. Viz také předchozí záložka [Vytvoření klienta OpenID].
+if you don't need push-notifications, you can skip registration and click on keep standalone ... rocket.chat in egroupware will still work.	rocketchat	cs	Pokud nepotřebujete push-notifikace, můžete registraci přeskočit a kliknout na tlačítko Keep standalone ... Rocket.Chat v EGroupware bude stále fungovat.
+if you like to allow non-egroupware users to take part in your rocket.chat you can enable in account settings to show the default login form.	rocketchat	cs	Pokud byste rádi umožnili účast na Rocket.Chatu i uživatelům, kteří nejsou členy EGroupware, můžete v Nastavení účtu povolit zobrazení výchozího přihlašovacího formuláře.
+iframe integration settings: both send and receive need to be enable in order to get iframe integrated features within egroupware working.	rocketchat	cs	Nastavení integrace iframe: Aby fungovaly funkce integrované do iframe v rámci EGroupware, je třeba povolit odesílání i přijímání.
+install information	rocketchat	cs	Informace o instalaci
+install now	rocketchat	cs	Nainstalovat nyní
+installation	rocketchat	cs	Instalace
+installation finished	rocketchat	cs	Instalace dokončena
+loading rocket.chat ...	rocketchat	cs	Načítání Rocket.Chat ...
+logging you into rocket.chat ...	rocketchat	cs	Přihlášení do Rocket.Chat ...
+my account	rocketchat	cs	Můj účet
+offline	common	cs	Offline
+online	common	cs	Online
+only necessary for on-premis installations	rocketchat	cs	Nutné pouze pro instalace on-premis
+organisatation email	rocketchat	cs	E-mail organizace
+organisation email	rocketchat	cs	E-mail organizace
+organisation info	rocketchat	cs	Informace o organizaci
+organisation information ist just some text which gets reported to rocket.chat via registration. but its not used in egroupware rocket.chat itself.	rocketchat	cs	Informace o organizaci je jen text, který se nahlásí do Rocket.Chat prostřednictvím registrace. V samotném EGroupware Rocket.Chat se však nepoužívá.
+organization email	rocketchat	cs	E-mail organizace
+please check also our technical documentation page on github: https://github.com/egroupware/openid	rocketchat	cs	Podívejte se také na naši stránku s technickou dokumentací na Githubu: https://github.com/EGroupware/openid.
+please choose a language which is common for the majority of your users. the language can be changed on myaccount for each user.	rocketchat	cs	Zvolte prosím jazyk, který je běžný pro většinu vašich uživatelů. Jazyk lze změnit v aplikaci MyAccount pro každého uživatele.
+please go back to rocket.chat into administration >> oauth and click [add custom oauth]. give it a name eg. egroupware.	rocketchat	cs	Vraťte se prosím do Rocket.Chat do Administrace >> OAuth a klikněte na [Přidat vlastní oauth]. Pojmenujte jej např. EGroupware.
+please insert a name for your client-identifier e.g. egroupware rocket.chat and an identifier - recommended rocket.chat	rocketchat	cs	Vložte prosím název pro váš Client-Identifier např. EGroupware Rocket.Chat a Identifier - doporučeno Rocket.Chat.
+please insert a valid egroupware username (recommended your user) to configure the first administrator of rocket.chat. that administrator can add additional egroupware users as rocket.chat admins.	rocketchat	cs	Vložte prosím platné uživatelské jméno EGroupware (doporučeno váš uživatel) pro konfiguraci prvního správce Rocket.Chat. Tento správce může přidávat další uživatele EGroupware jako správce Rocket.Chat.
+please insert a valid email-address which is used for the registration process of rocket.chat.	rocketchat	cs	Vložte prosím platnou e-mailovou adresu, která se používá pro registraci do služby Rocket.Chat.
+please wait while your rocket.chat server is installed ...	rocketchat	cs	Počkejte prosím na instalaci serveru Rocket.Chat...
+register or keep standalone	rocketchat	cs	Zaregistrujte se nebo si ponechte samostatnou aplikaci
+register server	rocketchat	cs	Registrační server
 rocket.chat	rocketchat	cs	Rocket.Chat
+rocket.chat container or egroupware-rocketchat package needs to be installed to use rocket.chat!	rocketchat	cs	Pro použití Rocket.Chat je třeba nainstalovat kontejner Rocket.Chat nebo balíček egroupware-rocketchat!
+rocket.chat general settings. some of the settings are necessary to get all integrated features properly working within egroupware.	rocketchat	cs	Obecná nastavení služby Rocket.Chat. Některá nastavení jsou nezbytná pro správnou funkci všech integrovaných funkcí v rámci EGroupware.
+rocket.chat is succesfully installed, you can now configure additional parameters e.g. switch video-chat off or add non-egroupware user.	rocketchat	cs	Rocket.Chat je úspěšně nainstalován, nyní můžete nastavit další parametry, např. vypnout videochat nebo přidat uživatele, který není součástí EGroupware.
+rocket.chat needs to be configured and installed.	rocketchat	cs	Je třeba nakonfigurovat a nainstalovat aplikaci Rocket.Chat.
+rocket.chat provides lots of user and administration guides and videos. please have a look on their website.	rocketchat	cs	Rocket.Chat poskytuje mnoho uživatelských a administračních příruček a videí. Podívejte se na jejich webové stránky.
+rocket.chat server is not yet installed.	rocketchat	cs	Server Rocket.Chat ještě není nainstalován.
+rocket.chat's oauth client-id	rocketchat	cs	ID klienta OAuth služby Rocket.Chat
+rocket.chat's oauth service-name	rocketchat	cs	Název služby OAuth služby Rocket.Chat
 rocketchat	common	cs	Rocket.Chat
+rocketchat operation failed!	rocketchat	cs	Operace Rocket.Chat se nezdařila!
+server info	rocketchat	cs	Informace o serveru
+server url	rocketchat	cs	Adresa URL serveru
+site name	rocketchat	cs	Název lokality
+sorry, rocket.chat app needs to be configured by an egroupware administrator!	rocketchat	cs	Omlouváme se, ale aplikaci Rocket.Chat musí nakonfigurovat správce EGroupware!
+sorry, rocket.chat app needs to be configured first!	rocketchat	cs	Omlouváme se, ale aplikaci Rocket.Chat je třeba nejprve nakonfigurovat!
+status:	rocketchat	cs	Stav:
+step 1: admin info	rocketchat	cs	Krok 1: Informace pro správce
+step 2: organization info	rocketchat	cs	Krok 2: Informace o organizaci
+step 3: server info	rocketchat	cs	Krok 3: Informace o serveru
+step 4: register server	rocketchat	cs	Krok 4: Registrace serveru
+successful connected, rocket.chat version: %1.	rocketchat	cs	Úspěšné připojení, verze Rocket.Chat: %1.
+the following tabs are showing the steps of the configuration process in detail.	rocketchat	cs	Na následujících kartách jsou podrobně uvedeny kroky procesu konfigurace.
+the redirect uri needs to match your servername e.g. testbox.egroupware.org in my case. we recommend to use https, but only if secure connection is correctly configured!	rocketchat	cs	URI přesměrování musí odpovídat názvu vašeho serveru, např. testbox.egroupware.org v mém případě. Doporučujeme použít https, ale pouze v případě, že je správně nakonfigurováno zabezpečené připojení!
+the secret should be a random string (recommended minimum 12 chars), which is used and inserted in the custom oauth server configuration together with the client-identifier in the next step!	rocketchat	cs	Secret by měl být náhodný řetězec (doporučujeme minimálně 12 znaků), který se použije a vloží do vlastní konfigurace serveru Oauth společně s Client-Identifier v dalším kroku!
+the site name is displayed in external rocket.chat clients. specially when using more than one rocket.chat. it make sense to choose a meaningful name to identify this chat!	rocketchat	cs	Název webu se zobrazuje v externích klientech Rocket.Chat. Zejména při použití více než jednoho klienta Rocket.Chat. Má smysl zvolit smysluplný název pro identifikaci tohoto chatu!
+the system will sent an email to the given email-address including the login details for rocket.chat.	rocketchat	cs	Systém odešle na zadanou e-mailovou adresu e-mail obsahující přihlašovací údaje do Rocket.Chat.
+this client-identifier needs to be inserted in the next step where you add the custom oauth server egroupware.	rocketchat	cs	Tento Client-Identifier je třeba vložit v dalším kroku, ve kterém přidáte vlastní Oauth server EGroupware.
+unable to connect!	rocketchat	cs	Nelze se připojit!
+url must end with %1	rocketchat	cs	Adresa URL musí končit %1
+url: http(s)://servername/egroupware/openid/endpoint.php servername needs to match your servername or ip-address. you should use https, but only if secure connection is correctly configured on your server!	rocketchat	cs	URL: http(s)://servername/egroupware/openid/endpoint.php Název serveru musí odpovídat vašemu názvu serveru nebo IP adrese. Měli byste použít https, ale pouze v případě, že je na vašem serveru správně nakonfigurováno zabezpečené připojení!
+username/password from session	rocketchat	cs	Uživatelské jméno/heslo z relace
+video-chat	rocketchat	cs	Video-Chat
+video-conference	rocketchat	cs	Videokonference
+would you like to install it now?	rocketchat	cs	Chcete ji nainstalovat nyní?
+would you like to see installation instructions?	rocketchat	cs	Chcete vidět pokyny k instalaci?
+you can not use http for rocket.chat with egroupware using https! browser do not load mixed content.	rocketchat	cs	Pro Rocket.Chat s EGroupware pomocí https NELZE použít http! Prohlížeč nenačte smíšený obsah.
+you have %1 unread messages from %2	rocketchat	cs	Máte %1 nepřečtených zpráv z %2
+you need to create a client-identifier and -secret via admin >> openid / oauth2 server >> clients	rocketchat	cs	Musíte vytvořit Client-Identifier a -Secret prostřednictvím Admin >> OpenID / OAuth2 server >> Clients.
+you need to decide if you allow video-chats and screen-sharing for gdpr reasons. egroupware does not yet has an own jitsi-server for video-chats, so we use and enable a public jitsi-server from the open source project jitsi meet. please take gdpr into account for your decision, we haven't found neither any declaration of data protection on their website nor where the servers are located.	rocketchat	cs	Musíte se rozhodnout, zda z důvodů GDPR povolíte videochaty a sdílení obrazovky. EGroupware zatím nemá vlastní Jitsi-server pro video-chaty, proto používáme a povolujeme veřejný jitsi-server z open source projektu Jitsi Meet. Při rozhodování prosím berte v úvahu GDPR, na jejich webových stránkách jsme nenašli ani prohlášení o ochraně osobních údajů, ani kde se servery nacházejí.
+you need to decide if you allow video-chats and screensharing for gdpr reasons. egroupware does not yet has an own jitsi-server for video-chats, so we use and enable a public jitsi-server from the open source project jitsi meet.	rocketchat	cs	Musíte se rozhodnout, zda z důvodů GDPR povolíte videochaty a sdílení obrazovky. EGroupware zatím nemá vlastní Jitsi-server pro videochaty, proto používáme a povolujeme veřejný jitsi-server z open source projektu Jitsi Meet.
+you need to decide, if you like to register your rocket.chat to get push-notifications for smart-phones. in that case all inserted information of the configuration gets sent to rocket.chat!	rocketchat	cs	Musíte se rozhodnout, zda chcete zaregistrovat svůj Rocket.Chat, abyste mohli dostávat push-notifikace pro chytré telefony. V takovém případě se všechny vložené informace o konfiguraci odešlou do Rocket.Chat!

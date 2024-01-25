@@ -5,19 +5,33 @@ additionally you should insert a valid email-address, which is used for the regi
 admin info	rocketchat	es-es	Información de administrador
 administration panel	rocketchat	es-es	Panel de Administración
 after installation is finished, you may want to look into some administration details e.g. to configure non-egroupware accounts or to switch video-chat (jitsi) off for gdpr reasons.	rocketchat	es-es	Una vez finalizada la instalación, es posible que desee ver algunos detalles de administración, e.g. para configurar cuentas que no sean de EGroupware o para desactivar el chat de video (Jitsi) por motivos del GDPR.
+at the top of the page the custom oauth server egroupware is added and you need to insert several values. please check all rows where the image shows at the right site a red box to mark changes. we'are just listing a few important values, but all need to be inserted correctly!	rocketchat	es-es	En la parte superior de la página se añade el servidor Oauth personalizado EGroupware y es necesario insertar varios valores. Por favor, compruebe todas las filas donde la imagen muestra en el sitio de la derecha una caja roja para marcar los cambios. ¡Sólo estamos enumerando algunos valores importantes, pero todos deben ser insertados correctamente!
 authentication	rocketchat	es-es	Autenticación
 away	common	es-es	Lejos
 busy	common	es-es	Ocupado
+by default we show only: egroupware users click here and not username and password fields for external users! egroupware users should always use the provided click here link!	rocketchat	es-es	Por defecto sólo mostramos: ¡Usuarios de EGroupware haga clic aquí y no los campos de nombre de usuario y contraseña para usuarios externos! Los usuarios de EGroupware deben utilizar siempre el enlace proporcionado.
 connection error to rocket.chat server!	common	es-es	¡Error de conexión al servidor de Rocket.Chat!
+connection with default url succeeded. you need to complete and store the configuration now.	rocketchat	es-es	La conexión con la URL por defecto ha tenido éxito. Ahora debe completar Y almacenar la configuración.
 create openid client	rocketchat	es-es	Crear cliente OpenID
 do you want to install	rocketchat	es-es	¿Quieres instalar?
 do you want to install?	rocketchat	es-es	¿Quieres instalar?
+egroupware does not yet has a push-service for notifications on smart-phones, but you can use rocket.chat cloud services. please take gdpr into account for your decision.	rocketchat	es-es	EGroupware todavía no tiene un servicio push para las notificaciones en los teléfonos inteligentes, pero se puede utilizar Rocket.Chat servicios en la nube. Por favor, tenga en cuenta GDPR para su decisión.
+egroupware openid connnect / oauth server	rocketchat	es-es	Servidor EGroupware OpenID Connnect / OAuth
 enable audio effects	rocketchat	es-es	Efectos de sonido
 enable browser notification	rocketchat	es-es	Habilitar notificación del navegador
+enable/disable audio effects such as message notifications	rocketchat	es-es	Activar/desactivar efectos de audio como notificaciones de mensajes
 enable/disable browser notification for unread messages	rocketchat	es-es	Habilitar/deshabilitar la notificación del navegador para mensajes no leídos
-example: https://www.egroupware.org/rocketchat/	rocketchat	es-es	ejemplo: https://www.egroupware.org/rocketchat/
+example: https://www.egroupware.org/rocketchat/	rocketchat	es-es	ejemplo: https://egw.egroupware.org/rocketchat/
 file upload	rocketchat	es-es	Subir archivo
+for allowed grants you need to choose: authorization code, refresh token and implicit.	rocketchat	es-es	Para las concesiones permitidas debe elegir: Código de autorización, Refresh Token e Implícito.
+for on-premis installations, you need to configure the custom oauth server. in the egroupware cloud its already pre-configured!	rocketchat	es-es	Para instalaciones on-premise, necesitas configurar el servidor OAuth personalizado. En la nube de EGroupware ya está preconfigurado.
+gdpr decision	rocketchat	es-es	Decisión GDPR
 general settings	rocketchat	es-es	Configuración general
+here we can enable file uploads and configuring max file size, valid media types and more. storage type should be set to filesystem.	rocketchat	es-es	Aquí podemos habilitar la carga de archivos y configurar el tamaño máximo de archivo, tipos de medios válidos y más. El tipo de almacenamiento debe establecerse como sistema de archivos.
+id needs to be the client-identifier you previously configured for the openid client! similar is valid for the secret, if you can't remember the secret you choosed previously, you may re-generate and save the secret in the egroupware openid client. see also previous tab [create openid client]	rocketchat	es-es	El ID debe ser el identificador de cliente que configuró previamente para el cliente OpenID. Lo mismo es válido para el secreto, Si no puede recordar el secreto que eligió anteriormente, puede volver a generar y guardar el secreto en el cliente OpenID de EGroupware. Véase también la pestaña anterior [Crear cliente OpenID].
+if you don't need push-notifications, you can skip registration and click on keep standalone ... rocket.chat in egroupware will still work.	rocketchat	es-es	Si no necesitas notificaciones push, puedes omitir el registro y hacer clic en mantener autónomo ... Rocket.Chat en EGroupware seguirá funcionando.
+if you like to allow non-egroupware users to take part in your rocket.chat you can enable in account settings to show the default login form.	rocketchat	es-es	Si quieres permitir que usuarios que no son de EGroupware participen en tu Rocket.Chat, puedes habilitar en la Configuración de la Cuenta que se muestre el formulario de inicio de sesión predeterminado.
+iframe integration settings: both send and receive need to be enable in order to get iframe integrated features within egroupware working.	rocketchat	es-es	Configuración de integración iframe: tanto enviar como recibir necesitan estar habilitados para que las características integradas iframe dentro de EGroupware funcionen.
 install information	rocketchat	es-es	Información de instalación
 install now	rocketchat	es-es	Instalar ahora
 installation	rocketchat	es-es	Instalación
@@ -27,14 +41,30 @@ logging you into rocket.chat ...	rocketchat	es-es	Iniciando sesión en Rocket.Ch
 my account	rocketchat	es-es	Mi cuenta
 offline	common	es-es	Desconectado
 online	common	es-es	En línea
+only necessary for on-premis installations	rocketchat	es-es	Sólo es necesario para instalaciones locales
 organisatation email	rocketchat	es-es	Correo-e de la organización
 organisation email	rocketchat	es-es	Correo-e de la organización
 organisation info	rocketchat	es-es	Información de la organización
+organisation information ist just some text which gets reported to rocket.chat via registration. but its not used in egroupware rocket.chat itself.	rocketchat	es-es	La información de la organización es sólo un texto que se informa a Rocket.Chat a través del registro. Pero no se utiliza en EGroupware Rocket.Chat sí mismo.
 organization email	rocketchat	es-es	Correo-e de la organización
 please check also our technical documentation page on github: https://github.com/egroupware/openid	rocketchat	es-es	Consulte también nuestra página de documentación técnica en Github: https://github.com/EGroupware/openid
+please choose a language which is common for the majority of your users. the language can be changed on myaccount for each user.	rocketchat	es-es	Por favor, elija un idioma que sea común para la mayoría de sus usuarios. El idioma se puede cambiar en MyAccount para cada usuario.
+please go back to rocket.chat into administration >> oauth and click [add custom oauth]. give it a name eg. egroupware.	rocketchat	es-es	Por favor, vuelva a Rocket.Chat en Administración >> OAuth y haga clic en [Añadir oauth personalizado]. Dale un nombre, por ejemplo EGroupware.
+please insert a name for your client-identifier e.g. egroupware rocket.chat and an identifier - recommended rocket.chat	rocketchat	es-es	Por favor, inserte un nombre para su Cliente-Identificador por ejemplo EGroupware Rocket.Chat y un Identificador - recomendado Rocket.Chat
+please insert a valid egroupware username (recommended your user) to configure the first administrator of rocket.chat. that administrator can add additional egroupware users as rocket.chat admins.	rocketchat	es-es	Por favor, inserta un nombre de usuario válido de EGroupware (recomendado tu usuario) para configurar el primer administrador de Rocket.Chat. Ese administrador puede añadir usuarios adicionales de EGroupware como administradores de Rocket.Chat.
+please insert a valid email-address which is used for the registration process of rocket.chat.	rocketchat	es-es	Por favor, introduzca una dirección de correo electrónico válida que se utiliza para el proceso de registro de Rocket.Chat.
+please wait while your rocket.chat server is installed ...	rocketchat	es-es	Por favor, espere mientras se instala su servidor Rocket.Chat ...
+register or keep standalone	rocketchat	es-es	Registrar o mantener independiente
+register server	rocketchat	es-es	Registrar servidor
 rocket.chat	rocketchat	es-es	Rocket.Chat
+rocket.chat container or egroupware-rocketchat package needs to be installed to use rocket.chat!	rocketchat	es-es	El contenedor Rocket.Chat o el paquete egroupware-rocketchat deben estar instalados para utilizar Rocket.Chat.
+rocket.chat general settings. some of the settings are necessary to get all integrated features properly working within egroupware.	rocketchat	es-es	Configuración general de Rocket.Chat. Algunos de los ajustes son necesarios para que todas las características integradas funcionen correctamente dentro de EGroupware.
+rocket.chat is succesfully installed, you can now configure additional parameters e.g. switch video-chat off or add non-egroupware user.	rocketchat	es-es	Rocket.Chat se ha instalado correctamente, ahora puedes configurar parámetros adicionales, por ejemplo, desactivar el video-chat o añadir un usuario que no pertenezca a EGroupware.
 rocket.chat needs to be configured and installed.	rocketchat	es-es	Rocket.Chat debe configurarse e instalarse.
+rocket.chat provides lots of user and administration guides and videos. please have a look on their website.	rocketchat	es-es	Rocket.Chat proporciona una gran cantidad de guías de usuario y administración y videos. Por favor, echa un vistazo a su página web.
 rocket.chat server is not yet installed.	rocketchat	es-es	El servidor Rocket.Chat aún no está instalado.
+rocket.chat's oauth client-id	rocketchat	es-es	OAuth Client-ID de Rocket.Chat
+rocket.chat's oauth service-name	rocketchat	es-es	Nombre del servicio OAuth de Rocket.Chat
 rocketchat	common	es-es	Rocket.Chat
 rocketchat operation failed!	rocketchat	es-es	¡La operación Rocket.Chat falló!
 server info	rocketchat	es-es	Información del servidor
@@ -48,11 +78,23 @@ step 2: organization info	rocketchat	es-es	Paso 2: Información de la organizaci
 step 3: server info	rocketchat	es-es	Paso 3: Información del servidor
 step 4: register server	rocketchat	es-es	Paso 4: Servidor de registro
 successful connected, rocket.chat version: %1.	rocketchat	es-es	Conexión exitosa, versión de Rocket.Chat: %1.
+the following tabs are showing the steps of the configuration process in detail.	rocketchat	es-es	Las siguientes pestañas muestran en detalle los pasos del proceso de configuración.
+the redirect uri needs to match your servername e.g. testbox.egroupware.org in my case. we recommend to use https, but only if secure connection is correctly configured!	rocketchat	es-es	El URI de redirección debe coincidir con su nombre de servidor, por ejemplo, testbox.egroupware.org en mi caso. Recomendamos usar https, pero sólo si la conexión segura está correctamente configurada.
+the secret should be a random string (recommended minimum 12 chars), which is used and inserted in the custom oauth server configuration together with the client-identifier in the next step!	rocketchat	es-es	El secreto debe ser una cadena aleatoria (mínimo recomendado 12 caracteres), que se utiliza y se inserta en la configuración personalizada del servidor Oauth junto con el Client-Identifier en el siguiente paso.
+the site name is displayed in external rocket.chat clients. specially when using more than one rocket.chat. it make sense to choose a meaningful name to identify this chat!	rocketchat	es-es	El nombre del sitio se muestra en los clientes externos de Rocket.Chat. Especialmente cuando se utiliza más de un Rocket.Chat. Tiene sentido elegir un nombre significativo para identificar este chat.
+the system will sent an email to the given email-address including the login details for rocket.chat.	rocketchat	es-es	El sistema enviará un correo electrónico a la dirección indicada incluyendo los datos de acceso a Rocket.Chat.
+this client-identifier needs to be inserted in the next step where you add the custom oauth server egroupware.	rocketchat	es-es	Este identificador de cliente necesita ser insertado en el siguiente paso donde añades el servidor Oauth EGroupware.
 unable to connect!	rocketchat	es-es	¡No puede conectarse!
 url must end with %1	rocketchat	es-es	URL debe terminar en %1
+url: http(s)://servername/egroupware/openid/endpoint.php servername needs to match your servername or ip-address. you should use https, but only if secure connection is correctly configured on your server!	rocketchat	es-es	URL: http(s)://servername/egroupware/openid/endpoint.php El nombre del servidor debe coincidir con su nombre de servidor o dirección IP. Debe utilizar https, pero sólo si la conexión segura está correctamente configurada en su servidor.
 username/password from session	rocketchat	es-es	Nombre de usuario/contraseña de la sesión
 video-chat	rocketchat	es-es	Videochat
 video-conference	rocketchat	es-es	Videoconferencia
 would you like to install it now?	rocketchat	es-es	¿Desea instalarlo ahora?
 would you like to see installation instructions?	rocketchat	es-es	¿Quiere ver las instrucciones de instalación?
+you can not use http for rocket.chat with egroupware using https! browser do not load mixed content.	rocketchat	es-es	¡NO puede utilizar http para Rocket.Chat con EGroupware utilizando https! El navegador no carga contenido mixto.
 you have %1 unread messages from %2	rocketchat	es-es	Tienes %1 mensajes no leídos de %2
+you need to create a client-identifier and -secret via admin >> openid / oauth2 server >> clients	rocketchat	es-es	Usted necesita crear un Cliente-Identificador y -Secreto a través de Admin >> OpenID / OAuth2 servidor >> Clientes
+you need to decide if you allow video-chats and screen-sharing for gdpr reasons. egroupware does not yet has an own jitsi-server for video-chats, so we use and enable a public jitsi-server from the open source project jitsi meet. please take gdpr into account for your decision, we haven't found neither any declaration of data protection on their website nor where the servers are located.	rocketchat	es-es	Tiene que decidir si permite video-chats y compartir pantalla por razones de GDPR. EGroupware todavía no tiene un servidor Jitsi propio para video-chats, así que usamos y habilitamos un servidor jitsi público del proyecto de código abierto Jitsi Meet. Por favor, tenga en cuenta GDPR para su decisión, no hemos encontrado ninguna declaración de protección de datos en su sitio web ni donde se encuentran los servidores.
+you need to decide if you allow video-chats and screensharing for gdpr reasons. egroupware does not yet has an own jitsi-server for video-chats, so we use and enable a public jitsi-server from the open source project jitsi meet.	rocketchat	es-es	Debe decidir si permite los videochats y las pantallas compartidas por motivos de GDPR. EGroupware aún no tiene un servidor Jitsi propio para video-chats, por lo que utilizamos y habilitamos un servidor jitsi público del proyecto de código abierto Jitsi Meet.
+you need to decide, if you like to register your rocket.chat to get push-notifications for smart-phones. in that case all inserted information of the configuration gets sent to rocket.chat!	rocketchat	es-es	Tienes que decidir si quieres registrar tu Rocket.Chat para recibir notificaciones push para smartphones. En ese caso, toda la información insertada en la configuración será enviada a Rocket.Chat.

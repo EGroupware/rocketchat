@@ -1,3 +1,6 @@
 *.old
-*.min.js
-*.min.js.map
+*.old.inc.php
+*.old.lang
+*.old.xet
+*.min.js*
+*.min.css*

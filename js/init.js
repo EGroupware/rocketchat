@@ -36,10 +36,10 @@
 			if (app.rocketchat)
 			{
 				let options = [
-					{value: "online", label: app.rocketchat.egw.lang("Online")},
-					{value: "away", label: app.rocketchat.egw.lang("Away")},
-					{value: "busy", label: app.rocketchat.egw.lang("Busy")},
-					{value: "offline", label: app.rocketchat.egw.lang("Offline")}
+					{value: "online", label: app.rocketchat.egw.lang("Online"), icon: 'check-circle-fill', color: 'green'},
+					{value: "away", label: app.rocketchat.egw.lang("Away"), icon: 'clock', color: 'yellow'},
+					{value: "busy", label: app.rocketchat.egw.lang("Busy"), icon: 'dash-circle', color: 'red'},
+					{value: "offline", label: app.rocketchat.egw.lang("Offline"), icon: 'circle'},
 				];
 				select.select_options = options;
 			}

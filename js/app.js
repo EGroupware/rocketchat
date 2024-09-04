@@ -597,7 +597,7 @@ app.classes.rocketchat = AppJS.extend(
 	 * @returns {Boolean} return true if the rocketchat is active
 	 */
 	isRCActive: function (_action, _selected) {
-		var data = _selected[0]['data'];
-		return (data && typeof data.data.rocketchat != 'undefined');
+		const data = _selected[0]['data'];
+		return data && typeof data.data?.rocketchat != 'undefined';
 	}
 });

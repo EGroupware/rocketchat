@@ -47,7 +47,7 @@ organisation email	rocketchat	cs	E-mail organizace
 organisation info	rocketchat	cs	Informace o organizaci
 organisation information ist just some text which gets reported to rocket.chat via registration. but its not used in egroupware rocket.chat itself.	rocketchat	cs	Informace o organizaci je jen text, který se nahlásí do Rocket.Chat prostřednictvím registrace. V samotném EGroupware Rocket.Chat se však nepoužívá.
 organization email	rocketchat	cs	E-mail organizace
-please check also our technical documentation page on github: https://github.com/egroupware/openid	rocketchat	cs	Podívejte se také na naši stránku s technickou dokumentací na Githubu: https://github.com/EGroupware/openid.
+please check also our technical documentation page on github: https://github.com/egroupware/openid	rocketchat	cs	Podívejte se také na naši stránku s technickou dokumentací na GitHub: https://github.com/EGroupware/openid.
 please choose a language which is common for the majority of your users. the language can be changed on myaccount for each user.	rocketchat	cs	Zvolte prosím jazyk, který je běžný pro většinu vašich uživatelů. Jazyk lze změnit v aplikaci MyAccount pro každého uživatele.
 please go back to rocket.chat into administration >> oauth and click [add custom oauth]. give it a name eg. egroupware.	rocketchat	cs	Vraťte se prosím do Rocket.Chat do Administrace >> OAuth a klikněte na [Přidat vlastní oauth]. Pojmenujte jej např. EGroupware.
 please insert a name for your client-identifier e.g. egroupware rocket.chat and an identifier - recommended rocket.chat	rocketchat	cs	Vložte prosím název pro váš Client-Identifier např. EGroupware Rocket.Chat a Identifier - doporučeno Rocket.Chat.

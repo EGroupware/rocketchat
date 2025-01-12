@@ -47,7 +47,7 @@ organisation email	rocketchat	en	Organisation email
 organisation info	rocketchat	en	Organisation info
 organisation information ist just some text which gets reported to rocket.chat via registration. but its not used in egroupware rocket.chat itself.	rocketchat	en	Organisation information ist just some text which gets reported to Rocket.Chat via registration. But its not used in EGroupware Rocket.Chat itself.
 organization email	rocketchat	en	Organisation email
-please check also our technical documentation page on github: https://github.com/egroupware/openid	rocketchat	en	Please check also our technical documentation page on Github: https://github.com/EGroupware/openid
+please check also our technical documentation page on github: https://github.com/egroupware/openid	rocketchat	en	Please check also our technical documentation page on GitHub: https://github.com/EGroupware/openid
 please choose a language which is common for the majority of your users. the language can be changed on myaccount for each user.	rocketchat	en	Please choose a language which is common for the majority of your users. The language can be changed on MyAccount for each user.
 please go back to rocket.chat into administration >> oauth and click [add custom oauth]. give it a name eg. egroupware.	rocketchat	en	Please go back to Rocket.Chat into Administration >> OAuth and click [Add custom oauth]. Give it a name eg. EGroupware.
 please insert a name for your client-identifier e.g. egroupware rocket.chat and an identifier - recommended rocket.chat	rocketchat	en	Please insert a name for your Client-Identifier e.g. EGroupware Rocket.Chat and an Identifier - recommended Rocket.Chat

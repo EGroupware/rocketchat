@@ -47,7 +47,7 @@ organisation email	rocketchat	km	អ៊ីមែលអង្គការ
 organisation info	rocketchat	km	ព័ត៌មានអង្គការ
 organisation information ist just some text which gets reported to rocket.chat via registration. but its not used in egroupware rocket.chat itself.	rocketchat	km	ព័ត៌មានរបស់អង្គការគ្រាន់តែជាអត្ថបទមួយចំនួនដែលត្រូវបានរាយការណ៍ទៅ Rocket.Chat តាមរយៈការចុះឈ្មោះ។ ប៉ុន្តែវាមិនត្រូវបានប្រើនៅក្នុង EGroupware Rocket.Chat ខ្លួនវាទេ។
 organization email	rocketchat	km	អ៊ីមែលអង្គការ
-please check also our technical documentation page on github: https://github.com/egroupware/openid	rocketchat	km	សូមពិនិត្យមើលផងដែរនូវទំព័រឯកសារបច្ចេកទេសរបស់យើងនៅលើ Github៖ https://github.com/EGroupware/openid
+please check also our technical documentation page on github: https://github.com/egroupware/openid	rocketchat	km	សូមពិនិត្យមើលផងដែរនូវទំព័រឯកសារបច្ចេកទេសរបស់យើងនៅលើ GitHub៖ https://github.com/EGroupware/openid
 please choose a language which is common for the majority of your users. the language can be changed on myaccount for each user.	rocketchat	km	សូមជ្រើសរើសភាសាដែលជារឿងធម្មតាសម្រាប់អ្នកប្រើប្រាស់ភាគច្រើនរបស់អ្នក។ ភាសាអាចត្រូវបានផ្លាស់ប្តូរនៅលើគណនី MyAccount សម្រាប់អ្នកប្រើប្រាស់ម្នាក់ៗ។
 please go back to rocket.chat into administration >> oauth and click [add custom oauth]. give it a name eg. egroupware.	rocketchat	km	សូមត្រលប់ទៅ Rocket.Chat ចូលទៅក្នុងរដ្ឋបាល >> OAuth ហើយចុច [បន្ថែម oauth ផ្ទាល់ខ្លួន] ។ ដាក់ឈ្មោះវា ឧ. EGroupware ។
 please insert a name for your client-identifier e.g. egroupware rocket.chat and an identifier - recommended rocket.chat	rocketchat	km	សូមបញ្ចូលឈ្មោះសម្រាប់ Client-Identifier របស់អ្នក ឧទាហរណ៍ EGroupware Rocket.Chat និង Identifier - បានណែនាំ Rocket.Chat

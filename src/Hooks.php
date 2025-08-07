@@ -99,7 +99,7 @@ class Hooks
 			else
 			{
 				$file += array('Administration Panel' => 'javascript:app.rocketchat.administration();');
-				display_sidebox(self::APPNAME,lang('Admin'),$file);
+				display_sidebox(self::APPNAME, lang('Configuration'), $file);
 			}
 		}
 	}

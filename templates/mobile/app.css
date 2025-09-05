@@ -46,10 +46,3 @@ div#rocketchat-install_info_tabs .et2_tabcntr {
   margin: 10px auto;
   padding: 6px;
 }
-#rocketchat-index_iframe {
-  width: calc(100% - 60px) !important;
-  margin-left: 60px;
-}
-body #egw_fw_basecontainer.sidebar-toggle #egw_fw_top_toolbar #egw_fw_toggler {
-  background-color: #2f343d;
-}

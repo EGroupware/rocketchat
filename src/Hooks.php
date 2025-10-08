@@ -71,9 +71,9 @@ class Hooks
 		$file = array (
 			'My Account' =>  'javascript:app.rocketchat.myaccount();'
 		);
-		display_sidebox(self::APPNAME, lang('My Account'), $file);
+		$GLOBALS['egw']->framework->sidebox(self::APPNAME, lang('My Account'), $file);
 
-		display_sidebox(self::APPNAME, lang('Help'),  [
+		$GLOBALS['egw']->framework->sidebox(self::APPNAME, lang('Help'),  [
 			[
 				'text'   => 'Documentation',
 				'link'   => 'https://rocket.chat/docs/user-guides/',
@@ -99,7 +99,7 @@ class Hooks
 			else
 			{
 				$file += array('Administration Panel' => 'javascript:app.rocketchat.administration();');
-				display_sidebox(self::APPNAME, lang('Configuration'), $file);
+				$GLOBALS['egw']->framework->sidebox(self::APPNAME, lang('Configuration'), $file);
 			}
 		}
 	}

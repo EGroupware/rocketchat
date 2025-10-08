@@ -74,6 +74,7 @@ class Hooks
 		$GLOBALS['egw']->framework->sidebox(self::APPNAME, lang('My Account'), $file);
 
 		$GLOBALS['egw']->framework->sidebox(self::APPNAME, lang('Help'),  [
+			'icon' => 'question-lg',
 			[
 				'text'   => 'Documentation',
 				'link'   => 'https://rocket.chat/docs/user-guides/',
@@ -98,8 +99,8 @@ class Hooks
 			}
 			else
 			{
-				$file += array('Administration Panel' => 'javascript:app.rocketchat.administration();');
-				$GLOBALS['egw']->framework->sidebox(self::APPNAME, lang('Configuration'), $file);
+				//		$file += array('Administration Panel' => 'javascript:app.rocketchat.administration();');
+				//		$GLOBALS['egw']->framework->sidebox(self::APPNAME, lang('Configuration'), $file);
 			}
 		}
 	}

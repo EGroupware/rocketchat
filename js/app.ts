@@ -472,9 +472,11 @@ export class RocketchatApp extends EgwApp
 				};
 				const checkApi = (_resolve?, _reject?) =>
 				{
-					return new Promise(function (_resolve, _reject) {
+					return new Promise((_resolve, _reject) =>
+					{
 						// query Rocket.Chat /api/info first
-						jQuery.ajax(url + 'api/info').done(function (_response) {
+						jQuery.ajax(url + 'api/info').done((_response) =>
+						{
 							// only open websocket, if Rocket.Chat is not powered off
 							if (!_response.powered || _response.powered !== 'off') {
 								this.api = new rocketchat_realtime_api(

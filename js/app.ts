@@ -1,44 +1,54 @@
 /**
  * EGroupware - Rocketchat
  *
- * @link http://www.egroupware.org
+ * @link: https://www.egroupware.org
  * @package Rocketchat
  * @author Hadi Nategh <hn-At-egroupware.org>
  * @copyright (c) 2019 by Hadi Nategh <hn-At-egroupware.org>
  * @license http://opensource.org/licenses/gpl-license.php GPL - GNU General Public License
- * @version $Id$
  */
 
+import { EgwApp } from '../../api/js/jsapi/egw_app';
 
-import {AppJS} from "../../api/js/jsapi/app_base.js";
+
 import "./init.js";
 import {rocketchat_realtime_api} from "./realtimeapi.js";
 import {Et2Dialog} from "../../api/js/etemplate/Et2Dialog/Et2Dialog";
+import {egw, app} from "../../api/js/jsapi/egw_global";
+import type {statusApp} from "../../status/js/app";
 
-app.classes.rocketchat = AppJS.extend(
+export class RocketchatApp extends EgwApp
 {
-	appname: 'rocketchat',
+	api : rocketchat_realtime_api;
 
-	api: undefined,
+	updateInterval : any = 10000;
+	rocketchat : any = {};
 
-	updateInterval: 10000,
-	rocketchat: {},
+	mainframe : any = {};
 
-	mainframe: {},
+	chatbox : any = {};
 
-	chatbox: {},
+	content : any = {};
 
-	content: {},
-
-	init: function()
+	constructor()
 	{
-		this._super.apply(this, arguments);
-	},
+		super('rocketchat');
 
-	et2_ready: function(et2,name)
+		this.messageHandler = this.messageHandler.bind(this);
+	}
+
+	destroy(_app)
+	{
+		super.destroy(_app);
+
+		window.removeEventListener('message', this.messageHandler);
+	}
+
+	et2_ready(et2,name)
 	{
 		// call parent
-		this._super.apply(this, arguments);
+		super.et2_ready(et2, name);
+
 		this.content = this.et2.getArrayMgr('content').data;
 		var self = this;
 		switch (name)
@@ -63,8 +73,8 @@ app.classes.rocketchat = AppJS.extend(
 						self.mainframe.contentWindow.location.reload();
 					});
 				});
-				window.addEventListener('message', jQuery.proxy(this.messageHandler, this));
 				break;
+
 			case 'rocketchat.chat':
 				this.chatbox = this.et2.getWidgetById('chatbox').getDOMNode();
 				jQuery(this.chatbox).on('load', function(){
@@ -76,32 +86,32 @@ app.classes.rocketchat = AppJS.extend(
 					});
 				});
 		}
-		window.addEventListener('message', jQuery.proxy(this.messageHandler, this));
-	},
+		window.addEventListener('message', this.messageHandler);
+	}
 
 	/**
 	 * Chech wheter custom call oauth relogin should be called
 	 * @return {boolean}
 	 * @private
 	 */
-	_shouldCallCustomOAuth:function(_mode)
+	_shouldCallCustomOAuth(_mode)
 	{
-		return _mode !=="setup" && this.content['authentication'] ==='openid'
+		return _mode !== "setup" && this.content['authentication'] === 'openid'
 			&& !(sessionStorage.getItem('Meteor.loginToken:/:/rocketchat') || localStorage.getItem('Meteor.loginToken:/:/rocketchat'))
 			&& !(sessionStorage.getItem('Meteor.loginToken') || localStorage.getItem('Meteor.loginToken'));
-	},
+	}
 
-	_isRocketchatLoaded: function()
+	_isRocketchatLoaded()
 	{
-		var self = this;
 		return new Promise (function(_resolve, _reject){
-			window.setTimeout(function(){
+			window.setTimeout(() =>
+			{
 				try {
-					var frame = egw(window).is_popup() ? self.chatbox : self.mainframe;
+					const frame = egw(window).is_popup() ? this.chatbox : this.mainframe;
 					if (jQuery('.setup-wizard', frame.contentWindow.document).length > 0
 							|| jQuery('[class*="SetupWizard"]', frame.contentWindow.document).length > 0)
 					{
-						self.install_info();
+						this.install_info();
 						_resolve("setup");
 					}
 					else if (jQuery('body', frame.contentWindow.document).length > 0)
@@ -115,50 +125,49 @@ app.classes.rocketchat = AppJS.extend(
 				_reject();
 			}, 1000);
 		});
-	},
+	}
 
 	/**
 	 * Opens Administration panel
 	 * @returns {undefined}
 	 */
-	administration: function ()
+	administration()
 	{
 		this.postMessage('go', {path: '/admin'});
-	},
+	}
 
 	/**
 	 * Opens My Account panel
 	 * @returns {undefined}
 	 */
-	myaccount: function ()
+	myaccount()
 	{
 		this.postMessage('go', {path:'/account'});
-	},
+	}
 
 	/**
 	 * iframe post message handler
 	 *
 	 * @param {type} e message
 	 */
-	messageHandler: function (e)
+	messageHandler(e)
 	{
-		var self = this;
-		var frame = egw(window).is_popup() ? self.chatbox : self.mainframe;
+		const frame = egw(window).is_popup() ? this.chatbox : this.mainframe;
 		try{
 			if (frame && frame.contentWindow && jQuery('.setup-wizard', frame.contentWindow.document))
 			{
 				jQuery(frame.contentWindow.document.body).off().on('click', function(e){
 					if (e.target.nodeName =="BUTTON" && e.target.className == "rc-button rc-button--primary js-finish")
 					{
-						self.postMessage('logout');
+						this.postMessage('logout');
 						Et2Dialog.alert("Your Rocket.Chat is installed, please once relogin to EGroupware.", "Rocket.Chat");
 					}
 				});
 			}
-		}catch(e){
+		}
+		catch(e) {
 			console.log(e);
 		}
-
 
 		if (e && e.type == 'message' && e.data && e.data.eventName)
 		{
@@ -166,16 +175,13 @@ app.classes.rocketchat = AppJS.extend(
 			switch(e.data.eventName)
 			{
 				case 'room-opened':
-
 					break;
 				case 'notification':
-
 					break;
 				case 'new-message':
-
 					break;
 				case 'click-action-link':
-					if (Object.keys(app.rocketchat.chatbox).length > 0
+					if (Object.keys((<RocketchatApp>app.rocketchat).chatbox).length > 0
 							&& typeof e['data']['data']['message']['t'] != 'undefined'
 							&& e.data.data.message.t == 'jitsi_call_started')
 					{
@@ -188,7 +194,7 @@ app.classes.rocketchat = AppJS.extend(
 			}
 		}
 
-	},
+	}
 
 	/**
 	 *
@@ -196,18 +202,17 @@ app.classes.rocketchat = AppJS.extend(
 	 * @param {type} _data
 	 * @returns {Boolean}
 	 */
-	chatPopupLookup: function(_id, _data)
+	chatPopupLookup(_id, _data)
 	{
-		var params = jQuery.extend({}, egw.link_get_registry('rocketchat', 'view'));
+		const params : any = egw.link_get_registry('rocketchat', 'view');
 		params.path = _data.path;
-		var popup = window.framework.popups_get(this.appname, {name:"^"+_id+"$"});
+		let popup = window.framework.popups.get(this.appname, {name:"^"+_id+"$"});
 		if (!popup || popup.length == 0)
 		{
-			popup = egw.openPopup(egw.link('/index.php',params), params.width, params.height, _id, '', null, true);
-
+			popup = egw.openPopup(egw.link('/index.php',params), params.width, params.height, _id, '', null, 'yes');
 		}
 		return popup;
-	},
+	}
 
 	/**
 	 * Post message to rocketchat iframe
@@ -216,16 +221,16 @@ app.classes.rocketchat = AppJS.extend(
 	 *
 	 * @returns {Boolean} return ture if successful
 	 */
-	postMessage: function (_cmd, _params)
+	postMessage(_cmd, _params?)
 	{
-		var frame = egw(window).is_popup() ? this.chatbox : this.mainframe;
+		const frame = egw(window).is_popup() ? this.chatbox : this.mainframe;
 		if (frame)
 		{
 			frame.contentWindow.postMessage(jQuery.extend({externalCommand: _cmd}, _params), '*');
 			return true;
 		}
-		egw.debug('No rocketchat frame found!');
-	},
+		egw.debug('error', 'No rocketchat frame found!');
+	}
 
 	/**
 	 * Handle executed action on selected row
@@ -234,13 +239,13 @@ app.classes.rocketchat = AppJS.extend(
 	 * @param {type} _selected
 	 * @TODO Implementing the response and error
 	 */
-	handle_actions: function (_action, _selected)
+	handle_actions(_action, _selected)
 	{
-		var user_id = _selected[0]['id'];
-		var account_id = _selected[0]['data']['account_id'];
-		var data = _selected[0]['data'];
-		var self = this;
-		var base_path = '';
+		const user_id = _selected[0]['id'];
+		const account_id = _selected[0]['data']['account_id'];
+		const data = _selected[0]['data'];
+		const self = this;
+		let base_path = '';
 		switch (_action.id)
 		{
 			case 'message':
@@ -266,9 +271,9 @@ app.classes.rocketchat = AppJS.extend(
 				}
 				break;
 			case 'linkto':
-				let dialog = new Et2Dialog(this.egw);
+				const dialog = new Et2Dialog(this.egw);
 				dialog.transformAttributes({
-					callback: function (button, value)
+					callback(button, value)
 					{
 						if (button == Et2Dialog.BUTTONS_YES_NO && value)
 						{
@@ -281,7 +286,7 @@ app.classes.rocketchat = AppJS.extend(
 								{
 									if (_result)
 									{
-										app.status.mergeContent([{
+										(<statusApp>app.status).mergeContent([{
 											id: user_id,
 											class: data.class.replace('unlinked', 'linked'),
 											"link_to": {
@@ -312,7 +317,7 @@ app.classes.rocketchat = AppJS.extend(
 					function(_result){
 						if (_result)
 						{
-							app.status.mergeContent([{
+							(<statusApp>app.status).mergeContent([{
 								id: user_id,
 								class: data.class.replace('linked', 'unlinked'),
 								"link_to": null
@@ -326,7 +331,7 @@ app.classes.rocketchat = AppJS.extend(
 				break;
 		}
 
-	},
+	}
 
 	/**
 	 * Rest Api call handler
@@ -335,36 +340,43 @@ app.classes.rocketchat = AppJS.extend(
 	 * @param {object} _data
 	 * @returns {Promise|Boolean}
 	 */
-	restapi_call: function (_cmd, _data)
+	restapi_call(_cmd, _data)
 	{
-		var data = _data || {};
-		var cmd = _cmd;
+		const data = _data || {};
+		const cmd = _cmd;
 		if (!_cmd) {
-			egw.debug('You forgot the command!');
+			egw.debug('error', 'You forgot the command!');
 			return false;
 		}
-		return new Promise (function(_resolve, _reject){
+		return new Promise ((_resolve, _reject) =>
+		{
 			egw.json(
 				"EGroupware\\Rocketchat\\Ui::ajax_restapi_call", [cmd, data],
-				function(_response){
+				(_response) =>
+				{
 					if (typeof _resolve == 'function') _resolve(_response);
-				}).sendRequest(true,'POST', function(_err){
-					if (_err && _err.message) egw.message(_err.message);
-					if (typeof _reject == 'function') _reject();
-			});
+				}).sendRequest(true,'POST', (_err) =>
+				{
+						if (_err && _err.message) egw.message(_err.message);
+						if (typeof _reject == 'function') _reject();
+				});
 		});
-	},
+	}
 
-	_subscriptionsInterval: function()
+	_subscriptionsInterval()
 	{
-		var self = this;
+		const self = this;
 		let latest = [];
-		window.setInterval(function () {
-			self.api.getSubscriptions().then(function (_data) {
-				if (_data && _data.msg === 'result' && _data.result.length > 0) {
+		window.setInterval(() =>
+		{
+			self.api.getSubscriptions().then((_data) =>
+			{
+				if (_data && _data.msg === 'result' && _data.result.length > 0)
+				{
 					let data = [];
 					let counter = 0;
-					for (let i in _data.result) {
+					for (let i in _data.result)
+					{
 						let updateIt = true;
 						let entry = {
 							id: _data.result[i]['name'],
@@ -390,9 +402,10 @@ app.classes.rocketchat = AppJS.extend(
 						}
 					}
 					if (framework.notifyAppTab) framework.notifyAppTab('rocketchat', counter);
-					if (data.length > 0) {
+					if (data.length > 0)
+					{
 						latest = _data.result;
-						if (app.status && app.status.et2) app.status.mergeContent(data);
+						if (app.status && app.status.et2) (<statusApp>app.status).mergeContent(data);
 					}
 
 				}
@@ -400,20 +413,23 @@ app.classes.rocketchat = AppJS.extend(
 		}, this.updateInterval);
 
 		// use getSubscription once to make sure the api is ready to bind the sub
-		this.api.getSubscriptions().then(_=> {
-			self.api.subscribeToNotifyLogged('user-status', function (_data) {
+		this.api.getSubscriptions().then(_=>
+		{
+			self.api.subscribeToNotifyLogged('user-status', (_data) =>
+			{
 				if (_data) {
 					let title = "";
 					let data = [];
-					let entry = {};
-					for (let i in _data.fields.args) {
+					for (let i in _data.fields.args)
+					{
 						data.push({
 							id: _data.fields.args[i][1],
 							class1: self._userStatusNum2String(_data.fields.args[i][2]),
 							data: {rocketchat: {class: self._userStatusNum2String(_data.fields.args[i][2])}}
 						});
 						title = _data.fields.args[i][3] != "" ? _data.fields.args[i][3] : self._userStatusNum2String(_data.fields.args[i][2]);
-						if (_data.fields.args[i][1] == egw.user('account_lid')) {
+						if (_data.fields.args[i][1] == egw.user('account_lid'))
+						{
 							jQuery('span.fw_avatar_stat', '#topmenu_info_user_avatar').attr({
 								class: 'fw_avatar_stat stat1 ' + self._userStatusNum2String(_data.fields.args[i][2]),
 								title: title
@@ -426,43 +442,46 @@ app.classes.rocketchat = AppJS.extend(
 							title: title
 						});
 					}
-					if (app.status && app.status.et2) app.status.mergeContent(data);
+					if (app.status && app.status.et2) (<statusApp>app.status).mergeContent(data);
 				}
 			});
 		});
-	},
+	}
 
 	/**
 	 * Get latest updates regarding the subscribed channels/users
 	 * and will set unread indications accordingly.
 	 */
-	getUpdates: function ()
+	getUpdates()
 	{
-		let self = this;
 		let url_timeout = 1000; // 1s
 		let api_timeout = 1000; // 1s
 		const BACKOFFMAX = 1024000; //1024s max timeout then stops requesting
 		let init = null;
-		egw.json("EGroupware\\Rocketchat\\Hooks::ajax_getServerUrl", [], function (response){
-			if (response && response.server_url) {
-				let url = response.server_url;
-				init = function () {
-					if (self.api) return;
-					checkApi().then(function () {
-						self._subscriptionsInterval();
+		egw.json("EGroupware\\Rocketchat\\Hooks::ajax_getServerUrl", [], (response) =>
+		{
+			if (response && response.server_url)
+			{
+				const url = response.server_url;
+				init = () =>
+				{
+					if (this.api) return;
+					checkApi().then(() => {
+						this._subscriptionsInterval();
 					}, init);
 				};
-				var checkApi = function (_resolve, _reject) {
+				const checkApi = (_resolve?, _reject?) =>
+				{
 					return new Promise(function (_resolve, _reject) {
 						// query Rocket.Chat /api/info first
 						jQuery.ajax(url + 'api/info').done(function (_response) {
 							// only open websocket, if Rocket.Chat is not powered off
 							if (!_response.powered || _response.powered !== 'off') {
-								self.api = new rocketchat_realtime_api(
+								this.api = new rocketchat_realtime_api(
 									url.replace(/^(https?:\/\/)?/, (url.substr(0, 5) == 'https' ? 'wss://' : 'ws://')) + 'websocket');
 								_resolve();
 							}
-							else if(!self.api)
+							else if(!this.api)
 							{
 								if (api_timeout <= BACKOFFMAX)
 								{
@@ -471,7 +490,7 @@ app.classes.rocketchat = AppJS.extend(
 									api_timeout *= 2; // 2s, 4s, 8s, 16s ... 1024s
 								}
 							}
-						}).fail(function(){
+						}).fail(() => {
 							if (url_timeout <= BACKOFFMAX)
 							{
 								console.log("server is not reachable! trying again in "+url_timeout/1000+"s")
@@ -484,14 +503,14 @@ app.classes.rocketchat = AppJS.extend(
 				init();
 			}
 		}).sendRequest();
-	},
+	}
 
 	/**
 	 * Conver numerical user-status code to string
 	 * @param {int} _stat
 	 * @returns {String}
 	 */
-	_userStatusNum2String: function (_stat)
+	_userStatusNum2String(_stat)
 	{
 		switch (_stat)
 		{
@@ -504,44 +523,44 @@ app.classes.rocketchat = AppJS.extend(
 			case 3:
 				return "busy";
 		}
-	},
+	}
 
 	/**
 	 * Notify user about new incomming messages (sound and browser notifications)
 	 *
 	 * @param {object} _data
 	 */
-	notifyMe: function (_data)
+	notifyMe(_data)
 	{
 		let self = this;
 		let notification = egw.preference('notification', this.appname);
-		if (notification && notification != 0)
+		if (notification)
 		{
 			egw.notification(this.egw.lang('Rocket.Chat'), {
 					body: this.egw.lang('You have %1 unread messages from %2', _data.stat1, _data.fname),
 					icon: egw.image('navbar', this.appname) ,
-					onclick: function () {
+					onclick() {
 						self.handle_actions({id:'message'}, [{id:_data.id}]);
 					}
 			});
 		}
-	},
+	}
 
 	/**
 	 * Close app tab, for unconfigured Rocket.Chat
 	 *
 	 * @param {string} _msg error-message
 	 */
-	close_app: function(_msg)
+	close_app(_msg)
 	{
 		jQuery(framework.activeApp.tab.closeButton).trigger('click');
 		Et2Dialog.alert(_msg, 'Rocket.Chat', Et2Dialog.ERROR_MESSAGE);
-	},
+	}
 
 	/**
 	 * Trigger Rocket.Chat installation
 	 */
-	install: function()
+	install()
 	{
 		var w = window;
 		var self = this;
@@ -549,29 +568,29 @@ app.classes.rocketchat = AppJS.extend(
 			egw.loading_prompt('install-rocketchat', true, self.egw.lang('Please wait while your Rocket.Chat server is installed ...'));
 			jQuery.ajax({
 				url: '/rocketchat/',
-				success: function(_data, _text, _xheader){
+				success(_data, _text, _xheader){
 					egw.loading_prompt('install-rocketchat', false);
-					if (_xheader.status == 200 || _xheader.stat == 302)
+					if (_xheader.status == 200 || _xheader.status == 302)
 					{
 						w.location.href = egw.link('/index.php', { menuaction: "rocketchat.EGroupware\\rocketchat\\Ui.index", "clear-cache": true});
 					}
 				},
-				error: function(_xheader){
+				error(_xheader){
 					egw.loading_prompt('install-rocketchat', false);
 					egw.message(_xheader.responseText, 'error');
 				}
 			});
 		});
-	},
+	}
 
-	install_info: function (_callback)
+	install_info(_callback?)
 	{
-		var callback = _callback;
-		Et2Dialog.show_dialog(function (_button)
+		const callback = _callback;
+		Et2Dialog.show_dialog((_button) =>
 		{
 			if (_button == Et2Dialog.YES_BUTTON)
 			{
-				egw.openPopup(egw.link('/index.php', {menuaction: "rocketchat.EGroupware\\rocketchat\\Ui.install"}));
+				egw.openPopup(egw.link('/index.php', {menuaction: "rocketchat.EGroupware\\rocketchat\\Ui.install"}), 600, 600);
 			}
 			if (typeof callback == 'function')
 			{
@@ -579,14 +598,15 @@ app.classes.rocketchat = AppJS.extend(
 			}
 			return true;
 		}, "Would you like to see installation instructions?", "Instructions");
-	},
+	}
 	/**
 	 * on logout clicked event
 	 */
-	onLogout: function() {
+	onLogout()
+	{
 		sessionStorage.removeItem('Meteor.loginToken:/:/rocketchat');
 		localStorage.removeItem('Meteor.loginToken:/:/rocketchat');
-	},
+	}
 
 	/**
 	 * Check if rocketchat is already active
@@ -596,8 +616,10 @@ app.classes.rocketchat = AppJS.extend(
 	 *
 	 * @returns {Boolean} return true if the rocketchat is active
 	 */
-	isRCActive: function (_action, _selected) {
+	isRCActive(_action, _selected)
+	{
 		const data = _selected[0]['data'];
 		return data && typeof data.data?.rocketchat != 'undefined';
 	}
-});
+}
+app.classes.rocketchat = RocketchatApp;

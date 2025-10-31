@@ -214,4 +214,3 @@ rocketchat_realtime_api.prototype.setUserPresence = function (_stat) {
 		params: [_stat]
 	});
 };
-

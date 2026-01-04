@@ -81,7 +81,7 @@ class Hooks
 			],
 			[
 				'text'   => 'EGroupware Wiki',
-				'link'   => 'https://github.com/EGroupware/egroupware/wiki/Rocketchat-Integration',
+				'link'   => 'https://github.com/EGroupware/egroupware/wiki/Rocket.Chat-Integration',
 				'target' => '_blank',
 			],
 		]);

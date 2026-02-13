@@ -31,7 +31,7 @@ class Hooks
 		$config = Api\Config::read('rocketchat');
 		$srcs = [];
 		// dont add RC, if not configured
-		if (!empty($config['server_url']))
+		if (!empty($config['server_url']) && $config['server_url'][0] !== '/')
 		{
 			$srcs[] = preg_replace('#^(https?://[^/]+)(/.*)?#', '$1', $config['server_url']);
 

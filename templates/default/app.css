@@ -37,3 +37,6 @@ div#rocketchat-install_info_tabs .et2_tabcntr {
 	margin: 10px auto;
     padding: 6px;
 }
+egw-app#rocketchat::part(app-header){
+    display: none;
+}

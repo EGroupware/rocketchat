@@ -212,7 +212,11 @@ class Hooks
 					return true;
 				}
 				catch (\Exception $ex) {
-					Api\Framework::message($ex->getMessage());
+					// openid client not (yet) authorized / not configured for this user --> not an error, stay quiet
+					if (!($ex instanceof Exception\LoginFailure) || $ex->getCode() !== 999)
+					{
+						Api\Framework::message($ex->getMessage());
+					}
 					// it's important to return nothing here as false will block login attempt even though the server is
 					// back from failure and running normal.
 					return;
@@ -480,7 +484,11 @@ class Hooks
 					return true;
 				}
 				catch (\Exception $ex) {
-					Api\Framework::message($ex->getMessage());
+					// openid client not (yet) authorized / not configured for this user --> not an error, stay quiet
+					if (!($ex instanceof Exception\LoginFailure) || $ex->getCode() !== 999)
+					{
+						Api\Framework::message($ex->getMessage());
+					}
 					// it's important to return nothing here as false will block login attempt even though the server is
 					// back from failure and running normal.
 					return;
@@ -532,7 +540,11 @@ class Hooks
 				return true;
 			}
 			catch (\Exception $ex) {
-				Api\Framework::message($ex->getMessage());
+				// openid client not (yet) authorized / not configured for this user --> not an error, stay quiet
+				if (!($ex instanceof Exception\LoginFailure) || $ex->getCode() !== 999)
+				{
+					Api\Framework::message($ex->getMessage());
+				}
 				// it's important to return nothing here as false will block login attempt even though the server is
 				// back from failure and running normal.
 				return;

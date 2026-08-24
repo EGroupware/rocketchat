@@ -268,7 +268,7 @@ class Hooks
 								]
 							],
 							'hint' => $user['name'],
-							'icon' => self::getSiteUrl().($user['icon'] ? $user['icon'] : 'api/v1/users.getAvatar?userId='.$user['_id']),
+							'icon' => self::getSiteUrl().($user['icon'] ? $user['icon'] : 'avatar/'.$user['username']),
 							'link_to' => $link[0],
 							'class' => ($link[0]? ' linked' : ' unlinked')
 						];
@@ -580,7 +580,7 @@ class Hooks
 					$result[] = [
 						'id' => self::APPNAME.Status\Ui::ID_DELIMITER.$user['username'],
 						'label' => $user['name'],
-						'icon' => self::getSiteUrl().'api/v1/users.getAvatar?userId='.$user['_id']
+						'icon' => self::getSiteUrl().'avatar/'.$user['username']
 					];
 				}
 			}

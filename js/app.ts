@@ -14,8 +14,9 @@ import { EgwApp } from '../../api/js/jsapi/egw_app';
 import "./init.js";
 import {rocketchat_realtime_api} from "./realtimeapi.js";
 import {Et2Dialog} from "../../api/js/etemplate/Et2Dialog/Et2Dialog";
-import {egw, app} from "../../api/js/jsapi/egw_global";
 import type {statusApp} from "../../status/js/app";
+// egw/app are ambient globals (declare global {} in egw_global.d.ts, unconditionally included
+// via tsconfig's "**/*.d.ts") - no import needed or possible.
 
 export class RocketchatApp extends EgwApp
 {
@@ -37,6 +38,21 @@ export class RocketchatApp extends EgwApp
 		this.messageHandler = this.messageHandler.bind(this);
 	}
 
+	/**
+	 * Click handler for the "finish" button of the Rocket.Chat setup-wizard iframe, bound once and
+	 * re-attached (after removing any previous binding) each time messageHandler() runs, the native
+	 * equivalent of jQuery's .off().on('click', ...) idiom.
+	 */
+	private _setupWizardClickHandler = (e : MouseEvent) =>
+	{
+		const target = <HTMLElement>e.target;
+		if (target.nodeName == "BUTTON" && target.className == "rc-button rc-button--primary js-finish")
+		{
+			this.postMessage('logout');
+			Et2Dialog.alert("Your Rocket.Chat is installed, please once relogin to EGroupware.", "Rocket.Chat");
+		}
+	};
+
 	destroy(_app)
 	{
 		super.destroy(_app);
@@ -50,38 +66,43 @@ export class RocketchatApp extends EgwApp
 		super.et2_ready(et2, name);
 
 		this.content = this.et2.getArrayMgr('content').data;
-		var self = this;
 		switch (name)
 		{
 			case 'rocketchat.index':
-				egw(window).loading_prompt('rocketchat-loading', true, this.egw.lang('Loading Rocket.Chat ...'), jQuery('#rocketchat-index'));
+				egw(window).loading_prompt('rocketchat-loading', true, this.egw.lang('Loading Rocket.Chat ...'), '#rocketchat-index');
 				this.mainframe = this.et2.getWidgetById('iframe').getDOMNode();
-				jQuery(this.mainframe).on('load', function(){
-					self.getUpdates();
-					self._isRocketchatLoaded().then(function(_mode){
+				this.mainframe.addEventListener('load', () =>
+				{
+					this.getUpdates();
+					this._isRocketchatLoaded().then((_mode) =>
+					{
 						egw(window).loading_prompt('rocketchat-loading', false);
-						if (self._shouldCallCustomOAuth(_mode))
+						if (this._shouldCallCustomOAuth(_mode))
 						{
-							self.postMessage('call-custom-oauth-login', {service:'egroupware'});
-							egw(window).loading_prompt('rocketchat-login', true, self.egw.lang('Logging you into Rocket.Chat ...'), jQuery('#rocketchat-index'));
-							window.setTimeout(function(){
+							this.postMessage('call-custom-oauth-login', {service:'egroupware'});
+							egw(window).loading_prompt('rocketchat-login', true, this.egw.lang('Logging you into Rocket.Chat ...'), '#rocketchat-index');
+							window.setTimeout(() =>
+							{
 								egw(window).loading_prompt('rocketchat-login', false);
 							}, 4000); // disable the login prompt automatically after 4s
 						}
 					},
-					function(){
-						self.mainframe.contentWindow.location.reload();
+					() =>
+					{
+						this.mainframe.contentWindow.location.reload();
 					});
 				});
 				break;
 
 			case 'rocketchat.chat':
 				this.chatbox = this.et2.getWidgetById('chatbox').getDOMNode();
-				jQuery(this.chatbox).on('load', function(){
-					self._isRocketchatLoaded().then(function(_mode){
-						if (self._shouldCallCustomOAuth(_mode))
+				this.chatbox.addEventListener('load', () =>
+				{
+					this._isRocketchatLoaded().then((_mode) =>
+					{
+						if (this._shouldCallCustomOAuth(_mode))
 						{
-							self.postMessage('call-custom-oauth-login', {service:'egroupware'});
+							this.postMessage('call-custom-oauth-login', {service:'egroupware'});
 						}
 					});
 				});
@@ -101,20 +122,27 @@ export class RocketchatApp extends EgwApp
 			&& !(sessionStorage.getItem('Meteor.loginToken') || localStorage.getItem('Meteor.loginToken'));
 	}
 
-	_isRocketchatLoaded()
+	_isRocketchatLoaded() : Promise<string|void>
 	{
-		return new Promise (function(_resolve, _reject){
+		// was a plain function() expression before - since a Promise executor is invoked directly
+		// (not as a method), its "this" was always undefined here, so this.chatbox/mainframe/
+		// install_info() always threw and landed in the catch below, unconditionally resolving
+		// "setup". Converting to an arrow (this = the RocketchatApp instance) restores the
+		// evident intent of actually checking the iframe's DOM.
+		return new Promise<string|void>((_resolve, _reject) =>
+		{
 			window.setTimeout(() =>
 			{
 				try {
 					const frame = egw(window).is_popup() ? this.chatbox : this.mainframe;
-					if (jQuery('.setup-wizard', frame.contentWindow.document).length > 0
-							|| jQuery('[class*="SetupWizard"]', frame.contentWindow.document).length > 0)
+					const doc = frame.contentWindow.document;
+					if (doc.querySelectorAll('.setup-wizard').length > 0
+							|| doc.querySelectorAll('[class*="SetupWizard"]').length > 0)
 					{
 						this.install_info();
 						_resolve("setup");
 					}
-					else if (jQuery('body', frame.contentWindow.document).length > 0)
+					else if (doc.querySelectorAll('body').length > 0)
 					{
 						_resolve();
 					}
@@ -154,15 +182,14 @@ export class RocketchatApp extends EgwApp
 	{
 		const frame = egw(window).is_popup() ? this.chatbox : this.mainframe;
 		try{
-			if (frame && frame.contentWindow && jQuery('.setup-wizard', frame.contentWindow.document))
+			// jQuery(selector, context) used to be truthy regardless of match-count - check for an
+			// actual match instead, so the click handler is only (re-)attached while the setup
+			// wizard is really showing
+			if (frame && frame.contentWindow && frame.contentWindow.document.querySelector('.setup-wizard'))
 			{
-				jQuery(frame.contentWindow.document.body).off().on('click', function(e){
-					if (e.target.nodeName =="BUTTON" && e.target.className == "rc-button rc-button--primary js-finish")
-					{
-						this.postMessage('logout');
-						Et2Dialog.alert("Your Rocket.Chat is installed, please once relogin to EGroupware.", "Rocket.Chat");
-					}
-				});
+				const body = frame.contentWindow.document.body;
+				body.removeEventListener('click', this._setupWizardClickHandler);
+				body.addEventListener('click', this._setupWizardClickHandler);
 			}
 		}
 		catch(e) {
@@ -226,7 +253,7 @@ export class RocketchatApp extends EgwApp
 		const frame = egw(window).is_popup() ? this.chatbox : this.mainframe;
 		if (frame)
 		{
-			frame.contentWindow.postMessage(jQuery.extend({externalCommand: _cmd}, _params), '*');
+			frame.contentWindow.postMessage({externalCommand: _cmd, ..._params}, '*');
 			return true;
 		}
 		egw.debug('error', 'No rocketchat frame found!');
@@ -244,7 +271,6 @@ export class RocketchatApp extends EgwApp
 		const user_id = _selected[0]['id'];
 		const account_id = _selected[0]['data']['account_id'];
 		const data = _selected[0]['data'];
-		const self = this;
 		let base_path = '';
 		switch (_action.id)
 		{
@@ -273,33 +299,32 @@ export class RocketchatApp extends EgwApp
 			case 'linkto':
 				const dialog = new Et2Dialog(this.egw);
 				dialog.transformAttributes({
+					// invoked via Et2Dialog's own callback.call(this, ...)/this.callback(...), so "this"
+					// here is the dialog, not RocketchatApp - kept as a concise method (not an arrow) for
+					// that reason, same documented exception as admin/status app.ts
 					callback(button, value)
 					{
 						if (button == Et2Dialog.BUTTONS_YES_NO && value)
 						{
-							egw.json("EGroupware\\Api\\Etemplate\\Widget\\Link::ajax_link",
+							egw.request("EGroupware\\Api\\Etemplate\\Widget\\Link::ajax_link",
 								['rocketchat', account_id, [{
 									app: 'addressbook',
 									id: value.link[0]
-								}]],
-								function (_result)
+								}]]
+							).then((_result) =>
+							{
+								if (_result)
 								{
-									if (_result)
-									{
-										(<statusApp>app.status).mergeContent([{
-											id: user_id,
-											class: data.class.replace('unlinked', 'linked'),
-											"link_to": {
-												app: 'addressbook',
-												id: value.link[0]
-											}
-										}]);
-									}
-								},
-								self,
-								true,
-								self
-							).sendRequest();
+									(<statusApp>app.status).mergeContent([{
+										id: user_id,
+										class: data.class.replace('unlinked', 'linked'),
+										"link_to": {
+											app: 'addressbook',
+											id: value.link[0]
+										}
+									}]);
+								}
+							});
 						}
 						return true;
 					},
@@ -312,22 +337,19 @@ export class RocketchatApp extends EgwApp
 				document.body.appendChild(dialog);
 				break;
 			case 'unlinkto':
-				egw.json("EGroupware\\Api\\Etemplate\\Widget\\Link::ajax_delete",
-					[data.link_to.link_id],
-					function(_result){
-						if (_result)
-						{
-							(<statusApp>app.status).mergeContent([{
-								id: user_id,
-								class: data.class.replace('linked', 'unlinked'),
-								"link_to": null
-							}]);
-						}
-					},
-					self,
-					true,
-					self
-				).sendRequest();
+				egw.request("EGroupware\\Api\\Etemplate\\Widget\\Link::ajax_delete",
+					[data.link_to.link_id]
+				).then((_result) =>
+				{
+					if (_result)
+					{
+						(<statusApp>app.status).mergeContent([{
+							id: user_id,
+							class: data.class.replace('linked', 'unlinked'),
+							"link_to": null
+						}]);
+					}
+				});
 				break;
 		}
 
@@ -350,6 +372,9 @@ export class RocketchatApp extends EgwApp
 		}
 		return new Promise ((_resolve, _reject) =>
 		{
+			// kept as egw.json(...).sendRequest() - egw.request() has no error-callback parameter at
+			// all, and this call needs one to suppress the default error dialog (in favour of
+			// egw.message()) and to reject this Promise, so there's no equivalent swap
 			egw.json(
 				"EGroupware\\Rocketchat\\Ui::ajax_restapi_call", [cmd, data],
 				(_response) =>
@@ -365,11 +390,10 @@ export class RocketchatApp extends EgwApp
 
 	_subscriptionsInterval()
 	{
-		const self = this;
 		let latest = [];
 		window.setInterval(() =>
 		{
-			self.api.getSubscriptions().then((_data) =>
+			this.api.getSubscriptions().then((_data) =>
 			{
 				if (_data && _data.msg === 'result' && _data.result.length > 0)
 				{
@@ -396,7 +420,7 @@ export class RocketchatApp extends EgwApp
 								entry.stat1 = _data.result[i]['t'] == 'c' ? "#" : "@";
 							}
 							if (entry.stat1 > 0 && _data.result[i]['t'] == 'd') {
-								self.notifyMe(entry);
+								this.notifyMe(entry);
 							}
 							data.push(entry);
 						}
@@ -415,7 +439,7 @@ export class RocketchatApp extends EgwApp
 		// use getSubscription once to make sure the api is ready to bind the sub
 		this.api.getSubscriptions().then(_=>
 		{
-			self.api.subscribeToNotifyLogged('user-status', (_data) =>
+			this.api.subscribeToNotifyLogged('user-status', (_data) =>
 			{
 				if (_data) {
 					let title = "";
@@ -424,22 +448,29 @@ export class RocketchatApp extends EgwApp
 					{
 						data.push({
 							id: _data.fields.args[i][1],
-							class1: self._userStatusNum2String(_data.fields.args[i][2]),
-							data: {rocketchat: {class: self._userStatusNum2String(_data.fields.args[i][2])}}
+							class1: this._userStatusNum2String(_data.fields.args[i][2]),
+							data: {rocketchat: {class: this._userStatusNum2String(_data.fields.args[i][2])}}
 						});
-						title = _data.fields.args[i][3] != "" ? _data.fields.args[i][3] : self._userStatusNum2String(_data.fields.args[i][2]);
+						title = _data.fields.args[i][3] != "" ? _data.fields.args[i][3] : this._userStatusNum2String(_data.fields.args[i][2]);
 						if (_data.fields.args[i][1] == egw.user('account_lid'))
 						{
-							jQuery('span.fw_avatar_stat', '#topmenu_info_user_avatar').attr({
-								class: 'fw_avatar_stat stat1 ' + self._userStatusNum2String(_data.fields.args[i][2]),
-								title: title
+							document.querySelectorAll<HTMLElement>('#topmenu_info_user_avatar span.fw_avatar_stat').forEach((el) =>
+							{
+								el.className = 'fw_avatar_stat stat1 ' + this._userStatusNum2String(_data.fields.args[i][2]);
+								el.title = title;
 							});
-							jQuery('#rc_status_select').val(self._userStatusNum2String(_data.fields.args[i][2])).trigger('liszt:updated');
+							const status_select = <HTMLSelectElement>document.getElementById('rc_status_select');
+							if (status_select)
+							{
+								status_select.value = this._userStatusNum2String(_data.fields.args[i][2]);
+								status_select.dispatchEvent(new Event('liszt:updated'));
+							}
 							continue;
 						}
-						jQuery('tr#' + _data.fields.args[i][1] + ' span.stat1', '#egw_fw_sidebar_r').attr({
-							class: 'et2_label stat1 ' + self._userStatusNum2String(_data.fields.args[i][2]),
-							title: title
+						document.querySelectorAll<HTMLElement>('#egw_fw_sidebar_r tr#' + _data.fields.args[i][1] + ' span.stat1').forEach((el) =>
+						{
+							el.className = 'et2_label stat1 ' + this._userStatusNum2String(_data.fields.args[i][2]);
+							el.title = title;
 						});
 					}
 					if (app.status && app.status.et2) (<statusApp>app.status).mergeContent(data);
@@ -458,7 +489,7 @@ export class RocketchatApp extends EgwApp
 		let api_timeout = 1000; // 1s
 		const BACKOFFMAX = 1024000; //1024s max timeout then stops requesting
 		let init = null;
-		egw.json("EGroupware\\Rocketchat\\Hooks::ajax_getServerUrl", [], (response) =>
+		egw.request("EGroupware\\Rocketchat\\Hooks::ajax_getServerUrl", []).then((response) =>
 		{
 			if (response && response.server_url)
 			{
@@ -472,10 +503,14 @@ export class RocketchatApp extends EgwApp
 				};
 				const checkApi = (_resolve?, _reject?) =>
 				{
-					return new Promise((_resolve, _reject) =>
+					return new Promise<void>((_resolve, _reject) =>
 					{
 						// query Rocket.Chat /api/info first
-						jQuery.ajax(url + 'api/info').done((_response) =>
+						fetch(url + 'api/info').then((_response) =>
+						{
+							if (!_response.ok) throw _response;
+							return _response.json();
+						}).then((_response) =>
 						{
 							// only open websocket, if Rocket.Chat is not powered off
 							if (!_response.powered || _response.powered !== 'off') {
@@ -492,7 +527,7 @@ export class RocketchatApp extends EgwApp
 									api_timeout *= 2; // 2s, 4s, 8s, 16s ... 1024s
 								}
 							}
-						}).fail(() => {
+						}).catch(() => {
 							if (url_timeout <= BACKOFFMAX)
 							{
 								console.log("server is not reachable! trying again in "+url_timeout/1000+"s")
@@ -504,7 +539,7 @@ export class RocketchatApp extends EgwApp
 				};
 				init();
 			}
-		}).sendRequest();
+		});
 	}
 
 	/**
@@ -534,15 +569,19 @@ export class RocketchatApp extends EgwApp
 	 */
 	notifyMe(_data)
 	{
-		let self = this;
 		let notification = egw.preference('notification', this.appname);
 		if (notification)
 		{
 			egw.notification(this.egw.lang('Rocket.Chat'), {
 					body: this.egw.lang('You have %1 unread messages from %2', _data.stat1, _data.fname),
 					icon: egw.image('navbar', this.appname) ,
-					onclick() {
-						self.handle_actions({id:'message'}, [{id:_data.id}]);
+					// egw.notification() assigns this straight onto a real Notification instance's
+					// .onclick, which would normally bind "this" to that instance when fired - but the
+					// body only ever needs this.handle_actions(), never its own dynamic this, so an
+					// arrow (same as status/app.ts's identical Notification.onclick precedent) is safe
+					onclick: () =>
+					{
+						this.handle_actions({id:'message'}, [{id:_data.id}]);
 					}
 			});
 		}
@@ -555,7 +594,7 @@ export class RocketchatApp extends EgwApp
 	 */
 	close_app(_msg)
 	{
-		jQuery(framework.activeApp.tab.closeButton).trigger('click');
+		framework.activeApp.tab.closeButton.click();
 		Et2Dialog.alert(_msg, 'Rocket.Chat', Et2Dialog.ERROR_MESSAGE);
 	}
 
@@ -564,23 +603,27 @@ export class RocketchatApp extends EgwApp
 	 */
 	install()
 	{
-		var w = window;
-		var self = this;
-		this.install_info(function(){
-			egw.loading_prompt('install-rocketchat', true, self.egw.lang('Please wait while your Rocket.Chat server is installed ...'));
-			jQuery.ajax({
-				url: '/rocketchat/',
-				success(_data, _text, _xheader){
-					egw.loading_prompt('install-rocketchat', false);
-					if (_xheader.status == 200 || _xheader.status == 302)
-					{
-						w.location.href = egw.link('/index.php', { menuaction: "rocketchat.EGroupware\\rocketchat\\Ui.index", "clear-cache": true});
-					}
-				},
-				error(_xheader){
-					egw.loading_prompt('install-rocketchat', false);
-					egw.message(_xheader.responseText, 'error');
+		const w = window;
+		// install_info() invokes this callback via a bare callback.call() (no thisArg), so a plain
+		// function's own "this" would always be undefined here - an arrow uses install()'s own "this"
+		// instead, regardless of how it's invoked
+		this.install_info(() =>
+		{
+			egw.loading_prompt('install-rocketchat', true, this.egw.lang('Please wait while your Rocket.Chat server is installed ...'));
+			fetch('/rocketchat/').then(async (_response) =>
+			{
+				egw.loading_prompt('install-rocketchat', false);
+				if (_response.status == 200 || _response.status == 302)
+				{
+					w.location.href = egw.link('/index.php', { menuaction: "rocketchat.EGroupware\\rocketchat\\Ui.index", "clear-cache": true});
 				}
+				else
+				{
+					egw.message(await _response.text(), 'error');
+				}
+			}).catch(() =>
+			{
+				egw.loading_prompt('install-rocketchat', false);
 			});
 		});
 	}

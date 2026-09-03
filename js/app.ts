@@ -60,6 +60,21 @@ export class RocketchatApp extends EgwApp
 		window.removeEventListener('message', this.messageHandler);
 	}
 
+	/**
+	 * Get the real <iframe> DOM node for an iframe widget
+	 *
+	 * Et2Iframe (the webcomponent) keeps its actual <iframe> inside a shadow root -
+	 * widget.getDOMNode() (inherited, unoverridden) returns the <et2-iframe> host element
+	 * instead, which has neither a `load` event nor a `contentWindow`. __getIframeNode() is
+	 * Et2Iframe's own accessor for the real node. Falls back to getDOMNode() for the legacy
+	 * et2_iframe widget, where that already *is* the real iframe.
+	 */
+	private static realIframeNode(widget : any) : HTMLIFrameElement
+	{
+		if(!widget) return null;
+		return (typeof widget.__getIframeNode === 'function' ? widget.__getIframeNode() : widget.getDOMNode()) || null;
+	}
+
 	et2_ready(et2,name)
 	{
 		// call parent
@@ -70,7 +85,7 @@ export class RocketchatApp extends EgwApp
 		{
 			case 'rocketchat.index':
 				egw(window).loading_prompt('rocketchat-loading', true, this.egw.lang('Loading Rocket.Chat ...'), '#rocketchat-index');
-				this.mainframe = this.et2.getWidgetById('iframe').getDOMNode();
+				this.mainframe = RocketchatApp.realIframeNode(this.et2.getWidgetById('iframe'));
 				this.mainframe.addEventListener('load', () =>
 				{
 					this.getUpdates();
@@ -95,7 +110,7 @@ export class RocketchatApp extends EgwApp
 				break;
 
 			case 'rocketchat.chat':
-				this.chatbox = this.et2.getWidgetById('chatbox').getDOMNode();
+				this.chatbox = RocketchatApp.realIframeNode(this.et2.getWidgetById('chatbox'));
 				this.chatbox.addEventListener('load', () =>
 				{
 					this._isRocketchatLoaded().then((_mode) =>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE overlay PUBLIC "-//EGroupware GmbH//eTemplate 2.0//EN" "https://www.egroupware.org/etemplate2.0.dtd">
 <overlay>
-	<template id="rocketchat.dialog_message" template="" lang="" group="0" version="19.1">
+	<et2-template  id="rocketchat.dialog_message" template="" lang="" group="0" version="19.1">
 		<grid height="100%" width="100%">
 			<columns>
 				<column/>
@@ -11,10 +11,9 @@
 				<row>
 					<et2-appicon  src="rocketchat" width="24" height="24"></et2-appicon>
 				</row>
-				<row>
-					<et2-textarea  id="text" width="100%" rows="4" index="1"></et2-textarea>
+				<row><et2-ai><et2-textarea  id="text" width="100%" rows="4" index="1"></et2-textarea></et2-ai>
 				</row>
 			</rows>
 		</grid>
-	</template>
+	</et2-template>
 </overlay>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE overlay PUBLIC "-//EGroupware GmbH//eTemplate 2.0//EN" "https://www.egroupware.org/etemplate2.0.dtd">
 <overlay>
-	<template id="rocketchat.install_info.general" template="" lang="" group="0" version="1.5.001">
+	<et2-template  id="rocketchat.install_info.general" template="" lang="" group="0" version="1.5.001">
 		<grid width="100%" spacing="10" overflow="auto">
 			<columns>
 				<column width="150"/>
@@ -63,8 +63,8 @@
 				</row>
 			</rows>
 		</grid>
-	</template>
-	<template id="rocketchat.install_info.admin" template="" lang="" group="0" version="1.5.001">
+	</et2-template>
+	<et2-template  id="rocketchat.install_info.admin" template="" lang="" group="0" version="1.5.001">
 		<grid width="100%" spacing="10" overflow="auto">
 			<columns>
 				<column/>
@@ -81,8 +81,8 @@
 				</row>
 			</rows>
 		</grid>
-	</template>
-	<template id="rocketchat.install_info.organisation" template="" lang="" group="0" version="1.5.001">
+	</et2-template>
+	<et2-template  id="rocketchat.install_info.organisation" template="" lang="" group="0" version="1.5.001">
 		<grid width="100%" spacing="10" overflow="auto">
 			<columns>
 				<column/>
@@ -96,8 +96,8 @@
 				</row>
 			</rows>
 		</grid>
-	</template>
-	<template id="rocketchat.install_info.server" template="" lang="" group="0" version="1.5.001">
+	</et2-template>
+	<et2-template  id="rocketchat.install_info.server" template="" lang="" group="0" version="1.5.001">
 		<grid width="100%" spacing="10" overflow="auto">
 			<columns>
 				<column/>
@@ -114,8 +114,8 @@
 				</row>
 			</rows>
 		</grid>
-	</template>
-	<template id="rocketchat.install_info.register" template="" lang="" group="0" version="1.5.001">
+	</et2-template>
+	<et2-template  id="rocketchat.install_info.register" template="" lang="" group="0" version="1.5.001">
 		<grid width="100%" spacing="10" overflow="auto">
 			<columns>
 				<column/>
@@ -135,8 +135,8 @@
 				</row>
 			</rows>
 		</grid>
-	</template>
-	<template id="rocketchat.install_info.done" template="" lang="" group="0" version="1.5.001">
+	</et2-template>
+	<et2-template  id="rocketchat.install_info.done" template="" lang="" group="0" version="1.5.001">
 		<grid width="100%" spacing="10" overflow="auto">
 			<columns>
 				<column/>
@@ -150,8 +150,8 @@
 				</row>
 			</rows>
 		</grid>
-	</template>
-	<template id="rocketchat.install_info.generalSettings" template="" lang="" group="0" version="1.5.001">
+	</et2-template>
+	<et2-template  id="rocketchat.install_info.generalSettings" template="" lang="" group="0" version="1.5.001">
 		<grid width="100%" spacing="10" overflow="auto">
 			<columns>
 				<column/>
@@ -168,8 +168,8 @@
 				</row>
 			</rows>
 		</grid>
-	</template>
-	<template id="rocketchat.install_info.fileUpload" template="" lang="" group="0" version="1.5.001">
+	</et2-template>
+	<et2-template  id="rocketchat.install_info.fileUpload" template="" lang="" group="0" version="1.5.001">
 		<grid width="100%" spacing="10" overflow="auto">
 			<columns>
 				<column/>
@@ -183,8 +183,8 @@
 				</row>
 			</rows>
 		</grid>
-	</template>
-	<template id="rocketchat.install_info.openid" template="" lang="" group="0" version="1.5.001">
+	</et2-template>
+	<et2-template  id="rocketchat.install_info.openid" template="" lang="" group="0" version="1.5.001">
 		<grid width="100%" spacing="10" overflow="auto">
 			<columns>
 				<column/>
@@ -213,8 +213,8 @@
 				</row>
 			</rows>
 		</grid>
-	</template>
-	<template id="rocketchat.install_info.oauth" template="" lang="" group="0" version="1.5.001">
+	</et2-template>
+	<et2-template  id="rocketchat.install_info.oauth" template="" lang="" group="0" version="1.5.001">
 		<grid width="100%" spacing="10" overflow="auto">
 			<columns>
 				<column/>
@@ -247,8 +247,8 @@
 				</row>
 			</rows>
 		</grid>
-	</template>
-	<template id="rocketchat.install_info.video" template="" lang="" group="0" version="1.5.001">
+	</et2-template>
+	<et2-template  id="rocketchat.install_info.video" template="" lang="" group="0" version="1.5.001">
 		<grid width="100%" spacing="10" overflow="auto">
 			<columns>
 				<column/>
@@ -263,8 +263,8 @@
 				</row>
 			</rows>
 		</grid>
-	</template>
-	<template id="rocketchat.install_info.non-user" template="" lang="" group="0" version="1.5.001">
+	</et2-template>
+	<et2-template  id="rocketchat.install_info.non-user" template="" lang="" group="0" version="1.5.001">
 		<grid width="100%" spacing="10" overflow="auto">
 			<columns>
 				<column/>
@@ -290,8 +290,8 @@
 				</row>
 			</rows>
 		</grid>
-	</template>
-	<template id="rocketchat.install_info" template="" lang="" group="0" version="19.1">
+	</et2-template>
+	<et2-template  id="rocketchat.install_info" template="" lang="" group="0" version="19.1">
 		<grid height="100%" width="100%">
 			<columns>
 				<column/>
@@ -315,22 +315,22 @@
 							<tab id="rocketchat.install_info.non-user" label="Add Non-EGroupware user"/>
 						</tabs>
 						<tabpanels>
-							<template id="rocketchat.install_info.general"/>
-							<template id="rocketchat.install_info.admin"/>
-							<template id="rocketchat.install_info.organisation"/>
-							<template id="rocketchat.install_info.server" />
-							<template id="rocketchat.install_info.register"/>
-							<template id="rocketchat.install_info.done"/>
-							<template id="rocketchat.install_info.generalSettings"/>
-							<template id="rocketchat.install_info.fileUpload"/>
-							<template id="rocketchat.install_info.openid"/>
-							<template id="rocketchat.install_info.oauth"/>
-							<template id="rocketchat.install_info.video"/>
-							<template id="rocketchat.install_info.non-user"/>
+							<et2-template  id="rocketchat.install_info.general"></et2-template>
+							<et2-template  id="rocketchat.install_info.admin"></et2-template>
+							<et2-template  id="rocketchat.install_info.organisation"></et2-template>
+							<et2-template  id="rocketchat.install_info.server" ></et2-template>
+							<et2-template  id="rocketchat.install_info.register"></et2-template>
+							<et2-template  id="rocketchat.install_info.done"></et2-template>
+							<et2-template  id="rocketchat.install_info.generalSettings"></et2-template>
+							<et2-template  id="rocketchat.install_info.fileUpload"></et2-template>
+							<et2-template  id="rocketchat.install_info.openid"></et2-template>
+							<et2-template  id="rocketchat.install_info.oauth"></et2-template>
+							<et2-template  id="rocketchat.install_info.video"></et2-template>
+							<et2-template  id="rocketchat.install_info.non-user"></et2-template>
 						</tabpanels>
 					</et2-tabbox>
 				</row>
 			</rows>
 		</grid>
-	</template>
+	</et2-template>
 </overlay>

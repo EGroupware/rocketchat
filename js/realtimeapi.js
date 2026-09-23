@@ -25,9 +25,9 @@ export function rocketchat_realtime_api (_url)
 		this.socket = new WebSocket (this.url);
 		if (this.socket)
 		{
-			this.socket.onopen = jQuery.proxy(this._onopen, this);
-			this.socket.onmessage = jQuery.proxy(this._onmessage, this);
-			this.socket.onclose = jQuery.proxy(this._onclose, this);
+			this.socket.onopen = this._onopen.bind(this);
+			this.socket.onmessage = this._onmessage.bind(this);
+			this.socket.onclose = this._onclose.bind(this);
 		}
 	} catch (e) {
 		console.log(e);
@@ -158,7 +158,7 @@ rocketchat_realtime_api.prototype.getSubscriptions = function () {
 		self.onmessage_callback.getSubscriptions = function (_result) {
 			if (_result.error)
 			{
-				_reject(_result.error);
+//				_reject(_result.error);
 			}
 			else
 			{

@@ -145,10 +145,20 @@ class Ui
 	 * @param type $_cmd
 	 * @param type $_data
 	 */
+	// read-only Restapi methods this bridge may dispatch to - excludes login() (takes real
+	// credentials, not meant for this generic single-arg dispatch) and chat_PostMessage() (posts
+	// to an arbitrary room id using this integration's own service credential, needs its own
+	// per-user authorization check before it can be exposed here)
+	const RESTAPI_ALLOWED_COMMANDS = ['me', 'usersinfo', 'userslist', 'info', 'roomslist'];
+
 	public static function ajax_restapi_call ($_cmd, $_data)
 	{
 		$response = Api\Json\Response::get();
 		try {
+			if (!in_array($_cmd, self::RESTAPI_ALLOWED_COMMANDS, true))
+			{
+				throw new Api\Exception\WrongParameter("Unknown command '$_cmd'!");
+			}
 			$restapi = new Restapi();
 			$resp = call_user_func_array(array($restapi, $_cmd), [$_data]);
 			if ($resp)

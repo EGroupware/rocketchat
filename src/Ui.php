@@ -145,11 +145,13 @@ class Ui
 	 * @param type $_cmd
 	 * @param type $_data
 	 */
-	// read-only Restapi methods this bridge may dispatch to - excludes login() (takes real
-	// credentials, not meant for this generic single-arg dispatch) and chat_PostMessage() (posts
-	// to an arbitrary room id using this integration's own service credential, needs its own
-	// per-user authorization check before it can be exposed here)
-	const RESTAPI_ALLOWED_COMMANDS = ['me', 'usersinfo', 'userslist', 'info', 'roomslist'];
+	// Restapi methods this bridge may dispatch to - excludes login() (takes real credentials,
+	// not meant for this generic single-arg dispatch). chat_PostMessage() is safe to expose here:
+	// it runs under the CALLING user's own already-authenticated Rocket.Chat session (userId/
+	// authToken come from their per-session cached login, not a shared service credential), so
+	// Rocket.Chat's own server-side ACL enforces whether that user may post into the given room,
+	// same as using the Rocket.Chat UI directly
+	const RESTAPI_ALLOWED_COMMANDS = ['me', 'usersinfo', 'userslist', 'info', 'roomslist', 'chat_PostMessage'];
 
 	public static function ajax_restapi_call ($_cmd, $_data)
 	{

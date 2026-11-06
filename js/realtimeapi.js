@@ -55,7 +55,7 @@ rocketchat_realtime_api.prototype._connect = function () {
 			  ]
 		};
 		self._send(loginRequest);
-	}).sendRequest(false,'POST');
+	}).sendRequest(true,'POST');
 };
 
 /**

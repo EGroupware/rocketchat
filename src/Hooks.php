@@ -215,7 +215,7 @@ class Hooks
 					// openid client not (yet) authorized / not configured for this user --> not an error, stay quiet
 					if (!($ex instanceof Exception\LoginFailure) || $ex->getCode() !== 999)
 					{
-						Api\Framework::message($ex->getMessage());
+						Api\Framework::message(lang('Rocket.Chat login failure: %1', $ex->getMessage()), 'warning');
 					}
 					// it's important to return nothing here as false will block login attempt even though the server is
 					// back from failure and running normal.
@@ -296,7 +296,7 @@ class Hooks
 			}
 			return $stat;
 		} catch (Exception\LoginFailure $ex) {
-			Api\Framework::message($ex->getMessage());
+			Api\Framework::message(lang('Rocket.Chat login failure: %1', $ex->getMessage()), 'warning');
 		}
 		return [];
 	}
@@ -487,7 +487,7 @@ class Hooks
 					// openid client not (yet) authorized / not configured for this user --> not an error, stay quiet
 					if (!($ex instanceof Exception\LoginFailure) || $ex->getCode() !== 999)
 					{
-						Api\Framework::message($ex->getMessage());
+						Api\Framework::message(lang('Rocket.Chat login failure: %1', $ex->getMessage()), 'warning');
 					}
 					// it's important to return nothing here as false will block login attempt even though the server is
 					// back from failure and running normal.
@@ -543,7 +543,7 @@ class Hooks
 				// openid client not (yet) authorized / not configured for this user --> not an error, stay quiet
 				if (!($ex instanceof Exception\LoginFailure) || $ex->getCode() !== 999)
 				{
-					Api\Framework::message($ex->getMessage());
+					Api\Framework::message(lang('Rocket.Chat login failure: %1', $ex->getMessage()), 'warning');
 				}
 				// it's important to return nothing here as false will block login attempt even though the server is
 				// back from failure and running normal.

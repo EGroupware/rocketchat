@@ -59,6 +59,7 @@ register server	rocketchat	en	Register Server
 rocket.chat	rocketchat	en	Rocket.Chat
 rocket.chat container or egroupware-rocketchat package needs to be installed to use rocket.chat!	rocketchat	en	Rocket.Chat container or egroupware-rocketchat package needs to be installed to use Rocket.Chat!
 rocket.chat general settings. some of the settings are necessary to get all integrated features properly working within egroupware.	rocketchat	en	Rocket.Chat general settings. Some of the settings are necessary to get all integrated features properly working within EGroupware.
+rocket.chat login failure: %1	rocketchat	en	Rocket.Chat login failure: %1
 rocket.chat is succesfully installed, you can now configure additional parameters e.g. switch video-chat off or add non-egroupware user.	rocketchat	en	Rocket.Chat is succesfully installed, you can now configure additional parameters e.g. switch video-chat off or add non-EGroupware user.
 rocket.chat needs to be configured and installed.	rocketchat	en	Rocket.Chat needs to be configured and installed.
 rocket.chat provides lots of user and administration guides and videos. please have a look on their website.	rocketchat	en	Rocket.Chat provides lots of user and administration guides and videos. Please have a look on their website.

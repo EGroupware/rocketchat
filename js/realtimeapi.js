@@ -27,7 +27,6 @@ export function rocketchat_realtime_api (_url)
 		{
 			this.socket.onopen = this._onopen.bind(this);
 			this.socket.onmessage = this._onmessage.bind(this);
-			this.socket.onclose = this._onclose.bind(this);
 		}
 	} catch (e) {
 		console.log(e);
